@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MainActivity</string>
+    <string name="gruppe">Gruppe</string>
+    <string name="hovedside">Hovedside</string>
+    <string name="profil">Profil</string>
 </resources>
