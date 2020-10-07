@@ -3,4 +3,16 @@
     <string name="gruppe">Gruppe</string>
     <string name="hovedside">Hovedside</string>
     <string name="profil">Profil</string>
+    <string name="handleliste">Handleliste</string>
+    <string name="FamilieId">Id: 12345</string>
+    <string name="kalender">Kalender</string>
+    <string name="gruppeinfo">Gruppeinfo</string>
+    <string name="matplan">Matplan</string>
+    <string name="familiebobla">FamilieBobla</string>
+    <string name="bursdager">Bursdager</string>
+    <string name="oenskeliste">Ønskeliste</string>
+    <string name="FamilyName">Familien Nordmann</string>
+    <string name="settings">Settings</string>
+    <string name="information">Information</string>
+
 </resources>
