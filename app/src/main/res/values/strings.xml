@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">Familieappen</string>
     <string name="gruppe">Gruppe</string>
     <string name="hovedside">Hovedside</string>
     <string name="profil">Profil</string>
+    <string name="action_settings">Settings</string>
+    <string name="tilbake">Tilbake</string>
+    <string name="gruppeinformasjon">Gruppeinformasjon</string>
+    <string name="kastUtMedlem">Kast ut medlem:</string>
+    <string name="send">Send</string>
+    <string name="leggTilMedlemMedID">Legg til medlem med ID:</string>
+    <string name="exampleID">#4458675</string>
+    <string name="none"> </string>
+    <string name="title_activity_gruppeinformasjon1">GruppeinformasjonActivity1</string>
 </resources>
