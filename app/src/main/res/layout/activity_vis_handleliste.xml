@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewHandlelisteOverskrift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Handleliste #1"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <CheckBox
+        android:id="@+id/cb1VisHandleliste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item 1"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <CheckBox
+        android:id="@+id/cb2VisHandleliste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item 2"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <CheckBox
+        android:id="@+id/cb3VisHandleliste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item 3"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <CheckBox
+        android:id="@+id/cb4VisHandleliste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item 4"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="238dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

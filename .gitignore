@@ -12,3 +12,9 @@
 /captures
 .externalNativeBuild
 .cxx
+app/build.gradle
+.idea/gradle.xml
+.idea/dbnavigator.xml
+.idea/gradle.xml
+.idea/codeStyles/Project.xml
+app/build.gradle
