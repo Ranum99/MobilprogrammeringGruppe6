@@ -12,4 +12,24 @@
     <string name="exampleID">#4458675</string>
     <string name="none"> </string>
     <string name="title_activity_gruppeinformasjon1">GruppeinformasjonActivity1</string>
+    <string name="handleliste">Handleliste</string>
+    <string name="kalender">Kalender</string>
+    <string name="familiebobla">Familiebobla</string>
+    <string name="bursdager">Bursdager</string>
+    <string name="oenskeliste">oenskeliste</string>
+    <string name="gruppeinfo">Gruppeinfo</string>
+    <string name="familyname">FamilyName</string>
+    <string name="familieid">FamilieId</string>
+    <string name="settings">Settings</string>
+    <string name="information">Information</string>
+    <string name="velg_startdag">Velg startdag</string>
+    <string name="lag_matplan">Lag matplan</string>
+    <string name="velg_antall_dager">Velg antall dager</string>
+    <string name="avbryt">Avbryt</string>
+    <string name="lag">Lag</string>
+    <string name="rediger">Rediger</string>
+    <string name="legg_til">Legg til</string>
+    <string name="matplan">Matplan</string>
+    <string name="legg_til_en_bursdag">Legg til en bursdag</string>
+    <string name="ola_nordmann">Ola Nordmann</string>
 </resources>

@@ -240,7 +240,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/FamilyName"
+        android:text="@string/familyname"
         app:layout_constraintEnd_toStartOf="@+id/Info"
         app:layout_constraintStart_toEndOf="@+id/Settings"
         app:layout_constraintTop_toTopOf="parent" />
@@ -250,7 +250,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/FamilieId"
+        android:text="@string/familieid"
         app:layout_constraintEnd_toEndOf="@+id/FamilyName"
         app:layout_constraintStart_toStartOf="@+id/FamilyName"
         app:layout_constraintTop_toBottomOf="@+id/FamilyName" />

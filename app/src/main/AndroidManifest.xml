@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnskelisteEndreListe"></activity>
+        <activity android:name=".Matplan" />
+        <activity android:name=".MatplanLeggTil" />
+        <activity android:name=".MatplanListe" />
+        <activity android:name=".BursdagLeggTil" />
+        <activity android:name=".Bursdager" />
+        <activity android:name=".OnskelisteEndreListe" />
         <activity android:name=".OnskelisteForPerson" />
         <activity android:name=".Onskeliste" />
         <activity android:name=".FamilieboblaSamtale" />
