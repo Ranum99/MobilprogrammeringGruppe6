@@ -14,22 +14,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onskeliste);
 
-        Button tilbakeBtn = findViewById(R.id.tilbakeBtn);
+        goToNewSite(R.id.endreMinListe, OnskelisteEndreListe.class);
+        goToNewSite(R.id.buttonMor, OnskelisteForPerson.class);
+    }
+
+    // Slutter aktiviteten. Dersom man er på første aktivitet går man ut av appen.
+    public void endActivityAndGoBack(int idBtn) {
+        Button tilbakeBtn = findViewById(idBtn);
         tilbakeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
         });
-
-        goToNewSite(R.id.endreMinListe, OnskelisteEndreListe.class);
-        goToNewSite(R.id.buttonMor, OnskelisteForPerson.class);
-
-
-
-
     }
 
-    private <T> void goToNewSite(int idBtn, final Class<T> classToUse) {
+    // Åpner en ny aktivitet. Vil legge seg over forrige aktivitet
+    public <T> void goToNewSite(int idBtn, final Class<T> classToUse) {
         Button btn = findViewById(idBtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
