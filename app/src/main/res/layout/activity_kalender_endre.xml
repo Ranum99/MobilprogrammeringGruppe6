@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/etTimeFra"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="08"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <Button
+        android:id="@+id/btnTilbakeEndreKalender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tilbake"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="25dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endre kalenderen"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="54dp" />
+
+    <EditText
+        android:id="@+id/etDatoEndreKalender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Dato"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="169dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dato:"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="134dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time fra:"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minutt fra:"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <EditText
+        android:id="@+id/etMinuttFra"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="15"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time til:"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="342dp" />
+
+    <EditText
+        android:id="@+id/etTimeTil"
+        android:layout_width="70dp"
+        android:layout_height="37dp"
+        android:ems="10"
+        android:hint="12"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="379dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minutt Til:"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="347dp" />
+
+    <EditText
+        android:id="@+id/etMinuttTil"
+        android:layout_width="50dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:hint="00"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="379dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tittel:"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="452dp" />
+
+    <EditText
+        android:id="@+id/etTittelKE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Skole"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="480dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beskrivelse:"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="543dp" />
+
+    <EditText
+        android:id="@+id/etBeskrivelseKE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Er på skolen"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="574dp" />
+
+    <Button
+        android:id="@+id/btnEndreKE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endre"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="634dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

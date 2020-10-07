@@ -1,23 +1,18 @@
 package com.example.mainactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Onskeliste extends AppCompatActivity {
+public class Onskeliste extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onskeliste);
 
-        Button tilbakeBtn = findViewById(R.id.tilbakeBtn);
-        tilbakeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        goToNewSite(R.id.endreMinListe, OnskelisteEndreListe.class);
+        goToNewSite(R.id.buttonMor, OnskelisteForPerson.class);
+        endActivityAndGoBack(R.id.tilbakeBtn);
     }
 }

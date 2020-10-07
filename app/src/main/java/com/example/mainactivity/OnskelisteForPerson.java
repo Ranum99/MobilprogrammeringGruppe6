@@ -6,18 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class OnskelisteForPerson extends AppCompatActivity {
+public class OnskelisteForPerson extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onskeliste_for_person);
 
-        Button tilbakeBtn = findViewById(R.id.tilbakeBtn);
-        tilbakeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        endActivityAndGoBack(R.id.tilbakeBtn);
     }
 }
