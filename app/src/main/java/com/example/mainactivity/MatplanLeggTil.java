@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MatplanLeggTil extends AppCompatActivity {
+public class MatplanLeggTil extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

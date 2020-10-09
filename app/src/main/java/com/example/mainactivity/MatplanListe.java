@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MatplanListe extends AppCompatActivity {
+public class MatplanListe extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

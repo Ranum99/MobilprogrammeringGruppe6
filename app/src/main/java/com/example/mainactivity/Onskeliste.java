@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Onskeliste extends MainActivity {
+public class Onskeliste extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

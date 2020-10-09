@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Gruppeinformasjon extends AppCompatActivity {
+public class Gruppeinformasjon extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class OnskelisteForPerson extends MainActivity {
+public class OnskelisteForPerson extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

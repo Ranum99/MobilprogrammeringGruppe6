@@ -53,13 +53,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/matplan"
-        app:layout_constraintBottom_toBottomOf="@+id/button9"
-        app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toTopOf="@+id/button9"
+        app:layout_constraintBottom_toBottomOf="@+id/tilbakeBtn"
+        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
+        app:layout_constraintTop_toTopOf="@+id/tilbakeBtn"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/tilbakeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
