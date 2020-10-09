@@ -10,5 +10,7 @@ public class Bursdager extends Activity {
         setContentView(R.layout.activity_bursdager);
 
         endActivityAndGoBack(R.id.tilbakeBtn);
+
+        goToNewSite(R.id.AddBirtday, BursdagLeggTil.class);
     }
 }

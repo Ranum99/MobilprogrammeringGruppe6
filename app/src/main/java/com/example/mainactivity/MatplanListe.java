@@ -10,5 +10,9 @@ public class MatplanListe extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matplan_liste);
+
+        endActivityAndGoBack(R.id.tilbakeBtn);
+
+        goToNewSite(R.id.AddBirtday, MatplanLeggTil.class);
     }
 }

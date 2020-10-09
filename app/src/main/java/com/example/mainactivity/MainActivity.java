@@ -11,7 +11,7 @@ public class MainActivity extends Activity {
 
         goToNewSite(R.id.goToHandleliste, HandlelisteTemp.class);
         goToNewSite(R.id.goToKalender, KalenderTemp.class);
-        goToNewSite(R.id.goToMatplan, Matplan.class);
+        goToNewSite(R.id.goToMatplan, MatplanListe.class);
         goToNewSite(R.id.goToFamiliebobla, Familiebobla.class);
         goToNewSite(R.id.goToBursdager, Bursdager.class);
         goToNewSite(R.id.goToOnskeliste, Onskeliste.class);

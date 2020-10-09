@@ -10,5 +10,7 @@ public class MatplanLeggTil extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matplan_legg_til);
+
+        endActivityAndGoBack(R.id.tilbakeBtn);
     }
 }

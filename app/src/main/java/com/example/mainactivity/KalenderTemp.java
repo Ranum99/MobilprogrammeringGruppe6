@@ -10,5 +10,8 @@ public class KalenderTemp extends Activity {
         setContentView(R.layout.activity_kalender_temp);
 
         endActivityAndGoBack(R.id.tilbakeBtn);
+
+        goToNewSite(R.id.btnRedigerKalender, KalenderEndreTemp.class);
+        goToNewSite(R.id.btnSlettKalender, KalenderSlettTemp.class);
     }
 }

@@ -49,7 +49,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tittel">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonFar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -71,7 +71,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/buttonBarn1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -82,7 +82,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/buttonMor" />
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/buttonBarn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -90,7 +90,7 @@
                     android:layout_marginRight="10dp"
                     android:text="Barn 2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button" />
+                    app:layout_constraintTop_toBottomOf="@+id/buttonFar" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button

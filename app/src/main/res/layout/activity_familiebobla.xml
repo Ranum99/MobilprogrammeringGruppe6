@@ -61,7 +61,7 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/button1"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -78,17 +78,17 @@
                     android:text="Søster"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button4" />
+                    app:layout_constraintTop_toBottomOf="@+id/button2" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/button2"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Familien"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button2" />
+                    app:layout_constraintTop_toBottomOf="@+id/button1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

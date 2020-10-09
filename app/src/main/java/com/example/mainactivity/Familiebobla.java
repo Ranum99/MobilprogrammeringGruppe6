@@ -1,10 +1,6 @@
 package com.example.mainactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 public class Familiebobla extends Activity {
 
@@ -14,5 +10,9 @@ public class Familiebobla extends Activity {
         setContentView(R.layout.activity_familiebobla);
 
         endActivityAndGoBack(R.id.tilbakeBtn);
+
+        goToNewSite(R.id.button1, FamilieboblaSamtale.class);
+        goToNewSite(R.id.button2, FamilieboblaSamtale.class);
+        goToNewSite(R.id.button3, FamilieboblaSamtale.class);
     }
 }

@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignupTemp"></activity>
+        <activity android:name=".SignupTemp" />
         <activity android:name=".ProfileChangeTemp" />
         <activity android:name=".ProfileTemp" />
-        <activity android:name=".LoginTemp" />
+        <activity android:name=".LoginTemp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".HandlelisteOpprettListeTemp" />
         <activity android:name=".HandlelisteEnListeTemp" />
         <activity android:name=".HandlelisteTemp" />
@@ -32,11 +38,6 @@
         <activity android:name=".Familiebobla" />
         <activity android:name=".Gruppeinformasjon" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -29,7 +29,7 @@
         android:layout_marginLeft="32dp"
         android:text="@string/legg_til_en_bursdag"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/avbrytBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -106,23 +106,23 @@
         android:text="Avbryt"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button8"
+        app:layout_constraintStart_toEndOf="@+id/signUpBtn"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/signUpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:text="Lagre"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/avbrytBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/tilbakeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
