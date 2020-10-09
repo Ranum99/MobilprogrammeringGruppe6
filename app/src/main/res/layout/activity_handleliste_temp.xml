@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".HandlelisteTemp">
 
     <Button
         android:id="@+id/tilbakeBtn"
@@ -15,55 +16,57 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginTop="10dp"
-        android:text="Oprett handleliste"
+        android:text="Handlelister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilbakeBtn" />
 
-    <CheckBox
-        android:id="@+id/cb1OprettHandleliste"
+    <Button
+        android:id="@+id/btnHandleliste1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginLeft="75dp"
         android:layout_marginTop="25dp"
-        android:text="Melk"
+        android:text="Handleliste #1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <CheckBox
-        android:id="@+id/cb2OprettHandleliste"
+    <Button
+        android:id="@+id/btnHandleliste2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Smør"
-        app:layout_constraintStart_toStartOf="@+id/cb1OprettHandleliste"
-        app:layout_constraintTop_toBottomOf="@+id/cb1OprettHandleliste" />
+        android:text="Handleliste #2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHandleliste1" />
 
-    <CheckBox
-        android:id="@+id/cb3OprettHandleliste"
+    <Button
+        android:id="@+id/btnHandleliste3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Kjøttdeig"
-        app:layout_constraintStart_toStartOf="@+id/cb2OprettHandleliste"
-        app:layout_constraintTop_toBottomOf="@+id/cb2OprettHandleliste" />
+        android:text="Handleliste #3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHandleliste2" />
 
-    <CheckBox
-        android:id="@+id/cb4OprettHandleliste"
+    <Button
+        android:id="@+id/btnHandleliste4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Skriv for å legge til"
-        app:layout_constraintStart_toStartOf="@+id/cb3OprettHandleliste"
-        app:layout_constraintTop_toBottomOf="@+id/cb3OprettHandleliste" />
+        android:text="Handleliste #4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHandleliste3" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
@@ -72,6 +75,6 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
