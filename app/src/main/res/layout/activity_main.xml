@@ -225,16 +225,19 @@
         app:tabIndicatorColor="#009688">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/goToMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hovedside" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/goToGruppeinformasjon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gruppeinfo" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/goToProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profil" />

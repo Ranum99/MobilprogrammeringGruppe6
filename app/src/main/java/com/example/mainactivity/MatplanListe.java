@@ -1,7 +1,5 @@
 package com.example.mainactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class MatplanListe extends Activity {
@@ -14,5 +12,7 @@ public class MatplanListe extends Activity {
         endActivityAndGoBack(R.id.tilbakeBtn);
 
         goToNewSite(R.id.AddBirtday, MatplanLeggTil.class);
+
+
     }
 }
