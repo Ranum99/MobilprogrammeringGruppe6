@@ -17,7 +17,7 @@ public class Activity extends AppCompatActivity {
     }
 
     // Åpner en ny aktivitet. Vil legge seg over forrige aktivitet
-    public <T> void goToNewSite(int idBtn, final Class<T> classToUse) {
+    public <T> void goToNewSiteListener(int idBtn, final Class<T> classToUse) {
         findViewById(idBtn).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent activity2Intent = new Intent(getApplicationContext(), classToUse);
@@ -25,5 +25,19 @@ public class Activity extends AppCompatActivity {
             }
         });
     }
+
+    // Åpner en ny aktivitet. Vil legge seg over forrige aktivitet
+    public <T> void goToNewSiteListener(int idBtn, final Class<T> classToUse, final boolean closeActivity) {
+        findViewById(idBtn).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), classToUse);
+                if (closeActivity)
+                    finish();
+                startActivity(activity2Intent);
+            }
+        });
+    }
+
+
 
 }

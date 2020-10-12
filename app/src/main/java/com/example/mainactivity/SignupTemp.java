@@ -9,6 +9,7 @@ import android.widget.Toast;
 public class SignupTemp extends Activity {
 
     Database database;
+    User user;
 
     private Button registerBtn;
     private EditText aName, anEmail, aPassword, aPasswordConfirm, aBirthday;

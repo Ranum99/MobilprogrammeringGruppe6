@@ -11,7 +11,7 @@ public class KalenderTemp extends Activity {
 
         endActivityAndGoBack(R.id.tilbakeBtn);
 
-        goToNewSite(R.id.btnRedigerKalender, KalenderEndreTemp.class);
-        goToNewSite(R.id.btnSlettKalender, KalenderSlettTemp.class);
+        goToNewSiteListener(R.id.btnRedigerKalender, KalenderEndreTemp.class);
+        goToNewSiteListener(R.id.btnSlettKalender, KalenderSlettTemp.class);
     }
 }

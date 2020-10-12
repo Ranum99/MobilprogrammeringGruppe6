@@ -11,10 +11,10 @@ public class HandlelisteTemp extends Activity {
 
         endActivityAndGoBack(R.id.tilbakeBtn);
 
-        goToNewSite(R.id.btnHandleliste1, HandlelisteEnListeTemp.class);
-        goToNewSite(R.id.btnHandleliste2, HandlelisteEnListeTemp.class);
-        goToNewSite(R.id.btnHandleliste3, HandlelisteEnListeTemp.class);
-        goToNewSite(R.id.btnHandleliste4, HandlelisteEnListeTemp.class);
-        goToNewSite(R.id.opprettNyListe, HandlelisteOpprettListeTemp.class);
+        goToNewSiteListener(R.id.btnHandleliste1, HandlelisteEnListeTemp.class);
+        goToNewSiteListener(R.id.btnHandleliste2, HandlelisteEnListeTemp.class);
+        goToNewSiteListener(R.id.btnHandleliste3, HandlelisteEnListeTemp.class);
+        goToNewSiteListener(R.id.btnHandleliste4, HandlelisteEnListeTemp.class);
+        goToNewSiteListener(R.id.opprettNyListe, HandlelisteOpprettListeTemp.class);
     }
 }

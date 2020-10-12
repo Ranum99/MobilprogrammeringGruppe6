@@ -11,7 +11,7 @@ public class MatplanListe extends Activity {
 
         endActivityAndGoBack(R.id.tilbakeBtn);
 
-        goToNewSite(R.id.AddBirtday, MatplanLeggTil.class);
+        goToNewSiteListener(R.id.AddBirtday, MatplanLeggTil.class);
 
 
     }

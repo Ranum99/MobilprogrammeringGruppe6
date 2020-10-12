@@ -11,6 +11,6 @@ public class Bursdager extends Activity {
 
         endActivityAndGoBack(R.id.tilbakeBtn);
 
-        goToNewSite(R.id.AddBirtday, BursdagLeggTil.class);
+        goToNewSiteListener(R.id.AddBirtday, BursdagLeggTil.class);
     }
 }

@@ -2,10 +2,6 @@ package com.example.mainactivity;
 
 import android.os.Bundle;
 
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends Activity {
@@ -15,14 +11,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        goToNewSite(R.id.goToHandleliste, HandlelisteTemp.class);
-        goToNewSite(R.id.goToKalender, KalenderTemp.class);
-        goToNewSite(R.id.goToMatplan, MatplanListe.class);
-        goToNewSite(R.id.goToFamiliebobla, Familiebobla.class);
-        goToNewSite(R.id.goToBursdager, Bursdager.class);
-        goToNewSite(R.id.goToOnskeliste, Onskeliste.class);
+        goToNewSiteListener(R.id.goToHandleliste, HandlelisteTemp.class);
+        goToNewSiteListener(R.id.goToKalender, KalenderTemp.class);
+        goToNewSiteListener(R.id.goToMatplan, MatplanListe.class);
+        goToNewSiteListener(R.id.goToFamiliebobla, Familiebobla.class);
+        goToNewSiteListener(R.id.goToBursdager, Bursdager.class);
+        goToNewSiteListener(R.id.goToOnskeliste, Onskeliste.class);
+        goToNewSiteListener(R.id.Info, ProfileTemp.class);
 
-        System.out.println("123");
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
 

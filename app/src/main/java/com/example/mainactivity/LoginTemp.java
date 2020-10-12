@@ -1,6 +1,8 @@
 package com.example.mainactivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,19 +19,19 @@ import java.util.ArrayList;
 public class LoginTemp extends Activity {
 
     Database database;
+    SharedPreferences sharedPreferences;
 
     private Button btnLogin, seeList;
     private EditText email, password;
     private ListView listView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_temp);
 
-        goToNewSite(R.id.signUpBtn, SignupTemp.class);
-        goToNewSite(R.id.btnLogin, MainActivity.class);
+        goToNewSiteListener(R.id.signUpBtn, SignupTemp.class);
+        goToNewSiteListener(R.id.btnLogin, MainActivity.class);
 
 
         email = (EditText) findViewById(R.id.etEmailLogin);
@@ -39,18 +41,27 @@ public class LoginTemp extends Activity {
         listView = (ListView) findViewById(R.id.listView);
         seeList = (Button) findViewById(R.id.seeList);
 
+        sharedPreferences = getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO: Dette skal med, men for å slippe å logge inn
+                // TODO: Ta vekk ListView og knapp for å vise i login
                 String emailen = email.getText().toString();
                 String passordet = password.getText().toString();
-                if (emailen.length() != 0) {
+                if (emailen.length() != 0 && passordet.length() != 0) {
                     if (LoginUser(emailen, passordet)) {
+
+
                         email.setText("");
                         password.setText("");
                     }
                 } else
-                    toastMessage("You must put something in the text field");
+                    toastMessage("Du må fylle ut feltene");
+                /*Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(activity2Intent);
+                finish();*/
             }
         });
 
@@ -78,9 +89,19 @@ public class LoginTemp extends Activity {
     public boolean LoginUser(String email, String password) {
         Cursor data = database.getData();
         while(data.moveToNext()) {
+
             if (data.getString(2).equals(email) && data.getString(3).equals(password)) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(User.ID, data.getString(0));
+                editor.putString(User.NAME, data.getString(1));
+                editor.putString(User.EMAIL, data.getString(2));
+                editor.putString(User.BIRTHDAY, data.getString(4));
+                editor.commit();
+
+
                 Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(activity2Intent);
+                finish();
                 return true;
             }
         }
