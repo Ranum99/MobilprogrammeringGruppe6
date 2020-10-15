@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Slett"
-        app:layout_constraintStart_toStartOf="@+id/editTextDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
+        app:layout_constraintTop_toBottomOf="@+id/BirthdayDate" />
 
     <TextView
         android:id="@+id/textView20"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/BirthdayDate"
         android:layout_width="94dp"
         android:layout_height="43dp"
         android:layout_marginTop="10dp"

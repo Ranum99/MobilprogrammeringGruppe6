@@ -24,16 +24,19 @@
         android:id="@+id/editBirthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:text="@string/rediger"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AddBirtday"
+        app:layout_constraintStart_toEndOf="@+id/AddFoodPlan"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
-        android:id="@+id/AddBirtday"
+        android:id="@+id/AddFoodPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"

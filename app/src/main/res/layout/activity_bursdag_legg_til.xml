@@ -21,7 +21,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/AddBirthday"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,69 +33,69 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/BirthdayFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/ola_nordmann"
-        android:inputType="textPersonName"
+        android:inputType="none|textPersonName|textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/FullName" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/BirthdayPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="+47 12365478"
         android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintStart_toStartOf="@+id/PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/BirthdayDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="06.01.1998"
         android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="@+id/Date"
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/FullName"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Fullt navn"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/BirthdayFullName"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/PhoneNumber"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Mobilnummer"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toStartOf="@+id/BirthdayFullName"
+        app:layout_constraintTop_toBottomOf="@+id/BirthdayFullName" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/Date"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Fødselsdato"
-        app:layout_constraintStart_toStartOf="@+id/editTextPhone"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintStart_toStartOf="@+id/BirthdayPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/BirthdayPhoneNumber" />
 
     <Button
         android:id="@+id/avbrytBtn"
@@ -104,22 +104,22 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:text="Avbryt"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/signUpBtn"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintStart_toEndOf="@+id/BirtdayLagre"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
-        android:id="@+id/signUpBtn"
+        android:id="@+id/BirtdayLagre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:text="Lagre"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/avbrytBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <ImageButton
         android:id="@+id/tilbakeBtn"

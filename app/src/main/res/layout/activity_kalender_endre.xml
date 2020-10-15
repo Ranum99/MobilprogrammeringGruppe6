@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/AddBirthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -103,11 +103,11 @@
         android:ems="10"
         android:hint="12"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/AddBirthday"
+        app:layout_constraintTop_toBottomOf="@+id/AddBirthday" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/PhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -123,11 +123,11 @@
         android:ems="10"
         android:hint="00"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintEnd_toEndOf="@+id/PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/FullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -143,11 +143,11 @@
         android:ems="10"
         android:hint="Skole"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintStart_toStartOf="@+id/FullName"
+        app:layout_constraintTop_toBottomOf="@+id/FullName" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -163,8 +163,8 @@
         android:ems="10"
         android:hint="Er på skolen"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="@+id/Date"
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <Button
         android:id="@+id/btnEndreKE"

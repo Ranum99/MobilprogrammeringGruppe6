@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,7 @@ public class LoginTemp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_temp);
 
-        goToNewSiteListener(R.id.signUpBtn, SignupTemp.class);
+        goToNewSiteListener(R.id.BirtdayLagre, SignupTemp.class);
         goToNewSiteListener(R.id.btnLogin, MainActivity.class);
 
 

@@ -31,7 +31,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/AddBirthday"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/FullName"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,10 +62,10 @@
         android:text="@string/avbryt"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/signUpBtn" />
+        app:layout_constraintStart_toEndOf="@+id/BirtdayLagre" />
 
     <Button
-        android:id="@+id/signUpBtn"
+        android:id="@+id/BirtdayLagre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -97,7 +97,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/FullName"
         android:autofillHints="Velg mellom 1-7"
         tools:ignore="LabelFor" />
 

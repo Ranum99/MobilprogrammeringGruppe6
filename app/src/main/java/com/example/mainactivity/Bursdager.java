@@ -2,7 +2,10 @@ package com.example.mainactivity;
 
 import android.os.Bundle;
 
+
 public class Bursdager extends Activity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -10,7 +13,7 @@ public class Bursdager extends Activity {
         setContentView(R.layout.activity_bursdager);
 
         endActivityAndGoBack(R.id.tilbakeBtn);
+        goToNewSiteListener(R.id.AddBirthday, BursdagLeggTil.class);
 
-        goToNewSiteListener(R.id.AddBirtday, BursdagLeggTil.class);
     }
 }
