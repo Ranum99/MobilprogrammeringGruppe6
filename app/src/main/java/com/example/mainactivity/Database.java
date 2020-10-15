@@ -2,12 +2,15 @@ package com.example.mainactivity;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class Database extends SQLiteOpenHelper {
+    SharedPreferences sharedPreferences;
+
     private static final String TAG = "Database";
 
     private static final String TABLE_NAME = "Users3";
@@ -57,6 +60,25 @@ public class Database extends SQLiteOpenHelper {
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
+        if (result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public boolean updateUserInDatabase(String id, String newName, String newBirthday, String newEmail) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL2, newName);
+        contentValues.put(COL3, newEmail);
+        contentValues.put(COL5, newBirthday);
+
+        Log.d(TAG, "addData: Updated " + newName + ", " + newEmail + ", " + newBirthday + ", " + " in " + TABLE_NAME);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        //long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.update(TABLE_NAME, contentValues, "id=?", new String[]{whereClause});
         if (result == -1)
             return false;
         else

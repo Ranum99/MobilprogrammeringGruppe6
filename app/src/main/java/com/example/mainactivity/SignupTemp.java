@@ -74,8 +74,4 @@ public class SignupTemp extends Activity {
 
         return true;
     }
-
-    private void toastMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

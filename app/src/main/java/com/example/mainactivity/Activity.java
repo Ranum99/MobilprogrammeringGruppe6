@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
 
 public class Activity extends AppCompatActivity {
 
@@ -36,6 +37,10 @@ public class Activity extends AppCompatActivity {
                 startActivity(activity2Intent);
             }
         });
+    }
+
+    public void toastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 
