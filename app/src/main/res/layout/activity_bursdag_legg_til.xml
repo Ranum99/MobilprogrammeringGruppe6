@@ -28,9 +28,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="@string/legg_til_en_bursdag"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toBottomOf="@+id/tilbakeBtn"
         app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tilbakeBtn" />
 
     <EditText
         android:id="@+id/BirthdayFullName"

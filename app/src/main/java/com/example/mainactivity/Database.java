@@ -49,6 +49,21 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__USER_TO + " INTEGER " +
             ")";
 
+
+    // Tabell BIRTHDAY m/ kolonner
+    private static final String TABLE_BIRTHDAY = "Bursdag";
+    private static final String COLUMN_NAME_BIRTHDAY = "Navn";
+    private static final String COLUMN_BIRTHDAY_DATE = "Dato";
+
+    // Lage tabellen BIRTHDAY
+    private static final String CREATE_TABLE_BIRTHDAY = "CREATE TABLE " + TABLE_BIRTHDAY +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_NAME_BIRTHDAY + " TEXT, " +
+            COLUMN_BIRTHDAY_DATE + " TEXT " +
+            ")";
+
+
     public Database(Context context) {
         super(context, TAG, null, 1);
     }
@@ -57,12 +72,14 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_CONVERSATION);
+        db.execSQL(CREATE_TABLE_BIRTHDAY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
         onCreate(db);
     }
 
@@ -134,6 +151,11 @@ public class Database extends SQLiteOpenHelper {
 
     public boolean makeNewMessageChannelWith(User selectedUser) {
         System.out.println("BRUKER: " + selectedUser);
+        return true;
+    }
+
+    public boolean addUserToDatabaseBIRTHDAY(String name, String phone, String date) {
+        System.out.println(name + phone + date);
         return true;
     }
 }

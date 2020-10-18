@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Bursdager">
 
+    <ImageButton
+        android:id="@+id/tilbakeBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:contentDescription="@string/tilbake"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -49,27 +61,15 @@
 
     <TextView
         android:id="@+id/Header"
-        style="@style/TextAppearance.MaterialComponents.Headline4"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="@string/bursdager"
-        app:layout_constraintBottom_toBottomOf="@+id/tilbakeBtn"
-        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
-        app:layout_constraintTop_toTopOf="@+id/tilbakeBtn"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/tilbakeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="@string/tilbake"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tilbakeBtn2"
+        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn2"
+        app:layout_constraintTop_toTopOf="@+id/tilbakeBtn2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/BirthdayListRecycler"
