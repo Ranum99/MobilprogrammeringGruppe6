@@ -12,7 +12,15 @@
         <activity android:name=".FamilieboblaNySamtale"></activity>
         <activity android:name=".SignupTemp" />
         <activity android:name=".ProfileChangeTemp" />
+        <activity android:name=".ChangeProfileActivity" />
         <activity android:name=".ProfileTemp" />
+        <activity android:name=".ProfileActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".LoginTemp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +28,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HandlelisteOpprettListeTemp" />
         <activity android:name=".HandlelisteEnListeTemp" />
         <activity android:name=".HandlelisteTemp" />
+        <activity android:name=".OpprettHandlelisteActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HandlelisteOversiktActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".KalenderSlettTemp" />
         <activity android:name=".KalenderEndreTemp" />
         <activity android:name=".KalenderTemp" />
@@ -44,7 +65,7 @@
         <activity android:name=".FamilieboblaSamtale" />
         <activity android:name=".Familiebobla" />
         <activity android:name=".Gruppeinformasjon" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

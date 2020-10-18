@@ -55,7 +55,8 @@ public class FamilieboblaNySamtale extends Activity {
     }
 
     private void makeNewSamtale() {
-        boolean insertData = familiebobla.makeNewMessageChannelWith(selectedUser);
+        long meme = database.makeNewConversation(selectedUser);
+        finish();
     }
 
     private void addUsersToDropdown() {
@@ -64,7 +65,7 @@ public class FamilieboblaNySamtale extends Activity {
         ArrayList<User> arrayList = new ArrayList<>();
 
         while(data.moveToNext()) {
-            if (!data.getString(1).equals(sharedPreferences.getString(User.NAME, null))) {
+            if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null))) {
                 int id = data.getInt(0);
                 String name = data.getString(1);
                 arrayList.add( new User(id,name));
