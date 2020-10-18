@@ -12,7 +12,6 @@
     <string name="exampleID">#4458675</string>
     <string name="none"> </string>
     <string name="title_activity_gruppeinformasjon1">GruppeinformasjonActivity1</string>
-    <string name="handleliste">Handleliste</string>
     <string name="kalender">Kalender</string>
     <string name="familiebobla">Familiebobla</string>
     <string name="bursdager">Bursdager</string>
@@ -27,11 +26,19 @@
     <string name="velg_antall_dager">Velg antall dager</string>
     <string name="avbryt">Avbryt</string>
     <string name="lag">Lag</string>
-
+    <string name="lagre">Lagre</string>
+    <string name="input">Legg til vare</string>
+    <string name="bildeinfo">Profilbilde</string>
+    <string name="skriv">Hva vil du handle?</string>
+    <string name="skriv2">Skriv inn</string>
     <string name="matplan">Matplan</string>
     <string name="legg_til_en_bursdag">Legg til en bursdag</string>
     <string name="ola_nordmann">Ola Nordmann</string>
     <string name="logg_ut">Logg ut</string>
     <string name="legg_til">Legg til</string>
     <string name="rediger">Rediger</string>
+    <string name="add_button_text">Legg Til</string>
+    <string name="item_editText_hint">Skriv en ny gjenstand</string>
+    <string name="navn">Skriv inn navn til handlelisten</string>
+    <string name="handleliste">Lag en handleliste</string>
 </resources>
