@@ -13,7 +13,6 @@ import android.widget.TextView;
 public class ProfileActivity extends Activity {
     SharedPreferences sharedPreferences;
     Button Logout;
-    private TextView userID;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,7 @@ public class ProfileActivity extends Activity {
         goToNewSiteListener(R.id.btnEndreProfil, ProfileChangeTemp.class);
 
         sharedPreferences = getSharedPreferences(User.SESSION, MODE_PRIVATE);
-        userID = (TextView) findViewById(R.id.userID);
+        TextView userID = (TextView) findViewById(R.id.userID);
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
 
         //Logger ut bruker

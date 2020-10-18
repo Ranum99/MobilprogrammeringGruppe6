@@ -38,6 +38,7 @@ public class OpprettHandlelisteActivity extends Activity {
             public void onClick(View v) {
                 ListElementsArrayList.add(GetValue.getText().toString());
                 adapter.notifyDataSetChanged();
+                GetValue.getText().clear();
             }
         });
 

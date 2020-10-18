@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileTemp">
 
     <Button
         android:id="@+id/tilbakeBtn"
@@ -63,4 +64,5 @@
         app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
         app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
         app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
