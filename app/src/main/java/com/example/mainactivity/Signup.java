@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignupTemp extends Activity {
+public class Signup extends Activity {
 
     Database database;
     User user;

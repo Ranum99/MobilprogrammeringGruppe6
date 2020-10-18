@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class LoginActivity extends Activity {
+public class Login extends Activity {
 
     Database database;
     SharedPreferences sharedPreferences;
@@ -23,7 +23,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        goToNewSiteListener(R.id.BirtdayLagre, SignupTemp.class);
+        goToNewSiteListener(R.id.BirtdayLagre, Signup.class);
         goToNewSiteListener(R.id.btnLogin, MainActivity.class);
 
 

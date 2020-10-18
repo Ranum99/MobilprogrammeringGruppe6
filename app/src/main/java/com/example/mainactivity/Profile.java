@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ProfileActivity extends Activity {
+public class Profile extends Activity {
     SharedPreferences sharedPreferences;
     Button Logout;
 
@@ -22,11 +22,13 @@ public class ProfileActivity extends Activity {
         endActivityAndGoBack(R.id.tilbakeBtn);
 
         //Går til endre profil siden
-        goToNewSiteListener(R.id.btnEndreProfil, ProfileChangeTemp.class);
+        goToNewSiteListener(R.id.btnEndreProfil, ProfileChange.class);
 
         sharedPreferences = getSharedPreferences(User.SESSION, MODE_PRIVATE);
         TextView userID = (TextView) findViewById(R.id.userID);
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
+
+
 
         //Logger ut bruker
         Logout = (Button) findViewById(R.id.btnLoggUt);
@@ -36,7 +38,7 @@ public class ProfileActivity extends Activity {
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Profile.this);
                 builder.setTitle("Confirmation Popup!").
                         setMessage("Are you sure that you want to logout?");
                 builder.setPositiveButton("Yes",
@@ -50,7 +52,7 @@ public class ProfileActivity extends Activity {
                                 editor.apply();
                                 finish();
 
-                                Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
+                                Intent intent1 = new Intent(getApplicationContext(), Login.class);
                                 startActivity(intent1);
                             }
                         });

@@ -10,18 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".FamilieboblaNySamtale"></activity>
-        <activity android:name=".SignupTemp" />
-        <activity android:name=".ProfileChangeTemp" />
-        <activity android:name=".ChangeProfileActivity" />
-        <activity android:name=".ProfileTemp" />
-        <activity android:name=".ProfileActivity">
+        <activity android:name=".Signup" />
+        <activity android:name=".ProfileChange" />
+        <activity android:name=".Profile">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

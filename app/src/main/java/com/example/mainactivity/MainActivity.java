@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
                                 editor.apply();
                                 finish();
 
-                                Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
+                                Intent intent1 = new Intent(getApplicationContext(), Login.class);
                                 startActivity(intent1);
                             }
                         });
@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                goToNewSiteListener(R.id.goToProfile, ProfileActivity.class);
+                goToNewSiteListener(R.id.goToProfile, Profile.class);
             }
 
             @Override

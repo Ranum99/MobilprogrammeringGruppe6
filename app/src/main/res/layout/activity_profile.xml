@@ -1,68 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileTemp">
+    tools:context=".Profile">
 
-    <Button
-        android:id="@+id/tilbakeBtn"
-        android:layout_width="125dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tilbake"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
     <TextView
-        android:id="@+id/textViewInfo"
-        android:layout_width="225dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="25dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/userID"
-        app:layout_constraintStart_toStartOf="@+id/userID"
-        app:layout_constraintTop_toBottomOf="@+id/userID" />
+        android:id="@+id/ProfilOverskrift"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/profil"
+        app:layout_constraintBottom_toBottomOf="@+id/tilbakeBtn"
+        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
+        app:layout_constraintTop_toTopOf="@+id/tilbakeBtn" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/profilbilde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilbakeBtn"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/bildeinfo" />
 
-    <TextView
-        android:id="@+id/userID"
+    <EditText
+        android:id="@+id/Brukerid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Bruker-id: "
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/overskriftID"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/profilMobilnr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
+        android:ems="10"
+        android:hint="@string/PhoneNumberHint"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
+
+    <EditText
+        android:id="@+id/BirthdayDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/dd_mm_yyyy"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="@+id/Date"
+        app:layout_constraintTop_toBottomOf="@+id/Date"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/overskriftID"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/id"
+        app:layout_constraintStart_toStartOf="@+id/Brukerid"
+        app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
+
+    <TextView
+        android:id="@+id/PhoneNumber"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/mobilnummer"
+        app:layout_constraintStart_toStartOf="@+id/Brukerid"
+        app:layout_constraintTop_toBottomOf="@+id/Brukerid" />
+
+    <TextView
+        android:id="@+id/Date"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/foedselsdato"
+        app:layout_constraintStart_toStartOf="@+id/profilMobilnr"
+        app:layout_constraintTop_toBottomOf="@+id/profilMobilnr" />
 
     <Button
         android:id="@+id/btnEndreProfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Endre Profil"
-        app:layout_constraintEnd_toEndOf="@+id/textViewInfo"
-        app:layout_constraintStart_toStartOf="@+id/textViewInfo"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInfo" />
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/endreProfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/overskriftID"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
         android:id="@+id/btnLoggUt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Logg ut"
-        app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
-        app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
-        app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:text="@string/logg_ut"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEndreProfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+    <ImageButton
+        android:id="@+id/tilbakeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        android:contentDescription="@string/tilbake" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ProfileChangeTemp extends Activity{
+public class ProfileChange extends Activity{
     Database database;
     SharedPreferences sharedPreferences;
 
