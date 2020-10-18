@@ -28,6 +28,12 @@ public class Activity extends AppCompatActivity {
     }
 
     // Åpner en ny aktivitet. Vil legge seg over forrige aktivitet
+    public <T> void goToNewSite(final Class<T> classToUse) {
+        Intent activity2Intent = new Intent(getApplicationContext(), classToUse);
+        startActivity(activity2Intent);
+    }
+
+    // Åpner en ny aktivitet. Vil legge seg over forrige aktivitet
     public <T> void goToNewSiteListener(int idBtn, final Class<T> classToUse, final boolean closeActivity) {
         findViewById(idBtn).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
