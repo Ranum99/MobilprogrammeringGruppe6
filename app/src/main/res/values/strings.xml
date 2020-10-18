@@ -47,6 +47,4 @@
     <string name="fullt_navn">Fullt navn</string>
     <string name="mobilnummer">Mobilnummer</string>
     <string name="foedselsdato">Fødselsdato</string>
-    
-    <string name="lagre">Lagre</string>
 </resources>
