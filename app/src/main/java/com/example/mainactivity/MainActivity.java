@@ -1,8 +1,10 @@
 package com.example.mainactivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +40,13 @@ public class MainActivity extends Activity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
+                                // Tømmer sharedPreferences
+                                SharedPreferences preferences = getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.clear();
+                                editor.apply();
+                                finish();
+
                                 Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(intent1);
                             }

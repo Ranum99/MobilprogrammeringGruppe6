@@ -77,7 +77,7 @@ public class LoginActivity extends Activity {
                 editor.putString(User.NAME, data.getString(1));
                 editor.putString(User.EMAIL, data.getString(2));
                 editor.putString(User.BIRTHDAY, data.getString(4));
-                editor.commit();
+                editor.apply();
 
                 Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(activity2Intent);
