@@ -42,7 +42,14 @@ public class BursdagLeggTil extends Activity {
                 intent.putExtra(KEY_DATE, date);
                 */
 
-                AdddUser(name, phone, date);
+                if (validUserInfo(name, phone, date)) {
+                    AdddUser(name, phone, date);
+                    FullName.setText("");
+                    Birthday.setText("");
+                    PhoneNumber.setText("");
+                } else {
+                    toastMessage("You must put something in the text field");
+                }
 
                 //startActivity(intent);
 
@@ -56,5 +63,14 @@ public class BursdagLeggTil extends Activity {
 
     public void AdddUser(String name, String phone, String date) {
         boolean insertData = database.addUserToDatabaseBIRTHDAY(name, phone, date);
+        if (insertData)
+            toastMessage("Data successfully inserted");
+        else
+            toastMessage("Something went wrong");
+    }
+    private boolean validUserInfo(String name, String phone, String date) {
+        if (name.length() == 0 || phone.length() == 0 || date.length() == 0)
+            return false;
+        return true;
     }
 }
