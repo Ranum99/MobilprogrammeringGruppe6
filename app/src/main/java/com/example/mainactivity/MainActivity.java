@@ -38,8 +38,6 @@ public class MainActivity extends Activity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-
-
                                 Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(intent1);
                             }

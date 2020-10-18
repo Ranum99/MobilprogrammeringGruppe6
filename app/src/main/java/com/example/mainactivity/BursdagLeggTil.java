@@ -2,55 +2,59 @@ package com.example.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.Date;
-
 public class BursdagLeggTil extends Activity {
+
+    Database database;
+
+    private Button lagre = findViewById(R.id.BirthdayLagre);
+    private EditText FullName = findViewById(R.id.BirthdayFullName);
+    private EditText Birthday = findViewById(R.id.BirthdayDate);
+    private EditText PhoneNumber = findViewById(R.id.BirthdayPhoneNumber);
+
 
     public static final String KEY_NAME = "edit_Name";
     public static final String KEY_PHONE = "edit_Phone";
     public static final String KEY_DATE = "edit_Date";
 
 
-    private Button lagre;
-    private EditText FullName;
-    private EditText Birthday;
-    private EditText PhoneNumber;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bursdag_legg_til);
+        database = new Database(this);
 
-        FullName = findViewById(R.id.BirthdayFullName);
-        Birthday = findViewById(R.id.BirthdayDate);
-        PhoneNumber = findViewById(R.id.BirthdayPhoneNumber);
-        lagre = findViewById(R.id.BirtdayLagre);
         lagre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String name = FullName.getText().toString();
+                String phone = PhoneNumber.getText().toString();
+                String date = Birthday.getText().toString();
+
+                /*
                 Intent intent = new Intent(v.getContext(), Bursdager.class);
+                intent.putExtra(KEY_NAME, name);
+                intent.putExtra(KEY_PHONE, phone);
+                intent.putExtra(KEY_DATE, date);
+                */
 
-                String PersonName = FullName.getText().toString();
-                String Phone = PhoneNumber.getText().toString();
-                String BirthdayDate = Birthday.getText().toString();
+                AdddUser(name, phone, date);
 
-                intent.putExtra(KEY_NAME, PersonName);
-                intent.putExtra(KEY_PHONE, Phone);
-                intent.putExtra(KEY_DATE, BirthdayDate);
-                startActivity(intent);
+                //startActivity(intent);
+
             }
         });
-
 
         endActivityAndGoBack(R.id.tilbakeBtn);
         endActivityAndGoBack(R.id.avbrytBtn);
 
+    }
 
-
+    public void AdddUser(String name, String phone, String date) {
+        boolean insertData = database.addUserToDatabaseBIRTHDAY(name, phone, date);
     }
 }

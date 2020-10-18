@@ -1,6 +1,7 @@
 package com.example.mainactivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,10 +11,13 @@ import android.widget.EditText;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import java.util.ArrayList;
+
 public class Familiebobla extends Activity {
 
     private EditText search;
     FamilieboblaSamtale fs;
+    Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +76,5 @@ public class Familiebobla extends Activity {
                 goToNewSiteListener(btn.getId(), FamilieboblaSamtale.class);
             }
         }
-    }
-
-    // Åpner en ny aktivitet. Vil legge seg over forrige aktivitet
-    public <T> void goToNewSiteListener(int idBtn, final Class<T> classToUse, final int userId) {
-        findViewById(idBtn).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent activity2Intent = new Intent(getApplicationContext(), classToUse);
-                startActivity(activity2Intent);
-                fs.setUserSamtaleId(userId);
-            }
-        });
     }
 }

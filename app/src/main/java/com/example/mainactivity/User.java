@@ -3,6 +3,10 @@ package com.example.mainactivity;
 public class User {
     public int id;
 
+    public User() {
+
+    }
+
     public String getName() {
         return name;
     }

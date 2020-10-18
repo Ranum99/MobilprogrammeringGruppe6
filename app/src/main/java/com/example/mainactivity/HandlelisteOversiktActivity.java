@@ -15,6 +15,6 @@ public class HandlelisteOversiktActivity extends Activity {
         goToNewSiteListener(R.id.btnHandleliste2, HandlelisteEnListeTemp.class);
         goToNewSiteListener(R.id.btnHandleliste3, HandlelisteEnListeTemp.class);
         goToNewSiteListener(R.id.btnHandleliste4, HandlelisteEnListeTemp.class);
-        goToNewSiteListener(R.id.opprettNyListe, OpprettHandlelisteActivity.class);
+        //goToNewSiteListener(R.id.opprettNyListe, OpprettHandlelisteActivity.class);
     }
 }
