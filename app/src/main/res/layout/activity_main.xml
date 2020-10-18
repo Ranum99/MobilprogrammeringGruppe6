@@ -235,7 +235,7 @@
             android:text="@string/gruppeinfo" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/goToProfil"
+            android:id="@+id/goToProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profil" />
@@ -272,7 +272,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/logg_ut"
