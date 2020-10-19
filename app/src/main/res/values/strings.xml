@@ -45,6 +45,15 @@
     <string name="handleliste">Lag en handleliste</string>
     <string name="fornavn_etternavn">Fornavn Etternavn</string>
     <string name="endreProfilNavn">Navn</string>
+    <string name="endreProfilEmail">Email</string>
+    <string name="email">Email</string>
+    <string name="passord">Passord</string>
+    <string name="passord2">Gjenta passord</string>
+    <string name="opprettBrukerNavn">Navn</string>
+    <string name="opprettBrukerEmail">Ola@nordmann.no</string>
+    <string name="opprettPassord">Opprett passord</string>
+    <string name="gjentaPassord">Gjenta Passord</string>
+    <string name="opprettBruker">Opprett bruker</string>
     <string name="PhoneNumberHint">12365478</string>
     <string name="dd_mm_yyyy">DD.MM.YYYY</string>
     <string name="fullt_navn">Fullt navn</string>

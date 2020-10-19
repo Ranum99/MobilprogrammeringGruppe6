@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ProfileChange">
 
     <androidx.constraintlayout.widget.Guideline
@@ -80,6 +88,19 @@
         app:layout_constraintTop_toBottomOf="@+id/Date"
         android:autofillHints="" />
 
+    <EditText
+        android:id="@+id/endreProfilEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/endreProfilEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endreProfilEmailOverskrift"
+        android:inputType="textEmailAddress" />
+
     <TextView
         android:id="@+id/profilNavn"
         style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -109,6 +130,16 @@
         android:text="@string/foedselsdato"
         app:layout_constraintStart_toStartOf="@+id/profilMobilnr"
         app:layout_constraintTop_toBottomOf="@+id/profilMobilnr" />
+
+    <TextView
+        android:id="@+id/endreProfilEmailOverskrift"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/endreProfilEmail"
+        app:layout_constraintStart_toStartOf="@+id/endreProfilBursdag"
+        app:layout_constraintTop_toBottomOf="@+id/endreProfilBursdag" />
 
     <Button
         android:id="@+id/btnSend"
@@ -147,3 +178,4 @@
         android:contentDescription="@string/tilbake" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
