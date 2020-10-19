@@ -12,6 +12,9 @@
     <string name="leggTilMedlemMedID">Legg til medlem med ID:</string>
     <string name="exampleID">#4458675</string>
     <string name="none"> </string>
+    <string name="Login">Login</string>
+    <string name="loginEmail">Email</string>
+    <string name="loginEmailOverskrift">Email</string>
     <string name="title_activity_gruppeinformasjon1">GruppeinformasjonActivity1</string>
     <string name="kalender">Kalender</string>
     <string name="familiebobla">Familiebobla</string>

@@ -9,7 +9,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".FamilieboblaNySamtale" />
-        <activity android:name=".Signup" />
+        <activity android:name=".Signup">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ProfileChange">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -68,7 +74,13 @@
         <activity android:name=".FamilieboblaSamtale" />
         <activity android:name=".Familiebobla" />
         <activity android:name=".Gruppeinformasjon" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

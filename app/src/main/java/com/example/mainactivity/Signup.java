@@ -49,6 +49,7 @@ public class Signup extends Activity {
                     aPassword.setText("");
                     aPasswordConfirm.setText("");
                     aBirthday.setText("");
+                    aMobilnr.setText("");
                 } else {
                     toastMessage("You must put something in the text field");
                 }
