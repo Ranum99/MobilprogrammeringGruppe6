@@ -44,7 +44,7 @@ public class SignupFragment extends Fragment {
 
         registrerBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_hovedsideFragment));
         tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_loginFragment));
-        
+
         database = new Database(getActivity());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
