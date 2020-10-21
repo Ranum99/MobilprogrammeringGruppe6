@@ -68,4 +68,7 @@
     <string name="example_email_com">example@email.com</string>
     <string name="opprett_bruker">Opprett bruker</string>
     <string name="logo">Logo</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="profilBilde">Profilbilde</string>
+    <string name="registrer_bruker">Registrer bruker</string>
 </resources>

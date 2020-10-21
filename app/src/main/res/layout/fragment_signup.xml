@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".SignupFragment">
 
         <EditText
@@ -153,7 +153,8 @@
             android:src="?attr/homeAsUpIndicator"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back_arrow" />
 
         <TextView
             android:id="@+id/SignupOverskrift"
@@ -173,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Navn"
+            android:text="@string/fullt_navn"
             app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
             app:layout_constraintTop_toBottomOf="@+id/SignupLogo" />
 
@@ -185,14 +186,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline8"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/profilBilde" />
 
         <Button
             android:id="@+id/SignupRegistrerBruker"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:text="Registrer bruker"
+            android:text="@string/registrer_bruker"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassordInput" />
