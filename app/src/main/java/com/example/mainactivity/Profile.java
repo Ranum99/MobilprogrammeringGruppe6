@@ -8,32 +8,37 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
-
-public class MainActivity extends Activity {
+public class Profile extends Activity {
+    SharedPreferences sharedPreferences;
     Button Logout;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
 
-        goToNewSiteListener(R.id.goToHandleliste, HandlelisteTemp.class);
-        goToNewSiteListener(R.id.goToKalender, KalenderTemp.class);
-        goToNewSiteListener(R.id.goToMatplan, MatplanListe.class);
-        goToNewSiteListener(R.id.goToFamiliebobla, Familiebobla.class);
-        goToNewSiteListener(R.id.goToBursdager, Bursdager.class);
-        goToNewSiteListener(R.id.goToOnskeliste, Onskeliste.class);
+        //Går tilbake
+        endActivityAndGoBack(R.id.tilbakeBtn);
 
-        Logout = (Button) findViewById(R.id.btnLogOut);
+        //Går til endre profil siden
+        goToNewSiteListener(R.id.btnEndreProfil, ProfileChange.class);
+
+        sharedPreferences = getSharedPreferences(User.SESSION, MODE_PRIVATE);
+        TextView userID = (TextView) findViewById(R.id.userID);
+        userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
+
+
+
+        //Logger ut bruker
+        Logout = (Button) findViewById(R.id.btnLoggUt);
 
         Intent intent = getIntent();
         String string = intent.getStringExtra("message");
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Profile.this);
                 builder.setTitle("Confirmation Popup!").
                         setMessage("Are you sure that you want to logout?");
                 builder.setPositiveButton("Yes",
@@ -62,31 +67,5 @@ public class MainActivity extends Activity {
                 alert1.show();
             }
         });
-
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                goToNewSiteListener(R.id.goToProfile, Profile.class);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-
-    });
-
-
-        /*Mangler:
-        * Kalender - legg til
-        * Matplan  - rediger
-        * Bursdag  - rediger*/
     }
 }

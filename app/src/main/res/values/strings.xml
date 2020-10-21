@@ -8,11 +8,14 @@
     <string name="gruppeinformasjon">Gruppeinformasjon</string>
     <string name="kastUtMedlem">Kast ut medlem:</string>
     <string name="send">Send</string>
+    <string name="endreProfil">Endre profil</string>
     <string name="leggTilMedlemMedID">Legg til medlem med ID:</string>
     <string name="exampleID">#4458675</string>
     <string name="none"> </string>
+    <string name="Login">Login</string>
+    <string name="loginEmail">Email</string>
+    <string name="loginEmailOverskrift">Email</string>
     <string name="title_activity_gruppeinformasjon1">GruppeinformasjonActivity1</string>
-    <string name="handleliste">Handleliste</string>
     <string name="kalender">Kalender</string>
     <string name="familiebobla">Familiebobla</string>
     <string name="bursdager">Bursdager</string>
@@ -27,19 +30,36 @@
     <string name="velg_antall_dager">Velg antall dager</string>
     <string name="avbryt">Avbryt</string>
     <string name="lag">Lag</string>
-
+    <string name="lagre">Lagre</string>
+    <string name="input">Legg til vare</string>
+    <string name="bildeinfo">Profilbilde</string>
+    <string name="skriv">Hva vil du handle?</string>
+    <string name="skriv2">Skriv inn</string>
+    <string name="id">Bruker-ID</string>
     <string name="matplan">Matplan</string>
     <string name="legg_til_en_bursdag">Legg til en bursdag</string>
     <string name="ola_nordmann">Ola Nordmann</string>
     <string name="logg_ut">Logg ut</string>
     <string name="legg_til">Legg til</string>
     <string name="rediger">Rediger</string>
+    <string name="add_button_text">Legg Til</string>
+    <string name="item_editText_hint">Skriv en ny gjenstand</string>
+    <string name="navn">Skriv inn navn til handlelisten</string>
+    <string name="handleliste">Lag en handleliste</string>
     <string name="fornavn_etternavn">Fornavn Etternavn</string>
+    <string name="endreProfilNavn">Navn</string>
+    <string name="endreProfilEmail">Email</string>
+    <string name="email">Email</string>
+    <string name="passord">Passord</string>
+    <string name="passord2">Gjenta passord</string>
+    <string name="opprettBrukerNavn">Navn</string>
+    <string name="opprettBrukerEmail">Ola@nordmann.no</string>
+    <string name="opprettPassord">Opprett passord</string>
+    <string name="gjentaPassord">Gjenta Passord</string>
+    <string name="opprettBruker">Opprett bruker</string>
     <string name="PhoneNumberHint">12365478</string>
     <string name="dd_mm_yyyy">DD.MM.YYYY</string>
     <string name="fullt_navn">Fullt navn</string>
     <string name="mobilnummer">Mobilnummer</string>
     <string name="foedselsdato">Fødselsdato</string>
-    
-    <string name="lagre">Lagre</string>
 </resources>

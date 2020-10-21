@@ -22,8 +22,9 @@ public class Database extends SQLiteOpenHelper {
     private static final String TABLE_USER = "Users3";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_BIRTHDAY = "birthday";
+    private static final String COLUMN_MOBILNR = "mobilnr";
+    private static final String COLUMN_PASSWORD = "password";
 
     // Lage tabellen USER
     private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER +
@@ -31,8 +32,9 @@ public class Database extends SQLiteOpenHelper {
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_EMAIL + " TEXT, " +
-                COLUMN_PASSWORD + " TEXT, " +
-                COLUMN_BIRTHDAY + " TEXT " +
+                COLUMN_BIRTHDAY + " TEXT, " +
+                COLUMN_MOBILNR + " TEXT, " +
+                COLUMN_PASSWORD + " TEXT " +
             ")";
 
 
@@ -86,26 +88,23 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_USER;
-        Cursor data = db.rawQuery(query, null);
-        return data;
+        return db.rawQuery(query, null);
     }
 
-    public boolean addUserToDatabase(String name, String email, String password, String birthday) {
+    public boolean addUserToDatabase(String name, String email, String birthday, String mobilnr, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME, name);
         contentValues.put(COLUMN_EMAIL, email);
-        contentValues.put(COLUMN_PASSWORD, password);
         contentValues.put(COLUMN_BIRTHDAY, birthday);
+        contentValues.put(COLUMN_MOBILNR, mobilnr);
+        contentValues.put(COLUMN_PASSWORD, password);
 
-        Log.d(TAG, "addData: Adding " + name + ", " + email + ", " + password + ", " + birthday + ", " + " to " + TABLE_USER);
+        Log.d(TAG, "addData: Adding " + name + ", " + email + ", " + birthday + ", " + mobilnr + ", " + password + ", " + " to " + TABLE_USER);
 
         long result = db.insert(TABLE_USER, null, contentValues);
 
-        if (result == -1)
-            return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public long makeNewConversation(User otherUser) {
@@ -115,9 +114,7 @@ public class Database extends SQLiteOpenHelper {
         values.put(COLUMN__USER_FROM, sharedPreferences.getString(User.ID, null));
         values.put(COLUMN__USER_TO, otherUser.id);
 
-        long newConversation = db.insert(TABLE_CONVERSATION, null, values);
-
-        return newConversation;
+        return db.insert(TABLE_CONVERSATION, null, values);
     }
 
     public Cursor getAllConversations() {
@@ -125,28 +122,24 @@ public class Database extends SQLiteOpenHelper {
 
         String selectQuery = "SELECT * FROM " + TABLE_CONVERSATION;
 
-        Cursor c = db.rawQuery(selectQuery,  null);
-
-        return c;
+        return db.rawQuery(selectQuery,  null);
     }
 
-    public boolean updateUserInDatabase(String id, String newName, String newBirthday, String newEmail) {
+    public boolean updateUserInDatabase(String id, String newName, String newEmail, String newBirthday, String newMobilnr) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME, newName);
         contentValues.put(COLUMN_EMAIL, newEmail);
         contentValues.put(COLUMN_BIRTHDAY, newBirthday);
+        contentValues.put(COLUMN_MOBILNR, newMobilnr);
 
-        Log.d(TAG, "addData: Updated " + newName + ", " + newEmail + ", " + newBirthday + ", " + " in " + TABLE_USER);
+        Log.d(TAG, "addData: Updated " + newName + ", " + newEmail + ", " + newBirthday + ", " + newMobilnr + ", " + " in " + TABLE_USER);
 
         String whereClause = "id=?";
         String whereArgs[] = {id};
         //long result = db.insert(TABLE_NAME, null, contentValues);
         long result = db.update(TABLE_USER, contentValues, "id=?", new String[]{whereClause});
-        if (result == -1)
-            return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public boolean makeNewMessageChannelWith(User selectedUser) {
