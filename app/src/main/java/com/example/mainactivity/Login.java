@@ -24,12 +24,12 @@ public class Login extends Activity {
         setContentView(R.layout.activity_login);
 
         goToNewSiteListener(R.id.BirtdayLagre, Signup.class);
-        goToNewSiteListener(R.id.btnLogin, MainActivity.class);
+        goToNewSiteListener(R.id.btnLoggInn, MainActivity.class);
+        endActivityAndGoBack(R.id.tilbakeBtn);
 
-
-        email = (EditText) findViewById(R.id.etEmailLogin);
-        password = (EditText) findViewById(R.id.etPassordLogin);
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        email = (EditText) findViewById(R.id.LoginEmail);
+        password = (EditText) findViewById(R.id.loginPassord);
+        Button btnLogin = (Button) findViewById(R.id.btnLoggInn);
         database = new Database(this);
 
         email.setFilters(new InputFilter[] {
@@ -71,12 +71,13 @@ public class Login extends Activity {
         Cursor data = database.getData();
         while(data.moveToNext()) {
 
-            if (data.getString(2).equals(email) && data.getString(3).equals(password)) {
+            if (data.getString(2).equals(email) && data.getString(5).equals(password)) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(User.ID, data.getString(0));
                 editor.putString(User.NAME, data.getString(1));
                 editor.putString(User.EMAIL, data.getString(2));
-                editor.putString(User.BIRTHDAY, data.getString(4));
+                editor.putString(User.BIRTHDAY, data.getString(3));
+                editor.putString(User.MOBILNR, data.getString(4));
                 editor.apply();
 
                 Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
