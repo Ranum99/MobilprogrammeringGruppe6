@@ -18,9 +18,7 @@ public class LoginFragment extends Fragment {
     SharedPreferences sharedPreferences;
     private EditText email, password;
 
-    public LoginFragment() {
-
-    }
+    public LoginFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
