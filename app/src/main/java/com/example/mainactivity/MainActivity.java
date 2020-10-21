@@ -9,6 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends Activity {
@@ -26,7 +31,7 @@ public class MainActivity extends Activity {
         goToNewSiteListener(R.id.goToBursdager, Bursdager.class);
         goToNewSiteListener(R.id.goToOnskeliste, Onskeliste.class);
 
-        Logout = (Button) findViewById(R.id.btnLogOut);
+        Logout = (Button) findViewById(R.id.LoggUt);
 
         Intent intent = getIntent();
         String string = intent.getStringExtra("message");

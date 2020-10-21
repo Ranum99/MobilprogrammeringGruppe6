@@ -97,7 +97,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/userID" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/GruppeinfoLeggTilMedlem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -120,10 +120,9 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="#4458675"
-                android:inputType="@string/none"
                 android:text="@string/none"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/GruppeinfoLeggTilMedlem" />
 
             <TextView
                 android:id="@+id/textView5"
