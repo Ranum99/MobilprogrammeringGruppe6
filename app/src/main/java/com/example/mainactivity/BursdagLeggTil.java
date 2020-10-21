@@ -43,7 +43,7 @@ public class BursdagLeggTil extends Activity {
                 */
 
                 if (validUserInfo(name, phone, date)) {
-                    AdddUser(name, phone, date);
+                    AddUser(name, phone, date);
                     FullName.setText("");
                     Birthday.setText("");
                     PhoneNumber.setText("");
@@ -61,7 +61,7 @@ public class BursdagLeggTil extends Activity {
 
     }
 
-    public void AdddUser(String name, String phone, String date) {
+    public void AddUser(String name, String phone, String date) {
         boolean insertData = database.addUserToDatabaseBIRTHDAY(name, phone, date);
         if (insertData)
             toastMessage("Data successfully inserted");
