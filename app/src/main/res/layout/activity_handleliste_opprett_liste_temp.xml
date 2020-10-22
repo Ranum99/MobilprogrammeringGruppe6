@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HandlelisteOpprettListeTemp">
+    tools:context=".HandlelisteEnListeTemp">
 
     <Button
-        android:id="@+id/tilbakeBtn"
+        android:id="@+id/NyBursdagTilbake"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:text="@string/tilbake"

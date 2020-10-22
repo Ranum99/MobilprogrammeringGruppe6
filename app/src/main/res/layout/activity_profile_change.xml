@@ -154,7 +154,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
-        android:id="@+id/avbrytBtn"
+        android:id="@+id/NyBursdagAvbryt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -166,7 +166,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <ImageButton
-        android:id="@+id/tilbakeBtn"
+        android:id="@+id/NyBursdagTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

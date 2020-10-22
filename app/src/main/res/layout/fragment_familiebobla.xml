@@ -21,35 +21,36 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/FamilieboblaTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:contentDescription="@string/tilbake"
         android:src="?attr/actionModeCloseDrawable"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/FamilieboblaNySamtale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ny samtale"
+        android:text="@string/ny_samtale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/FamilieboblaHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="FamilieBobla"
+        android:text="@string/familiebobla"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
-        app:layout_constraintStart_toEndOf="@+id/imageButton8"
+        app:layout_constraintStart_toEndOf="@+id/FamilieboblaTilbake"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

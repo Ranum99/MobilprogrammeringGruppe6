@@ -21,7 +21,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/EnHandlelisteTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/HandlelisteHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,10 +40,12 @@
         android:layout_marginLeft="16dp"
         android:text="Handleliste"
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/EnHandlelisteTilbake"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/EnHandlelisteRecyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
@@ -51,13 +53,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Slett liste"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline18" />
 </androidx.constraintlayout.widget.ConstraintLayout>

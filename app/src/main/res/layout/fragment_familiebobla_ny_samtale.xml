@@ -15,34 +15,35 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/NySamtaleTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:contentDescription="@string/tilbake"
         android:src="?attr/actionModeCloseDrawable"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/NySamtaleHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="FamilieBobla"
+        android:text="@string/familiebobla"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
-        app:layout_constraintStart_toEndOf="@+id/imageButton9"
+        app:layout_constraintStart_toEndOf="@+id/NySamtaleTilbake"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/Familieboblatext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Start en samtale med:"
+        android:text="@string/start_en_samtale_med"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,21 +51,21 @@
         app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/FamilieboblaDropdown"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView28"
-        app:layout_constraintStart_toStartOf="@+id/textView28"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintEnd_toEndOf="@+id/Familieboblatext"
+        app:layout_constraintStart_toStartOf="@+id/Familieboblatext"
+        app:layout_constraintTop_toBottomOf="@+id/Familieboblatext" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/FamilieBoblaOpprettSamtale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Opprett samtale"
-        app:layout_constraintEnd_toEndOf="@+id/spinner5"
-        app:layout_constraintStart_toStartOf="@+id/spinner5"
-        app:layout_constraintTop_toBottomOf="@+id/spinner5" />
+        android:text="@string/opprett_samtale"
+        app:layout_constraintEnd_toEndOf="@+id/FamilieboblaDropdown"
+        app:layout_constraintStart_toStartOf="@+id/FamilieboblaDropdown"
+        app:layout_constraintTop_toBottomOf="@+id/FamilieboblaDropdown" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/SlettOnskelisteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Slett ønskeliste"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/OnskelisteListeTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/OnskelisteBruker"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,11 +50,11 @@
         android:layout_marginLeft="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/guideline25"
-        app:layout_constraintStart_toEndOf="@+id/imageButton6"
+        app:layout_constraintStart_toEndOf="@+id/OnskelisteListeTilbake"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/OnskelisteHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,10 +62,11 @@
         android:layout_marginLeft="8dp"
         android:text="ønskeliste"
         app:layout_constraintBottom_toTopOf="@+id/guideline25"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
+        app:layout_constraintStart_toEndOf="@+id/OnskelisteBruker"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/OnskelisteRecyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline26"

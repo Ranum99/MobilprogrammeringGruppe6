@@ -21,16 +21,16 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <TextView
-        android:id="@+id/AddBirthday"
+        android:id="@+id/NyBursdagHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/legg_til_en_bursdag"
-        app:layout_constraintBottom_toBottomOf="@+id/tilbakeBtn"
-        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
-        app:layout_constraintTop_toTopOf="@+id/tilbakeBtn" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintStart_toEndOf="@+id/NyBursdagTilbake"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/BirthdayFullName"
@@ -100,31 +100,31 @@
         app:layout_constraintTop_toBottomOf="@+id/BirthdayPhoneNumber" />
 
     <Button
-        android:id="@+id/avbrytBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/NyBursdagAvbryt"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="@string/avbryt"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/BirtdayLagre"
+        app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
+        app:layout_constraintStart_toEndOf="@+id/NyBursdagLagre"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
-        android:id="@+id/BirthdayLagre"
-        android:layout_width="wrap_content"
+        android:id="@+id/NyBursdagLagre"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/lagre"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/avbrytBtn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/NyBursdagAvbryt"
+        app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <ImageButton
-        android:id="@+id/tilbakeBtn"
+        android:id="@+id/NyBursdagTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

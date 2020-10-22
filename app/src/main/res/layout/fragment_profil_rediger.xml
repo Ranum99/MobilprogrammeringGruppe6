@@ -7,7 +7,7 @@
     tools:context=".ProfilRedigerFragment">
 
     <ImageButton
-        android:id="@+id/tilbakeBtn"
+        android:id="@+id/EndreProfilTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -27,7 +27,7 @@
         android:layout_marginLeft="16dp"
         android:text="@string/endreProfil"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/tilbakeBtn"
+        app:layout_constraintStart_toEndOf="@+id/EndreProfilTilbake"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -154,7 +154,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/endreProfilBursdag" />
 
             <Button
-                android:id="@+id/btnSend"
+                android:id="@+id/EndreProfilRedigerBtn"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"
@@ -163,13 +163,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/endreProfilEmail" />
 
             <Button
-                android:id="@+id/avbrytBtn"
+                android:id="@+id/EndreProfilAvbryt"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/avbryt"
-                app:layout_constraintStart_toStartOf="@+id/btnSend"
-                app:layout_constraintTop_toBottomOf="@+id/btnSend" />
+                app:layout_constraintStart_toStartOf="@+id/EndreProfilRedigerBtn"
+                app:layout_constraintTop_toBottomOf="@+id/EndreProfilRedigerBtn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -22,39 +22,41 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/BursdagTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:contentDescription="@string/tilbake"
         android:src="?attr/actionModeCloseDrawable"
         app:layout_constraintBottom_toTopOf="@+id/guideline27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/BursdagNyBursdag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ny bursdag"
+        android:text="@string/ny_bursdag"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline28" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/BursdagHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="Bursdager"
+        android:text="@string/bursdager"
         app:layout_constraintBottom_toTopOf="@+id/guideline27"
-        app:layout_constraintStart_toEndOf="@+id/imageButton7"
+        app:layout_constraintStart_toEndOf="@+id/BursdagTilbake"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/BursdagRecyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline28"

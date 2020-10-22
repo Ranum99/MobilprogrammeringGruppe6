@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline21" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/KalenderHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_marginLeft="16dp"
         android:text="Kaldender"
         app:layout_constraintBottom_toTopOf="@+id/guideline21"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
+        app:layout_constraintStart_toEndOf="@+id/KalenderTilbake"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -68,7 +68,7 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/KalenderTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
