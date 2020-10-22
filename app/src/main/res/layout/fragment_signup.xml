@@ -1,203 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp"
-    android:fillViewport="true">
+    tools:context=".SignupFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/SignupOverskrift"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context=".SignupFragment">
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/opprettBruker"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintStart_toEndOf="@+id/SignupTilbake"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/SignupGjentaPassordInput"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/passord"
-            android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="@+id/SignupGjentaPassord"
-            app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassord" />
+    <ImageButton
+        android:id="@+id/SignupTilbake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:contentDescription="@string/back_arrow"
+        android:src="?attr/homeAsUpIndicator"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/SignupGjentaPassord"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/gjentaPassord"
-            app:layout_constraintStart_toStartOf="@+id/SignupOprettPassordInput"
-            app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassordInput" />
+            tools:context=".SignupFragment">
 
-        <EditText
-            android:id="@+id/SignupOprettPassordInput"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/passord"
-            android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="@+id/SignupOprettPassord"
-            app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassord" />
+            <EditText
+                android:id="@+id/SignupGjentaPassordInput"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/passord"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="@+id/SignupGjentaPassord"
+                app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassord" />
 
-        <TextView
-            android:id="@+id/SignupOprettPassord"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/opprettPassord"
-            app:layout_constraintStart_toStartOf="@+id/SignupEmailInput"
-            app:layout_constraintTop_toBottomOf="@+id/SignupEmailInput" />
+            <TextView
+                android:id="@+id/SignupGjentaPassord"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/gjentaPassord"
+                app:layout_constraintStart_toStartOf="@+id/SignupOprettPassordInput"
+                app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassordInput" />
 
-        <EditText
-            android:id="@+id/SignupEmailInput"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/opprettBrukerEmail"
-            android:inputType="textEmailAddress"
-            app:layout_constraintStart_toStartOf="@+id/SignupEmail"
-            app:layout_constraintTop_toBottomOf="@+id/SignupEmail" />
+            <EditText
+                android:id="@+id/SignupOprettPassordInput"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/passord"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="@+id/SignupOprettPassord"
+                app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassord" />
 
-        <TextView
-            android:id="@+id/SignupEmail"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/endreProfilEmail"
-            app:layout_constraintStart_toStartOf="@+id/SignupFodselsdatoInput"
-            app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdatoInput" />
+            <TextView
+                android:id="@+id/SignupOprettPassord"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/opprettPassord"
+                app:layout_constraintStart_toStartOf="@+id/SignupEmailInput"
+                app:layout_constraintTop_toBottomOf="@+id/SignupEmailInput" />
 
-        <EditText
-            android:id="@+id/SignupFodselsdatoInput"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/dd_mm_yyyy"
-            android:inputType="date"
-            app:layout_constraintStart_toStartOf="@+id/SignupFodselsdato"
-            app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdato" />
+            <EditText
+                android:id="@+id/SignupEmailInput"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/opprettBrukerEmail"
+                android:inputType="textEmailAddress"
+                app:layout_constraintStart_toStartOf="@+id/SignupEmail"
+                app:layout_constraintTop_toBottomOf="@+id/SignupEmail" />
 
-        <TextView
-            android:id="@+id/SignupFodselsdato"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/foedselsdato"
-            app:layout_constraintStart_toStartOf="@+id/SignupMobilnummerInput"
-            app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummerInput" />
+            <TextView
+                android:id="@+id/SignupEmail"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/endreProfilEmail"
+                app:layout_constraintStart_toStartOf="@+id/SignupFodselsdatoInput"
+                app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdatoInput" />
 
-        <EditText
-            android:id="@+id/SignupMobilnummerInput"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
-            android:ems="10"
-            android:hint="@string/PhoneNumberHint"
-            android:inputType="phone"
-            app:layout_constraintStart_toStartOf="@+id/SignupMobilnummer"
-            app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummer" />
+            <EditText
+                android:id="@+id/SignupFodselsdatoInput"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
+                android:inputType="date"
+                app:layout_constraintStart_toStartOf="@+id/SignupFodselsdato"
+                app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdato" />
 
-        <TextView
-            android:id="@+id/SignupMobilnummer"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/mobilnummer"
-            app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
-            app:layout_constraintTop_toBottomOf="@+id/SignupNavnInput" />
+            <TextView
+                android:id="@+id/SignupFodselsdato"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/foedselsdato"
+                app:layout_constraintStart_toStartOf="@+id/SignupMobilnummerInput"
+                app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummerInput" />
 
-        <EditText
-            android:id="@+id/SignupNavnInput"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/ola_nordmann"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SignupNavn" />
+            <EditText
+                android:id="@+id/SignupMobilnummerInput"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
+                android:ems="10"
+                android:hint="@string/PhoneNumberHint"
+                android:inputType="phone"
+                app:layout_constraintStart_toStartOf="@+id/SignupMobilnummer"
+                app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummer" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            <TextView
+                android:id="@+id/SignupMobilnummer"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/mobilnummer"
+                app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
+                app:layout_constraintTop_toBottomOf="@+id/SignupNavnInput" />
 
-        <ImageButton
-            android:id="@+id/SignupTilbake"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:src="?attr/homeAsUpIndicator"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/back_arrow" />
+            <EditText
+                android:id="@+id/SignupNavnInput"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/ola_nordmann"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SignupNavn" />
 
-        <TextView
-            android:id="@+id/SignupOverskrift"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:text="@string/opprettBruker"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintStart_toEndOf="@+id/SignupTilbake"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/SignupNavn"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/fullt_navn"
+                app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
+                app:layout_constraintTop_toBottomOf="@+id/SignupLogo" />
 
-        <TextView
-            android:id="@+id/SignupNavn"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/fullt_navn"
-            app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
-            app:layout_constraintTop_toBottomOf="@+id/SignupLogo" />
+            <ImageView
+                android:id="@+id/SignupLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/profilBilde"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/SignupLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline8"
-            tools:src="@tools:sample/avatars"
-            android:contentDescription="@string/profilBilde" />
+            <Button
+                android:id="@+id/SignupRegistrerBruker"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/registrer_bruker"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassordInput" />
 
-        <Button
-            android:id="@+id/SignupRegistrerBruker"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/registrer_bruker"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassordInput" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

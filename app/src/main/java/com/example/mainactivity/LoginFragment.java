@@ -69,8 +69,6 @@ public class LoginFragment extends Fragment {
 
                 if (emailen.length() != 0 && passordet.length() != 0) {
                     if (LoginUser(emailen, passordet)) {
-
-
                         email.setText("");
                         password.setText("");
                     }
