@@ -10,7 +10,7 @@ public class BursdagLeggTil extends Activity {
 
     Database database;
 
-    private Button lagre = findViewById(R.id.BirthdayLagre);
+    private Button lagre = findViewById(R.id.NyBursdagLagre);
     private EditText FullName = findViewById(R.id.BirthdayFullName);
     private EditText Birthday = findViewById(R.id.BirthdayDate);
     private EditText PhoneNumber = findViewById(R.id.BirthdayPhoneNumber);

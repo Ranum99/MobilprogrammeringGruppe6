@@ -70,12 +70,19 @@
         <action
             android:id="@+id/action_bursdagFragment_to_hovedsideFragment"
             app:destination="@id/hovedsideFragment" />
+        <action
+            android:id="@+id/action_bursdagFragment_to_bursdagLeggTilFragment"
+            app:destination="@id/bursdagLeggTilFragment" />
     </fragment>
     <fragment
         android:id="@+id/bursdagLeggTilFragment"
         android:name="com.example.mainactivity.BursdagLeggTilFragment"
         android:label="fragment_bursdag_legg_til"
-        tools:layout="@layout/fragment_bursdag_legg_til" />
+        tools:layout="@layout/fragment_bursdag_legg_til" >
+        <action
+            android:id="@+id/action_bursdagLeggTilFragment_to_bursdagFragment"
+            app:destination="@id/bursdagFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bursdagRedigerFragment"
         android:name="com.example.mainactivity.BursdagRedigerFragment"
@@ -97,12 +104,22 @@
         <action
             android:id="@+id/action_familieboblaFragment_to_familieboblaSamtaleFragment"
             app:destination="@id/familieboblaSamtaleFragment" />
+        <action
+            android:id="@+id/action_familieboblaFragment_to_familieboblaNySamtaleFragment"
+            app:destination="@id/familieboblaNySamtaleFragment" />
     </fragment>
     <fragment
         android:id="@+id/familieboblaNySamtaleFragment"
         android:name="com.example.mainactivity.FamilieboblaNySamtaleFragment"
         android:label="fragment_familiebobla_ny_samtale"
-        tools:layout="@layout/fragment_familiebobla_ny_samtale" />
+        tools:layout="@layout/fragment_familiebobla_ny_samtale" >
+        <action
+            android:id="@+id/action_familieboblaNySamtaleFragment_to_familieboblaFragment"
+            app:destination="@id/familieboblaFragment" />
+        <action
+            android:id="@+id/action_familieboblaNySamtaleFragment_to_familieboblaSamtaleFragment"
+            app:destination="@id/familieboblaSamtaleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/familieboblaSamtaleFragment"
         android:name="com.example.mainactivity.FamilieboblaSamtaleFragment"
@@ -137,12 +154,22 @@
         <action
             android:id="@+id/action_handlelisteFragment_to_handlelisteListeFragment"
             app:destination="@id/handlelisteListeFragment" />
+        <action
+            android:id="@+id/action_handlelisteFragment_to_handlelisteLeggTilFragment"
+            app:destination="@id/handlelisteLeggTilFragment" />
     </fragment>
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
         android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
         android:label="fragment_handleliste_legg_til"
-        tools:layout="@layout/fragment_handleliste_legg_til" />
+        tools:layout="@layout/fragment_handleliste_legg_til" >
+        <action
+            android:id="@+id/action_handlelisteLeggTilFragment_to_handlelisteFragment"
+            app:destination="@id/handlelisteFragment" />
+        <action
+            android:id="@+id/action_handlelisteLeggTilFragment_to_handlelisteListeFragment"
+            app:destination="@id/handlelisteListeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/handlelisteListeFragment"
         android:name="com.example.mainactivity.HandlelisteListeFragment"
@@ -165,6 +192,15 @@
         <action
             android:id="@+id/action_kalenderFragment_to_hovedsideFragment"
             app:destination="@id/hovedsideFragment" />
+        <action
+            android:id="@+id/action_kalenderFragment_to_kalenderLeggTilFragment"
+            app:destination="@id/kalenderLeggTilFragment" />
+        <action
+            android:id="@+id/action_kalenderFragment_to_kalenderRedigerFragment"
+            app:destination="@id/kalenderRedigerFragment" />
+        <action
+            android:id="@+id/action_kalenderFragment_to_kalenderSlettFragment"
+            app:destination="@id/kalenderSlettFragment" />
     </fragment>
     <fragment
         android:id="@+id/handlelisteSlettFragment"
@@ -197,12 +233,22 @@
         <action
             android:id="@+id/action_matplanFragment_to_matplanListeFragment"
             app:destination="@id/matplanListeFragment" />
+        <action
+            android:id="@+id/action_matplanFragment_to_matplanLeggTilFragment"
+            app:destination="@id/matplanLeggTilFragment" />
     </fragment>
     <fragment
         android:id="@+id/matplanLeggTilFragment"
         android:name="com.example.mainactivity.MatplanLeggTilFragment"
         android:label="fragment_matplan_legg_til"
-        tools:layout="@layout/fragment_matplan_legg_til" />
+        tools:layout="@layout/fragment_matplan_legg_til" >
+        <action
+            android:id="@+id/action_matplanLeggTilFragment_to_matplanListeFragment"
+            app:destination="@id/matplanListeFragment" />
+        <action
+            android:id="@+id/action_matplanLeggTilFragment_to_matplanFragment"
+            app:destination="@id/matplanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/matplanListeFragment"
         android:name="com.example.mainactivity.MatplanListeFragment"

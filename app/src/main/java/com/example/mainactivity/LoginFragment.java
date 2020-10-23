@@ -19,15 +19,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class LoginFragment extends Fragment {
+    public LoginFragment() {}
 
     Database database;
     SharedPreferences sharedPreferences;
     private EditText email, password;
-
-    public LoginFragment() {}
+    private Button login, opprettBruker;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,16 +40,14 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button login = view.findViewById(R.id.Login);
-        login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_hovedsideFragment));
+        database = new Database(getActivity());
+        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        Button opprettBruker = view.findViewById(R.id.OpprettBruker);
+        opprettBruker = view.findViewById(R.id.OpprettBruker);
         opprettBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_signupFragment));
 
         password = view.findViewById(R.id.PasswordLogin);
         email = view.findViewById(R.id.EmailLogin);
-        database = new Database(getActivity());
-
         email.setFilters(new InputFilter[] {
                 new InputFilter.AllCaps() {
                     @Override
@@ -58,8 +57,8 @@ public class LoginFragment extends Fragment {
                 }
         });
 
-        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-
+        login = view.findViewById(R.id.Login);
+        login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_hovedsideFragment));
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +78,9 @@ public class LoginFragment extends Fragment {
     }
 
     public boolean LoginUser(String email, String password) {
+
         Cursor data = database.getData();
+
         while(data.moveToNext()) {
 
             if (data.getString(2).equals(email) && data.getString(5).equals(password)) {

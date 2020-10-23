@@ -11,12 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Spinner;
 
 public class GruppeinformasjonFragment extends Fragment {
+    public GruppeinformasjonFragment() {}
 
-    public GruppeinformasjonFragment() {
-    }
+    private Button EndreFamilieNavn, LeggTilMedlem, KastUtMedlem;
+    private ImageButton tilbake;
+    private EditText FamilieNavnInput, LeggTilMedlemInput;
+    private ListView ListeOverMedlemmer;
+    private Spinner MedlemDropdown;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,7 +34,15 @@ public class GruppeinformasjonFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton tilbake = view.findViewById(R.id.GruppeinfoTilbake);
+        EndreFamilieNavn = view.findViewById(R.id.EndreFamilieNavnBtn);
+        LeggTilMedlem = view.findViewById(R.id.leggTilMedlemBtn);
+        KastUtMedlem = view.findViewById(R.id.KastUtMedlemBtn);
+        tilbake = view.findViewById(R.id.GruppeinfoTilbake);
+        FamilieNavnInput = view.findViewById(R.id.EndreFamilieNavnInput);
+        LeggTilMedlemInput = view.findViewById(R.id.LeggTilMedlemInput);
+        ListeOverMedlemmer = view.findViewById(R.id.listeOverMedlemmer);
+        MedlemDropdown = view.findViewById(R.id.kastUtMedlemDropdown);
+
         tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gruppeinformasjonFragment_to_hovedsideFragment));
 
     }

@@ -15,14 +15,16 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class SignupFragment extends Fragment {
+    public SignupFragment() {}
 
     Database database;
     User user;
 
     private EditText aName, anEmail, aPassword, aPasswordConfirm, aBirthday, aMobilnr;
+    private Button registrerBruker;
+    private ImageButton tilbake;
 
-    public SignupFragment() {
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -33,8 +35,8 @@ public class SignupFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
-        ImageButton tilbake = view.findViewById(R.id.SignupTilbake);
+        registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
+        tilbake = view.findViewById(R.id.SignupTilbake);
         aName = view.findViewById(R.id.SignupNavnInput);
         anEmail = view.findViewById(R.id.SignupEmailInput);
         aMobilnr = view.findViewById(R.id.SignupMobilnummerInput);

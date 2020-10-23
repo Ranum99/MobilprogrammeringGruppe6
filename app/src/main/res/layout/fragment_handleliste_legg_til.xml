@@ -55,10 +55,10 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <Button
-        android:id="@+id/HandlelisteNyVare"
+        android:id="@+id/OpprettHandelisteliste"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Ny vare"
+        android:text="Opprett handleliste"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
