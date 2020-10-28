@@ -42,9 +42,9 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-
 
         opprettBruker = view.findViewById(R.id.OpprettBruker);
         opprettBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_signupFragment));
@@ -61,7 +61,7 @@ public class LoginFragment extends Fragment {
         });
 
         login = view.findViewById(R.id.Login);
-        login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_hovedsideFragment));
+        //login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_hovedsideFragment));
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +95,6 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.BIRTHDAY, data.getString(3));
                 editor.putString(User.MOBILNR, data.getString(4));
                 editor.apply();
-
 
                 return true;
             }

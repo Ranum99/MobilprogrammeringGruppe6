@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -44,12 +45,19 @@ public class HovedsideFragment extends Fragment {
         LoggUt = view.findViewById(R.id.LoggUt);
         FamilyName = view.findViewById(R.id.FamilyName);
         FamilyId = view.findViewById(R.id.FamilyId);
+
         Handleliste = view.findViewById(R.id.goToHandleliste);
+        Handleliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_handlelisteFragment));
         Matplan = view.findViewById(R.id.goToMatplan);
+        Matplan.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_matplanFragment));
         Bursdager = view.findViewById(R.id.goToBursdager);
+        Bursdager.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_bursdagFragment));
         Kalender = view.findViewById(R.id.goToKalender);
+        Kalender.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_kalenderFragment));
         Familiebobla = view.findViewById(R.id.goToFamiliebobla);
+        Familiebobla.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_familieboblaFragment));
         Onskeliste = view.findViewById(R.id.goToOnskeliste);
+        Onskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_onskelisteFragment));
 
         Intent intent = requireActivity().getIntent();
         String string = intent.getStringExtra("message");
@@ -71,8 +79,9 @@ public class HovedsideFragment extends Fragment {
                                 editor.apply();
                                 requireActivity().finish();
 
-                                Intent intent1 = new Intent(requireActivity().getApplicationContext(), LoginFragment.class);
-                                startActivity(intent1);
+
+                                //Intent intent1 = new Intent(requireActivity().getApplicationContext(), LoginFragment.class);
+                                //startActivity(intent1);
                             }
                         });
                 builder.setNegativeButton("No",
