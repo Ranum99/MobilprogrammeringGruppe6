@@ -89,6 +89,6 @@ public class ProfilFragment extends Fragment {
                 alert1.show();
             }
         });
-
+*/
     }
 }
