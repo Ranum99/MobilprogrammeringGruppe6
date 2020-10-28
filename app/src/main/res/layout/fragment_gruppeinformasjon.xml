@@ -9,25 +9,14 @@
 
     <TextView
         android:id="@+id/GruppeinfoHeadline"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="@string/gruppeinformasjon"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintStart_toEndOf="@+id/GruppeinfoTilbake"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/GruppeinfoTilbake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:src="?attr/actionModeCloseDrawable"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
