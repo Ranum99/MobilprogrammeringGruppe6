@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.InputFilter;
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment {
     private EditText email, password;
     private Button login, opprettBruker;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_login, container, false);
@@ -39,9 +41,10 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        final NavController navController = Navigation.findNavController(view);
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
 
         opprettBruker = view.findViewById(R.id.OpprettBruker);
         opprettBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_signupFragment));
@@ -70,6 +73,7 @@ public class LoginFragment extends Fragment {
                     if (LoginUser(emailen, passordet)) {
                         email.setText("");
                         password.setText("");
+                        navController.navigate(R.id.hovedsideFragment);
                     }
                 } else
                     Toast.makeText(getActivity(), "Du må fylle ut feltene", Toast.LENGTH_SHORT).show();
@@ -92,9 +96,7 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.MOBILNR, data.getString(4));
                 editor.apply();
 
-                Intent activity2Intent = new Intent(requireActivity().getApplicationContext(), MainFragment.class);
-                startActivity(activity2Intent);
-                requireActivity().finish();
+
                 return true;
             }
         }

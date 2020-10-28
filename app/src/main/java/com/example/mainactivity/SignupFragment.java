@@ -45,7 +45,7 @@ public class SignupFragment extends Fragment {
         aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
 
         registrerBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_hovedsideFragment));
-
+        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_loginFragment));
         database = new Database(getActivity());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +66,7 @@ public class SignupFragment extends Fragment {
                     aPasswordConfirm.setText("");
                     aBirthday.setText("");
                     aMobilnr.setText("");
+
                 } else {
                     Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
                 }
