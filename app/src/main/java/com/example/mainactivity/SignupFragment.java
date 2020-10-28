@@ -56,19 +56,21 @@ public class SignupFragment extends Fragment {
                 String name = aName.getText().toString();
                 String email = anEmail.getText().toString();
                 String birthday = aBirthday.getText().toString();
-                String mobilnr = String.valueOf(aMobilnr);
+                String mobilnr = aMobilnr.getText().toString();
                 String password = aPassword.getText().toString();
                 String passwordConfirm = aPasswordConfirm.getText().toString();
 
                 if (validUserInfo(name, email, birthday, mobilnr, password, passwordConfirm)) {
-                    AddUser(name, email, birthday , mobilnr, password);
-                    aName.setText("");
-                    anEmail.setText("");
-                    aPassword.setText("");
-                    aPasswordConfirm.setText("");
-                    aBirthday.setText("");
-                    aMobilnr.setText("");
-                    navController.navigate(R.id.hovedsideFragment);
+                    if (AddUser(name, email, birthday , mobilnr, password)) {
+                        aName.setText("");
+                        anEmail.setText("");
+                        aPassword.setText("");
+                        aPasswordConfirm.setText("");
+                        aBirthday.setText("");
+                        aMobilnr.setText("");
+                        navController.navigate(R.id.hovedsideFragment);
+                    }
+
                 } else {
                     Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
                 }
@@ -76,13 +78,17 @@ public class SignupFragment extends Fragment {
         });
     }
 
-    public void AddUser(String name, String email, String birthday, String mobilnr, String password) {
+    public boolean AddUser(String name, String email, String birthday, String mobilnr, String password) {
         boolean insertData = database.addUserToDatabase(name, email, birthday, mobilnr, password);
 
-        if (insertData)
+        if (insertData) {
             Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
-        else
+            return true;
+        }
+        else {
             Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     private boolean validUserInfo(String name, String email, String birthday, String mobilnr, String password, String passwordConfirm) {
