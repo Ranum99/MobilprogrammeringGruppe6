@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ public class HovedsideFragment extends Fragment {
     Button LoggUt;
 
     public HovedsideFragment() {
-        
+
     }
 
     @Override
@@ -53,7 +54,9 @@ public class HovedsideFragment extends Fragment {
         goToNewSiteListener(R.id.goToBursdager, Bursdager.class);
         goToNewSiteListener(R.id.goToOnskeliste, Onskeliste.class);
 
-        LoggUt = (Button) requireActivity().findViewById(R.id.LoggUt);
+
+
+        LoggUt = requireActivity().findViewById(R.id.LoggUt);
 
         Intent intent = requireActivity().getIntent();
         String string = intent.getStringExtra("message");

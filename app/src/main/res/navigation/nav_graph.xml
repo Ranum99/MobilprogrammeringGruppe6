@@ -97,12 +97,23 @@
         android:id="@+id/handlelisteFragment"
         android:name="com.example.mainactivity.HandlelisteFragment"
         android:label="fragment_handleliste"
-        tools:layout="@layout/fragment_handleliste" />
+        tools:layout="@layout/fragment_handleliste" >
+        <action
+            android:id="@+id/action_handlelisteFragment_to_hovedsideFragment"
+            app:destination="@id/hovedsideFragment" />
+        <action
+            android:id="@+id/action_handlelisteFragment_to_handlelisteLeggTilFragment"
+            app:destination="@id/handlelisteLeggTilFragment" />
+    </fragment>
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
         android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
         android:label="fragment_handleliste_legg_til"
-        tools:layout="@layout/fragment_handleliste_legg_til" />
+        tools:layout="@layout/fragment_handleliste_legg_til" >
+        <action
+            android:id="@+id/action_handlelisteLeggTilFragment_to_handlelisteFragment"
+            app:destination="@id/handlelisteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/handlelisteListeFragment"
         android:name="com.example.mainactivity.HandlelisteListeFragment"

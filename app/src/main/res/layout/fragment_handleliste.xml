@@ -29,7 +29,8 @@
         android:src="?attr/actionModeCloseDrawable"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/tilbake" />
 
     <TextView
         android:id="@+id/HandlelisteHeadline"
@@ -38,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="Handleliste"
+        android:text="@string/handlelisteOverskrift"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/HandlelisteTilbake"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +48,7 @@
         android:id="@+id/NyHandleliste"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Ny handleliste"
+        android:text="@string/ny_handleliste"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

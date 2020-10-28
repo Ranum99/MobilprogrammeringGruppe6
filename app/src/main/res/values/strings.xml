@@ -46,6 +46,7 @@
     <string name="item_editText_hint">Skriv en ny gjenstand</string>
     <string name="navn">Skriv inn navn til handlelisten</string>
     <string name="handleliste">Lag en handleliste</string>
+    <string name="handlelisteHovedside">Handleliste</string>
     <string name="fornavn_etternavn">Fornavn Etternavn</string>
     <string name="endreProfilNavn">Navn</string>
     <string name="endreProfilEmail">Email</string>
@@ -70,5 +71,11 @@
     <string name="logo">Logo</string>
     <string name="back_arrow">Back Arrow</string>
     <string name="profilBilde">Profilbilde</string>
+    <string name="textView">TextView</string>
     <string name="registrer_bruker">Registrer bruker</string>
+    <string name="rediger_profil">Rediger profil</string>
+    <string name="handlelisteOverskrift">Handleliste</string>
+    <string name="ny_handleliste">Ny handleliste</string>
+    <string name="handleliste_nr">Handleliste nr:</string>
+    <string name="ny_vare">Ny vare</string>
 </resources>

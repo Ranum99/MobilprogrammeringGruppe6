@@ -69,8 +69,6 @@ public class LoginFragment extends Fragment {
 
                 if (emailen.length() != 0 && passordet.length() != 0) {
                     if (LoginUser(emailen, passordet)) {
-
-
                         email.setText("");
                         password.setText("");
                     }
@@ -93,7 +91,7 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.MOBILNR, data.getString(4));
                 editor.apply();
 
-                Intent activity2Intent = new Intent(requireActivity().getApplicationContext(), MainActivity.class);
+                Intent activity2Intent = new Intent(requireActivity().getApplicationContext(), HovedsideFragment.class);
                 startActivity(activity2Intent);
                 requireActivity().finish();
                 return true;
