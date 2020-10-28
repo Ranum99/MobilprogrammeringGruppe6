@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final NavController navController = Navigation.findNavController(view);
 
         registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
         tilbake = view.findViewById(R.id.SignupTilbake);
@@ -66,7 +68,7 @@ public class SignupFragment extends Fragment {
                     aPasswordConfirm.setText("");
                     aBirthday.setText("");
                     aMobilnr.setText("");
-
+                    navController.navigate(R.id.hovedsideFragment);
                 } else {
                     Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
                 }
