@@ -52,7 +52,7 @@ public class ProfilFragment extends Fragment {
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
 
         //Logger ut bruker
-        Logout = view.findViewById(R.id.btnLoggUt);
+        /*Logout = view.findViewById(R.id.btnLoggUt);
 
         Intent intent = requireActivity().getIntent();
         String string = intent.getStringExtra("message");
@@ -89,6 +89,6 @@ public class ProfilFragment extends Fragment {
                 alert1.show();
             }
         });
-
+*/
     }
 }

@@ -73,7 +73,6 @@
     <string name="registrer_bruker">Registrer bruker</string>
     <string name="rediger_profil">Rediger profil</string>
     <string name="handlelisteOverskrift">Handleliste</string>
-    <string name="ny_handleliste">Ny handleliste</string>
     <string name="handleliste_nr">Handleliste nr:</string>
     <string name="ny_vare">Ny vare</string>
     <string name="textview">TextView</string>

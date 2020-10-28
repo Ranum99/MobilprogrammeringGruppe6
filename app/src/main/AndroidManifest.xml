@@ -16,13 +16,7 @@
         <activity android:name=".Matplan" />
         <activity android:name=".MatplanLeggTil" />
         <activity android:name=".MatplanListe" />
-        <activity android:name=".BursdagLeggTil">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".BursdagLeggTil" />
         <activity android:name=".Bursdager" />
         <activity android:name=".OnskelisteEndreListe" />
         <activity android:name=".OnskelisteForPerson" />
