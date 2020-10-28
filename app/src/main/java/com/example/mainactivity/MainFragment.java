@@ -107,7 +107,6 @@ public class MainFragment extends Fragment {
                                 editor.apply();
                                 requireActivity().finish();
 
-
                                 //Navigation.createNavigateOnClickListener(R.id.);
                                 /*
                                 Intent intent1 = new Intent(requireActivity().getApplicationContext(), LoginFragment.class);

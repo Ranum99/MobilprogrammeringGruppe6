@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class ProfilRedigerFragment extends Fragment {
+
     Database database;
     SharedPreferences sharedPreferences;
 
@@ -38,12 +36,10 @@ public class ProfilRedigerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Avbryt knapp
-        Button avbryt = view.findViewById(R.id.avbrytBtn);
-        avbryt.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_profilRedigerFragment_to_profilFragment));
+        Button avbryt = view.findViewById(R.id.EndreProfilAvbryt);
 
         // Lagre knapp
-        Button send = view.findViewById(R.id.btnSend);
-        send.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_profilRedigerFragment_to_profilFragment));
+        Button send = view.findViewById(R.id.EndreProfilRedigerBtn);
 
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
 
@@ -73,6 +69,7 @@ public class ProfilRedigerFragment extends Fragment {
                     setUserData();
                 } else {
                     Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -99,4 +96,6 @@ public class ProfilRedigerFragment extends Fragment {
 
         //Kan evt. legge in regEx på email etterhvert.
     }
+
+
 }
