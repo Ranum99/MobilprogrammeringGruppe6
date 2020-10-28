@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/tilbakeBtn"
+        android:id="@+id/NyBursdagTilbake"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:text="@string/tilbake"

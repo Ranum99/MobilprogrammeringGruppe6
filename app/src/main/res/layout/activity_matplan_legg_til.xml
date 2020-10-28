@@ -31,7 +31,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <TextView
-        android:id="@+id/AddBirthday"
+        android:id="@+id/NyBursdagHeadline"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/avbrytBtn"
+        android:id="@+id/NyBursdagAvbryt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -65,7 +65,7 @@
         app:layout_constraintStart_toEndOf="@+id/BirtdayLagre" />
 
     <Button
-        android:id="@+id/BirthdayLagre"
+        android:id="@+id/NyBursdagLagre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/tilbakeBtn"
+        android:id="@+id/NyBursdagTilbake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
