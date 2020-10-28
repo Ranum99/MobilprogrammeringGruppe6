@@ -35,14 +35,6 @@ public class HovedsideFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_hovedside, container, false);
     }
 
-    public <T> void goToNewSiteListener(int idBtn, final Class<T> classToUse) {
-        requireActivity().findViewById(idBtn).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent activity2Intent = new Intent(requireActivity().getApplicationContext(), classToUse);
-                startActivity(activity2Intent);
-            }
-        });
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -95,24 +87,5 @@ public class HovedsideFragment extends Fragment {
             }
         });
 
-        TabLayout tabLayout = requireActivity().findViewById(R.id.tabLayout);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                goToNewSiteListener(R.id.goToProfile, ProfilFragment.class);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-
-        });
     }
 }

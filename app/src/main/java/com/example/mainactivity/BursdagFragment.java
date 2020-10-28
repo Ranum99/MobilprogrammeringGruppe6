@@ -32,7 +32,6 @@ public class BursdagFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tilbake = view.findViewById(R.id.BursdagTilbake);
-        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_bursdagFragment_to_hovedsideFragment));
         NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
         NyBursdag.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_bursdagFragment_to_bursdagLeggTilFragment));
         bursdag = view.findViewById(R.id.BursdagRecyclerview);

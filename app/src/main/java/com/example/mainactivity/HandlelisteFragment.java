@@ -27,7 +27,7 @@ public class HandlelisteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button tilbake = view.findViewById(R.id.HandlelisteTilbake);
-        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_handlelisteFragment_to_hovedsideFragment));
+
 
         Button NyHandleliste = view.findViewById(R.id.NyHandleliste);
         NyHandleliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_handlelisteFragment_to_handlelisteLeggTilFragment));

@@ -43,7 +43,7 @@ public class GruppeinformasjonFragment extends Fragment {
         ListeOverMedlemmer = view.findViewById(R.id.listeOverMedlemmer);
         MedlemDropdown = view.findViewById(R.id.kastUtMedlemDropdown);
 
-        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gruppeinformasjonFragment_to_hovedsideFragment));
+
 
     }
 }

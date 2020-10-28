@@ -23,9 +23,9 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return new GruppeinformasjonFragment();
             case 2:
                 return new ProfilFragment();
-            default:
-                return null;
+
         }
+        return null;
     }
 
     @Override

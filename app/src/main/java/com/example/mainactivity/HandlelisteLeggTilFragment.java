@@ -57,10 +57,10 @@ public class HandlelisteLeggTilFragment extends Fragment {
         });
 
         Button avbryt = view.findViewById(R.id.avbrytBtn);
-        avbryt.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_handlelisteLeggTilFragment_to_handlelisteFragment));
+
 
         Button tilbake = view.findViewById(R.id.tilbakeBtn);
-        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_handlelisteLeggTilFragment_to_handlelisteFragment));
+
 
     }
 }
