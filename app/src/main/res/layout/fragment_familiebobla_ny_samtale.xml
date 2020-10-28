@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
     <Spinner
-        android:id="@+id/FamilieboblaDropdown"
+        android:id="@+id/users"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -60,12 +60,12 @@
         app:layout_constraintTop_toBottomOf="@+id/Familieboblatext" />
 
     <Button
-        android:id="@+id/FamilieBoblaOpprettSamtale"
+        android:id="@+id/lagSamtale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="@string/opprett_samtale"
-        app:layout_constraintEnd_toEndOf="@+id/FamilieboblaDropdown"
-        app:layout_constraintStart_toStartOf="@+id/FamilieboblaDropdown"
-        app:layout_constraintTop_toBottomOf="@+id/FamilieboblaDropdown" />
+        app:layout_constraintEnd_toEndOf="@+id/users"
+        app:layout_constraintStart_toStartOf="@+id/users"
+        app:layout_constraintTop_toBottomOf="@+id/users" />
 </androidx.constraintlayout.widget.ConstraintLayout>

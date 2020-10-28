@@ -53,4 +53,16 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
         app:layout_constraintStart_toEndOf="@+id/FamilieboblaTilbake"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Søk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline29" />
 </androidx.constraintlayout.widget.ConstraintLayout>

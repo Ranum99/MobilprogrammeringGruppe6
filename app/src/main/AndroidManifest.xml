@@ -8,28 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".FamilieboblaNySamtale" />
-        <activity android:name=".KalenderSlettTemp" />
-        <activity android:name=".KalenderEndreTemp" />
-        <activity android:name=".KalenderTemp" />
-        <activity android:name=".Activity" />
-        <activity android:name=".Matplan" />
-        <activity android:name=".MatplanLeggTil" />
-        <activity android:name=".MatplanListe" />
-        <activity android:name=".BursdagLeggTil">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Bursdager" />
-        <activity android:name=".OnskelisteEndreListe" />
-        <activity android:name=".OnskelisteForPerson" />
-        <activity android:name=".Onskeliste" />
-        <activity android:name=".FamilieboblaSamtale" />
-        <activity android:name=".Familiebobla" />
-        <activity android:name=".Gruppeinformasjon" />
     </application>
 
 </manifest>

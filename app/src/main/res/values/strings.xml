@@ -61,7 +61,6 @@
     <string name="fullt_navn">Fullt navn</string>
     <string name="mobilnummer">Mobilnummer</string>
     <string name="foedselsdato">Fødselsdato</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logg_inn">Logg inn</string>
     <string name="example_email_com">example@email.com</string>
@@ -85,5 +84,4 @@
     <string name="start_en_samtale_med">Start en samtale med:</string>
     <string name="opprett_samtale">Opprett samtale</string>
     <string name="Handleliste">Handleliste</string>
-    <string name="ny_handleliste">Ny handleliste</string>
 </resources>
