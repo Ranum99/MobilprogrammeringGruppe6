@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/hovedsideFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -23,41 +23,11 @@
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action
-            android:id="@+id/action_signupFragment_to_hovedsideFragment"
-            app:destination="@id/hovedsideFragment" />
-        <action
             android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/hovedsideFragment"
-        android:name="com.example.mainactivity.HovedsideFragment"
-        android:label="fragment_hovedside"
-        tools:layout="@layout/fragment_hovedside" >
         <action
-            android:id="@+id/action_hovedsideFragment_to_gruppeinformasjonFragment"
-            app:destination="@id/gruppeinformasjonFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_bursdagFragment"
-            app:destination="@id/bursdagFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_familieboblaFragment"
-            app:destination="@id/familieboblaFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_handlelisteFragment"
-            app:destination="@id/handlelisteFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_kalenderFragment"
-            app:destination="@id/kalenderFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_matplanFragment"
-            app:destination="@id/matplanFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_onskelisteFragment"
-            app:destination="@id/onskelisteFragment" />
+            android:id="@+id/action_signupFragment_to_hovedsideFragment"
+            app:destination="@id/hovedsideFragment" />
     </fragment>
     <fragment
         android:id="@+id/bursdagFragment"
@@ -214,4 +184,28 @@
         android:name="com.example.mainactivity.ProfilRedigerFragment"
         android:label="fragment_profil_rediger"
         tools:layout="@layout/fragment_profil_rediger" />
+    <fragment
+        android:id="@+id/hovedsideFragment"
+        android:name="com.example.mainactivity.HovedsideFragment"
+        android:label="fragment_hovedside"
+        tools:layout="@layout/fragment_hovedside" >
+        <action
+            android:id="@+id/action_hovedsideFragment_to_bursdagFragment"
+            app:destination="@id/bursdagFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_familieboblaFragment"
+            app:destination="@id/familieboblaFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_handlelisteFragment"
+            app:destination="@id/handlelisteFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_kalenderFragment"
+            app:destination="@id/kalenderFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_matplanFragment"
+            app:destination="@id/matplanFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_onskelisteFragment"
+            app:destination="@id/onskelisteFragment" />
+    </fragment>
 </navigation>

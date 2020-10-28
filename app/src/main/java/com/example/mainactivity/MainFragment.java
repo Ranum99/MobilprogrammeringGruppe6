@@ -15,6 +15,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +30,7 @@ public class MainFragment extends Fragment {
     public MainFragment() {}
 
     private TabLayout tablayout;
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
     private TabItem Hovedside, Gruppeinfo, Profil;
     public PageAdapter pagerAdapter;
     private Button LoggUt;
@@ -45,10 +47,13 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tablayout = view.findViewById(R.id.tabLayoutMain);
+        LoggUt = view.findViewById(R.id.LoggUt);
+        viewPager = view.findViewById(R.id.ViewPagerMain);
+
         Hovedside = view.findViewById(R.id.goToMainMain);
         Gruppeinfo  = view.findViewById(R.id.goToGruppeinformasjonMain);
         Profil = view.findViewById(R.id.goToProfileMain);
-        LoggUt = view.findViewById(R.id.LoggUt);
+
         FamilyName = view.findViewById(R.id.FamilyName);
         FamilyId = view.findViewById(R.id.FamilyId);
         Handleliste = view.findViewById(R.id.goToHandleliste);
@@ -57,10 +62,10 @@ public class MainFragment extends Fragment {
         Kalender = view.findViewById(R.id.goToKalender);
         Familiebobla = view.findViewById(R.id.goToFamiliebobla);
         Onskeliste = view.findViewById(R.id.goToOnskeliste);
-        viewPager = view.findViewById(R.id.viewPagerMain);
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
-        pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tablayout.getTabCount());
+
+        //viewPager.setAdapter(pagerAdapter);
+        //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+        //pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tablayout.getTabCount());
 
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -107,11 +112,9 @@ public class MainFragment extends Fragment {
                                 editor.apply();
                                 requireActivity().finish();
 
-                                //Navigation.createNavigateOnClickListener(R.id.);
-                                /*
                                 Intent intent1 = new Intent(requireActivity().getApplicationContext(), LoginFragment.class);
                                 startActivity(intent1);
-                                 */
+
                             }
                         });
                 builder.setNegativeButton("No",

@@ -92,7 +92,7 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.MOBILNR, data.getString(4));
                 editor.apply();
 
-                Intent activity2Intent = new Intent(requireActivity().getApplicationContext(), HovedsideFragment.class);
+                Intent activity2Intent = new Intent(requireActivity().getApplicationContext(), MainFragment.class);
                 startActivity(activity2Intent);
                 requireActivity().finish();
                 return true;

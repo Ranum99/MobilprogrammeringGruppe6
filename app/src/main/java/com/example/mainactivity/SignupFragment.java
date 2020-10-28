@@ -45,7 +45,6 @@ public class SignupFragment extends Fragment {
         aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
 
         registrerBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_hovedsideFragment));
-        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_loginFragment));
 
         database = new Database(getActivity());
 
