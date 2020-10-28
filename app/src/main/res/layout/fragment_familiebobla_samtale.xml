@@ -7,18 +7,6 @@
     tools:context=".FamilieboblaSamtaleFragment">
 
     <ImageButton
-        android:id="@+id/SamtaleTilbake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:contentDescription="@string/tilbake"
-        android:src="?attr/actionModeCloseDrawable"
-        app:layout_constraintBottom_toTopOf="@+id/guideline32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
         android:id="@+id/SamtaleSlett"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,13 +27,13 @@
 
     <TextView
         android:id="@+id/SamtaleBrukernavn"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
-        app:layout_constraintEnd_toStartOf="@+id/SamtaleSlett"
-        app:layout_constraintStart_toEndOf="@+id/SamtaleTilbake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

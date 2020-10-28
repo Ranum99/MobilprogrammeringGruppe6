@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/SlettOnskelisteBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Slett ønskeliste"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,27 +30,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
-    <ImageButton
-        android:id="@+id/OnskelisteListeTilbake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:src="?attr/actionModeCloseDrawable"
-        app:layout_constraintBottom_toTopOf="@+id/guideline25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/OnskelisteBruker"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/guideline25"
-        app:layout_constraintStart_toEndOf="@+id/OnskelisteListeTilbake"
+        app:layout_constraintEnd_toStartOf="@+id/OnskelisteHeadline"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -62,6 +51,8 @@
         android:layout_marginLeft="8dp"
         android:text="ønskeliste"
         app:layout_constraintBottom_toTopOf="@+id/guideline25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/OnskelisteBruker"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -21,21 +21,9 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
-    <ImageButton
-        android:id="@+id/FamilieboblaTilbake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:contentDescription="@string/tilbake"
-        android:src="?attr/actionModeCloseDrawable"
-        app:layout_constraintBottom_toTopOf="@+id/guideline29"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/FamilieboblaNySamtale"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/ny_samtale"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,19 +33,18 @@
 
     <TextView
         android:id="@+id/FamilieboblaHeadline"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="@string/familiebobla"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
-        app:layout_constraintStart_toEndOf="@+id/FamilieboblaTilbake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/search"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"

@@ -18,7 +18,6 @@ import android.widget.ImageButton;
 public class BursdagFragment extends Fragment {
     public BursdagFragment() {}
 
-    ImageButton tilbake;
     Button NyBursdag;
     RecyclerView bursdag;
 
@@ -31,7 +30,6 @@ public class BursdagFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tilbake = view.findViewById(R.id.BursdagTilbake);
         NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
         NyBursdag.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_bursdagFragment_to_bursdagLeggTilFragment));
         bursdag = view.findViewById(R.id.BursdagRecyclerview);

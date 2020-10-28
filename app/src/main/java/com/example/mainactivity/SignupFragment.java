@@ -23,7 +23,6 @@ public class SignupFragment extends Fragment {
 
     private EditText aName, anEmail, aPassword, aPasswordConfirm, aBirthday, aMobilnr;
     private Button registrerBruker;
-    private ImageButton tilbake;
 
 
 
@@ -38,7 +37,6 @@ public class SignupFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
-        tilbake = view.findViewById(R.id.SignupTilbake);
         aName = view.findViewById(R.id.SignupNavnInput);
         anEmail = view.findViewById(R.id.SignupEmailInput);
         aMobilnr = view.findViewById(R.id.SignupMobilnummerInput);
@@ -47,7 +45,6 @@ public class SignupFragment extends Fragment {
         aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
 
         registrerBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_hovedsideFragment));
-        tilbake.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_loginFragment));
         database = new Database(getActivity());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {

@@ -20,7 +20,6 @@ public class GruppeinformasjonFragment extends Fragment {
     public GruppeinformasjonFragment() {}
 
     private Button EndreFamilieNavn, LeggTilMedlem, KastUtMedlem;
-    private ImageButton tilbake;
     private EditText FamilieNavnInput, LeggTilMedlemInput;
     private ListView ListeOverMedlemmer;
     private Spinner MedlemDropdown;
@@ -37,7 +36,6 @@ public class GruppeinformasjonFragment extends Fragment {
         EndreFamilieNavn = view.findViewById(R.id.EndreFamilieNavnBtn);
         LeggTilMedlem = view.findViewById(R.id.leggTilMedlemBtn);
         KastUtMedlem = view.findViewById(R.id.KastUtMedlemBtn);
-        tilbake = view.findViewById(R.id.GruppeinfoTilbake);
         FamilieNavnInput = view.findViewById(R.id.EndreFamilieNavnInput);
         LeggTilMedlemInput = view.findViewById(R.id.LeggTilMedlemInput);
         ListeOverMedlemmer = view.findViewById(R.id.listeOverMedlemmer);

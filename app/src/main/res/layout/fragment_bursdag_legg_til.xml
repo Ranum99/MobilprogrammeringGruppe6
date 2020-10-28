@@ -25,11 +25,10 @@
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="@string/legg_til_en_bursdag"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/NyBursdagTilbake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -122,17 +121,5 @@
         app:layout_constraintEnd_toStartOf="@+id/NyBursdagAvbryt"
         app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <ImageButton
-        android:id="@+id/NyBursdagTilbake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable"
-        android:contentDescription="@string/tilbake" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
