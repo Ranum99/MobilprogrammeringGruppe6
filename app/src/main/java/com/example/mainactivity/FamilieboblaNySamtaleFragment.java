@@ -64,8 +64,8 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     }
 
     private void makeNewSamtale() {
-        long meme = database.makeNewConversation(selectedUser);
-        getActivity().finish();
+        int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
+        long meme = database.makeNewConversation(meID, selectedUser);
     }
 
     private void addUsersToDropdown() {

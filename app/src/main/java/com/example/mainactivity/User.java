@@ -2,10 +2,6 @@ package com.example.mainactivity;
 
 public class User {
 
-    public String getName() {
-        return name;
-    }
-
     public int id, mobilnr;
     public String name, email, password, birthday;
 
@@ -28,6 +24,14 @@ public class User {
     public User(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

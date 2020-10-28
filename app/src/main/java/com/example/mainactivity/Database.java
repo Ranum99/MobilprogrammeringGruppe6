@@ -16,11 +16,11 @@ public class Database extends SQLiteOpenHelper {
     private static final String TAG = "Database";
 
     // Felles for alle tabeller
-    private static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID = "id";
 
     // Tabell USER m/ kolonner
-    private static final String TABLE_USER = "Users3";
-    private static final String COLUMN_NAME = "name";
+    public static final String TABLE_USER = "Users3";
+    public static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_BIRTHDAY = "birthday";
     private static final String COLUMN_MOBILNR = "mobilnr";
@@ -39,9 +39,9 @@ public class Database extends SQLiteOpenHelper {
 
 
     // Tabell CONVERSATION
-    private static final String TABLE_CONVERSATION = "Conversation";
-    private static final String COLUMN__USER_FROM = "userFrom";
-    private static final String COLUMN__USER_TO = "userTo";
+    public static final String TABLE_CONVERSATION = "Conversation";
+    public static final String COLUMN__USER_FROM = "userFrom";
+    public static final String COLUMN__USER_TO = "userTo";
 
     // Lage tabellen CONVERSATION
     private static final String CREATE_TABLE_CONVERSATION = "CREATE TABLE " + TABLE_CONVERSATION +
@@ -91,6 +91,18 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
+    public Cursor getData(String table) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + table;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getData(String table, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + table + " WHERE " + COLUMN_ID + " = " + id;
+        return db.rawQuery(query, null);
+    }
+
     public boolean addUserToDatabase(String name, String email, String birthday, String mobilnr, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -107,20 +119,22 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public long makeNewConversation(User otherUser) {
+    public long makeNewConversation(int meID, User otherUser) {
         SQLiteDatabase db = this.getReadableDatabase();
-
         ContentValues values = new ContentValues();
-        values.put(COLUMN__USER_FROM, sharedPreferences.getString(User.ID, null));
+
+        values.put(COLUMN__USER_FROM, meID);
         values.put(COLUMN__USER_TO, otherUser.id);
 
         return db.insert(TABLE_CONVERSATION, null, values);
     }
 
-    public Cursor getAllConversations() {
+    public Cursor getAllConversations(int meID) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String selectQuery = "SELECT * FROM " + TABLE_CONVERSATION;
+        String selectQuery = "SELECT * FROM " + TABLE_CONVERSATION +
+                " WHERE " + COLUMN__USER_FROM + " = " + meID +
+                " OR " + COLUMN__USER_TO + " = " + meID;
 
         return db.rawQuery(selectQuery,  null);
     }
