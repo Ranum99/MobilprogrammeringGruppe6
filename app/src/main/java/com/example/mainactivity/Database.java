@@ -55,6 +55,7 @@ public class Database extends SQLiteOpenHelper {
     // Tabell BIRTHDAY m/ kolonner
     private static final String TABLE_BIRTHDAY = "Bursdag";
     private static final String COLUMN_NAME_BIRTHDAY = "Navn";
+    private static final String COLUMN_PHONENUMBER_BIRTHDAY = "Mobilnummer";
     private static final String COLUMN_BIRTHDAY_DATE = "Dato";
 
     // Lage tabellen BIRTHDAY
@@ -62,6 +63,7 @@ public class Database extends SQLiteOpenHelper {
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME_BIRTHDAY + " TEXT, " +
+            COLUMN_PHONENUMBER_BIRTHDAY + " TEXT, " +
             COLUMN_BIRTHDAY_DATE + " TEXT " +
             ")";
 
@@ -162,7 +164,15 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public boolean addUserToDatabaseBIRTHDAY(String name, String phone, String date) {
-        System.out.println(name + phone + date);
-        return true;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME_BIRTHDAY, name);
+        contentValues.put(COLUMN_PHONENUMBER_BIRTHDAY, phone);
+        contentValues.put(COLUMN_BIRTHDAY_DATE, date);
+
+        Log.d(TAG, "addData: Adding " + name + ", " + phone + ", " + date + ", " + " to " + TABLE_BIRTHDAY);
+
+        long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
+        return result != -1;
     }
 }

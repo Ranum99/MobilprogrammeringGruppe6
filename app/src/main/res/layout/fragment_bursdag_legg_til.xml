@@ -100,7 +100,7 @@
 
     <Button
         android:id="@+id/NyBursdagAvbryt"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -112,7 +112,7 @@
 
     <Button
         android:id="@+id/NyBursdagLagre"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +30,15 @@ public class BursdagFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final NavController navController = Navigation.findNavController(view);
 
         NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
-        NyBursdag.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_bursdagFragment_to_bursdagLeggTilFragment));
+        NyBursdag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.bursdagLeggTilFragment);
+            }
+        });
         bursdag = view.findViewById(R.id.BursdagRecyclerview);
     }
 }

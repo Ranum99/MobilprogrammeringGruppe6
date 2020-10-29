@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/hovedsideFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -207,5 +207,16 @@
         <action
             android:id="@+id/action_hovedsideFragment_to_onskelisteFragment"
             app:destination="@id/onskelisteFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_gruppeinformasjonFragment"
+            app:destination="@id/gruppeinformasjonFragment" />
+        <action
+            android:id="@+id/action_hovedsideFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.mainactivity.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 </navigation>

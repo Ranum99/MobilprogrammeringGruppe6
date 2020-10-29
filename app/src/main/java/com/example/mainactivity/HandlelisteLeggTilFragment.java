@@ -21,14 +21,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class HandlelisteLeggTilFragment extends Fragment {
-    ListView listview;
-    Button addButton;
-    EditText GetValue;
-    String[] ListElements = new String[] {
-    };
 
     public HandlelisteLeggTilFragment() {}
 
+    ListView listview;
+    Button addButton;
+    EditText GetValue;
+    String[] ListElements;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_handleliste_legg_til, container, false);
@@ -41,6 +40,7 @@ public class HandlelisteLeggTilFragment extends Fragment {
         listview = view.findViewById(R.id.listView1);
         addButton = view.findViewById(R.id.button2);
         GetValue = view.findViewById(R.id.editText2);
+        ListElements= new String[] {};
 
         final List<String> ListElementsArrayList = new ArrayList<>(Arrays.asList(ListElements));
         final ArrayAdapter<String> adapter = new ArrayAdapter<>
@@ -55,12 +55,6 @@ public class HandlelisteLeggTilFragment extends Fragment {
                 GetValue.getText().clear();
             }
         });
-
-        Button avbryt = view.findViewById(R.id.avbrytBtn);
-
-
-        Button tilbake = view.findViewById(R.id.tilbakeBtn);
-
 
     }
 }
