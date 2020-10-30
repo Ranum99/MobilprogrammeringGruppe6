@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,7 +33,7 @@ public class FamilieboblaFragment extends Fragment {
     FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
-    View view;
+    //View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,15 +43,15 @@ public class FamilieboblaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.view = view;
-
+        //this.view = view;
+        setUpRecyclerView();
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         Button nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
         nySamtale.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaNySamtaleFragment));
 
-        setConversationBtns();
+        //setConversationBtns();
 
         /*setListenerOnBtns();
 
@@ -68,6 +70,12 @@ public class FamilieboblaFragment extends Fragment {
             public void afterTextChanged(Editable s) {
             }
         });*/
+    }
+    private void setUpRecyclerView() {
+        RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
+        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData()));
+
+        familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     private void setConversationBtns() {

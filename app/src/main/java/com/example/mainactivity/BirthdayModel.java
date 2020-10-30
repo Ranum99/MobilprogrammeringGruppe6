@@ -1,14 +1,9 @@
 package com.example.mainactivity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import java.util.ArrayList;
 
 public class BirthdayModel {
     private String navn, dato, mobil;
-    Database database;
-    SharedPreferences sharedPreferences;
 
     public BirthdayModel(int i, String navn, String dato, String mobil) {
         this.navn = navn;
@@ -43,6 +38,7 @@ public class BirthdayModel {
     public static ArrayList<BirthdayModel> getData() {
         ArrayList<BirthdayModel> data = new ArrayList<>();
 
+        //Egendefinert. Skal hentes fra database
         String[] navn = {"Emilie", "Pål", "Sara", "Wenche","Emilie", "Pål", "Sara", "Wenche","Emilie", "Pål", "Sara", "Wenche"};
         String[] mobil = {"48055568", "45769179", "90035296", "47058583","48055568", "45769179", "90035296", "47058583","48055568", "45769179", "90035296", "47058583"};
         String[] dato = {"06011998", "27021966", "06111998", "09011967","06011998", "27021966", "06111998", "09011967","06011998", "27021966", "06111998", "09011967"};
