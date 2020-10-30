@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="4dp">
+    android:layout_margin="2dp"
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,32 +40,32 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="47 år"
+            android:text="x år"
             app:layout_constraintBottom_toBottomOf="@+id/CardviewFullName"
             app:layout_constraintStart_toEndOf="@+id/CardviewFullName"
             app:layout_constraintTop_toTopOf="@+id/CardviewFullName" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/delete"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+            app:layout_constraintBottom_toTopOf="@+id/edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/edit"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton"
+            app:layout_constraintEnd_toEndOf="@+id/delete"
+            app:layout_constraintTop_toBottomOf="@+id/delete"
             app:srcCompat="@android:drawable/ic_menu_edit" />
 
         <TextView

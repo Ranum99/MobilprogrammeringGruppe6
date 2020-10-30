@@ -60,7 +60,6 @@ public class LoginFragment extends Fragment {
         });
 
         login = view.findViewById(R.id.Login);
-        //login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_hovedsideFragment));
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
