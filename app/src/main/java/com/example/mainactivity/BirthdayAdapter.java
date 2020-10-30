@@ -14,7 +14,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
     private List<BirthdayModel> BirthdayList;
     private LayoutInflater inflater;
-    private Calendar today = Calendar.getInstance();
 
     public BirthdayAdapter(Context context, List<BirthdayModel> BirthdayList) {
         this.inflater = LayoutInflater.from(context);

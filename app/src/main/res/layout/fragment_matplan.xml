@@ -42,6 +42,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/matplanRecyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"

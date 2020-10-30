@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 
 public class MatplanLeggTilFragment extends Fragment {
 
-    public MatplanLeggTilFragment() {
-    }
+    public MatplanLeggTilFragment() {}
+
+    Integer[] AntallDager = {1,2,3,4,5,6,7};
+    String[] UkeDager = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

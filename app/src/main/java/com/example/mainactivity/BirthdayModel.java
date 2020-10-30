@@ -39,9 +39,9 @@ public class BirthdayModel {
         ArrayList<BirthdayModel> data = new ArrayList<>();
 
         //Egendefinert. Skal hentes fra database
-        String[] navn = {"Emilie", "Pål", "Sara", "Wenche","Emilie", "Pål", "Sara", "Wenche","Emilie", "Pål", "Sara", "Wenche"};
-        String[] mobil = {"48055568", "45769179", "90035296", "47058583","48055568", "45769179", "90035296", "47058583","48055568", "45769179", "90035296", "47058583"};
-        String[] dato = {"06011998", "27021966", "06111998", "09011967","06011998", "27021966", "06111998", "09011967","06011998", "27021966", "06111998", "09011967"};
+        String[] navn = {"Emilie"};
+        String[] mobil = {"12345678"};
+        String[] dato = {"6.januar.1998"};
 
         for(int i = 0; i < navn.length; i++) {
             BirthdayModel enBursdag = new BirthdayModel(i, navn[i], mobil[i], dato[i]);
