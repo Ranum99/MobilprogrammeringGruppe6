@@ -4,9 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -33,7 +37,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
     @Override
     public void onBindViewHolder(@NonNull HandlelisteViewHolder viewHolder, int position) {
         HandlelisteModel modelToDisplay = HandlelisteListe.get(position);
-        viewHolder.setHandleliste(modelToDisplay);
+        viewHolder.setHandleliste(modelToDisplay, position);
 
     }
 
@@ -42,17 +46,46 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         return HandlelisteListe.size();
     }
 
-    public class HandlelisteViewHolder extends RecyclerView.ViewHolder{
+    private void removeItem(int position) {
+        HandlelisteListe.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, HandlelisteListe.size());
+    }
+
+    public class HandlelisteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView nr;
+        private ImageButton delete;
+        private int position;
+        private HandlelisteModel handleliste;
+
 
         public HandlelisteViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nr = itemView.findViewById(R.id.handlelistenummer);
+            delete = itemView.findViewById(R.id.handlelisteDelete);
+
+            delete.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
-        public void setHandleliste(HandlelisteModel modelToDisplay) {
+        public void setHandleliste(HandlelisteModel modelToDisplay, int position) {
             nr.setText("Handleliste nr: " + modelToDisplay.getNr());
+            this.position = position;
+            this.handleliste = modelToDisplay;
+        }
+
+        @Override
+        public void onClick(View view) {
+            final NavController navController = Navigation.findNavController(view);
+            switch (view.getId()) {
+                case R.id.handlelisteDelete:
+                    removeItem(position);
+                    break;
+                default:
+                    navController.navigate(R.id.handlelisteListeFragment);
+            }
+
         }
     }
 }

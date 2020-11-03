@@ -44,7 +44,6 @@ public class SignupFragment extends Fragment {
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
         aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
 
-        registrerBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_hovedsideFragment));
         database = new Database(getActivity());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {

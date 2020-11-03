@@ -46,27 +46,16 @@
             app:layout_constraintTop_toTopOf="@+id/CardviewFullName" />
 
         <ImageButton
-            android:id="@+id/delete"
+            android:id="@+id/deleteBursdag"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/edit"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
             app:srcCompat="@android:drawable/ic_menu_delete" />
-
-        <ImageButton
-            android:id="@+id/edit"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/delete"
-            app:layout_constraintTop_toBottomOf="@+id/delete"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
 
         <TextView
             android:id="@+id/CardviewPhone"
