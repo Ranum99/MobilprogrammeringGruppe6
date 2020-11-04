@@ -1,9 +1,13 @@
-package com.example.mainactivity;
+package com.example.mainactivity.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.mainactivity.GruppeinformasjonFragment;
+import com.example.mainactivity.HovedsideFragment;
+import com.example.mainactivity.ProfilFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 

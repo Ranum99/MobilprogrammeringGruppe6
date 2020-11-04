@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Calendar;
+import com.example.mainactivity.model.OnskelisteModel;
+import com.example.mainactivity.R;
+
 import java.util.List;
 
 public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.OnskelisteViewHolder> {

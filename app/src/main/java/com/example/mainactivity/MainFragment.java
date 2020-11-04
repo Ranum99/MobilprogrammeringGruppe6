@@ -13,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -23,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.mainactivity.adapter.PageAdapter;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -63,8 +62,11 @@ public class MainFragment extends Fragment {
         Familiebobla = view.findViewById(R.id.goToFamiliebobla);
         Onskeliste = view.findViewById(R.id.goToOnskeliste);
 
+
+
         //viewPager.setAdapter(pagerAdapter);
         //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+
         //pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tablayout.getTabCount());
 
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

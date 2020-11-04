@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 import java.util.ArrayList;
 

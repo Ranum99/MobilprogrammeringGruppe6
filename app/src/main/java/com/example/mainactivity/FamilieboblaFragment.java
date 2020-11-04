@@ -13,19 +13,14 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.mainactivity.adapter.FamilieboblaAdapter;
+import com.example.mainactivity.model.FamilieboblaModel;
 
 public class FamilieboblaFragment extends Fragment {
     public FamilieboblaFragment() {}
