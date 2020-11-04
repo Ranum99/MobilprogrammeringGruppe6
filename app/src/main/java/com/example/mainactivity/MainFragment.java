@@ -47,14 +47,12 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tablayout = view.findViewById(R.id.tabLayoutMain);
-        LoggUt = view.findViewById(R.id.LoggUt);
-        viewPager = view.findViewById(R.id.ViewPagerMain);
-        //viewPager.setAdapter(pagerAdapter);
-
-        Hovedside = view.findViewById(R.id.goToMainMain);
-        Gruppeinfo  = view.findViewById(R.id.goToGruppeinformasjonMain);
-        Profil = view.findViewById(R.id.goToProfileMain);
+        // Tabs
+        tablayout = view.findViewById(R.id.tab_layout);
+        Hovedside = view.findViewById(R.id.hovedside);
+        Gruppeinfo  = view.findViewById(R.id.gruppeinfo);
+        Profil = view.findViewById(R.id.profil);
+        viewPager = view.findViewById(R.id.pager);
 
         FamilyName = view.findViewById(R.id.FamilyName);
         FamilyId = view.findViewById(R.id.FamilyId);
@@ -64,7 +62,7 @@ public class MainFragment extends Fragment {
         Kalender = view.findViewById(R.id.goToKalender);
         Familiebobla = view.findViewById(R.id.goToFamiliebobla);
         Onskeliste = view.findViewById(R.id.goToOnskeliste);
-
+        LoggUt = view.findViewById(R.id.LoggUt);
 
         pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), 3);
         viewPager.setAdapter(pagerAdapter);
