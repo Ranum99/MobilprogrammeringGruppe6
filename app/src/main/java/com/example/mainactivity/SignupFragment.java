@@ -64,7 +64,7 @@ public class SignupFragment extends Fragment {
                         aPasswordConfirm.setText("");
                         aBirthday.setText("");
                         aMobilnr.setText("");
-                        navController.navigate(R.id.hovedsideFragment);
+                        navController.navigate(R.id.mainFragment);
                     }
 
                 } else {

@@ -66,8 +66,8 @@ public class MainFragment extends Fragment {
         Onskeliste = view.findViewById(R.id.goToOnskeliste);
 
 
-        //pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), 3);
-        //viewPager.setAdapter(pagerAdapter);
+        pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), 3);
+        viewPager.setAdapter(pagerAdapter);
 
 
 

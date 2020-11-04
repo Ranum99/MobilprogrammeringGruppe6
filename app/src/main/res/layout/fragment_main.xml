@@ -12,36 +12,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutMain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:tabIndicatorColor="#009688"
-        app:tabTextColor="#000000">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/goToMainMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hovedside" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/goToGruppeinformasjonMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gruppeinfo" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/goToProfileMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profil" />
-    </com.google.android.material.tabs.TabLayout>
-
     <TextView
         android:id="@+id/FamilyNameMain"
         style="@style/TextAppearance.MaterialComponents.Headline5"
@@ -89,7 +59,35 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayoutMain" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            app:tabIndicatorColor="#009688"
+            app:tabTextColor="#000000">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/goToMainMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hovedside" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/goToGruppeinformasjonMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gruppeinfo" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/goToProfileMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profil" />
+        </com.google.android.material.tabs.TabLayout>
+    </androidx.viewpager2.widget.ViewPager2>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
