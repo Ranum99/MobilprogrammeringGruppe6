@@ -71,7 +71,7 @@ public class LoginFragment extends Fragment {
                     if (LoginUser(emailen, passordet)) {
                         email.setText("");
                         password.setText("");
-                        navController.navigate(R.id.hovedsideFragment);
+                        navController.navigate(R.id.mainFragment);
                     }
                 } else
                     Toast.makeText(getActivity(), "Du må fylle ut feltene", Toast.LENGTH_SHORT).show();

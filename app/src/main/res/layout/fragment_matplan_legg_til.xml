@@ -25,22 +25,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/matplanAvbryt"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:text="Avbryt"
-        app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintStart_toStartOf="@+id/opprettMatplan"
+        app:layout_constraintTop_toBottomOf="@+id/opprettMatplan" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/opprettMatplan"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:text="Opprett"
-        app:layout_constraintStart_toStartOf="@+id/spinner4"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
+        app:layout_constraintStart_toStartOf="@+id/matplanStartDag"
+        app:layout_constraintTop_toBottomOf="@+id/matplanStartDag" />
 
     <TextView
         android:id="@+id/textView16"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/matplanDager"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -64,10 +64,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <Spinner
-        android:id="@+id/spinner4"
+        android:id="@+id/matplanStartDag"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -78,6 +79,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Velg startdag"
-        app:layout_constraintStart_toStartOf="@+id/spinner3"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintStart_toStartOf="@+id/matplanDager"
+        app:layout_constraintTop_toBottomOf="@+id/matplanDager" />
 </androidx.constraintlayout.widget.ConstraintLayout>

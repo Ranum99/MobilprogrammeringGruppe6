@@ -14,8 +14,8 @@
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_hovedsideFragment"
-            app:destination="@id/hovedsideFragment" />
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -26,8 +26,8 @@
             android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_signupFragment_to_hovedsideFragment"
-            app:destination="@id/hovedsideFragment" />
+            android:id="@+id/action_signupFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/bursdagFragment"

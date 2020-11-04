@@ -22,14 +22,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class HovedsideFragment extends Fragment {
     public HovedsideFragment() {}
+    public static final String ARG_OBJECT = "object";
+
 
     private Button LoggUt;
     private TextView FamilyName, FamilyId;
     private CardView Handleliste, Matplan, Bursdager, Kalender, Familiebobla, Onskeliste;
+    private TabItem profil, gruppeinfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +49,11 @@ public class HovedsideFragment extends Fragment {
         LoggUt = view.findViewById(R.id.LoggUt);
         FamilyName = view.findViewById(R.id.FamilyName);
         FamilyId = view.findViewById(R.id.FamilyId);
+
+        profil = view.findViewById(R.id.goToProfile);
+        //profil.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_profilFragment));
+        gruppeinfo = view.findViewById(R.id.goToGruppeinformasjon);
+        //gruppeinfo.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_gruppeinformasjonFragment));
 
         Handleliste = view.findViewById(R.id.goToHandleliste);
         Handleliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_hovedsideFragment_to_handlelisteFragment));
