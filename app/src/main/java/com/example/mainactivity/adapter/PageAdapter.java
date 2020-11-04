@@ -7,6 +7,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.mainactivity.GruppeinformasjonFragment;
+import com.example.mainactivity.HovedsideFragment;
+import com.example.mainactivity.ProfilFragment;
+
 public class PageAdapter extends FragmentStatePagerAdapter {
 
     private int numoftabs;
