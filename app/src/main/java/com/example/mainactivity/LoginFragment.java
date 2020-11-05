@@ -63,7 +63,6 @@ public class LoginFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Dette skal med, men for å slippe å logge inn
                 String emailen = email.getText().toString();
                 String passordet = password.getText().toString();
 
@@ -74,7 +73,7 @@ public class LoginFragment extends Fragment {
                         navController.navigate(R.id.mainFragment);
                     }
                 } else
-                    Toast.makeText(getActivity(), "Du må fylle ut feltene", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Du må fylle ut alle feltene", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -85,7 +84,7 @@ public class LoginFragment extends Fragment {
 
         while(data.moveToNext()) {
 
-            if (data.getString(2).equals(email) && data.getString(5).equals(password)) {
+            if (data.getString(2).equals(email) && data.getString(5).equals(password) ) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(User.ID, data.getString(0));
                 editor.putString(User.NAME, data.getString(1));
@@ -97,7 +96,7 @@ public class LoginFragment extends Fragment {
                 return true;
             }
         }
-        Toast.makeText(getActivity(), "Not valid user", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Ikke gyldig bruker", Toast.LENGTH_SHORT).show();
         return false;
     }
 

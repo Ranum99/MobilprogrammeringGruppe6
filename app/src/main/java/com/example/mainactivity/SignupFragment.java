@@ -69,7 +69,7 @@ public class SignupFragment extends Fragment {
                     }
 
                 } else {
-                    Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fyll ut feltene", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +32,21 @@ public class HovedsideFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_hovedside, container, false);
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Handleliste = view.findViewById(R.id.goToHandleliste);
+        Handleliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.handlelisteFragment));
+        Matplan = view.findViewById(R.id.goToMatplan);
+        Matplan.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.matplanFragment));
+        Bursdager = view.findViewById(R.id.goToBursdager);
+        Bursdager.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.bursdagFragment));
+        Kalender = view.findViewById(R.id.goToKalender);
+        Kalender.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.kalenderFragment));
+        Familiebobla = view.findViewById(R.id.goToFamiliebobla);
+        Familiebobla.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.familieboblaFragment));
+        Onskeliste = view.findViewById(R.id.goToOnskeliste);
+        Onskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.onskelisteFragment));
     }
 }
