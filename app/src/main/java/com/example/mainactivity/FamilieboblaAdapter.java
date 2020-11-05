@@ -1,4 +1,4 @@
-package com.example.mainactivity.adapter;
+package com.example.mainactivity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.mainactivity.model.FamilieboblaModel;
-import com.example.mainactivity.R;
 
 import java.util.List;
 

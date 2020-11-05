@@ -1,11 +1,12 @@
-package com.example.mainactivity.model;
+package com.example.mainactivity;
 
 import java.util.ArrayList;
 
-public class FamilieboblaModel {
+public class OnskelisteModel {
+
     private String navn;
 
-    public FamilieboblaModel(int i, String navn) {
+    public OnskelisteModel(int i, String navn) {
         this.navn = navn;
     }
 
@@ -17,15 +18,15 @@ public class FamilieboblaModel {
         this.navn = navn;
     }
 
-    public static ArrayList<FamilieboblaModel> getData() {
-        ArrayList<FamilieboblaModel> data = new ArrayList<>();
+    public static ArrayList<OnskelisteModel> getData() {
+        ArrayList<OnskelisteModel> data = new ArrayList<>();
 
         //Egendefinert. Skal hentes fra database
         String[] navn = {"Emilie"};
 
         for(int i = 0; i < navn.length; i++) {
-            FamilieboblaModel enSamtale = new FamilieboblaModel(i, navn[i]);
-            data.add(enSamtale);
+            OnskelisteModel onskelister = new OnskelisteModel(i, navn[i]);
+            data.add(onskelister);
         }
 
         return data;

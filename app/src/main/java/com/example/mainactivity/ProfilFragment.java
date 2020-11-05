@@ -45,15 +45,16 @@ public class ProfilFragment extends Fragment {
 
         // Endre profil
         Button endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
-        endreProfilBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_profilFragment_to_profilRedigerFragment));
+        //endreProfilBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_profilFragment_to_profilRedigerFragment));
 
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
         userID = view.findViewById(R.id.ProfilBrukerId);
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
-
+    }
         //Logger ut bruker
         //Logout = view.findViewById(R.id.btnLoggUt);
 
+        /*
         Intent intent = requireActivity().getIntent();
         String string = intent.getStringExtra("message");
         Logout.setOnClickListener(new View.OnClickListener() {
@@ -90,5 +91,5 @@ public class ProfilFragment extends Fragment {
             }
         });
 
-    }
+    */
 }

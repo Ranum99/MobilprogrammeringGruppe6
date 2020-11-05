@@ -19,9 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.mainactivity.adapter.FamilieboblaAdapter;
-import com.example.mainactivity.model.FamilieboblaModel;
-
 public class FamilieboblaFragment extends Fragment {
     public FamilieboblaFragment() {}
     private EditText search;

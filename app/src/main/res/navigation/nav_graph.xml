@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/hovedsideFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -69,11 +69,6 @@
         android:name="com.example.mainactivity.FamilieboblaSamtaleFragment"
         android:label="fragment_familiebobla_samtale"
         tools:layout="@layout/fragment_familiebobla_samtale" />
-    <fragment
-        android:id="@+id/gruppeinformasjonFragment"
-        android:name="com.example.mainactivity.GruppeinformasjonFragment"
-        android:label="fragment_gruppeinformasjon"
-        tools:layout="@layout/fragment_gruppeinformasjon" />
     <fragment
         android:id="@+id/handlelisteFragment"
         android:name="com.example.mainactivity.HandlelisteFragment"
@@ -171,52 +166,32 @@
         android:label="fragment_onskeliste_liste"
         tools:layout="@layout/fragment_onskeliste_liste" />
     <fragment
-        android:id="@+id/profilFragment"
-        android:name="com.example.mainactivity.ProfilFragment"
-        android:label="fragment_profil"
-        tools:layout="@layout/fragment_profil" >
-        <action
-            android:id="@+id/action_profilFragment_to_profilRedigerFragment"
-            app:destination="@id/profilRedigerFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/profilRedigerFragment"
         android:name="com.example.mainactivity.ProfilRedigerFragment"
         android:label="fragment_profil_rediger"
         tools:layout="@layout/fragment_profil_rediger" />
     <fragment
-        android:id="@+id/hovedsideFragment"
-        android:name="com.example.mainactivity.HovedsideFragment"
-        android:label="fragment_hovedside"
-        tools:layout="@layout/fragment_hovedside" >
-        <action
-            android:id="@+id/action_hovedsideFragment_to_bursdagFragment"
-            app:destination="@id/bursdagFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_familieboblaFragment"
-            app:destination="@id/familieboblaFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_handlelisteFragment"
-            app:destination="@id/handlelisteFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_kalenderFragment"
-            app:destination="@id/kalenderFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_matplanFragment"
-            app:destination="@id/matplanFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_onskelisteFragment"
-            app:destination="@id/onskelisteFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_gruppeinformasjonFragment"
-            app:destination="@id/gruppeinformasjonFragment" />
-        <action
-            android:id="@+id/action_hovedsideFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.mainactivity.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_bursdagFragment"
+            app:destination="@id/bursdagFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_familieboblaFragment"
+            app:destination="@id/familieboblaFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_handlelisteFragment"
+            app:destination="@id/handlelisteFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_matplanFragment"
+            app:destination="@id/matplanFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_onskelisteFragment"
+            app:destination="@id/onskelisteFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profilRedigerFragment"
+            app:destination="@id/profilRedigerFragment" />
+    </fragment>
 </navigation>

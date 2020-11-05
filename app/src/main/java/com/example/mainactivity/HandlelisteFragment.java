@@ -15,9 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.mainactivity.adapter.HandlelisteAdapter;
-import com.example.mainactivity.model.HandlelisteModel;
-
 public class HandlelisteFragment extends Fragment {
 
     public HandlelisteFragment() {}

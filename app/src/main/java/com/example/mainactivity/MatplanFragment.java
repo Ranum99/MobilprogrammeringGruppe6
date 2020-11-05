@@ -15,9 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.mainactivity.adapter.MatplanAdapter;
-import com.example.mainactivity.model.MatplanModel;
-
 public class MatplanFragment extends Fragment {
 
     public MatplanFragment() {}
