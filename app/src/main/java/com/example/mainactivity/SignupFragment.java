@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,6 @@ public class SignupFragment extends Fragment {
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
         aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
 
-        registrerBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signupFragment_to_hovedsideFragment));
         database = new Database(getActivity());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
@@ -65,11 +65,11 @@ public class SignupFragment extends Fragment {
                         aPasswordConfirm.setText("");
                         aBirthday.setText("");
                         aMobilnr.setText("");
-                        navController.navigate(R.id.hovedsideFragment);
+                        navController.navigate(R.id.mainFragment);
                     }
 
                 } else {
-                    Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fyll ut feltene", Toast.LENGTH_SHORT).show();
                 }
             }
         });

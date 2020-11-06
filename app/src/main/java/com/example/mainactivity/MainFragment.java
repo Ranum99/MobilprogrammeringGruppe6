@@ -3,39 +3,34 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainFragment extends Fragment {
     public MainFragment() {}
 
+
     private TabLayout tablayout;
     private ViewPager2 viewPager;
-    private TabItem Hovedside, Gruppeinfo, Profil;
-    public PageAdapter pagerAdapter;
-    private Button LoggUt;
-    private TextView FamilyName, FamilyId;
-    private CardView Handleliste, Matplan, Bursdager, Kalender, Familiebobla, Onskeliste;
+    private PageAdapter pagerAdapter;
+    private Button loggut;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,62 +40,43 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final NavController navController = Navigation.findNavController(view);
 
-        tablayout = view.findViewById(R.id.tabLayoutMain);
-        LoggUt = view.findViewById(R.id.LoggUt);
-        viewPager = view.findViewById(R.id.ViewPagerMain);
+        // Initialize elements
+        tablayout = view.findViewById(R.id.tab_layout);
+        viewPager = view.findViewById(R.id.pager);
+        loggut = view.findViewById(R.id.LoggUtMain);
 
-        Hovedside = view.findViewById(R.id.goToMainMain);
-        Gruppeinfo  = view.findViewById(R.id.goToGruppeinformasjonMain);
-        Profil = view.findViewById(R.id.goToProfileMain);
-
-        FamilyName = view.findViewById(R.id.FamilyName);
-        FamilyId = view.findViewById(R.id.FamilyId);
-        Handleliste = view.findViewById(R.id.goToHandleliste);
-        Matplan = view.findViewById(R.id.goToMatplan);
-        Bursdager = view.findViewById(R.id.goToBursdager);
-        Kalender = view.findViewById(R.id.goToKalender);
-        Familiebobla = view.findViewById(R.id.goToFamiliebobla);
-        Onskeliste = view.findViewById(R.id.goToOnskeliste);
-
-        //viewPager.setAdapter(pagerAdapter);
-        //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
-        //pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tablayout.getTabCount());
-
-        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        //TabLayout
+        pagerAdapter = new PageAdapter(this);
+        viewPager.setAdapter(pagerAdapter);
+        new TabLayoutMediator(tablayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition() == 0) {
-                    pagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 1) {
-                    pagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 2) {
-                    pagerAdapter.notifyDataSetChanged();
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch(position) {
+                    case 0:
+                        tab.setText("Hovedside");
+                        break;
+                    case 1:
+                        tab.setText("GruppeInfo");
+                        break;
+                    case 2:
+                        tab.setText("Profil");
+                        break;
                 }
+
             }
+        }).attach();
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
+        //Logg ut
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
-        });
-
-
-
-        /*
-        Intent intent = requireActivity().getIntent();
-        String string = intent.getStringExtra("message");
-         */
-
-        LoggUt.setOnClickListener(new View.OnClickListener() {
+        loggut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Confirmation Popup!").
-                        setMessage("Are you sure that you want to logout?");
-                builder.setPositiveButton("Yes",
+                builder.setTitle("Nei, ikke gå!!!").
+                        setMessage("Er du sikker på at du vil logge ut?");
+                builder.setPositiveButton("Ja, jeg vil ut herifra!",
                         new DialogInterface.OnClickListener() {
                             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                             @Override
@@ -110,14 +86,10 @@ public class MainFragment extends Fragment {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();
                                 editor.apply();
-                                requireActivity().finish();
-
-                                Intent intent1 = new Intent(requireActivity().getApplicationContext(), LoginFragment.class);
-                                startActivity(intent1);
-
+                                navController.navigate(R.id.loginFragment);
                             }
                         });
-                builder.setNegativeButton("No",
+                builder.setNegativeButton("Nei, ta meg tilbake!",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -128,5 +100,10 @@ public class MainFragment extends Fragment {
                 alert1.show();
             }
         });
+
+
+
     }
+
+
 }

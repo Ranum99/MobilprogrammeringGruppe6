@@ -32,7 +32,7 @@
         app:layout_constraintGuide_percent="0.90591806" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/NyMatplan"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Ny matplan"

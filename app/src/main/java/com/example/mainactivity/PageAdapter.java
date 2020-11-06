@@ -1,40 +1,38 @@
 package com.example.mainactivity;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class PageAdapter extends FragmentPagerAdapter {
-
-    private int numoftabs;
-    public PageAdapter(@NonNull FragmentManager fm, int numOfTabs) {
-        super(fm);
-        this.numoftabs = numOfTabs;
+public class PageAdapter extends FragmentStateAdapter {
+    public PageAdapter(Fragment fragment) {
+        super(fragment);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
+
         switch (position) {
             case 0:
+                Log.d("createFragment", "returning hovedside");
                 return  new HovedsideFragment();
             case 1:
+                Log.d("createFragment", "returning gruppeinformasjon");
                 return new GruppeinformasjonFragment();
             case 2:
+                Log.d("createFragment", "returning profil");
                 return new ProfilFragment();
 
         }
+        Log.d("createFragment", "returning null");
         return null;
     }
 
     @Override
-    public int getCount() {
-        return numoftabs;
-    }
-
-    @Override
-    public int getItemPosition(@NonNull Object object) {
-        return POSITION_NONE;
+    public int getItemCount() {
+        return 3;
     }
 }
