@@ -128,6 +128,8 @@ public class Database extends SQLiteOpenHelper {
         values.put(COLUMN__USER_FROM, meID);
         values.put(COLUMN__USER_TO, otherUser.id);
 
+        System.out.println("New conversation (Database): " + meID + " - " + otherUser.id);
+
         return db.insert(TABLE_CONVERSATION, null, values);
     }
 

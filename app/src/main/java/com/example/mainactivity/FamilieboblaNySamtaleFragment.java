@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,7 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
     private Spinner spinner;
     private User selectedUser;
+    private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +40,8 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
         spinner = view.findViewById(R.id.users);
@@ -49,6 +55,7 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedUser = (User) parent.getItemAtPosition(position);
+                System.out.println(selectedUser);
             }
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
@@ -65,7 +72,14 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
     private void makeNewSamtale() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
-        long meme = database.makeNewConversation(meID, selectedUser);
+        long addToDatabase = database.makeNewConversation(meID, selectedUser);
+
+        if (addToDatabase >= 0) {
+            Toast.makeText(getContext(),"Made conversation with: " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
+            navController.navigateUp();
+        }
+
+        System.out.println("New conversation with: " + selectedUser);
     }
 
     private void addUsersToDropdown() {

@@ -18,12 +18,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,7 +29,8 @@ public class FamilieboblaFragment extends Fragment {
     FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
-    //View view;
+    private ArrayList<String> names, ids;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,16 +41,21 @@ public class FamilieboblaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //this.view = view;
-        setUpRecyclerView();
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
+        // Setting names and ids to global arrays
+        setNamesAndIds();
+
+        setUpRecyclerView();
+
+        // Go to new samtale
         Button nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
         nySamtale.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaNySamtaleFragment));
 
-        //setConversationBtns();
 
-        /*setListenerOnBtns();
+
+        // Setting listener to btns on site (To delete a conversation)
 
         search = view.findViewById(R.id.search);
         search.addTextChangedListener(new TextWatcher() {
@@ -63,61 +65,62 @@ public class FamilieboblaFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                showElements();
+                //showElements();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
-        });*/
+        });
     }
+
     private void setUpRecyclerView() {
         RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
-        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData()));
+        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names)));
 
         familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void setConversationBtns() {
+    private void setNamesAndIds() {
+        // Getting data from database table CONVERSATION
         Cursor data = database.getData(Database.TABLE_CONVERSATION);
 
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> ids = new ArrayList<>();
+
+        // Own id from session
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
-        System.out.println("ME: " + sharedPreferences.getString(User.NAME, null) + " (" + sharedPreferences.getString(User.ID, null) + ")");
-
         while(data.moveToNext()) {
-            int fromID = data.getColumnIndex(Database.COLUMN__USER_FROM);
-            int toID = data.getColumnIndex(Database.COLUMN__USER_TO);
+            int conversationID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN_ID)));
+            int fromID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN__USER_FROM)));
+            int toID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN__USER_TO)));
 
             if (fromID == meID || toID == meID) {
-
-                Cursor userFrom = database.getData(Database.TABLE_USER, fromID);
-                userFrom.moveToFirst();
-                String nameFrom = userFrom.getString(1);
-
-                Cursor userTo = database.getData(Database.TABLE_USER, toID);
-                userTo.moveToFirst();
-                String nameTo = userTo.getString(1);
-
+                // If I am person from set button name = person from
                 if (fromID == meID) {
-                    System.out.println("TO: " + nameTo + " (" + toID +")");
+                    // Getting name of user to
+                    Cursor userTo = database.getData(Database.TABLE_USER, toID);
+                    userTo.moveToFirst();
+                    String nameTo = userTo.getString(1);
+
+                    names.add(nameTo);
+                    ids.add(String.valueOf(conversationID));
                 }
                 if (toID == meID) {
-                    System.out.println("TO: " + nameFrom + " (" + fromID +")");
+                    // Getting name of user from
+                    Cursor userFrom = database.getData(Database.TABLE_USER, fromID);
+                    userFrom.moveToFirst();
+                    String nameFrom = userFrom.getString(1);
+
+                    names.add(nameFrom);
+                    ids.add(String.valueOf(conversationID));
                 }
             }
         }
-    }
 
-    private void setListenerOnBtns() {
-        ConstraintLayout elementWrapper = getActivity().findViewById(R.id.leggTilElementer);
-        final int children = elementWrapper.getChildCount();
-
-        for (int i = 0; i < children; i++) {
-            Button btn = (Button) elementWrapper.getChildAt(i);
-
-            //goToNewSiteListener(btn.getId(), FamilieboblaSamtale.class);
-        }
+        this.names = names;
+        this.ids = ids;
     }
 
     private void showElements() {

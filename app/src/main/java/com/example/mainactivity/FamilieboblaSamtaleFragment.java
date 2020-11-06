@@ -30,6 +30,8 @@ public class FamilieboblaSamtaleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
         samtaleTitle = view.findViewById(R.id.SamtaleBrukernavn);
         samtaleTitle.setText(userSamtale);
     }
@@ -38,7 +40,7 @@ public class FamilieboblaSamtaleFragment extends Fragment {
         this.userSamtaleId = userSamtaleId;
     }
 
-    public void setUserSamtale(String userSamtale) {
-        this.userSamtale = userSamtale;
+    public void setUserSamtale(FamilieboblaModel SamtaleToDisplay) {
+        this.userSamtale = SamtaleToDisplay.getNavn();
     }
 }
