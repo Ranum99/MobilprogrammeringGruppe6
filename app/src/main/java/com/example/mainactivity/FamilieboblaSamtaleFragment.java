@@ -16,8 +16,9 @@ public class FamilieboblaSamtaleFragment extends Fragment {
 
     public FamilieboblaSamtaleFragment() {}
 
-    private int userSamtaleId;
-    private String userSamtale;
+    private int samtaleId;
+    private String samtaleName;
+    private FamilieboblaAdapter familieboblaAdapter;
 
     private TextView samtaleTitle;
 
@@ -30,17 +31,24 @@ public class FamilieboblaSamtaleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        samtaleId = Integer.parseInt(getArguments().getString("samtaleId"));
+        samtaleName = getArguments().getString("samtaleName");
 
         samtaleTitle = view.findViewById(R.id.SamtaleBrukernavn);
-        samtaleTitle.setText(userSamtale);
+        samtaleTitle.setText(samtaleName);
+
+        setConversation(samtaleId);
     }
 
-    public void setUserSamtaleId(int userSamtaleId) {
-        this.userSamtaleId = userSamtaleId;
+    private void setConversation(int samtaleId) {
+
     }
 
-    public void setUserSamtale(FamilieboblaModel SamtaleToDisplay) {
-        this.userSamtale = SamtaleToDisplay.getNavn();
+    public void setSamtaleId(int samtaleId) {
+        this.samtaleId = samtaleId;
+    }
+
+    public void setSamtaleName(FamilieboblaModel SamtaleToDisplay) {
+        this.samtaleName = SamtaleToDisplay.getNavn();
     }
 }

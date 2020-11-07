@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
     @Override
     public FamilieboblaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         View itemView = inflater.inflate(R.layout.familiebobla_list_item, parent, false);
-        
+
         return new FamilieboblaViewHolder(itemView);
     }
 
@@ -50,6 +51,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
 
         viewHolder.setSamtale(SamtaleToDisplay);
         viewHolder.setDeleteOnSamtale(SamtaleToDisplay);
+        viewHolder.setClickOnSamtale(SamtaleToDisplay);
     }
 
     @Override
@@ -63,16 +65,20 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
         private ConstraintLayout card;
         private ImageButton delete;
 
-        public FamilieboblaViewHolder(@NonNull View itemView) {
+        public FamilieboblaViewHolder(@NonNull final View itemView) {
             super(itemView);
 
-            card = itemView.findViewById(R.id.cardID);
-            card.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment));
+
+
+
+            //card.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment));
 
 
             delete = itemView.findViewById(R.id.imageButton);
 
         }
+
+
 
         public void setSamtale(final FamilieboblaModel SamtaleToDisplay) {
             navn = itemView.findViewById(R.id.FamilieBoblaNameCardview);
@@ -117,6 +123,22 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
 
         public String getNavn() {
             return navn.getText().toString();
+        }
+
+        public void setClickOnSamtale(final FamilieboblaModel SamtaleToDisplay) {
+            card = itemView.findViewById(R.id.cardID);
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("samtaleId", SamtaleToDisplay.getIden());
+                    bundle.putString("samtaleName", SamtaleToDisplay.getNavn());
+
+
+                    Navigation.findNavController(card).navigate(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment, bundle);
+                    System.out.println("meme");
+                }
+            });
         }
     }
 

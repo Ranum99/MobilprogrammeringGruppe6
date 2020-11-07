@@ -24,7 +24,6 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 public class FamilieboblaFragment extends Fragment {
-    public FamilieboblaFragment() {}
     private EditText search;
     FamilieboblaSamtaleFragment fs;
     Database database;
