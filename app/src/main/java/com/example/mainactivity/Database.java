@@ -105,6 +105,14 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
+    public boolean deleteConversation(String conversationId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long result = db.delete(TABLE_CONVERSATION, COLUMN_ID + " = ?", new String[]{conversationId});
+
+        return result != -1;
+    }
+
     public boolean addUserToDatabase(String name, String email, String birthday, String mobilnr, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
