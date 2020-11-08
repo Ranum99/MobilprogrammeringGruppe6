@@ -42,13 +42,29 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_CONVERSATION = "Conversation";
     public static final String COLUMN__USER_FROM = "userFrom";
     public static final String COLUMN__USER_TO = "userTo";
+    public static final String COLUMN__CONVERSATION_NAME = "conversationName";
 
     // Lage tabellen CONVERSATION
     private static final String CREATE_TABLE_CONVERSATION = "CREATE TABLE " + TABLE_CONVERSATION +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__USER_FROM + " INTEGER, " +
-            COLUMN__USER_TO + " INTEGER " +
+            COLUMN__USER_TO + " INTEGER, " +
+            COLUMN__CONVERSATION_NAME + " TEXT " +
+            ")";
+
+
+    // Tabell WISHLIST
+    public static final String TABLE_WISHLIST = "Wishlist";
+    public static final String COLUMN__USER_WISHLIST = "userWithlist";
+    public static final String COLUMN__NAME_WISHLIST = "nameOfWishlist";
+
+    // Lage tabellen WISHLIST
+    private static final String CREATE_TABLE_WISHLIST = "CREATE TABLE " + TABLE_WISHLIST +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN__USER_WISHLIST + " INTEGER, " +
+            COLUMN__NAME_WISHLIST + " TEXT " +
             ")";
 
 
@@ -77,6 +93,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_CONVERSATION);
         db.execSQL(CREATE_TABLE_BIRTHDAY);
+        db.execSQL(CREATE_TABLE_WISHLIST);
     }
 
     @Override
@@ -84,6 +101,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
         onCreate(db);
     }
 
@@ -105,10 +123,21 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
-    public boolean deleteConversation(String conversationId) {
+    public boolean deleteRowFromTableById(String table, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        long result = db.delete(TABLE_CONVERSATION, COLUMN_ID + " = ?", new String[]{conversationId});
+        long result = db.delete(table, COLUMN_ID + " = ?", new String[]{id});
+
+        return result != -1;
+    }
+
+    public boolean addWishlistToUser(int userId, String whislistName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN__USER_WISHLIST, userId);
+        contentValues.put(COLUMN__NAME_WISHLIST, whislistName);
+
+        long result = db.insert(TABLE_WISHLIST, null, contentValues);
 
         return result != -1;
     }
@@ -129,14 +158,15 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public long makeNewConversation(int meID, User otherUser) {
+    public long makeNewConversation(int meID, User otherUser, String conversationName) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(COLUMN__USER_FROM, meID);
         values.put(COLUMN__USER_TO, otherUser.id);
+        values.put(COLUMN__CONVERSATION_NAME, conversationName);
 
-        System.out.println("New conversation (Database): " + meID + " - " + otherUser.id);
+        System.out.println("New conversation (Database): " + meID + " - " + otherUser.id + " named: " + conversationName);
 
         return db.insert(TABLE_CONVERSATION, null, values);
     }

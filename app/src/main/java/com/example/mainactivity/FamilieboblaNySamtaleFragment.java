@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     private Spinner spinner;
     private User selectedUser;
     private NavController navController;
+    private TextView conversationName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         database = new Database(getActivity());
         spinner = view.findViewById(R.id.users);
         Button addSamtale = view.findViewById(R.id.lagSamtale);
+        conversationName = view.findViewById(R.id.conversationName);
 
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
@@ -72,10 +75,15 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
     private void makeNewSamtale() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
-        long addToDatabase = database.makeNewConversation(meID, selectedUser);
+
+        long addToDatabase = -1;
+
+
+        if (!conversationName.getText().toString().isEmpty())
+            addToDatabase = database.makeNewConversation(meID, selectedUser, conversationName.getText().toString());
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Made conversation with: " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Made conversation with: " + selectedUser.getName() + ", named: " + conversationName.getText(), Toast.LENGTH_SHORT).show();
             navController.navigateUp();
         }
 

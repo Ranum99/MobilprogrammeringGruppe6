@@ -3,7 +3,6 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +35,13 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
         this.contexten = context;
     }
 
+
+    private void removeItem(int position) {
+        SamtaleListe.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, SamtaleListe.size());
+    }
+
     @NonNull
     @Override
     public FamilieboblaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
@@ -50,7 +55,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
         SamtaleToDisplay = SamtaleListe.get(position);
 
         viewHolder.setSamtale(SamtaleToDisplay);
-        viewHolder.setDeleteOnSamtale(SamtaleToDisplay);
+        viewHolder.setDeleteOnSamtale(SamtaleToDisplay, position);
         viewHolder.setClickOnSamtale(SamtaleToDisplay);
     }
 
@@ -61,31 +66,25 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
 
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView navn, dato, mobil, aar;
+        private TextView navn;
         private ConstraintLayout card;
         private ImageButton delete;
 
         public FamilieboblaViewHolder(@NonNull final View itemView) {
             super(itemView);
 
-
-
-
-            //card.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment));
-
-
-            delete = itemView.findViewById(R.id.imageButton);
-
         }
-
 
 
         public void setSamtale(final FamilieboblaModel SamtaleToDisplay) {
             navn = itemView.findViewById(R.id.FamilieBoblaNameCardview);
-            navn.setText(SamtaleToDisplay.getNavn());
+
+            String text = SamtaleToDisplay.getSamtaleName() + " (" + SamtaleToDisplay.getNavn() + ")";
+
+            navn.setText(text);
         }
 
-        public void setDeleteOnSamtale(final FamilieboblaModel SamtaleToDisplay) {
+        public void setDeleteOnSamtale(final FamilieboblaModel SamtaleToDisplay, final int position) {
             delete = itemView.findViewById(R.id.imageButton);
             View.OnClickListener nene = new View.OnClickListener() {
                 @Override
@@ -100,7 +99,8 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Sletter samtalen
                                     database = new Database(contexten);
-                                    database.deleteConversation(SamtaleToDisplay.getIden());
+                                    database.deleteRowFromTableById(Database.TABLE_CONVERSATION ,SamtaleToDisplay.getIden());
+                                    removeItem(position);
                                     System.out.println("Samtalen er slettet");
                                 }
                             });
@@ -121,10 +121,6 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
             delete.setOnClickListener(nene);
         }
 
-        public String getNavn() {
-            return navn.getText().toString();
-        }
-
         public void setClickOnSamtale(final FamilieboblaModel SamtaleToDisplay) {
             card = itemView.findViewById(R.id.cardID);
             card.setOnClickListener(new View.OnClickListener() {
@@ -132,13 +128,18 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putString("samtaleId", SamtaleToDisplay.getIden());
-                    bundle.putString("samtaleName", SamtaleToDisplay.getNavn());
+                    bundle.putString("samtaleTo", SamtaleToDisplay.getNavn());
+                    bundle.putString("samtaleName", SamtaleToDisplay.getSamtaleName());
 
 
                     Navigation.findNavController(card).navigate(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment, bundle);
                     System.out.println("meme");
                 }
             });
+        }
+
+        public String getNavn() {
+            return navn.getText().toString();
         }
     }
 

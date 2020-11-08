@@ -28,7 +28,7 @@ public class FamilieboblaFragment extends Fragment {
     FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
-    private ArrayList<String> names, ids;
+    private ArrayList<String> names, ids, samtaleNames;
 
 
     @Override
@@ -75,7 +75,7 @@ public class FamilieboblaFragment extends Fragment {
 
     private void setUpRecyclerView() {
         RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
-        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names)));
+        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names, samtaleNames)));
 
         familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -86,6 +86,7 @@ public class FamilieboblaFragment extends Fragment {
 
         ArrayList<String> names = new ArrayList<>();
         ArrayList<String> ids = new ArrayList<>();
+        ArrayList<String> samtaleNames = new ArrayList<>();
 
         // Own id from session
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
@@ -94,6 +95,7 @@ public class FamilieboblaFragment extends Fragment {
             int conversationID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN_ID)));
             int fromID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN__USER_FROM)));
             int toID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN__USER_TO)));
+            String samtaleName = data.getString(data.getColumnIndex(Database.COLUMN__CONVERSATION_NAME));
 
             if (fromID == meID || toID == meID) {
                 // If I am person from set button name = person from
@@ -105,6 +107,7 @@ public class FamilieboblaFragment extends Fragment {
 
                     names.add(nameTo);
                     ids.add(String.valueOf(conversationID));
+                    samtaleNames.add(samtaleName);
                 }
                 if (toID == meID) {
                     // Getting name of user from
@@ -114,13 +117,17 @@ public class FamilieboblaFragment extends Fragment {
 
                     names.add(nameFrom);
                     ids.add(String.valueOf(conversationID));
+                    samtaleNames.add(samtaleName);
                 }
             }
         }
 
         this.names = names;
         this.ids = ids;
+        this.samtaleNames = samtaleNames;
     }
+
+
 
     private void showElements() {
         ConstraintLayout elementWraper = getActivity().findViewById(R.id.leggTilElementer);
