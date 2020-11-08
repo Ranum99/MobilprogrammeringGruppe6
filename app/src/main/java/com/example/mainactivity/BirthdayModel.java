@@ -1,9 +1,6 @@
 package com.example.mainactivity;
 
-import android.content.SharedPreferences;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
 public class BirthdayModel extends AppCompatActivity {
@@ -11,7 +8,7 @@ public class BirthdayModel extends AppCompatActivity {
     private String navn, dato, mobil;
 
 
-    public BirthdayModel(int i, String navn, String dato, String mobil) {
+    public BirthdayModel(String navn, String dato, String mobil) {
         this.navn = navn;
         this.dato = dato;
         this.mobil = mobil;
@@ -41,21 +38,16 @@ public class BirthdayModel extends AppCompatActivity {
         this.mobil = mobil;
     }
 
-    public static ArrayList<BirthdayModel> getData() {
-        SharedPreferences sharedPreferences;
+    public static ArrayList<BirthdayModel> getData(ArrayList<String> navn, ArrayList <String> mobil, ArrayList<String> dato) {
         ArrayList<BirthdayModel> data = new ArrayList<>();
-        //sharedPreferences = getSharedPreferences(User.SESSION, MODE_PRIVATE);
 
-        String[] navn = {"Emilie"};
-        String[] mobil = {"12345678"};
-        String[] dato = {"06011998"};
-
-        for(int i = 0; i < navn.length; i++) {
-            BirthdayModel enBursdag = new BirthdayModel(i, navn[i], mobil[i], dato[i]);
+        for(int i = 0; i < navn.size(); i++) {
+            BirthdayModel enBursdag = new BirthdayModel(navn.get(i), mobil.get(i), dato.get(i));
             data.add(enBursdag);
         }
 
         return data;
+
     }
 
 }

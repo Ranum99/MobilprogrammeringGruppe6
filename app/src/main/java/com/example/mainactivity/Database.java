@@ -69,10 +69,10 @@ public class Database extends SQLiteOpenHelper {
 
 
     // Tabell BIRTHDAY m/ kolonner
-    private static final String TABLE_BIRTHDAY = "Bursdag";
-    private static final String COLUMN_NAME_BIRTHDAY = "Navn";
-    private static final String COLUMN_PHONENUMBER_BIRTHDAY = "Mobilnummer";
-    private static final String COLUMN_BIRTHDAY_DATE = "Dato";
+    public static final String TABLE_BIRTHDAY = "Bursdag";
+    public static final String COLUMN_NAME_BIRTHDAY = "Navn";
+    public static final String COLUMN_PHONENUMBER_BIRTHDAY = "Mobilnummer";
+    public static final String COLUMN_BIRTHDAY_DATE = "Dato";
 
     // Lage tabellen BIRTHDAY
     private static final String CREATE_TABLE_BIRTHDAY = "CREATE TABLE " + TABLE_BIRTHDAY +

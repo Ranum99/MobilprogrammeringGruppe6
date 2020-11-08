@@ -46,7 +46,6 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
     @Override
     public FamilieboblaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         View itemView = inflater.inflate(R.layout.familiebobla_list_item, parent, false);
-
         return new FamilieboblaViewHolder(itemView);
     }
 
@@ -63,6 +62,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
     public int getItemCount() {
         return SamtaleListe.size();
     }
+
 
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
 
