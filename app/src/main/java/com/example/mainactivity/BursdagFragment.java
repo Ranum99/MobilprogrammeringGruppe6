@@ -27,7 +27,9 @@ public class BursdagFragment extends Fragment {
     private Button NyBursdag;
     Database database;
     SharedPreferences sharedPreferences;
-    private ArrayList<String> navn, mobil, dato;
+    private ArrayList<String> navn = new ArrayList<>();
+    private ArrayList<String> mobil = new ArrayList<>();
+    private ArrayList<String> dato = new ArrayList<>();
 
 
     @Override
@@ -59,16 +61,19 @@ public class BursdagFragment extends Fragment {
     private void setInfo() {
         Cursor data = database.getData(Database.TABLE_BIRTHDAY);
 
-        ArrayList<String> navn = new ArrayList<>();
-        ArrayList<String> mobil = new ArrayList<>();
-        ArrayList<String> dato = new ArrayList<>();
-
         while(data.moveToNext()) {
-
-            navn.add(Database.COLUMN_NAME_BIRTHDAY);
-            dato.add(Database.COLUMN_BIRTHDAY_DATE);
-            mobil.add(Database.COLUMN_PHONENUMBER_BIRTHDAY);
+            String navnet = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
+            String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
+            String mobilnummeret = data.getString(data.getColumnIndex(Database.COLUMN_PHONENUMBER_BIRTHDAY));
+            System.out.println(Database.COLUMN_NAME_BIRTHDAY);
+            navn.add(navnet);
+            dato.add(datoen);
+            mobil.add(mobilnummeret);
         }
+
+        this.navn = navn;
+        this.dato = dato;
+        this.mobil = mobil;
     }
 
     private void setUpRecyclerView() {

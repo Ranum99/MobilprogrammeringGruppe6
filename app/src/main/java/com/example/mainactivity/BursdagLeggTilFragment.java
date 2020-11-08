@@ -68,7 +68,7 @@ public class BursdagLeggTilFragment extends Fragment {
         avbryt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.bursdagFragment);
+                navController.navigateUp();
             }
         });
 

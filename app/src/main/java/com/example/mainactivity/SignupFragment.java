@@ -77,8 +77,9 @@ public class SignupFragment extends Fragment {
 
     public boolean AddUser(String name, String email, String birthday, String mobilnr, String password) {
         boolean insertData = database.addUserToDatabase(name, email, birthday, mobilnr, password);
+        boolean insertBursdag = database.addUserToDatabaseBIRTHDAY(name, mobilnr, birthday);
 
-        if (insertData) {
+        if (insertData && insertBursdag) {
             Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
             return true;
         }

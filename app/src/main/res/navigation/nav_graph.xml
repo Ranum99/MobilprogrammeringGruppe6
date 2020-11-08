@@ -174,7 +174,8 @@
         android:id="@+id/mainFragment"
         android:name="com.example.mainactivity.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main"
+        app:startDestination="@id/action_mainFragment_to_profilRedigerFragment">
         <action
             android:id="@+id/action_mainFragment_to_bursdagFragment"
             app:destination="@id/bursdagFragment" />
