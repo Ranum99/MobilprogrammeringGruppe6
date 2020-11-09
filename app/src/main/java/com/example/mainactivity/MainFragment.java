@@ -31,6 +31,7 @@ public class MainFragment extends Fragment {
     private ViewPager2 viewPager;
     private PageAdapter pagerAdapter;
     private Button loggut;
+    private TextView familyName, familyId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +47,14 @@ public class MainFragment extends Fragment {
         tablayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.pager);
         loggut = view.findViewById(R.id.LoggUtMain);
+        familyName = view.findViewById(R.id.FamilyNameMain);
+        familyId = view.findViewById(R.id.FamilyIdMain);
+
+        if (!getArguments().getString("familieName").isEmpty())
+            familyName.setText(getArguments().getString("familieName"));
+
+        if (!getArguments().getString("familieID").isEmpty())
+            familyId.setText(getArguments().getString("familieID"));
 
         //TabLayout
         pagerAdapter = new PageAdapter(this);

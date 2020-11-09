@@ -1,6 +1,9 @@
 package com.example.mainactivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +24,7 @@ public class SignupFragment extends Fragment {
 
     Database database;
     User user;
+    SharedPreferences sharedPreferences;
 
     private EditText aName, anEmail, aPassword, aPasswordConfirm, aBirthday, aMobilnr;
     private Button registrerBruker;
@@ -36,6 +40,8 @@ public class SignupFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+
+        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
         aName = view.findViewById(R.id.SignupNavnInput);
@@ -59,13 +65,41 @@ public class SignupFragment extends Fragment {
 
                 if (validUserInfo(name, email, birthday, mobilnr, password, passwordConfirm)) {
                     if (AddUser(name, email, birthday , mobilnr, password)) {
+                        // Setter session
+                        Cursor data = database.getIdOfUserData(email);
+
+
+
+                        String idTilBruker = "1";
+
+                        while(data.moveToNext()) {
+                            System.out.println("ID of user: " + data.getString(data.getColumnIndex(Database.COLUMN_ID)));
+                            idTilBruker = data.getString(data.getColumnIndex(Database.COLUMN_ID));
+                        }
+
+                        System.out.println("ID: " + idTilBruker);
+                        System.out.println("NAME: " + name);
+                        System.out.println("EMAIL: " + email);
+                        System.out.println("BIRTHDAY: " + birthday);
+                        System.out.println("MOBILNR: " + mobilnr);
+                        System.out.println("PASSWORD: " + password);
+
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(User.ID, idTilBruker);
+                        editor.putString(User.NAME, name);
+                        editor.putString(User.EMAIL, email);
+                        editor.putString(User.BIRTHDAY, birthday);
+                        editor.putString(User.MOBILNR, mobilnr);
+                        editor.apply();
+
                         aName.setText("");
                         anEmail.setText("");
                         aPassword.setText("");
                         aPasswordConfirm.setText("");
                         aBirthday.setText("");
                         aMobilnr.setText("");
-                        navController.navigate(R.id.mainFragment);
+
+                        navController.navigate(R.id.familieFragment);
                     }
 
                 } else {

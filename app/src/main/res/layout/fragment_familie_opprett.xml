@@ -8,28 +8,35 @@
 
 
     <TextView
+        android:id="@+id/textView8"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Familienavn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView6"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="24dp"
         android:text="@string/opprettPassord"
-        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieOpprettPassor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieOpprettNavn"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettNavn"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettNavn" />
 
     <EditText
-        android:id="@+id/OpprettFamilieOpprettPassor"
+        android:id="@+id/OpprettFamilieOpprettPassord"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Opprett Passord"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -37,24 +44,23 @@
     <TextView
         android:id="@+id/textView7"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="24dp"
         android:text="Gjenta passord"
-        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieGjentaPassord"
-        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettPassor"
-        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettPassor" />
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieOpprettPassord"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettPassord"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettPassord" />
 
     <EditText
         android:id="@+id/OpprettFamilieGjentaPassord"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Gjenta passord"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -62,9 +68,9 @@
         android:id="@+id/OpprettFamilieBtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:text="Opprett Familie"
-        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieAvbryt"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieGjentaPassord"
         app:layout_constraintStart_toStartOf="@+id/OpprettFamilieGjentaPassord"
         app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieGjentaPassord" />
 
@@ -72,9 +78,21 @@
         android:id="@+id/OpprettFamilieAvbryt"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Avbryt"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieBtn"
         app:layout_constraintStart_toStartOf="@+id/OpprettFamilieBtn"
-        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieBtn"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieBtn" />
+
+    <EditText
+        android:id="@+id/OpprettFamilieOpprettNavn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Familienavn"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

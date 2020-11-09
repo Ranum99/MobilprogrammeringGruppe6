@@ -25,6 +25,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String COLUMN_BIRTHDAY = "birthday";
     private static final String COLUMN_MOBILNR = "mobilnr";
     private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_FAMILY = "family";
 
     // Lage tabellen USER
     private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER +
@@ -34,7 +35,22 @@ public class Database extends SQLiteOpenHelper {
                 COLUMN_EMAIL + " TEXT, " +
                 COLUMN_BIRTHDAY + " TEXT, " +
                 COLUMN_MOBILNR + " TEXT, " +
-                COLUMN_PASSWORD + " TEXT " +
+                COLUMN_PASSWORD + " TEXT, " +
+                COLUMN_FAMILY + " INTEGER " +
+            ")";
+
+    // Tabell FAMILY m/ kolonner
+    public static final String TABLE_FAMILY = "family";
+    public static final String COLUMN_FAMILY_NAME = "familyName";
+    private static final String COLUMN_FAMILY_PASSWORD = "password";
+
+    // Lage tabellen FAMILY
+    private static final String CREATE_TABLE_FAMILY = " CREATE TABLE " + TABLE_FAMILY +
+            "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_FAMILY_NAME + " TEXT, " +
+                COLUMN_FAMILY_PASSWORD + " TEXT " +
+                // MÅ SETTEE AT DEN SOM OPPRETTER BLIR ADMIN
             ")";
 
 
@@ -94,6 +110,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CONVERSATION);
         db.execSQL(CREATE_TABLE_BIRTHDAY);
         db.execSQL(CREATE_TABLE_WISHLIST);
+        db.execSQL(CREATE_TABLE_FAMILY);
     }
 
     @Override
@@ -102,6 +119,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FAMILY);
         onCreate(db);
     }
 
@@ -109,6 +127,13 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_USER;
         return db.rawQuery(query, null);
+    }
+
+    public Cursor getIdOfUserData(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_USER +
+                        " WHERE " + COLUMN_EMAIL + " = ?";
+        return db.rawQuery(query, new String[]{email});
     }
 
     public Cursor getData(String table) {
@@ -142,6 +167,16 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public boolean updateUserFamily(int userId, int familyId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_FAMILY, familyId);
+
+        long result = db.update(TABLE_USER, contentValues, COLUMN_ID + " = " + userId, null);
+
+        return result != -1;
+    }
+
     public boolean addUserToDatabase(String name, String email, String birthday, String mobilnr, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -154,6 +189,19 @@ public class Database extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Adding " + name + ", " + email + ", " + birthday + ", " + mobilnr + ", " + password + ", " + " to " + TABLE_USER);
 
         long result = db.insert(TABLE_USER, null, contentValues);
+
+        return result != -1;
+    }
+
+    public boolean addFamilyToDatabase(String name, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_FAMILY_NAME, name);
+        contentValues.put(COLUMN_FAMILY_PASSWORD, password);
+
+        Log.d(TAG, "addData: Adding " + name + ", " + password + ", " + " to " + TABLE_FAMILY);
+
+        long result = db.insert(TABLE_FAMILY, null, contentValues);
 
         return result != -1;
     }
