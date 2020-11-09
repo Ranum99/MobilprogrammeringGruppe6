@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FamilieOpprettFragment">
+
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/opprettPassord"
+        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieOpprettPassor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/OpprettFamilieOpprettPassor"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Opprett Passord"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Gjenta passord"
+        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieGjentaPassord"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettPassor"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettPassor" />
+
+    <EditText
+        android:id="@+id/OpprettFamilieGjentaPassord"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Gjenta passord"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Button
+        android:id="@+id/OpprettFamilieBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Opprett Familie"
+        app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieAvbryt"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieGjentaPassord"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieGjentaPassord" />
+
+    <Button
+        android:id="@+id/OpprettFamilieAvbryt"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Avbryt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintVertical_chainStyle="packed" />
+</androidx.constraintlayout.widget.ConstraintLayout>

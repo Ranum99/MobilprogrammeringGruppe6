@@ -26,8 +26,8 @@
             android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_signupFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_signupFragment_to_familieFragment"
+            app:destination="@id/familieFragment" />
     </fragment>
     <fragment
         android:id="@+id/bursdagFragment"
@@ -194,5 +194,35 @@
         <action
             android:id="@+id/action_mainFragment_to_profilRedigerFragment"
             app:destination="@id/profilRedigerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/familieFragment"
+        android:name="com.example.mainactivity.FamilieFragment"
+        android:label="fragment_familie"
+        tools:layout="@layout/fragment_familie" >
+        <action
+            android:id="@+id/action_familieFragment_to_familieOpprettFragment"
+            app:destination="@id/familieOpprettFragment" />
+        <action
+            android:id="@+id/action_familieFragment_to_familieBliMedlemFragment"
+            app:destination="@id/familieBliMedlemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/familieBliMedlemFragment"
+        android:name="com.example.mainactivity.FamilieBliMedlemFragment"
+        android:label="fragment_familie_bli_medlem"
+        tools:layout="@layout/fragment_familie_bli_medlem" >
+        <action
+            android:id="@+id/action_familieBliMedlemFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/familieOpprettFragment"
+        android:name="com.example.mainactivity.FamilieOpprettFragment"
+        android:label="fragment_familie_opprett"
+        tools:layout="@layout/fragment_familie_opprett" >
+        <action
+            android:id="@+id/action_familieOpprettFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>
