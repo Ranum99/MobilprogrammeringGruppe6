@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
                     if (LoginUser(emailen, passordet)) {
                         email.setText("");
                         password.setText("");
-                        
+
 
                         if (sharedPreferences.getString(User.FAMILIE, null) == null)
                             Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
