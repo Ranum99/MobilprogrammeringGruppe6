@@ -52,12 +52,14 @@ public class FamilieOpprettFragment extends Fragment {
             public void onClick(View v) {
                 if (passord.getText().toString().equals(passordIgjen.getText().toString())) {
                     database.addFamilyToDatabase(navn.getText().toString(), passord.getText().toString());
+                                                                                                                            // MÅ FINNE ID ORDENTLIG
                     database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), 1);
                     Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
 
 
                     Bundle bundle = new Bundle();
                     bundle.putString("familieName", navn.getText().toString());
+                    // MÅ SENDE MED RIKTIG ID, MEN HVORDAN????
                     bundle.putString("familieID", "1");
 
                     Navigation.findNavController(opprettFamilie).navigate(R.id.action_familieOpprettFragment_to_mainFragment, bundle);

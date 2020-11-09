@@ -11,6 +11,7 @@ public class User {
     public static final String EMAIL = "email";
     public static final String BIRTHDAY = "birthday";
     public static final String MOBILNR = "mobilnr";
+    public static final String FAMILIE = "family";
 
     public User(int id, int mobilnr, String name, String email, String password, String birthday) {
         this.id = id;

@@ -51,10 +51,10 @@ public class MainFragment extends Fragment {
         familyId = view.findViewById(R.id.FamilyIdMain);
 
         if (!getArguments().getString("familieName").isEmpty())
-            familyName.setText(getArguments().getString("familieName"));
+            familyName.setText("Familien: " + getArguments().getString("familieName"));
 
         if (!getArguments().getString("familieID").isEmpty())
-            familyId.setText(getArguments().getString("familieID"));
+            familyId.setText("Familie-ID: " +getArguments().getString("familieID"));
 
         //TabLayout
         pagerAdapter = new PageAdapter(this);

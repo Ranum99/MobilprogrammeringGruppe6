@@ -23,6 +23,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class LoginFragment extends Fragment {
     public LoginFragment() {}
 
@@ -70,7 +72,12 @@ public class LoginFragment extends Fragment {
                     if (LoginUser(emailen, passordet)) {
                         email.setText("");
                         password.setText("");
-                        navController.navigate(R.id.mainFragment);
+                        
+
+                        if (sharedPreferences.getString(User.FAMILIE, null) == null)
+                            Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
+                        else
+                            navController.navigate(R.id.mainFragment);
                     }
                 } else
                     Toast.makeText(getActivity(), "Du må fylle ut alle feltene", Toast.LENGTH_SHORT).show();
@@ -91,6 +98,7 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.EMAIL, data.getString(2));
                 editor.putString(User.BIRTHDAY, data.getString(3));
                 editor.putString(User.MOBILNR, data.getString(4));
+                editor.putString(User.FAMILIE, data.getString(6));
                 editor.apply();
 
                 return true;
