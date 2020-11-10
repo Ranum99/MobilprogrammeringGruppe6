@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -32,6 +33,8 @@ public class MainFragment extends Fragment {
     private PageAdapter pagerAdapter;
     private Button loggut;
     private TextView familyName, familyId;
+    SharedPreferences sharedPreferences;
+    Database database;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+        database = new Database(getActivity());
+        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         // Initialize elements
         tablayout = view.findViewById(R.id.tab_layout);
@@ -50,13 +55,10 @@ public class MainFragment extends Fragment {
         familyName = view.findViewById(R.id.FamilyNameMain);
         familyId = view.findViewById(R.id.FamilyIdMain);
 
+        String familieNavnet = getFamilyName();
 
-        // DENNE FUNKER BARE HVIS MAN KOMMER FRA OPPRETT FAMILIE
-        /*if (!getArguments().containsKey("familieName"))
-            familyName.setText("Familien: " + getArguments().getString("familieName"));
-
-        if (!getArguments().containsKey("familieID"))
-            familyId.setText("Familie-ID: " +getArguments().getString("familieID"));*/
+        familyName.setText(familieNavnet);
+        familyId.setText("Familie-ID: " + sharedPreferences.getString(User.FAMILIE, null));
 
         //TabLayout
         pagerAdapter = new PageAdapter(this);
@@ -111,9 +113,15 @@ public class MainFragment extends Fragment {
                 alert1.show();
             }
         });
+    }
 
-
-
+    private String getFamilyName() {
+        String name = "";
+        Cursor familieNavnetQuery = database.getData(Database.TABLE_FAMILY, Integer.parseInt(sharedPreferences.getString(User.FAMILIE, null)));
+        while(familieNavnetQuery.moveToNext()) {
+            name = familieNavnetQuery.getString(1);
+        }
+        return name;
     }
 
 

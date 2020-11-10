@@ -2,6 +2,7 @@ package com.example.mainactivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -51,18 +52,29 @@ public class FamilieOpprettFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (passord.getText().toString().equals(passordIgjen.getText().toString())) {
-                    database.addFamilyToDatabase(navn.getText().toString(), passord.getText().toString());
-                                                                                                                            // MÅ FINNE ID ORDENTLIG
-                    database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), 1);
+                    database.addFamilyToDatabase(navn.getText().toString(), passord.getText().toString(), Integer.parseInt(sharedPreferences.getString(User.ID, null)));
+
+                    Cursor familyIdQuery = database.getFamilyIdByLastRow();
+
+                    int familyID = 1;
+
+                    while(familyIdQuery.moveToNext()) {
+                        familyID = Integer.parseInt(familyIdQuery.getString(0));
+                    }
+
+                    database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), familyID);
+
+                    // Setting session family to familyID
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(User.FAMILIE, String.valueOf(familyID));
+                    editor.apply();
+
                     Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
 
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString("familieName", navn.getText().toString());
-                    // MÅ SENDE MED RIKTIG ID, MEN HVORDAN????
-                    bundle.putString("familieID", "1");
 
-                    Navigation.findNavController(opprettFamilie).navigate(R.id.action_familieOpprettFragment_to_mainFragment, bundle);
+
+                    Navigation.findNavController(opprettFamilie).navigate(R.id.action_familieOpprettFragment_to_mainFragment);
                 } else
                     Toast.makeText(getActivity(), "Passordene må være like", Toast.LENGTH_SHORT).show();
             }

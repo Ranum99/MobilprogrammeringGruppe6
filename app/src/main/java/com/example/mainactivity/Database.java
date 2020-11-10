@@ -43,14 +43,15 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_FAMILY = "family";
     public static final String COLUMN_FAMILY_NAME = "familyName";
     private static final String COLUMN_FAMILY_PASSWORD = "password";
+    private static final String COLUMN_FAMILY_ADMIN_ID = "adminID";
 
     // Lage tabellen FAMILY
     private static final String CREATE_TABLE_FAMILY = " CREATE TABLE " + TABLE_FAMILY +
             "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_FAMILY_NAME + " TEXT, " +
-                COLUMN_FAMILY_PASSWORD + " TEXT " +
-                // MÅ SETTEE AT DEN SOM OPPRETTER BLIR ADMIN
+                COLUMN_FAMILY_PASSWORD + " TEXT, " +
+                COLUMN_FAMILY_ADMIN_ID + " INTEGER " +
             ")";
 
 
@@ -193,17 +194,24 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean addFamilyToDatabase(String name, String password) {
+    public boolean addFamilyToDatabase(String name, String password, int userId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_FAMILY_NAME, name);
         contentValues.put(COLUMN_FAMILY_PASSWORD, password);
+        contentValues.put(COLUMN_FAMILY_ADMIN_ID, userId);
 
-        Log.d(TAG, "addData: Adding " + name + ", " + password + ", " + " to " + TABLE_FAMILY);
+        Log.d(TAG, "addData: Adding " + name + ", " + password + ", admin: " + userId + ", to " + TABLE_FAMILY);
 
         long result = db.insert(TABLE_FAMILY, null, contentValues);
 
         return result != -1;
+    }
+
+    public Cursor getFamilyIdByLastRow() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
+        return db.rawQuery(query, null);
     }
 
     public long makeNewConversation(int meID, User otherUser, String conversationName) {
