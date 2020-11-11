@@ -56,7 +56,7 @@ public class BursdagLeggTilFragment extends Fragment {
                         FullName.setText("");
                         Birthday.setText("");
                         PhoneNumber.setText("");
-                        navController.navigate(R.id.bursdagFragment);
+                        navController.navigateUp();
                     }
 
                 } else {

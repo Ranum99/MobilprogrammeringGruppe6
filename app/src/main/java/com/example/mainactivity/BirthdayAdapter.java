@@ -52,7 +52,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
         viewHolder.setBirthday(birthdayToDisplay, position);
         viewHolder.setDelete(birthdayToDisplay, position);
-        //viewHolder.setOnClickBursdag(birthdayToDisplay, position);
     }
 
     @Override
@@ -90,7 +89,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Slett bursdag")
-                            .setMessage("Er du sikker på at du vil slette denne bursdagen");
+                            .setMessage("Er du sikker på at du vil slette denne bursdagen?");
                     builder.setPositiveButton("Ja",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -118,23 +117,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             delete.setOnClickListener(deleteBursdag);
         }
 
-        /*public void setOnClickBursdag(final BirthdayModel birthdayToDisplay, int position) {
-            card = itemView.findViewById(R.id.cardBursdag);
-            card.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("Navn", birthdayToDisplay.getNavn());
-                    bundle.putString("Dato", birthdayToDisplay.getDato());
-                    bundle.putString("mobil", birthdayToDisplay.getMobil());
-
-
-                    Navigation.findNavController(card).navigate(R.id.bursdagLeggTilFragment, bundle);
-                }
-            });
-        }
-
-         */
     }
 
 }

@@ -41,7 +41,7 @@ public class BirthdayModel extends AppCompatActivity {
     public static ArrayList<BirthdayModel> getData(ArrayList<String> navn, ArrayList <String> mobil, ArrayList<String> dato) {
         ArrayList<BirthdayModel> data = new ArrayList<>();
 
-
+        data.clear();
         for(int i = 0; i < navn.size(); i++) {
             BirthdayModel enBursdag = new BirthdayModel(navn.get(i), mobil.get(i), dato.get(i));
             data.add(enBursdag);

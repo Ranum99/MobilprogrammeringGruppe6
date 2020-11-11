@@ -58,6 +58,7 @@ public class BursdagFragment extends Fragment {
 
     }
 
+
     private void setInfo() {
         Cursor data = database.getData(Database.TABLE_BIRTHDAY);
 
