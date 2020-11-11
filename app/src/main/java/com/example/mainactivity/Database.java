@@ -168,7 +168,7 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean updateUserFamily(int userId, int familyId) {
+    public boolean updateUserFamily(int userId, Integer familyId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_FAMILY, familyId);
@@ -278,5 +278,13 @@ public class Database extends SQLiteOpenHelper {
 
         long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
         return result != -1;
+    }
+
+    public Cursor checkIfUserIsAdminOfFamily(String familyID, String userID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY +
+                       " WHERE " + COLUMN_ID + " = " + familyID +
+                       " AND " + COLUMN_FAMILY_ADMIN_ID + " = " + userID;
+        return db.rawQuery(query, null);
     }
 }
