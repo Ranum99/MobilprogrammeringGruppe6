@@ -208,6 +208,14 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public Cursor sjekkOmFamilieEksisterer(String familyID, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY +
+                       " WHERE " + COLUMN_ID + " = " + familyID +
+                       " AND " + COLUMN_FAMILY_PASSWORD + " = " + password;
+        return db.rawQuery(query, null);
+    }
+
     public Cursor getFamilyIdByLastRow() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_FAMILY  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
