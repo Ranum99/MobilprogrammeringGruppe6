@@ -178,6 +178,16 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public boolean updateFamilyName(int familyId, String newFamilyName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_FAMILY_NAME, newFamilyName);
+
+        long result = db.update(TABLE_FAMILY, contentValues, COLUMN_ID + " = " + familyId, null);
+
+        return result != -1;
+    }
+
     public boolean addUserToDatabase(String name, String email, String birthday, String mobilnr, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
