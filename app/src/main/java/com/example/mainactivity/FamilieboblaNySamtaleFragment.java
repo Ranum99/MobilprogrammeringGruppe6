@@ -33,6 +33,7 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     private User selectedUser;
     private NavController navController;
     private TextView conversationName;
+    private Button addSamtale;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,11 +47,12 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
-        spinner = view.findViewById(R.id.users);
-        Button addSamtale = view.findViewById(R.id.lagSamtale);
-        conversationName = view.findViewById(R.id.conversationName);
-
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+
+        spinner = view.findViewById(R.id.users);
+        addSamtale = view.findViewById(R.id.lagSamtale);
+        conversationName = view.findViewById(R.id.conversationName);
 
         addUsersToDropdown();
 
@@ -68,7 +70,10 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         addSamtale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeNewSamtale();
+                if (selectedUser != null)
+                    makeNewSamtale();
+                else
+                    Toast.makeText(getActivity(), "Du må velge en person å starte samtale med", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -96,14 +101,14 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         ArrayList<User> arrayList = new ArrayList<>();
 
         while(data.moveToNext()) {
-            if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null))) {
+            if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null)) && data.getString(6).equals(sharedPreferences.getString(User.FAMILIE, null))) {
                 int id = data.getInt(0);
                 String name = data.getString(1);
                 arrayList.add( new User(id,name));
             }
         }
         if (arrayList.size() > 0) {
-            ArrayAdapter<User> adapter = new ArrayAdapter<User>(getActivity(), android.R.layout.simple_spinner_item, arrayList);
+            ArrayAdapter<User> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrayList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
         }

@@ -103,21 +103,27 @@ public class FamilieboblaFragment extends Fragment {
                     // Getting name of user to
                     Cursor userTo = database.getData(Database.TABLE_USER, toID);
                     userTo.moveToFirst();
-                    String nameTo = userTo.getString(1);
+                    String userToName = userTo.getString(1);
+                    String userToFamily = userTo.getString(6);
 
-                    names.add(nameTo);
-                    ids.add(String.valueOf(conversationID));
-                    samtaleNames.add(samtaleName);
+                    if (userToFamily.equals(sharedPreferences.getString(User.FAMILIE, null))){
+                        names.add(userToName);
+                        ids.add(String.valueOf(conversationID));
+                        samtaleNames.add(samtaleName);
+                    }
                 }
                 if (toID == meID) {
                     // Getting name of user from
                     Cursor userFrom = database.getData(Database.TABLE_USER, fromID);
                     userFrom.moveToFirst();
-                    String nameFrom = userFrom.getString(1);
+                    String userFromName = userFrom.getString(1);
+                    String userFromFamily = userFrom.getString(6);
 
-                    names.add(nameFrom);
-                    ids.add(String.valueOf(conversationID));
-                    samtaleNames.add(samtaleName);
+                    if (userFromFamily.equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                        names.add(userFromName);
+                        ids.add(String.valueOf(conversationID));
+                        samtaleNames.add(samtaleName);
+                    }
                 }
             }
         }
