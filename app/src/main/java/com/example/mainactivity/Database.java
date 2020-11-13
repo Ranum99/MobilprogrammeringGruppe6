@@ -100,6 +100,18 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_BIRTHDAY_DATE + " TEXT " +
             ")";
 
+    // Tabell HANDLELISTE m/ kolonner
+    public static final String TABLE_HANDLELISTE = "Handleliste";
+    public static final String COLUMN_OVERSKRIFT_HANDLELISTE = "Overskrift";
+    public static final String COLUMN_VARER = "Varer";
+
+    // Lage tabellen HANDLELISTE
+    private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE" + TABLE_HANDLELISTE +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_OVERSKRIFT_HANDLELISTE + " TEXT, " +
+            COLUMN_VARER + " TEXT " +
+            ")";
 
     public Database(Context context) {
         super(context, TAG, null, 1);
@@ -112,6 +124,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_BIRTHDAY);
         db.execSQL(CREATE_TABLE_WISHLIST);
         db.execSQL(CREATE_TABLE_FAMILY);
+        db.execSQL(CREATE_TABLE_HANDLELISTE);
     }
 
     @Override
@@ -119,6 +132,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FAMILY);
         onCreate(db);
@@ -279,4 +293,16 @@ public class Database extends SQLiteOpenHelper {
         long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
         return result != -1;
     }
+
+    /*
+    public boolean addUserToDatabaseHANDLELISTE(String overskriftHandleliste, String varer) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        ContentValues.put(COLUMN_OVERSKRIFT_HANDLELISTE, overskriftHandleliste;
+        ContentValues.put(COLUMN_VARER, varer);
+
+        Log.d(TAG, "addData: Adding " + overskriftHandleliste + ", " + varer + ", " + " to " + TABLE_HANDLELISTE);
+
+    }
+     */
 }
