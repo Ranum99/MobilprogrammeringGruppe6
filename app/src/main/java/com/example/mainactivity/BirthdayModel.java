@@ -5,15 +5,19 @@ import java.util.ArrayList;
 
 public class BirthdayModel extends AppCompatActivity {
 
-    private String navn, dato, mobil;
+    // Variabler
+    private String navn, dato, id;
 
+    public BirthdayModel(String navn, String dato, String id) {
 
-    public BirthdayModel(String navn, String dato, String mobil) {
+        // Setter variablene
         this.navn = navn;
         this.dato = dato;
-        this.mobil = mobil;
+        this.id = id;
+
     }
 
+    // Getters and setters
     public String getNavn() {
         return navn;
     }
@@ -30,25 +34,25 @@ public class BirthdayModel extends AppCompatActivity {
         this.dato = dato;
     }
 
-    public String getMobil() {
-        return mobil;
+    public String getId() {
+        return id;
     }
 
-    public void setMobil(String mobil) {
-        this.mobil = mobil;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public static ArrayList<BirthdayModel> getData(ArrayList<String> navn, ArrayList <String> mobil, ArrayList<String> dato) {
+    // Henter data fra databasen og lagrer i en ArrayList
+    public static ArrayList<BirthdayModel> getData(ArrayList<String> navn, ArrayList<String> dato, ArrayList<String> id) {
         ArrayList<BirthdayModel> data = new ArrayList<>();
 
-        data.clear();
         for(int i = 0; i < navn.size(); i++) {
-            BirthdayModel enBursdag = new BirthdayModel(navn.get(i), mobil.get(i), dato.get(i));
+
+            BirthdayModel enBursdag = new BirthdayModel(navn.get(i), dato.get(i), id.get(i));
             data.add(enBursdag);
         }
 
         return data;
-
     }
 
 }

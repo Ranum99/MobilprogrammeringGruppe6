@@ -45,18 +45,6 @@
         app:layout_constraintTop_toBottomOf="@+id/FullName" />
 
     <EditText
-        android:id="@+id/BirthdayPhoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
-        android:ems="10"
-        android:hint="@string/PhoneNumberHint"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/PhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
-
-    <EditText
         android:id="@+id/BirthdayDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,24 +67,14 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/PhoneNumber"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/mobilnummer"
-        app:layout_constraintStart_toStartOf="@+id/BirthdayFullName"
-        app:layout_constraintTop_toBottomOf="@+id/BirthdayFullName" />
-
-    <TextView
         android:id="@+id/Date"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/foedselsdato"
-        app:layout_constraintStart_toStartOf="@+id/BirthdayPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/BirthdayPhoneNumber" />
+        app:layout_constraintStart_toStartOf="@+id/BirthdayFullName"
+        app:layout_constraintTop_toBottomOf="@+id/BirthdayFullName" />
 
     <Button
         android:id="@+id/NyBursdagAvbryt"
