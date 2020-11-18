@@ -141,7 +141,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_BIRTHDAY);
         db.execSQL(CREATE_TABLE_WISHLIST);
         db.execSQL(CREATE_TABLE_FAMILY);
-        db.execSQL(CREATE_TABLE_HANDLELISTE);
+        //db.execSQL(CREATE_TABLE_HANDLELISTE);
     }
 
     @Override
@@ -328,14 +328,13 @@ public class Database extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean addUserToDatabaseBIRTHDAY(String name, String phone, String date) {
+    public boolean addUserToDatabaseBIRTHDAY(String name, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME_BIRTHDAY, name);
-        contentValues.put(COLUMN_PHONENUMBER_BIRTHDAY, phone);
         contentValues.put(COLUMN_BIRTHDAY_DATE, date);
 
-        Log.d(TAG, "addData: Adding " + name + ", " + phone + ", " + date + ", " + " to " + TABLE_BIRTHDAY);
+        Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + " to " + TABLE_BIRTHDAY);
 
         long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
         return result != -1;

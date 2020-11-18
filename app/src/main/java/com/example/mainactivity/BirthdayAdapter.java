@@ -13,11 +13,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Array;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Arrays;
 import java.util.List;
 
 public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.BirthdayViewHolder>{
@@ -33,12 +39,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         this.context = context;
     }
 
-    private void removeItem(int position) {
-        BirthdayList.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, BirthdayList.size());
-    }
-
     @NonNull
     @Override
     public BirthdayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
@@ -46,6 +46,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         return new BirthdayViewHolder(itemView);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull BirthdayViewHolder viewHolder, int position) {
         BirthdayModel birthdayToDisplay = BirthdayList.get(position);
@@ -59,31 +60,60 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         return BirthdayList.size();
     }
 
-
+    // Inner klasse
     public class BirthdayViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView navn, dato, mobil, aar;
-        private ConstraintLayout card;
+        //Elementer i cardviewet
+        private TextView navn, dato, aar;
         private ImageButton delete;
+        // Variabler
+        private String id;
+        private Integer splitAar, splitMaaned, splitDag;
+        private LocalDate today, birthday;
+        private Period period;
+
 
         public BirthdayViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            //Kobler variablene med sine respektive elementer i cardviewet
             navn = itemView.findViewById(R.id.CardviewFullName);
             dato = itemView.findViewById(R.id.CardviewDate);
-            mobil = itemView.findViewById(R.id.CardviewPhone);
             aar = itemView.findViewById(R.id.CardviewAge);
             delete = itemView.findViewById(R.id.deleteBursdag);
+
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         public void setBirthday(BirthdayModel birthdayToDisplay, int position) {
+
+            // Regner ut personens alder
+            today = LocalDate.now();
+            String datoinput = birthdayToDisplay.getDato();
+            String[] parts = datoinput.split("\\.");
+            splitAar = Integer.parseInt(parts[2]);
+            splitMaaned = Integer.parseInt(parts[1]);
+            splitDag = Integer.parseInt(parts[0]);
+            birthday = LocalDate.of(splitAar, splitMaaned, splitDag);
+            period = Period.between(birthday, today);
+
+            // Setter texten i cardviewet
             navn.setText(birthdayToDisplay.getNavn());
-            dato.setText(birthdayToDisplay.getDato());
-            mobil.setText(birthdayToDisplay.getMobil());
+            dato.setText("Født: " + birthdayToDisplay.getDato());
+            aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
+            id = birthdayToDisplay.getId();
+        }
+
+        //Fjerner og oppdaterer element fra recyclerviewet
+        private void removeItem(int position) {
+            BirthdayList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, BirthdayList.size());
         }
 
         public void setDelete(final BirthdayModel birthdayToDisplay, final int position) {
 
+            // pop up som spør om brukeren vil slette oppføringer
             View.OnClickListener deleteBursdag = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -95,9 +125,9 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    // Sletter samtalen
+                                    // Sletter bursdagen
                                     database = new Database(context);
-                                    database.deleteRowFromTableById(Database.TABLE_BIRTHDAY ,birthdayToDisplay.getNavn());
+                                    database.deleteRowFromTableById(Database.TABLE_BIRTHDAY ,birthdayToDisplay.getId());
                                     removeItem(position);
                                 }
                             });
@@ -105,17 +135,18 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
+                                    // Går ut av popup'en og tilbake til siden uten å gjøre noe
                                     dialog.cancel();
                                 }
                             });
                     AlertDialog alert1 = builder.create();
                     alert1.show();
-
                 }
             };
 
             delete.setOnClickListener(deleteBursdag);
         }
+
 
     }
 
