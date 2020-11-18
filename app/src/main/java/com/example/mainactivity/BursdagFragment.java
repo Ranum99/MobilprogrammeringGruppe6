@@ -33,9 +33,7 @@ public class BursdagFragment extends Fragment {
     private Database database;
     private SharedPreferences sharedPreferences;
     // ArrayList for å lagre dataen fra databasen
-    private ArrayList<String> navn = new ArrayList<>();
-    private ArrayList<String> dato = new ArrayList<>();
-    private ArrayList<String> id = new ArrayList<>();
+    private ArrayList<BirthdayModel> bursdager = new ArrayList<>();
 
 
     @Override
@@ -71,31 +69,24 @@ public class BursdagFragment extends Fragment {
     private void setInfo() {
         Cursor data = database.getData(Database.TABLE_BIRTHDAY);
 
+        ArrayList<BirthdayModel> alleBursdager = new ArrayList<>();
+
         while(data.moveToNext()) {
             String navnet = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
-            String iden = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
-            System.out.println(Database.COLUMN_NAME_BIRTHDAY);
-            navn.add(navnet);
-            dato.add(datoen);
-            id.add(iden);
+            String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
+
+            BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id);
+            alleBursdager.add(bursdag);
         }
 
-        this.navn = navn;
-        this.dato = dato;
-        this.id = id;
+        this.bursdager = alleBursdager;
     }
 
-    // Metode for å sette opp recyclerviewet med cradview for hver rad i databasen
+    // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
         RecyclerView bursdagRecyclerView = getView().findViewById(R.id.BursdagRecyclerview);
-
-        if ( BirthdayModel.getData(navn, dato, id) != null && BirthdayModel.getData(navn, dato, id).size() > 0 ) {
-
-            BirthdayModel.getData(navn, dato, id).clear();
-        }
-
-        bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), BirthdayModel.getData(navn, dato, id)));
+        bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 

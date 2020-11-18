@@ -50,10 +50,10 @@ public class GruppeinformasjonFragment extends Fragment {
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         endreFamilieNavn = view.findViewById(R.id.EndreFamilieNavnBtn);
-        leggTilMedlem = view.findViewById(R.id.leggTilMedlemBtn);
+
         kastUtMedlem = view.findViewById(R.id.KastUtMedlemBtn);
         familieNavnInput = view.findViewById(R.id.EndreFamilieNavnInput);
-        leggTilMedlemInput = view.findViewById(R.id.LeggTilMedlemInput);
+
         listeOverMedlemmer = view.findViewById(R.id.listeOverMedlemmer);
         medlemDropdown = view.findViewById(R.id.kastUtMedlemDropdown);
 
@@ -83,16 +83,7 @@ public class GruppeinformasjonFragment extends Fragment {
             }
         });
 
-        leggTilMedlem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int familyID = Integer.parseInt(sharedPreferences.getString(User.FAMILIE, null));
-                int userIDToAdd = Integer.parseInt(leggTilMedlemInput.getText().toString());
-                String myID = sharedPreferences.getString(User.ID, null);
 
-                //addUserToFamily(familyID, userIDToAdd, myID);
-            }
-        });
 
         endreFamilieNavn.setOnClickListener(new View.OnClickListener() {
             @Override

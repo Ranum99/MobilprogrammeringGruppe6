@@ -1,9 +1,11 @@
 package com.example.mainactivity;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,10 +19,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.datepicker.CalendarConstraints;
+
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class BursdagLeggTilFragment extends Fragment {
 
     public BursdagLeggTilFragment() {
@@ -34,6 +47,10 @@ public class BursdagLeggTilFragment extends Fragment {
     private Button lagre, avbryt;
     private EditText FullName;
     private EditText Birthday;
+    private String name, date, regEx;
+    private Integer splitAar, splitMaaned, splitDag;
+    private LocalDate today, dato;
+    private Period period;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,53 +72,77 @@ public class BursdagLeggTilFragment extends Fragment {
         // Lagrer informasjonen som er fylt ut i input-feltene i databasetabellen BIRTHDAY,
         // Går tilbake til bursdagfragmentet
         lagre.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 // Henter inputen
-                String name = FullName.getText().toString();
-                String date = Birthday.getText().toString();
+                name = FullName.getText().toString();
+                date = Birthday.getText().toString();
+                regEx = "[0-9][0-9]\\.[0-9][0-9]\\.[0-9][0-9][0-9][0-9]";
 
-                if ( name.length() == 0) {
+                // Sjekker at inputen er fylt inn korrekt
+                if (name.length() == 0) {
+                    // NAVN IKKE OK
                     Toast.makeText(getActivity(), "Fyll inn navn", Toast.LENGTH_SHORT).show();
                     System.out.println("Navn er ikke fylt inn korrekt");
                 } else {
-                    System.out.println("Navn er fylt inn korrekt");
-                    System.out.println(name);
+                    // NAVN OK
+                    System.out.println("Navn er fylt inn korrekt: " + name);
 
-                    if ( date.length() == 0 ) {
+                    if (date.length() == 0) {
+                        // DATO IKKE OK
                         Toast.makeText(getActivity(), "Fyll inn dato", Toast.LENGTH_SHORT).show();
-
-                        System.out.println(date);
-                        System.out.println("dato er ikke fylt inn");
+                        System.out.println("Dato er ikke fylt inn");
                     }
                     else if (date.length() != 10) {
-
-                        Toast.makeText(getActivity(), "Datoen skal skrives på formen DD.MM.YYYY", Toast.LENGTH_SHORT).show();
-                        System.out.println(date);
-                        System.out.println("dato er ikke fylt inn korrekt");
+                        // DATO IKKE OK
+                        Toast.makeText(getActivity(), "Datoen er ikke fylt inn korrekt", Toast.LENGTH_SHORT).show();
+                        System.out.println("Dato har ikke riktig antall tall: " + date);
                     }
-
-
-                    // Sjekk om det er punktum der
+                    else if (sjekkFormat(date) == false) {
+                        // DATO IKKE OK
+                        System.out.println("Dato er ikke skrevet på formen dd.mm.yyyy: " + date);
+                    }
                     else {
-                        System.out.println("Noe er feil");
+                        // DATO FORMAT OK
+                        System.out.println("Dato er skrevet på riktig form: " + date);
+                        String[] parts = date.split("\\.");
+
+                        splitAar = Integer.parseInt(parts[2]);
+                        splitMaaned = Integer.parseInt(parts[1]);
+                        splitDag = Integer.parseInt(parts[0]);
+
+                        today = LocalDate.now();
+                        dato = LocalDate.of(splitAar, splitMaaned, splitDag);
+                        period = Period.between(dato, today);
+
+
+                        if (isValid(date) == false) {
+                            Toast.makeText(getActivity(), "Ikke gyldig dato", Toast.LENGTH_SHORT).show();
+                            System.out.println("Ikke gyldig dato");
+                        }
+                        else {
+                            System.out.println("Bare sjekk av gyldig dato igjen");
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+                            LocalDate dato = LocalDate.parse(date, formatter);
+
+                            System.out.println("Formatert dato: " + dato);
+
+                            if (dato.isAfter(today)) {
+                                Toast.makeText(getActivity(), "Kan ikke være født i fremtiden", Toast.LENGTH_SHORT).show();
+                                System.out.println("Dato skrevet inn: " + dato);
+                                System.out.println("FEIL");
+                            }
+                            else {
+
+                                System.out.println("Dato skrevet inn: " + dato);
+                                System.out.println("RIKTIG");
+                                //database.addUserToDatabaseBIRTHDAY(name, date);
+                                //navController.navigateUp();
+                            }
+                        }
                     }
                 }
-
-                /*
-                if (validUserInfo(name, date)) {
-                    if (AddUser(name, date)) {
-                        FullName.setText("");
-                        Birthday.setText("");
-
-                        navController.navigateUp();
-                    }
-
-                } else {
-                    Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
-                }
-
-                 */
             }
         });
 
@@ -112,51 +153,26 @@ public class BursdagLeggTilFragment extends Fragment {
             }
         });
 
-
     }
 
-    private static String[] dato_formater = {
-            "dd/MM/yyyy",
-            "dd-MM-yyyy",
-            "dd.MM.yyyy",
-            "dd MM yyyy"
-    };
-
-    public static Date finnFormat (String sDate) {
-        Date myDate = null;
-
-        for (String formatString : dato_formater) {
-            try {
-                SimpleDateFormat format = new SimpleDateFormat(formatString);
-                format.setLenient(false);
-                myDate = format.parse(sDate);
-                break;
-            }
-            catch (ParseException e) {
-                // System.out.println("  fmt: " + formatString + ": FAIL");
-            }
-        }
-        return myDate;
-    }
-    /*
-    public boolean AddUser(String name, String date) {
-        boolean insertData = database.addUserToDatabaseBIRTHDAY(name, date);
-
-        if (insertData) {
-            Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+    private boolean sjekkFormat(String date) {
+        Pattern pattern = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(date);
+        boolean matchFound = matcher.find();
+        if(matchFound) {
             return true;
-        }
-        else {
-            Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+        } else {
             return false;
         }
     }
-    private boolean validUserInfo(String name, String date) {
-        if (name.length() == 0 || date.length() == 0) {
+
+    public boolean isValid(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        try {
+            LocalDate.parse(date, formatter);
+        } catch (DateTimeParseException e) {
             return false;
         }
         return true;
     }
-
-     */
 }
