@@ -1,16 +1,12 @@
 package com.example.mainactivity;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,10 +30,7 @@ public class FamilieboblaSamtaleFragment extends Fragment {
 
     private int samtaleId;
     private String samtaleName, samtaleTo;
-    private ImageButton delete;
-    private FamilieboblaSamtaleAdapter familieboblaAdapter;
-    private ArrayList<String> names, ids, samtaleNames;
-    private ArrayList<Message> messages;
+    private ArrayList<FamilieboblaSamtaleModel> messages;
 
     private TextView samtaleTitle, messageToSend;
     private Button sendButton;
@@ -72,7 +64,6 @@ public class FamilieboblaSamtaleFragment extends Fragment {
             }
         });
 
-        //setNamesAndIds();
         setMessagesInConversation();
 
         setUpRecyclerView();
@@ -80,16 +71,18 @@ public class FamilieboblaSamtaleFragment extends Fragment {
 
     private void setUpRecyclerView() {
         RecyclerView familieboblaSamtaleRecyclerView = getView().findViewById(R.id.samtaleDisplay);
-        familieboblaSamtaleRecyclerView.setAdapter(new FamilieboblaSamtaleAdapter(getContext(), FamilieboblaSamtaleModel.getData(messages)));
+        familieboblaSamtaleRecyclerView.setAdapter(new FamilieboblaSamtaleAdapter(getContext(), messages));
 
         familieboblaSamtaleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        familieboblaSamtaleRecyclerView.scrollToPosition(messages.size() - 1);
     }
 
     private void setMessagesInConversation() {
         // Getting data from database table MESSAGES
         Cursor messages = database.getAllMessageFromConversation(samtaleId);
 
-        ArrayList<Message> allMessages = new ArrayList<>();
+        ArrayList<FamilieboblaSamtaleModel> allMessages = new ArrayList<>();
 
         while(messages.moveToNext()) {
             int messageID = Integer.parseInt(messages.getString(messages.getColumnIndex(Database.COLUMN_ID)));
@@ -97,13 +90,12 @@ public class FamilieboblaSamtaleFragment extends Fragment {
             int fromID = Integer.parseInt(messages.getString(messages.getColumnIndex(Database.COLUMN__MESSAGE_USER_FROM)));
             String message = messages.getString(messages.getColumnIndex(Database.COLUMN__MESSAGE_TEXT));
 
-
             System.out.println("\nConversationID: " + conversationID + "\nMessageID: " + messageID + "\nFrom: " + fromID + "\nMessage: " + message + " \n\n");
 
             if (samtaleId == conversationID) {
-                Message message1 = new Message(messageID, fromID, conversationID, message);
+                FamilieboblaSamtaleModel message2 = new FamilieboblaSamtaleModel(messageID, fromID, conversationID, message);
 
-                allMessages.add(message1);
+                allMessages.add(message2);
             }
         }
         this.messages = allMessages;

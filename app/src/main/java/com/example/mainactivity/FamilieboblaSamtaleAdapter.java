@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
 
             String text = SamtaleToDisplay.getMessage();
 
-            if (SamtaleToDisplay.getUserFrom() == meID) {
+            if (SamtaleToDisplay.getUserFromId() == meID) {
                 cardView.setCardBackgroundColor(Color.parseColor("#09E5FF"));
                 message.setTextColor(Color.parseColor("#FFFFFF"));
 

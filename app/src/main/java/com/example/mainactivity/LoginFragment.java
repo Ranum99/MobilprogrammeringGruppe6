@@ -51,6 +51,7 @@ public class LoginFragment extends Fragment {
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         logo = view.findViewById(R.id.LoginLogo);
+        logo.setImageResource(R.drawable.logo);
 
         opprettBruker = view.findViewById(R.id.OpprettBruker);
         opprettBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_signupFragment));
