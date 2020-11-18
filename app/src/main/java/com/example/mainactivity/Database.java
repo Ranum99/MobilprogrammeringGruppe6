@@ -71,6 +71,22 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
+    // Tabell MESSAGES
+    public static final String TABLE_MESSAGES = "Messages";
+    public static final String COLUMN__MESSAGE_PART_OF_CONVERSATIONID = "conversationID";
+    public static final String COLUMN__MESSAGE_USER_FROM = "userFrom";
+    public static final String COLUMN__MESSAGE_TEXT = "message";
+
+    // Lage tabellen MESSAGES
+    private static final String CREATE_TABLE_MESSAGES = "CREATE TABLE " + TABLE_MESSAGES +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN__MESSAGE_PART_OF_CONVERSATIONID + " INTEGER, " +
+            COLUMN__MESSAGE_USER_FROM + " INTEGER, " +
+            COLUMN__MESSAGE_TEXT + " TEXT " +
+            ")";
+
+
     // Tabell WISHLIST
     public static final String TABLE_WISHLIST = "Wishlist";
     public static final String COLUMN__USER_WISHLIST = "userWithlist";
@@ -106,7 +122,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_VARER = "Varer";
 
     // Lage tabellen HANDLELISTE
-    private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE" + TABLE_HANDLELISTE +
+    private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_OVERSKRIFT_HANDLELISTE + " TEXT, " +
@@ -121,6 +137,7 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_CONVERSATION);
+        db.execSQL(CREATE_TABLE_MESSAGES);
         db.execSQL(CREATE_TABLE_BIRTHDAY);
         db.execSQL(CREATE_TABLE_WISHLIST);
         db.execSQL(CREATE_TABLE_FAMILY);
@@ -131,6 +148,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MESSAGES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
@@ -160,6 +178,12 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getData(String table, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + table + " WHERE " + COLUMN_ID + " = " + id;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getAllMessageFromConversation(int samtaleID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_MESSAGES + " WHERE " + COLUMN__MESSAGE_PART_OF_CONVERSATIONID + " = " + samtaleID;
         return db.rawQuery(query, null);
     }
 
@@ -257,6 +281,19 @@ public class Database extends SQLiteOpenHelper {
         System.out.println("New conversation (Database): " + meID + " - " + otherUser.id + " named: " + conversationName);
 
         return db.insert(TABLE_CONVERSATION, null, values);
+    }
+
+    public long sendMessage(int samtaleId, int meID, String message) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN__MESSAGE_PART_OF_CONVERSATIONID, samtaleId);
+        values.put(COLUMN__MESSAGE_USER_FROM, meID);
+        values.put(COLUMN__MESSAGE_TEXT, message);
+
+        System.out.println("New conversation (Database): \nIn conversation " + samtaleId + " \nFrom: " + meID + " \nMessage: " + message);
+
+        return db.insert(TABLE_MESSAGES, null, values);
     }
 
     public Cursor getAllConversations(int meID) {
