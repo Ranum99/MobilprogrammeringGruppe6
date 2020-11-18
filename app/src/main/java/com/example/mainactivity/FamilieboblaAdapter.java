@@ -91,7 +91,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
                     builder.setTitle("Slett samtale")
-                            .setMessage("Er du sikker på at du vil slette denne samtalen med " + getNavn() + "?");
+                            .setMessage("Er du sikker på at du vil slette denne samtalen med " + SamtaleToDisplay.getNavn() + "?");
                     builder.setPositiveButton("Jepp, bare å slette",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
