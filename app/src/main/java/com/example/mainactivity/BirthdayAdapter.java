@@ -53,6 +53,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
         viewHolder.setBirthday(birthdayToDisplay, position);
         viewHolder.setDelete(birthdayToDisplay, position);
+        viewHolder.setEdit(birthdayToDisplay, position);
     }
 
     @Override
@@ -63,6 +64,8 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     // Inner klasse
     public class BirthdayViewHolder extends RecyclerView.ViewHolder {
 
+        // CardViwet
+        private CardView card;
         //Elementer i cardviewet
         private TextView navn, dato, aar;
         private ImageButton delete;
@@ -72,28 +75,26 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         private LocalDate today, birthday;
         private Period period;
 
-
         public BirthdayViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            //Kobler variablene med sine respektive elementer i cardviewet
-            navn = itemView.findViewById(R.id.CardviewFullName);
-            dato = itemView.findViewById(R.id.CardviewDate);
-            aar = itemView.findViewById(R.id.CardviewAge);
-            delete = itemView.findViewById(R.id.deleteBursdag);
-
         }
 
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void setBirthday(BirthdayModel birthdayToDisplay, int position) {
+//Kobler variablene med sine respektive elementer i cardviewet
+            navn = itemView.findViewById(R.id.CardviewFullName);
+            dato = itemView.findViewById(R.id.CardviewDate);
+            aar = itemView.findViewById(R.id.CardviewAge);
 
             // Regner ut personens alder
-            today = LocalDate.now();
             String datoinput = birthdayToDisplay.getDato();
             String[] parts = datoinput.split("\\.");
+
             splitAar = Integer.parseInt(parts[2]);
             splitMaaned = Integer.parseInt(parts[1]);
             splitDag = Integer.parseInt(parts[0]);
+
+            today = LocalDate.now();
             birthday = LocalDate.of(splitAar, splitMaaned, splitDag);
             period = Period.between(birthday, today);
 
@@ -112,7 +113,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         }
 
         public void setDelete(final BirthdayModel birthdayToDisplay, final int position) {
-
+            delete = itemView.findViewById(R.id.deleteBursdag);
             // pop up som spør om brukeren vil slette oppføringer
             View.OnClickListener deleteBursdag = new View.OnClickListener() {
                 @Override
@@ -148,6 +149,21 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         }
 
 
+        public void setEdit(final BirthdayModel birthdayToDisplay, int position) {
+            card = itemView.findViewById(R.id.element);
+            View.OnClickListener edit = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("NAVN", birthdayToDisplay.getNavn());
+                    bundle.putString("ID", birthdayToDisplay.getId());
+                    bundle.putString("DATO", birthdayToDisplay.getDato());
+
+                    Navigation.findNavController(card).navigate(R.id.bursdagRedigerFragment2, bundle);
+                }
+            };
+            card.setOnClickListener(edit);
+        }
     }
 
 }

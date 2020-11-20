@@ -1,9 +1,6 @@
 package com.example.mainactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
-
-public class BirthdayModel extends AppCompatActivity {
+public class BirthdayModel {
 
     // Variabler
     private String navn, dato, id;
@@ -40,19 +37,6 @@ public class BirthdayModel extends AppCompatActivity {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    // Henter data fra databasen og lagrer i en ArrayList
-    public static ArrayList<BirthdayModel> getData(ArrayList<String> navn, ArrayList<String> dato, ArrayList<String> id) {
-        ArrayList<BirthdayModel> data = new ArrayList<>();
-
-        for(int i = 0; i < navn.size(); i++) {
-
-            BirthdayModel enBursdag = new BirthdayModel(navn.get(i), dato.get(i), id.get(i));
-            data.add(enBursdag);
-        }
-
-        return data;
     }
 
 }

@@ -49,8 +49,6 @@ public class SignupFragment extends Fragment {
         aMobilnr = view.findViewById(R.id.SignupMobilnummerInput);
         aPassword = view.findViewById(R.id.SignupOprettPassordInput);
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
-        aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
-
         database = new Database(getActivity());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {

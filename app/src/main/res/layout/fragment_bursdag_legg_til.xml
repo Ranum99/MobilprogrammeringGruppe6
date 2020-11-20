@@ -6,6 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".BursdagLeggTilFragment">
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/BirthdayFullname"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/fullt_navn"
+                android:padding="10dp"
+                android:background="@drawable/custom_input"
+                android:inputType="none|textPersonName|textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <DatePicker
+                android:id="@+id/BirthdayDate"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                app:layout_constraintEnd_toEndOf="@+id/BirthdayFullname"
+                app:layout_constraintStart_toStartOf="@+id/BirthdayFullname"
+                app:layout_constraintTop_toBottomOf="@+id/BirthdayFullname" />
+
+            <Button
+                android:id="@+id/NyBursdagLagre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/lagre"
+                app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
+                app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
+                app:layout_constraintTop_toBottomOf="@+id/BirthdayDate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
@@ -13,92 +68,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <TextView
-        android:id="@+id/NyBursdagHeadline"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/legg_til_en_bursdag"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/BirthdayFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/fornavn_etternavn"
-        android:inputType="none|textPersonName|textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FullName" />
-
-    <EditText
-        android:id="@+id/BirthdayDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/dd_mm_yyyy"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/Date"
-        app:layout_constraintTop_toBottomOf="@+id/Date" />
-
-    <TextView
-        android:id="@+id/FullName"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/fullt_navn"
-        app:layout_constraintStart_toStartOf="@+id/BirthdayFullName"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/Date"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/foedselsdato"
-        app:layout_constraintStart_toStartOf="@+id/BirthdayFullName"
-        app:layout_constraintTop_toBottomOf="@+id/BirthdayFullName" />
-
     <Button
         android:id="@+id/NyBursdagAvbryt"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/avbryt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
-        app:layout_constraintStart_toEndOf="@+id/NyBursdagLagre"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <Button
-        android:id="@+id/NyBursdagLagre"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/lagre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/NyBursdagAvbryt"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
