@@ -89,15 +89,29 @@ public class Database extends SQLiteOpenHelper {
 
     // Tabell WISHLIST
     public static final String TABLE_WISHLIST = "Wishlist";
-    public static final String COLUMN__USER_WISHLIST = "userWithlist";
+    public static final String COLUMN__USER_ID_WISHLIST = "userIDWithlist";
     public static final String COLUMN__NAME_WISHLIST = "nameOfWishlist";
 
     // Lage tabellen WISHLIST
     private static final String CREATE_TABLE_WISHLIST = "CREATE TABLE " + TABLE_WISHLIST +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN__USER_WISHLIST + " INTEGER, " +
+            COLUMN__USER_ID_WISHLIST + " INTEGER, " +
             COLUMN__NAME_WISHLIST + " TEXT " +
+            ")";
+
+
+    // Tabell WISH
+    public static final String TABLE_WISH = "Wish";
+    public static final String COLUMN__WISHLIST_ID = "wishlistID";
+    public static final String COLUMN__NAME_WISH = "nameOfWish";
+
+    // Lage tabellen WISH
+    private static final String CREATE_TABLE_WISH = "CREATE TABLE " + TABLE_WISH +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN__WISHLIST_ID + " INTEGER, " +
+            COLUMN__NAME_WISH + " TEXT " +
             ")";
 
 
@@ -138,6 +152,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_MESSAGES);
         db.execSQL(CREATE_TABLE_BIRTHDAY);
         db.execSQL(CREATE_TABLE_WISHLIST);
+        db.execSQL(CREATE_TABLE_WISH);
         db.execSQL(CREATE_TABLE_FAMILY);
         //db.execSQL(CREATE_TABLE_HANDLELISTE);
     }
@@ -150,6 +165,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISH);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FAMILY);
         onCreate(db);
     }
@@ -188,7 +204,7 @@ public class Database extends SQLiteOpenHelper {
     public boolean deleteRowFromTableById(String table, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        long result = db.delete(table, COLUMN_ID + " = ?", new String[]{id});
+        long result = db.delete(table, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
 
         return result != -1;
     }
@@ -196,7 +212,7 @@ public class Database extends SQLiteOpenHelper {
     public boolean addWishlistToUser(int userId, String whislistName) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN__USER_WISHLIST, userId);
+        contentValues.put(COLUMN__USER_ID_WISHLIST, userId);
         contentValues.put(COLUMN__NAME_WISHLIST, whislistName);
 
         long result = db.insert(TABLE_WISHLIST, null, contentValues);
