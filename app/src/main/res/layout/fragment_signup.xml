@@ -51,6 +51,7 @@
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="12dp"
+                android:imeOptions="actionDone"
                 app:layout_constraintStart_toStartOf="@+id/SignupGjentaPassord"
                 app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassord" />
 

@@ -67,6 +67,7 @@ public class BursdagLeggTilFragment extends Fragment {
         avbryt = view.findViewById(R.id.NyBursdagAvbryt);
         FullName = view.findViewById(R.id.BirthdayFullname);
         Birthday = view.findViewById(R.id.BirthdayDate);
+        Birthday.setMaxDate(System.currentTimeMillis());
 
         // Lagrer informasjonen som er fylt ut i input-feltene i databasetabellen BIRTHDAY,
         // Går tilbake til bursdagfragmentet
