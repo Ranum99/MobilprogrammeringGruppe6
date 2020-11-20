@@ -365,7 +365,7 @@ public class Database extends SQLiteOpenHelper {
         String whereClause = "id=?";
         String whereArgs[] = {id};
         //long result = db.insert(TABLE_NAME, null, contentValues);
-        long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", new String[]{whereClause});
+        long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
         return result != -1;
     }
 

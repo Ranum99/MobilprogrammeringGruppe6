@@ -50,7 +50,7 @@ public class BursdagRedigerFragment extends Fragment {
         avbryt = view.findViewById(R.id.RedigerBursdagAvbryt);
         FullName = view.findViewById(R.id.BirthdayFultnavn);
         Birthday = view.findViewById(R.id.BirthdayDato);
-        final String id = String.valueOf(view.getId());
+        final String id = String.valueOf(getArguments().getString("ID"));
 
         String[] parts = getArguments().getString("DATO").split("\\.");
         Integer dag, maaned, aar;
@@ -85,7 +85,6 @@ public class BursdagRedigerFragment extends Fragment {
 
                     System.out.println("Ny dato: " + date);
 
-                    //TODO oppdaterer ikke..
                     database.updateBirthday(id, name, date );
                     navController.navigateUp();
                 }
