@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_bursdagFragment_to_bursdagLeggTilFragment"
             app:destination="@id/bursdagLeggTilFragment" />
+        <action
+            android:id="@+id/action_bursdagFragment_to_bursdagRedigerFragment2"
+            app:destination="@id/bursdagRedigerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/bursdagLeggTilFragment"
@@ -228,4 +231,9 @@
             android:id="@+id/action_familieOpprettFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/bursdagRedigerFragment2"
+        android:name="com.example.mainactivity.BursdagRedigerFragment"
+        android:label="fragment_bursdag_rediger"
+        tools:layout="@layout/fragment_bursdag_rediger" />
 </navigation>

@@ -104,7 +104,6 @@ public class Database extends SQLiteOpenHelper {
     // Tabell BIRTHDAY m/ kolonner
     public static final String TABLE_BIRTHDAY = "Bursdag";
     public static final String COLUMN_NAME_BIRTHDAY = "Navn";
-    public static final String COLUMN_PHONENUMBER_BIRTHDAY = "Mobilnummer";
     public static final String COLUMN_BIRTHDAY_DATE = "Dato";
 
     // Lage tabellen BIRTHDAY
@@ -112,7 +111,6 @@ public class Database extends SQLiteOpenHelper {
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME_BIRTHDAY + " TEXT, " +
-            COLUMN_PHONENUMBER_BIRTHDAY + " TEXT, " +
             COLUMN_BIRTHDAY_DATE + " TEXT " +
             ")";
 
@@ -337,6 +335,21 @@ public class Database extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + " to " + TABLE_BIRTHDAY);
 
         long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
+        return result != -1;
+    }
+    public boolean updateBirthday(String id, String newName, String newBirthday) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME_BIRTHDAY, newName);
+        contentValues.put(COLUMN_BIRTHDAY_DATE, newBirthday);
+
+
+        Log.d(TAG, "Birthday updated: " + newName + ", " + newBirthday + ", " + " in " + TABLE_BIRTHDAY);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        //long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", new String[]{whereClause});
         return result != -1;
     }
 

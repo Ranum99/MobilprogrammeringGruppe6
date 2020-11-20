@@ -49,6 +49,8 @@
                 android:ems="10"
                 android:hint="@string/passord"
                 android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="12dp"
                 app:layout_constraintStart_toStartOf="@+id/SignupGjentaPassord"
                 app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassord" />
 
@@ -71,6 +73,8 @@
                 android:ems="10"
                 android:hint="@string/passord"
                 android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="12dp"
                 app:layout_constraintStart_toStartOf="@+id/SignupOprettPassord"
                 app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassord" />
 
@@ -94,7 +98,12 @@
                 android:hint="@string/opprettBrukerEmail"
                 android:inputType="textEmailAddress"
                 app:layout_constraintStart_toStartOf="@+id/SignupEmail"
-                app:layout_constraintTop_toBottomOf="@+id/SignupEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/SignupEmail"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="12dp"
+
+                />
+
 
             <TextView
                 android:id="@+id/SignupEmail"
@@ -103,19 +112,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/endreProfilEmail"
-                app:layout_constraintStart_toStartOf="@+id/SignupFodselsdatoInput"
-                app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdatoInput" />
+                app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
+                app:layout_constraintTop_toBottomOf="@+id/BirthdayDate" />
 
-            <EditText
-                android:id="@+id/SignupFodselsdatoInput"
+            <DatePicker
+                android:id="@+id/BirthdayDate"
                 android:layout_width="250dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/dd_mm_yyyy"
-                android:inputType="date"
-                app:layout_constraintStart_toStartOf="@+id/SignupFodselsdato"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdato" />
 
             <TextView
@@ -188,7 +196,7 @@
                 android:id="@+id/SignupRegistrerBruker"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
                 android:text="@string/registrer_bruker"
                 app:layout_constraintBottom_toBottomOf="parent"

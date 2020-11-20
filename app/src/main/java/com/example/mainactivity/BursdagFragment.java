@@ -1,12 +1,17 @@
 package com.example.mainactivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,6 +22,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -27,7 +37,9 @@ public class BursdagFragment extends Fragment {
     }
 
     //Elementer i layouten
-    private Button NyBursdag;
+    private FloatingActionButton NyBursdag;
+    private CardView card;
+    private ImageButton delete;
 
     // Variabler for å hente fra database
     private Database database;
@@ -53,6 +65,7 @@ public class BursdagFragment extends Fragment {
         // Metoder
         setInfo();
         setUpRecyclerView();
+
 
         // Tar deg videre til nytt fragment
         NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
