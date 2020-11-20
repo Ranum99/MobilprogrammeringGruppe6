@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SignupFragment extends Fragment {
@@ -30,6 +31,7 @@ public class SignupFragment extends Fragment {
     private EditText aName, anEmail, aPassword, aPasswordConfirm, aMobilnr;
     private DatePicker aBirthday;
     private Button registrerBruker;
+    private ImageView logo;
 
 
 
@@ -53,6 +55,9 @@ public class SignupFragment extends Fragment {
         aPassword = view.findViewById(R.id.SignupOprettPassordInput);
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
         database = new Database(getActivity());
+        logo = view.findViewById(R.id.SignupLogo);
+        logo.setImageResource(R.drawable.ic_logo41);
+        aBirthday.setMaxDate(System.currentTimeMillis());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
             @Override
