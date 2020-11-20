@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -26,7 +27,8 @@ public class SignupFragment extends Fragment {
     User user;
     SharedPreferences sharedPreferences;
 
-    private EditText aName, anEmail, aPassword, aPasswordConfirm, aBirthday, aMobilnr;
+    private EditText aName, anEmail, aPassword, aPasswordConfirm, aMobilnr;
+    private DatePicker aBirthday;
     private Button registrerBruker;
 
 
@@ -46,6 +48,7 @@ public class SignupFragment extends Fragment {
         registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
         aName = view.findViewById(R.id.SignupNavnInput);
         anEmail = view.findViewById(R.id.SignupEmailInput);
+        aBirthday = view.findViewById(R.id.BirthdayDate);
         aMobilnr = view.findViewById(R.id.SignupMobilnummerInput);
         aPassword = view.findViewById(R.id.SignupOprettPassordInput);
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
@@ -56,7 +59,7 @@ public class SignupFragment extends Fragment {
             public void onClick(View v) {
                 String name = aName.getText().toString();
                 String email = anEmail.getText().toString();
-                String birthday = aBirthday.getText().toString();
+                String birthday = aBirthday.getDayOfMonth() + "." + (aBirthday.getMonth()+1) + "." + aBirthday.getYear();
                 String mobilnr = aMobilnr.getText().toString();
                 String password = aPassword.getText().toString();
                 String passwordConfirm = aPasswordConfirm.getText().toString();
@@ -94,7 +97,6 @@ public class SignupFragment extends Fragment {
                         anEmail.setText("");
                         aPassword.setText("");
                         aPasswordConfirm.setText("");
-                        aBirthday.setText("");
                         aMobilnr.setText("");
 
                         navController.navigate(R.id.familieFragment);

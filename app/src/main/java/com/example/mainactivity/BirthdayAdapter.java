@@ -88,20 +88,20 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
             // Regner ut personens alder
             String datoinput = birthdayToDisplay.getDato();
-            String[] parts = datoinput.split("\\.");
+            //String[] parts = datoinput.split("\\.");
 
-            splitAar = Integer.parseInt(parts[2]);
-            splitMaaned = Integer.parseInt(parts[1]);
-            splitDag = Integer.parseInt(parts[0]);
+            //splitAar = Integer.parseInt(parts[2]);
+            //splitMaaned = Integer.parseInt(parts[1]);
+            //splitDag = Integer.parseInt(parts[0]);
 
             today = LocalDate.now();
-            birthday = LocalDate.of(splitAar, splitMaaned, splitDag);
-            period = Period.between(birthday, today);
+            //birthday = LocalDate.of(splitAar, splitMaaned, splitDag);
+            //period = Period.between(birthday, today);
 
             // Setter texten i cardviewet
             navn.setText(birthdayToDisplay.getNavn());
             dato.setText("Født: " + birthdayToDisplay.getDato());
-            aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
+            //aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
             id = birthdayToDisplay.getId();
         }
 
