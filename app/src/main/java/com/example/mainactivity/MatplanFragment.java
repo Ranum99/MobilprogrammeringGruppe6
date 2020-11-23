@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,10 +16,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+
 public class MatplanFragment extends Fragment {
 
-    public MatplanFragment() {}
-    private Button nyMatplan;
+    public MatplanFragment() {
+        // Required empty constructor
+
+    }
+
+    // Elementer i layouten
+    private FloatingActionButton nyMatplan;
+
+    // Variabler for å hente fra database
+    private Database database;
+    private SharedPreferences sharedPreferences;
+
+    // ArrayList for å lagre dataen fra databasen
+    private ArrayList<MatplanModel> matplan = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +54,7 @@ public class MatplanFragment extends Fragment {
 
     private void setUpRecyclerView() {
         RecyclerView matplanRecyclerview = getView().findViewById(R.id.matplanRecyclerview);
-        matplanRecyclerview.setAdapter(new MatplanAdapter(getContext(), MatplanModel.getData()));
+        matplanRecyclerview.setAdapter(new MatplanAdapter(getContext(), matplan));
 
         matplanRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
     }

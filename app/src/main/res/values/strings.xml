@@ -84,4 +84,6 @@
     <string name="opprett_samtale">Opprett samtale</string>
     <string name="Handleliste">Handleliste</string>
     <string name="ny_handleliste">test</string>
+    <string name="har_du_ikke_bruker">Har du ikke bruker?</string>
+    <string name="registrer_deg">Registrer deg</string>
 </resources>

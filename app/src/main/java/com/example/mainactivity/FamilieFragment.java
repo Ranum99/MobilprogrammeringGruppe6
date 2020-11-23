@@ -16,6 +16,7 @@ import android.widget.Button;
 public class FamilieFragment extends Fragment {
 
     private Button bliMedlemIFamilie, opprettFamilie;
+    private String navn, dato;
 
     public FamilieFragment() {
         // Required empty public constructor
@@ -34,7 +35,14 @@ public class FamilieFragment extends Fragment {
         bliMedlemIFamilie = view.findViewById(R.id.bliMedlem);
         opprettFamilie = view.findViewById(R.id.OpprettFamilie);
 
-        bliMedlemIFamilie.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieFragment_to_familieBliMedlemFragment));
-        opprettFamilie.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieFragment_to_familieOpprettFragment));
+        navn = getArguments().getString("NAVN");
+        dato = getArguments().getString("DATO");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("NAVN", navn);
+        bundle.putString("DATO", dato);
+
+        bliMedlemIFamilie.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieFragment_to_familieBliMedlemFragment, bundle));
+        opprettFamilie.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieFragment_to_familieOpprettFragment, bundle));
     }
 }

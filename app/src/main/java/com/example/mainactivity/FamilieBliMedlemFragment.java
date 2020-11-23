@@ -23,6 +23,7 @@ public class FamilieBliMedlemFragment extends Fragment {
     private Button bliMedlemBtn;
 
     private int familyId = 0;
+    private String navn, dato;
 
     Database database;
     SharedPreferences sharedPreferences;
@@ -48,6 +49,9 @@ public class FamilieBliMedlemFragment extends Fragment {
         password = view.findViewById(R.id.familie_bli_medlem_passord);
         bliMedlemBtn = view.findViewById(R.id.familie_bli_medlem_BliMedlemBtn);
 
+        navn = getArguments().getString("NAVN");
+        dato = getArguments().getString("DATO");
+
         bliMedlemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +59,7 @@ public class FamilieBliMedlemFragment extends Fragment {
                     int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
                     database.updateUserFamily(meID, familyId);
+                    database.addUserToDatabaseBIRTHDAY(navn, dato, String.valueOf(familyId));
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyId));

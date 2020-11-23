@@ -146,6 +146,7 @@
                 android:ems="10"
                 android:hint="@string/PhoneNumberHint"
                 android:inputType="phone"
+                android:imeOptions="actionDone"
                 app:layout_constraintStart_toStartOf="@+id/SignupMobilnummer"
                 app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummer" />
 

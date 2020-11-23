@@ -26,16 +26,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:autofillHints=""
+                android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/fullt_navn"
-                android:padding="10dp"
-                android:background="@drawable/custom_input"
                 android:imeOptions="actionDone"
-                android:inputType="none|textPersonName|textEmailAddress"
+                android:inputType="textPersonName"
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <DatePicker

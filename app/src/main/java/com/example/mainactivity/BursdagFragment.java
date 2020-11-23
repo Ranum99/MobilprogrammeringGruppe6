@@ -1,33 +1,22 @@
 package com.example.mainactivity;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -36,14 +25,14 @@ import java.util.Comparator;
 
 
 public class BursdagFragment extends Fragment {
+    private String familieIdBruker, familieIdTabell;
+
     public BursdagFragment() {
         // Required empty constructor
     }
 
     //Elementer i layouten
     private FloatingActionButton NyBursdag;
-    private CardView card;
-    private ImageButton delete;
 
     // Variabler for å hente fra database
     private Database database;
@@ -88,13 +77,17 @@ public class BursdagFragment extends Fragment {
 
         ArrayList<BirthdayModel> alleBursdager = new ArrayList<>();
 
+
         while(data.moveToNext()) {
+
             String navnet = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
             String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
+            String familieId = familieIdBruker;
 
-            BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id);
+            BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId);
             alleBursdager.add(bursdag);
+
         }
 
         this.bursdager = alleBursdager;

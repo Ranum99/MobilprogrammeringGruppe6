@@ -31,7 +31,7 @@ public class MainFragment extends Fragment {
     private TabLayout tablayout;
     private ViewPager2 viewPager;
     private PageAdapter pagerAdapter;
-    private Button loggut;
+
     private TextView familyName, familyId;
     SharedPreferences sharedPreferences;
     Database database;
@@ -44,14 +44,12 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         // Initialize elements
         tablayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.pager);
-        loggut = view.findViewById(R.id.LoggUtMain);
         familyName = view.findViewById(R.id.FamilyNameMain);
         familyId = view.findViewById(R.id.FamilyIdMain);
 
@@ -81,38 +79,6 @@ public class MainFragment extends Fragment {
             }
         }).attach();
 
-        //Logg ut
-
-        loggut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Nei, ikke gå!!!").
-                        setMessage("Er du sikker på at du vil logge ut?");
-                builder.setPositiveButton("Ja, jeg vil ut herifra!",
-                        new DialogInterface.OnClickListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Tømmer sharedPreferences
-                                SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.clear();
-                                editor.apply();
-                                navController.navigate(R.id.loginFragment);
-                            }
-                        });
-                builder.setNegativeButton("Nei, ta meg tilbake!",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert1 = builder.create();
-                alert1.show();
-            }
-        });
     }
 
     private String getFamilyName() {
