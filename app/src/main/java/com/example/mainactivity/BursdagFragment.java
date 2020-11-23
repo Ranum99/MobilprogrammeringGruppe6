@@ -25,11 +25,12 @@ import java.util.Comparator;
 
 
 public class BursdagFragment extends Fragment {
-    private String familieIdBruker, familieIdTabell;
 
     public BursdagFragment() {
         // Required empty constructor
     }
+
+    private String familieIdBruker, familieIdTabell;
 
     //Elementer i layouten
     private FloatingActionButton NyBursdag;

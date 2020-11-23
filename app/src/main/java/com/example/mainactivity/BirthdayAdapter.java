@@ -54,7 +54,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         return BirthdayList.size();
     }
 
-    // Inner klasse
+    // Indre klasse
     public class BirthdayViewHolder extends RecyclerView.ViewHolder {
 
         // CardViwet
@@ -98,8 +98,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             // Setter texten i cardviewet
             navn.setText(birthdayToDisplay.getNavn());
             dato.setText("Født: " + birthdayToDisplay.getDato());
-            aar.setText(FamilieId);
-            //aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
+            aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
 
         }
 

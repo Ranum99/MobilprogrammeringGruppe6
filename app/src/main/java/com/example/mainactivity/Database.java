@@ -9,9 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class Database extends SQLiteOpenHelper {
-    SharedPreferences sharedPreferences;
 
     private static final String TAG = "Database";
+    SharedPreferences sharedPreferences;
 
     // Felles for alle tabeller
     public static final String COLUMN_ID = "id";
@@ -145,20 +145,24 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
     /*
-                    HANDLELSITE
+                    HANDLELISTE
      */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE = "Handleliste";
-    public static final String COLUMN_OVERSKRIFT_HANDLELISTE = "Overskrift";
-    public static final String COLUMN_VARER = "Varer";
+    public static final String COLUMN_HANDLELISTE_UKENR = "Ukenr";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_OVERSKRIFT_HANDLELISTE + " TEXT, " +
-            COLUMN_VARER + " TEXT " +
+            COLUMN_HANDLELISTE_UKENR + "TEXT " +
             ")";
+
+    /*
+                    HANDLELISTE-LISTE
+     */
+    public static final String TABLE_HANDLELISTELISTE = "Handlelisteliste";
+
 
     /*
                     MATPLAN

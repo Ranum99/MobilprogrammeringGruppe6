@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
-        android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
+        android:name="com.example.mainactivity.HandlelisteLeggTil"
         android:label="fragment_handleliste_legg_til"
         tools:layout="@layout/fragment_handleliste_legg_til" >
         <action
