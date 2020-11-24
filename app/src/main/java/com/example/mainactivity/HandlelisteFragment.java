@@ -75,6 +75,7 @@ public class HandlelisteFragment extends Fragment {
     private void setInfo() {
         Cursor data = database.getData(Database.TABLE_HANDLELISTE);
 
+        /*
         ArrayList<HandlelisteModel> alleLister = new ArrayList<>();
 
         while(data.moveToNext()) {
@@ -87,6 +88,8 @@ public class HandlelisteFragment extends Fragment {
         }
 
         this.handleliste = alleLister;
+
+         */
     }
 
     private void setUpRecyclerView() {

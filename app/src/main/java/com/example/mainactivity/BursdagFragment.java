@@ -17,14 +17,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
 
-public class BursdagFragment extends Fragment {
+public class BursdagFragment extends Fragment{
 
     public BursdagFragment() {
         // Required empty constructor
@@ -102,7 +105,7 @@ public class BursdagFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             public int compare(BirthdayModel c1, BirthdayModel c2) {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M.uuuu");
-                return Integer.valueOf(LocalDate.parse(c1.getDato(), format).compareTo(LocalDate.parse(c2.getDato(), format)));
+                return LocalDate.parse(c1.getDato(), format).compareTo(LocalDate.parse(c2.getDato(), format));
             }
         };
 

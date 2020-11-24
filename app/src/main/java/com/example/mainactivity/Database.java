@@ -144,6 +144,7 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_BIRTHDAY_FAMILYID + "TEXT " +
             ")";
 
+
     /*
                     HANDLELISTE
      */
@@ -155,13 +156,14 @@ public class Database extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_HANDLELISTE_UKENR + "TEXT " +
+            COLUMN_HANDLELISTE_UKENR + " TEXT " +
             ")";
+
+
 
     /*
                     HANDLELISTE-LISTE
      */
-    public static final String TABLE_HANDLELISTELISTE = "Handlelisteliste";
 
 
     /*
@@ -192,7 +194,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_WISH);
         db.execSQL(CREATE_TABLE_FAMILY);
         db.execSQL(CREATE_TABLE_MATPLAN);
-        //db.execSQL(CREATE_TABLE_HANDLELISTE);
+        db.execSQL(CREATE_TABLE_HANDLELISTE);
     }
 
     @Override
@@ -427,7 +429,6 @@ public class Database extends SQLiteOpenHelper {
 
         String whereClause = "id=?";
         String whereArgs[] = {id};
-        //long result = db.insert(TABLE_NAME, null, contentValues);
         long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
         return result != -1;
     }
