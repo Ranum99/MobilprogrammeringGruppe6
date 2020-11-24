@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toTopOf="@+id/item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HandlelisteAvbryt"></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/HandlelisteAvbryt" />
 
     <EditText
         android:id="@+id/item"
@@ -50,12 +50,14 @@
 
     <Button
         android:id="@+id/HandlelisteAvbryt"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Avbryt"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,11 +72,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/HandlelisteUkeNR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+    <EditText
+        android:id="@+id/HandlelisteUkeNr"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:gravity="center_horizontal|center_vertical"
+        android:hint="Uke nr"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Uke: "
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/handleliste"
         app:layout_constraintEnd_toStartOf="@+id/HandlelisteOpprett"
         app:layout_constraintStart_toEndOf="@+id/HandlelisteAvbryt"

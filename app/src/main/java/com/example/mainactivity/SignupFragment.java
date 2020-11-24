@@ -22,7 +22,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SignupFragment extends Fragment {
-    public SignupFragment() {}
+    public SignupFragment() {
+        // Required empty constructor
+    }
 
     Database database;
     User user;
@@ -56,7 +58,7 @@ public class SignupFragment extends Fragment {
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
         database = new Database(getActivity());
         logo = view.findViewById(R.id.SignupLogo);
-        logo.setImageResource(R.drawable.ic_logo41);
+        logo.setImageResource(R.drawable.logo);
         aBirthday.setMaxDate(System.currentTimeMillis());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {

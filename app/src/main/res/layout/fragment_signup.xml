@@ -30,10 +30,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -46,22 +46,15 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/passord"
-                android:inputType="textPassword"
+                android:background="@drawable/custom_input"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="@string/gjentaPassord"
                 android:imeOptions="actionDone"
-                app:layout_constraintStart_toStartOf="@+id/SignupGjentaPassord"
-                app:layout_constraintTop_toBottomOf="@+id/SignupGjentaPassord" />
-
-            <TextView
-                android:id="@+id/SignupGjentaPassord"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/gjentaPassord"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/SignupOprettPassordInput"
                 app:layout_constraintStart_toStartOf="@+id/SignupOprettPassordInput"
                 app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassordInput" />
 
@@ -71,21 +64,14 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:autofillHints=""
+                android:background="@drawable/custom_input"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/passord"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_password"
-                android:drawablePadding="12dp"
-                app:layout_constraintStart_toStartOf="@+id/SignupOprettPassord"
-                app:layout_constraintTop_toBottomOf="@+id/SignupOprettPassord" />
-
-            <TextView
-                android:id="@+id/SignupOprettPassord"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/opprettPassord"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/SignupEmailInput"
                 app:layout_constraintStart_toStartOf="@+id/SignupEmailInput"
                 app:layout_constraintTop_toBottomOf="@+id/SignupEmailInput" />
 
@@ -95,26 +81,18 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:autofillHints=""
+                android:background="@drawable/custom_input"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/opprettBrukerEmail"
                 android:inputType="textEmailAddress"
-                app:layout_constraintStart_toStartOf="@+id/SignupEmail"
-                app:layout_constraintTop_toBottomOf="@+id/SignupEmail"
-                android:drawableLeft="@drawable/ic_email"
-                android:drawablePadding="12dp"
 
-                />
-
-
-            <TextView
-                android:id="@+id/SignupEmail"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/endreProfilEmail"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
                 app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
                 app:layout_constraintTop_toBottomOf="@+id/BirthdayDate" />
+
 
             <DatePicker
                 android:id="@+id/BirthdayDate"
@@ -123,18 +101,9 @@
                 android:layout_marginTop="8dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
+                android:theme="@style/datepicker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/SignupFodselsdato" />
-
-            <TextView
-                android:id="@+id/SignupFodselsdato"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/foedselsdato"
-                app:layout_constraintStart_toStartOf="@+id/SignupMobilnummerInput"
                 app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummerInput" />
 
             <EditText
@@ -143,20 +112,13 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
+                android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/PhoneNumberHint"
-                android:inputType="phone"
                 android:imeOptions="actionDone"
-                app:layout_constraintStart_toStartOf="@+id/SignupMobilnummer"
-                app:layout_constraintTop_toBottomOf="@+id/SignupMobilnummer" />
-
-            <TextView
-                android:id="@+id/SignupMobilnummer"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/mobilnummer"
+                android:inputType="phone"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/SignupNavnInput"
                 app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
                 app:layout_constraintTop_toBottomOf="@+id/SignupNavnInput" />
 
@@ -164,28 +126,20 @@
                 android:id="@+id/SignupNavnInput"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:autofillHints=""
+                android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/ola_nordmann"
                 android:inputType="text"
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/SignupNavn" />
-
-            <TextView
-                android:id="@+id/SignupNavn"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/fullt_navn"
-                app:layout_constraintStart_toStartOf="@+id/SignupNavnInput"
                 app:layout_constraintTop_toBottomOf="@+id/SignupLogo" />
 
             <ImageView
                 android:id="@+id/SignupLogo"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_marginTop="24dp"
                 android:contentDescription="@string/profilBilde"
