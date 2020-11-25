@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,12 +37,16 @@ public class HandlelisteFragment extends Fragment {
 
     //Elementer i layouten
     private FloatingActionButton NyHandleliste;
+    private TextView empty;
+    private RecyclerView handlelisteRecyclerView;
 
     // Variabler for å hente fra database
     private Database database;
     private SharedPreferences sharedPreferences;
+
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<HandlelisteModel> handleliste = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,13 +60,17 @@ public class HandlelisteFragment extends Fragment {
 
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        NyHandleliste = view.findViewById(R.id.NyHandleliste);
+        empty = view.findViewById(R.id.emptyHandleliste);
+        handlelisteRecyclerView = getView().findViewById(R.id.HandlelisteRecyclerview);
 
         // Metoder
         setUpRecyclerView();
         setInfo();
+        if (handleliste.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        else { empty.setVisibility(View.GONE); }
 
         // Tar deg videre til nytt fragment
-        NyHandleliste = view.findViewById(R.id.NyHandleliste);
         NyHandleliste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +84,6 @@ public class HandlelisteFragment extends Fragment {
     private void setInfo() {
         Cursor data = database.getData(Database.TABLE_HANDLELISTE);
 
-        /*
         ArrayList<HandlelisteModel> alleLister = new ArrayList<>();
 
         while(data.moveToNext()) {
@@ -89,21 +97,10 @@ public class HandlelisteFragment extends Fragment {
 
         this.handleliste = alleLister;
 
-         */
     }
 
     private void setUpRecyclerView() {
-        RecyclerView handlelisteRecyclerView = getView().findViewById(R.id.HandlelisteRecyclerview);
 
-        Comparator<HandlelisteModel> byUke = new Comparator<HandlelisteModel>() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public int compare(HandlelisteModel c1, HandlelisteModel c2) {
-
-                return Integer.valueOf(c1.getNr()).compareTo(Integer.valueOf(c2.getNr()));
-            }
-        };
-
-        Collections.sort(handleliste, byUke);
         handlelisteRecyclerView.setAdapter(new HandlelisteAdapter(getContext(), handleliste));
         handlelisteRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

@@ -17,14 +17,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class FamilieboblaFragment extends Fragment {
+
     FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
     private ArrayList<String> names, ids, samtaleNames;
+    private FloatingActionButton nySamtale;
+    private TextView empty;
+    private RecyclerView familieboblaRecyclerView;
 
 
     @Override
@@ -38,21 +45,24 @@ public class FamilieboblaFragment extends Fragment {
         //this.view = view;
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        empty = view.findViewById(R.id.emptySamtale);
+        familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
+        nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
 
         // Setting names and ids to global arrays
         setNamesAndIds();
-
         setUpRecyclerView();
 
+        if (samtaleNames.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        else { empty.setVisibility(View.GONE); }
+
         // Go to new samtale
-        Button nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
         nySamtale.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaNySamtaleFragment));
     }
 
     private void setUpRecyclerView() {
-        RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
-        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names, samtaleNames)));
 
+        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names, samtaleNames)));
         familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 

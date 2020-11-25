@@ -16,13 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -37,6 +37,8 @@ public class BursdagFragment extends Fragment{
 
     //Elementer i layouten
     private FloatingActionButton NyBursdag;
+    private TextView empty;
+    private RecyclerView bursdagRecyclerView;
 
     // Variabler for å hente fra database
     private Database database;
@@ -47,6 +49,7 @@ public class BursdagFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_bursdag, container, false);
     }
 
@@ -58,11 +61,16 @@ public class BursdagFragment extends Fragment{
         // instansierer variablene
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        bursdagRecyclerView = getView().findViewById(R.id.BursdagRecyclerview);
+        empty = getView().findViewById(R.id.emptyBirthday);
+
 
         // Metoder
         setInfo();
         setUpRecyclerView();
 
+        if (bursdager.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        else { empty.setVisibility(View.GONE); }
 
         // Tar deg videre til nytt fragment
         NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
@@ -81,7 +89,6 @@ public class BursdagFragment extends Fragment{
 
         ArrayList<BirthdayModel> alleBursdager = new ArrayList<>();
 
-
         while(data.moveToNext()) {
 
             String navnet = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
@@ -99,8 +106,8 @@ public class BursdagFragment extends Fragment{
 
     // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
-        RecyclerView bursdagRecyclerView = getView().findViewById(R.id.BursdagRecyclerview);
 
+        // Sortere bursdager
         Comparator<BirthdayModel> byBirthday = new Comparator<BirthdayModel>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             public int compare(BirthdayModel c1, BirthdayModel c2) {
@@ -108,8 +115,8 @@ public class BursdagFragment extends Fragment{
                 return LocalDate.parse(c1.getDato(), format).compareTo(LocalDate.parse(c2.getDato(), format));
             }
         };
-
         Collections.sort(bursdager, byBirthday);
+
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

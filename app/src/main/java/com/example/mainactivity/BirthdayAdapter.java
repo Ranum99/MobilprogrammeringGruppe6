@@ -15,6 +15,9 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -132,6 +135,8 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                             });
                     AlertDialog alert1 = builder.create();
                     alert1.show();
+
+
                 }
             };
 

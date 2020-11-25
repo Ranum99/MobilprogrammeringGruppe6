@@ -34,7 +34,7 @@
     <string name="skriv">Hva vil du handle?</string>
     <string name="skriv2">Skriv inn</string>
     <string name="id">Bruker-ID</string>
-    <string name="matplan">Matplan</string>
+
     <string name="legg_til_en_bursdag">Legg til en bursdag</string>
     <string name="ola_nordmann">Ola Nordmann</string>
     <string name="logg_ut">Logg ut</string>
@@ -86,4 +86,25 @@
     <string name="ny_handleliste">test</string>
     <string name="har_du_ikke_bruker">Har du ikke bruker?</string>
     <string name="registrer_deg">Registrer deg</string>
+    <string name="nothing_to_show_here">Nothing to show here</string>
+    <string name="matplan">Matplan</string>
+    <string name="nskelister">Ønskelister</string>
+    <string-array name="Ukedager">
+        <item>Mandag</item>
+        <item>Tirsdag</item>
+        <item>Onsdag</item>
+        <item>Torsdag</item>
+        <item>Fredag</item>
+        <item>Lørdag</item>
+        <item>Søndag</item>
+    </string-array>
+    <integer-array name="AntallDager">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </integer-array>
 </resources>

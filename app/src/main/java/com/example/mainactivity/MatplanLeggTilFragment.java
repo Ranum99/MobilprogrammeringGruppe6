@@ -12,18 +12,20 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
 public class MatplanLeggTilFragment extends Fragment {
 
-    public MatplanLeggTilFragment() {}
+    public MatplanLeggTilFragment() {
+        // Required empty constructor
+    }
 
+    // Variabler
     private Spinner antallDager, startdag;
     private Button avbryt, opprett;
 
-    Integer[] AntallDager = {1,2,3,4,5,6,7};
-    String[] UkeDager = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,10 +37,19 @@ public class MatplanLeggTilFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
+        // Instansierer variablene
         antallDager = view.findViewById(R.id.matplanDager);
         startdag = view.findViewById(R.id.matplanStartDag);
         avbryt = view.findViewById(R.id.matplanAvbryt);
         opprett = view.findViewById(R.id.opprettMatplan);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.AntallDager, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        antallDager.setAdapter(adapter);
+
 
         avbryt.setOnClickListener(new View.OnClickListener() {
             @Override
