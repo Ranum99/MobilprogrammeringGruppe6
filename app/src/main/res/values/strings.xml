@@ -59,8 +59,8 @@
     <string name="PhoneNumberHint">+47 12365478</string>
     <string name="dd_mm_yyyy">DD.MM.YYYY</string>
     <string name="fullt_navn">Fullt navn</string>
-    <string name="mobilnummer">Mobilnummer</string>
-    <string name="foedselsdato">Fødselsdato</string>
+    <string name="mobilnummer">Mobilnummer: </string>
+    <string name="foedselsdato">Fødselsdato: </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logg_inn">Logg inn</string>
     <string name="example_email_com">example@email.com</string>
@@ -89,6 +89,7 @@
     <string name="nothing_to_show_here">Nothing to show here</string>
     <string name="matplan">Matplan</string>
     <string name="nskelister">Ønskelister</string>
+    <string name="bruker_id">Bruker-ID: </string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

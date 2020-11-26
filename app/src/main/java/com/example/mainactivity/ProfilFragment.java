@@ -31,7 +31,7 @@ public class ProfilFragment extends Fragment {
 
 
     private SharedPreferences sharedPreferences;
-    private TextView userID;
+    private TextView userID, mobilnr, fodselsdato;
     private Button endreProfilBtn, LoggUt;
 
     @Override
@@ -43,7 +43,7 @@ public class ProfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
+        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
 
         // Endre profil
         endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
@@ -85,5 +85,12 @@ public class ProfilFragment extends Fragment {
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
         userID = view.findViewById(R.id.ProfilBrukerId);
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
+
+        mobilnr = view.findViewById(R.id.ProfilMobilNummer);
+        mobilnr.setText(mobilnr.getText() + sharedPreferences.getString(String.valueOf(User.MOBILNR), null));
+
+        fodselsdato = view.findViewById(R.id.ProfilFodselsdato);
+        fodselsdato.setText(fodselsdato.getText() + sharedPreferences.getString(String.valueOf(User.BIRTHDAY), null));
+
     }
 }
