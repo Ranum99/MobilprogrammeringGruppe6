@@ -82,18 +82,6 @@ public class HandlelisteFragment extends Fragment {
         });
     }
 
-    private void setInfo() {
-        Cursor data = database.getData(Database.TABLE_HANDLELISTE);
-
-        while(data.moveToNext()) {
-            String overskriften = data.getString(data.getColumnIndex(Database.COLUMN_OVERSKRIFT_HANDLELISTE));
-            String varene = data.getString(data.getColumnIndex(Database.COLUMN_VARER));
-
-            overskriftHandleliste.add(overskriften);
-            varer.add(varene);
-        }
-    }
-
     // Metoder for å fylle Arraylisten med data fra databasen
     private void setInfo() {
         Cursor data = database.getData(Database.TABLE_HANDLELISTE);
