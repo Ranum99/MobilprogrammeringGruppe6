@@ -10,9 +10,6 @@ public class HandlelisteModel {
         this.id = id;
     }
 
-    public static List<HandlelisteModel> getData(ArrayList<String> overskriftHandleliste, ArrayList<String> varer) {
-    }
-
     public String getNr() {
         return nr;
     }
