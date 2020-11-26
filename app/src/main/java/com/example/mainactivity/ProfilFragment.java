@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,33 +32,29 @@ public class ProfilFragment extends Fragment {
         // Required
     }
 
-
-    private SharedPreferences sharedPreferences;
-    private TextView userID, mobilnr, fodselsdato;
-    private Button endreProfilBtn, LoggUt;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profil, container, false);
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
 
-        sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
-        userID = view.findViewById(R.id.ProfilBrukerId);
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
+        TextView userID = view.findViewById(R.id.ProfilBrukerId);
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
 
         // Endre profil
-        endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
+        Button endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
         endreProfilBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.profilRedigerFragment));
 
         //Logg ut
-        LoggUt = view.findViewById(R.id.LoggutBtn);
-        LoggUt.setOnClickListener(new View.OnClickListener() {
+        Button loggUt = view.findViewById(R.id.LoggutBtn);
+        loggUt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -92,10 +89,10 @@ public class ProfilFragment extends Fragment {
         userID = view.findViewById(R.id.ProfilBrukerId);
         userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
 
-        mobilnr = view.findViewById(R.id.ProfilMobilNummer);
+        TextView mobilnr = view.findViewById(R.id.ProfilMobilNummer);
         mobilnr.setText(mobilnr.getText() + sharedPreferences.getString(String.valueOf(User.MOBILNR), null));
 
-        fodselsdato = view.findViewById(R.id.ProfilFodselsdato);
+        TextView fodselsdato = view.findViewById(R.id.ProfilFodselsdato);
         fodselsdato.setText(fodselsdato.getText() + sharedPreferences.getString(String.valueOf(User.BIRTHDAY), null));
 
     }
