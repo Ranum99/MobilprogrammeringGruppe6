@@ -89,7 +89,7 @@ public class ProfilRedigerFragment extends Fragment {
         maaned = Integer.parseInt(parts[1]);
         aar = Integer.parseInt(parts[2]);
         System.out.println(dag + "," + maaned + "," + aar);
-        endreBursdag.updateDate(aar, maaned, dag);
+        endreBursdag.updateDate(aar, maaned-1, dag);
     }
 
     public void UpdateUser(String newName, String newBirthday, String newEmail, String newMobilnr) {
