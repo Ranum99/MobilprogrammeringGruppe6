@@ -48,6 +48,8 @@ public class ProfilRedigerFragment extends Fragment {
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
         database = new Database(getActivity());
 
+
+
         setUserData();
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +57,6 @@ public class ProfilRedigerFragment extends Fragment {
             public void onClick(View v) {
                 String newName = endreNavn.getText().toString();
                 String newBirthday = endreBursdag.getDayOfMonth() + "." + (endreBursdag.getMonth()+1) + "." + endreBursdag.getYear();
-                System.out.println(newBirthday);
                 String newEmail = endreEmail.getText().toString();
                 String newMobilnr = endreMobilnr.getText().toString();
 

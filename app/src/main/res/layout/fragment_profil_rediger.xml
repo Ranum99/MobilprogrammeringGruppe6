@@ -41,9 +41,11 @@
 
             <EditText
                 android:id="@+id/endreProfilNavn"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:background="@drawable/custom_input"
+                android:padding="10dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/endreProfilNavn"
@@ -54,9 +56,11 @@
 
             <EditText
                 android:id="@+id/profilMobilnr"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:background="@drawable/custom_input"
+                android:padding="10dp"
                 android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
                 android:ems="10"
                 android:hint="@string/PhoneNumberHint"
@@ -76,9 +80,11 @@
 
             <EditText
                 android:id="@+id/endreProfilEmail"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:background="@drawable/custom_input"
+                android:padding="10dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/endreProfilEmail"
@@ -93,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+
                 android:text="@string/endreProfilNavn"
                 app:layout_constraintStart_toStartOf="@+id/endreProfilNavn"
                 app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
@@ -129,7 +136,7 @@
 
             <Button
                 android:id="@+id/EndreProfilRedigerBtn"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"
                 android:text="Rediger profil"
@@ -138,7 +145,7 @@
 
             <Button
                 android:id="@+id/EndreProfilAvbryt"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
