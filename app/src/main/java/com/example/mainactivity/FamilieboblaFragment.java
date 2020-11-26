@@ -24,7 +24,7 @@ public class FamilieboblaFragment extends Fragment {
     FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
-    private ArrayList<String> names, ids, samtaleNames;
+    private ArrayList<FamilieboblaModel> samtaler;
 
 
     @Override
@@ -51,7 +51,7 @@ public class FamilieboblaFragment extends Fragment {
 
     private void setUpRecyclerView() {
         RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
-        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names, samtaleNames)));
+        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), samtaler));
 
         familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -60,9 +60,7 @@ public class FamilieboblaFragment extends Fragment {
         // Getting data from database table CONVERSATION
         Cursor data = database.getData(Database.TABLE_CONVERSATION);
 
-        ArrayList<String> names = new ArrayList<>();
-        ArrayList<String> ids = new ArrayList<>();
-        ArrayList<String> samtaleNames = new ArrayList<>();
+        ArrayList<FamilieboblaModel> samtaler = new ArrayList<>();
 
         // Own id from session
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
@@ -83,9 +81,8 @@ public class FamilieboblaFragment extends Fragment {
                     String userToFamily = userTo.getString(6);
 
                     if (userToFamily.equals(sharedPreferences.getString(User.FAMILIE, null))){
-                        names.add(userToName);
-                        ids.add(String.valueOf(conversationID));
-                        samtaleNames.add(samtaleName);
+                        FamilieboblaModel samtale = new FamilieboblaModel(String.valueOf(conversationID), userToName, samtaleName);
+                        samtaler.add(samtale);
                     }
                 }
                 if (toID == meID) {
@@ -96,17 +93,14 @@ public class FamilieboblaFragment extends Fragment {
                     String userFromFamily = userFrom.getString(6);
 
                     if (userFromFamily.equals(sharedPreferences.getString(User.FAMILIE, null))) {
-                        names.add(userFromName);
-                        ids.add(String.valueOf(conversationID));
-                        samtaleNames.add(samtaleName);
+                        FamilieboblaModel samtale = new FamilieboblaModel(String.valueOf(conversationID), userFromName, samtaleName);
+                        samtaler.add(samtale);
                     }
                 }
             }
         }
 
-        this.names = names;
-        this.ids = ids;
-        this.samtaleNames = samtaleNames;
+        this.samtaler = samtaler;
     }
 
 }

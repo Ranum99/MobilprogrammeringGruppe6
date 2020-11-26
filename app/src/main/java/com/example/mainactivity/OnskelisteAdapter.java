@@ -1,12 +1,20 @@
 package com.example.mainactivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,10 +23,20 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
 
     private List<OnskelisteModel> Onskelister;
     private LayoutInflater inflater;
+    private OnskelisteModel modelToDisplay;
+    private Context contexten;
+    private Database database;
 
     public OnskelisteAdapter(Context context, List<OnskelisteModel> Onskelister) {
         this.inflater = LayoutInflater.from(context);
         this.Onskelister = Onskelister;
+    }
+
+
+    private void removeItem(int position) {
+        Onskelister.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, Onskelister.size());
     }
 
     @NonNull
@@ -31,9 +49,11 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
 
     @Override
     public void onBindViewHolder(@NonNull OnskelisteViewHolder viewHolder, int position) {
-        OnskelisteModel modelToDisplay = Onskelister.get(position);
+        modelToDisplay = Onskelister.get(position);
 
         viewHolder.setOnskeliste(modelToDisplay);
+        viewHolder.setDeleteOnOnskeliste(modelToDisplay, position);
+        viewHolder.setClickOnOnskeliste(modelToDisplay);
     }
 
     @Override
@@ -44,17 +64,69 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
     public class OnskelisteViewHolder extends RecyclerView.ViewHolder {
 
         private TextView navn;
+        private ConstraintLayout card;
+        private ImageButton delete;
 
         public OnskelisteViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            navn = itemView.findViewById(R.id.Onskelistenavn);
-
         }
 
         public void setOnskeliste(OnskelisteModel modelToDisplay) {
-            navn.setText(modelToDisplay.getNavn());
+            navn = itemView.findViewById(R.id.Onskelistenavn);
+            String text = modelToDisplay.getWishlistName() + " (" + modelToDisplay.getUserToName() + ")";
+            navn.setText(text);
+        }
 
+        public void setDeleteOnOnskeliste(final OnskelisteModel modelToDisplay, final int position) {
+            delete = itemView.findViewById(R.id.OnskelisteDelete);
+            View.OnClickListener onClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
+                    builder.setTitle("Slett samtale")
+                            .setMessage("Er du sikker på at du vil slette denne samtalen med " + modelToDisplay.getUserToName() + "?");
+                    builder.setPositiveButton("Jepp, bare å slette",
+                            new DialogInterface.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // Sletter samtalen
+                                    database = new Database(contexten);
+                                    database.deleteRowFromTableById(Database.TABLE_CONVERSATION , String.valueOf(modelToDisplay.getWishlistID()));
+                                    removeItem(position);
+                                    System.out.println("Samtalen er slettet");
+                                }
+                            });
+                    builder.setNegativeButton("NEI! Var bare en prank",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    System.out.println("Samtalen ble IKKE slettet");
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert1 = builder.create();
+                    alert1.show();
+                    System.out.println(modelToDisplay.getWishlistID() + " - " + modelToDisplay.getWishlistName() + "(" + modelToDisplay.getUserToName() + ")");
+                }
+            };
+
+            delete.setOnClickListener(onClickListener);
+        }
+
+        public void setClickOnOnskeliste(final OnskelisteModel modelToDisplay) {
+            card = itemView.findViewById(R.id.OnskelisteCardID);
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("onskelisteId", modelToDisplay.getWishlistID());
+                    bundle.putString("onskelisteForBruker", modelToDisplay.getUserToName());
+                    bundle.putString("onskelisteNavn", modelToDisplay.getWishlistName());
+
+                    Navigation.findNavController(card).navigate(R.id.action_onskelisteFragment_to_onskelisteListeFragment, bundle);
+                }
+            });
         }
     }
 

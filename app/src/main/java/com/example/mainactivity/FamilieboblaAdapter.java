@@ -79,19 +79,19 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
         public void setSamtale(final FamilieboblaModel SamtaleToDisplay) {
             navn = itemView.findViewById(R.id.FamilieBoblaNameCardview);
 
-            String text = SamtaleToDisplay.getSamtaleName() + " (" + SamtaleToDisplay.getNavn() + ")";
+            String text = SamtaleToDisplay.getSamtaleName() + " (" + SamtaleToDisplay.getUserToName() + ")";
 
             navn.setText(text);
         }
 
         public void setDeleteOnSamtale(final FamilieboblaModel SamtaleToDisplay, final int position) {
             delete = itemView.findViewById(R.id.imageButton);
-            View.OnClickListener nene = new View.OnClickListener() {
+            View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
                     builder.setTitle("Slett samtale")
-                            .setMessage("Er du sikker på at du vil slette denne samtalen med " + SamtaleToDisplay.getNavn() + "?");
+                            .setMessage("Er du sikker på at du vil slette denne samtalen med " + SamtaleToDisplay.getUserToName() + "?");
                     builder.setPositiveButton("Jepp, bare å slette",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -118,7 +118,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                 }
             };
 
-            delete.setOnClickListener(nene);
+            delete.setOnClickListener(onClickListener);
         }
 
         public void setClickOnSamtale(final FamilieboblaModel SamtaleToDisplay) {
@@ -128,12 +128,11 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putString("samtaleId", SamtaleToDisplay.getIden());
-                    bundle.putString("samtaleTo", SamtaleToDisplay.getNavn());
+                    bundle.putString("samtaleTo", SamtaleToDisplay.getUserToName());
                     bundle.putString("samtaleName", SamtaleToDisplay.getSamtaleName());
 
 
                     Navigation.findNavController(card).navigate(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment, bundle);
-                    System.out.println("meme");
                 }
             });
         }

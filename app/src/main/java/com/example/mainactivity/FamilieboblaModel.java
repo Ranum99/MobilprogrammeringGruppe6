@@ -1,42 +1,29 @@
 package com.example.mainactivity;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class FamilieboblaModel {
-    private String id, navn, samtaleName;
+    private String samtaleID, userToName, samtaleName;
 
-    public FamilieboblaModel(String id, String navn, String samtaleName) {
-        this.id = id;
-        this.navn = navn;
+    public FamilieboblaModel(String samtaleID, String userToName, String samtaleName) {
+        this.samtaleID = samtaleID;
+        this.userToName = userToName;
         this.samtaleName = samtaleName;
     }
 
-    public String getNavn() {
-        return navn;
+    public String getUserToName() {
+        return userToName;
     }
 
     public String getIden() {
-        return id;
+        return samtaleID;
     }
 
     public String getSamtaleName() {
         return samtaleName;
     }
 
-    public void setNavn(String navn) {
-        this.navn = navn;
-    }
-
-    public static ArrayList<FamilieboblaModel> getData(ArrayList<String> ids, ArrayList<String> names, ArrayList<String> samtaleName) {
-        ArrayList<FamilieboblaModel> data = new ArrayList<>();
-
-        for(int i = 0; i < names.size(); i++) {
-            FamilieboblaModel enSamtale = new FamilieboblaModel(ids.get(i), names.get(i), samtaleName.get(i));
-            data.add(enSamtale);
-        }
-
-        return data;
+    public void setUserToName(String userToName) {
+        this.userToName = userToName;
     }
 }

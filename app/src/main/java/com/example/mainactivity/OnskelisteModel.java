@@ -4,31 +4,24 @@ import java.util.ArrayList;
 
 public class OnskelisteModel {
 
-    private String navn;
+    private int wishlistID;
+    private String userToName, wishlistName;
 
-    public OnskelisteModel(int i, String navn) {
-        this.navn = navn;
+    public OnskelisteModel(int wishlistID, String userToName, String wishlistName) {
+        this.wishlistID = wishlistID;
+        this.userToName = userToName;
+        this.wishlistName = wishlistName;
     }
 
-    public String getNavn() {
-        return navn;
+    public int getWishlistID() {
+        return wishlistID;
     }
 
-    public void setNavn(String navn) {
-        this.navn = navn;
+    public String getUserToName() {
+        return userToName;
     }
 
-    public static ArrayList<OnskelisteModel> getData() {
-        ArrayList<OnskelisteModel> data = new ArrayList<>();
-
-        //Egendefinert. Skal hentes fra database
-        String[] navn = {"Emilie"};
-
-        for(int i = 0; i < navn.length; i++) {
-            OnskelisteModel onskelister = new OnskelisteModel(i, navn[i]);
-            data.add(onskelister);
-        }
-
-        return data;
+    public String getWishlistName() {
+        return wishlistName;
     }
 }
