@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,7 +22,9 @@ public class ProfilRedigerFragment extends Fragment {
     Database database;
     SharedPreferences sharedPreferences;
 
-    private EditText endreNavn, endreBursdag, endreEmail, endreMobilnr;
+    private Button avbryt, send;
+    private EditText endreNavn, endreEmail, endreMobilnr;
+    private DatePicker endreBursdag;
 
     public ProfilRedigerFragment() {
     }
@@ -35,23 +38,15 @@ public class ProfilRedigerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Avbryt knapp
-        Button avbryt = view.findViewById(R.id.EndreProfilAvbryt);
-
-        // Lagre knapp
-        Button send = view.findViewById(R.id.EndreProfilRedigerBtn);
-
-        sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
-
+        // Instansierer variabler
+        avbryt = view.findViewById(R.id.EndreProfilAvbryt);
+        send = view.findViewById(R.id.EndreProfilRedigerBtn);
         endreNavn = view.findViewById(R.id.endreProfilNavn);
-
         endreBursdag = view.findViewById(R.id.endreProfilBursdag);
-
-
-
         endreEmail = view.findViewById(R.id.endreProfilEmail);
-
         endreMobilnr = view.findViewById(R.id.profilMobilnr);
+        sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
+        database = new Database(getActivity());
 
         setUserData();
 
@@ -59,7 +54,8 @@ public class ProfilRedigerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String newName = endreNavn.getText().toString();
-                String newBirthday = endreBursdag.getText().toString();
+                String newBirthday = endreBursdag.getDayOfMonth() + "." + (endreBursdag.getMonth()+1) + "." + endreBursdag.getYear();
+                System.out.println(newBirthday);
                 String newEmail = endreEmail.getText().toString();
                 String newMobilnr = endreMobilnr.getText().toString();
 
@@ -76,21 +72,22 @@ public class ProfilRedigerFragment extends Fragment {
 
     private void setUserData() {
         endreNavn.setText(sharedPreferences.getString(User.NAME, null));
-        endreBursdag.setText(sharedPreferences.getString(User.BIRTHDAY, null));
-
-        String[] parts = getArguments().getString("DATO").split("\.");
+        String date = sharedPreferences.getString(User.BIRTHDAY, null);
+        String[] parts = date.split("\\.");
         Integer dag, maaned, aar;
         dag = Integer.parseInt(parts[0]);
         maaned = Integer.parseInt(parts[1]);
         aar = Integer.parseInt(parts[2]);
-        System.out.println(dag + "," + maaned + "," + aar);
+        endreBursdag.updateDate(aar, maaned-1, dag);
 
         endreEmail.setText(sharedPreferences.getString(User.EMAIL, null));
         endreMobilnr.setText(sharedPreferences.getString(User.MOBILNR, null));
     }
 
     public void UpdateUser(String newName, String newBirthday, String newEmail, String newMobilnr) {
-        boolean insertData = database.updateUserInDatabase(sharedPreferences.getString(User.ID, null), newName, newBirthday, newEmail, newMobilnr);
+        String id = sharedPreferences.getString(User.ID, null);
+
+        boolean insertData = database.updateUserInDatabase(id, newName, newEmail, newBirthday, newMobilnr);
 
         if (insertData)
             Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
@@ -103,6 +100,5 @@ public class ProfilRedigerFragment extends Fragment {
 
         //Kan evt. legge in regEx på email etterhvert.
     }
-
 
 }
