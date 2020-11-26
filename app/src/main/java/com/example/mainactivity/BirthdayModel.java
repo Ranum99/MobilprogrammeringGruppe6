@@ -1,22 +1,17 @@
 package com.example.mainactivity;
 
-import androidx.annotation.Nullable;
-
-import java.util.Comparator;
-import java.util.List;
-
 public class BirthdayModel {
 
     // Variabler
-    private String navn, dato, id;
+    private String navn, dato, id, familieId;
 
-    public BirthdayModel(String navn, String dato, String id) {
+    public BirthdayModel(String navn, String dato, String id, String familieId) {
 
         // Setter variablene
         this.navn = navn;
         this.dato = dato;
         this.id = id;
-
+        this.familieId = familieId;
     }
 
     // Getters and setters
@@ -44,4 +39,11 @@ public class BirthdayModel {
         this.id = id;
     }
 
+    public String getFamilieId() {
+        return familieId;
+    }
+
+    public void setFamilieId(String familieId) {
+        this.familieId = familieId;
+    }
 }

@@ -1,22 +1,24 @@
 package com.example.mainactivity;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ResourceBundle;
 
 public class BursdagRedigerFragment extends Fragment {
 
@@ -31,8 +33,8 @@ public class BursdagRedigerFragment extends Fragment {
     private Button lagre, avbryt;
     private EditText FullName;
     private DatePicker Birthday;
-    private String name, date;
-
+    private String name, date, familieId;
+    SharedPreferences sharedPreferences;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_bursdag_rediger, container, false);
@@ -52,6 +54,7 @@ public class BursdagRedigerFragment extends Fragment {
         Birthday = view.findViewById(R.id.BirthdayDato);
         final String id = String.valueOf(getArguments().getString("ID"));
 
+
         String[] parts = getArguments().getString("DATO").split("\\.");
         Integer dag, maaned, aar;
         dag = Integer.parseInt(parts[0]);
@@ -63,7 +66,9 @@ public class BursdagRedigerFragment extends Fragment {
         Birthday.updateDate(aar, maaned-1, dag );
         System.out.println(Birthday.getDayOfMonth() + "." + (Birthday.getMonth()+1) + "." + Birthday.getYear());
 
-        // Oppdaterer kolonnene i BIRTHDAY-tabellen i databsen med verdiene som er fylt ut.
+        System.out.println(id);
+
+        // Oppdaterer kolonnene i BIRTHDAY-tabellen i databasen med verdiene som er fylt ut.
         // Går tilbake til bursdagfragmentet
         lagre.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -82,10 +87,12 @@ public class BursdagRedigerFragment extends Fragment {
                     // NAVN OK
                     Toast.makeText(getActivity(), "Nytt navn er: " + name + "\n Ny dato er: " + date, Toast.LENGTH_SHORT).show();
                     System.out.println("Nytt navn: " + name);
-
                     System.out.println("Ny dato: " + date);
 
-                    database.updateBirthday(id, name, date );
+                    InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+                    mgr.hideSoftInputFromWindow(FullName.getWindowToken(), 0);
+
+                    database.updateBirthday(id, name, date);
                     navController.navigateUp();
                 }
             }

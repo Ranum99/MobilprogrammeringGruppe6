@@ -3,6 +3,7 @@ package com.example.mainactivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -23,10 +29,17 @@ public class OnskelisteFragment extends Fragment {
 
     Database database;
     SharedPreferences sharedPreferences;
-    private ArrayList<OnskelisteModel> onskelister;
 
     public OnskelisteFragment() {
+        // Required empty constructor
     }
+
+    private FloatingActionButton nyOnskeliste;
+    private TextView empty;
+    private RecyclerView OnskelisteRecyclerview;
+    // ArrayList for å lagre dataen fra databasen
+    private ArrayList<OnskelisteModel> onskelister = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,12 +54,17 @@ public class OnskelisteFragment extends Fragment {
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         getWishlists();
+        nyOnskeliste = view.findViewById(R.id.OpprettOnskelisteBtn);
+        OnskelisteRecyclerview = getView().findViewById(R.id.OnskelisterRecyclerview);
+        empty = view.findViewById(R.id.emptyOnskeliste);
+
 
         setUpRecyclerView();
+        if (onskelister.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        else { empty.setVisibility(View.GONE); }
 
-        // Go to new samtale
-        Button nySamtale = view.findViewById(R.id.OpprettOnskelisteBtn);
-        nySamtale.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_onskelisteFragment_to_onskelisteListeFragment));
+
+        nyOnskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_onskelisteFragment_to_onskelisteListeFragment));
     }
 
     private void getWishlists() {
@@ -84,6 +102,5 @@ public class OnskelisteFragment extends Fragment {
     private void setUpRecyclerView() {
         RecyclerView OnskelisteRecyclerview = getView().findViewById(R.id.OnskelisterRecyclerview);
         OnskelisteRecyclerview.setAdapter(new OnskelisteAdapter(getContext(), onskelister));
-        OnskelisteRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

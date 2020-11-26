@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,11 +15,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MatplanFragment extends Fragment {
 
-    public MatplanFragment() {}
-    private Button nyMatplan;
+    public MatplanFragment() {
+        // Required empty constructor
+
+    }
+
+    // Elementer i layouten
+    private FloatingActionButton nyMatplan;
+    private TextView empty;
+    private RecyclerView matplanRecyclerview;
+
+    // Variabler for å hente fra database
+    private Database database;
+    private SharedPreferences sharedPreferences;
+
+    // ArrayList for å lagre dataen fra databasen
+    private ArrayList<MatplanModel> matplan = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,16 +49,21 @@ public class MatplanFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+
         nyMatplan = view.findViewById(R.id.NyMatplan);
+        matplanRecyclerview = getView().findViewById(R.id.matplanRecyclerview);
+        empty = view.findViewById(R.id.emptyMatplan);
+
         setUpRecyclerView();
+        if (matplan.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        else { empty.setVisibility(View.GONE); }
 
         nyMatplan.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_matplanFragment_to_matplanLeggTilFragment));
     }
 
     private void setUpRecyclerView() {
-        RecyclerView matplanRecyclerview = getView().findViewById(R.id.matplanRecyclerview);
-        matplanRecyclerview.setAdapter(new MatplanAdapter(getContext(), MatplanModel.getData()));
 
+        matplanRecyclerview.setAdapter(new MatplanAdapter(getContext(), matplan));
         matplanRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

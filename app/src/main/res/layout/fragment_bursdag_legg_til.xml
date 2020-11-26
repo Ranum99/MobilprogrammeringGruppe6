@@ -26,16 +26,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:autofillHints=""
+                android:background="@drawable/custom_input"
+                android:padding="10dp"
                 android:ems="10"
                 android:hint="@string/fullt_navn"
-                android:padding="10dp"
-                android:background="@drawable/custom_input"
                 android:imeOptions="actionDone"
-                android:inputType="none|textPersonName|textEmailAddress"
+                android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <DatePicker
@@ -43,6 +42,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:theme="@style/datepicker"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
                 app:layout_constraintEnd_toEndOf="@+id/BirthdayFullname"
@@ -51,10 +51,11 @@
 
             <Button
                 android:id="@+id/NyBursdagLagre"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/lagre"
+                style="@style/Widget.AppCompat.Button.Colored"
                 app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
                 app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
                 app:layout_constraintTop_toBottomOf="@+id/BirthdayDate" />
@@ -80,6 +81,6 @@
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.AppCompat.Button.Borderless"/>
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

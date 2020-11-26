@@ -22,6 +22,8 @@ public class FamilieOpprettFragment extends Fragment {
 
     private TextView navn, passord, passordIgjen;
     private Button opprettFamilie;
+
+    private String name, date;
     Database database;
     SharedPreferences sharedPreferences;
 
@@ -48,6 +50,9 @@ public class FamilieOpprettFragment extends Fragment {
         passordIgjen = view.findViewById(R.id.OpprettFamilieGjentaPassord);
         opprettFamilie = view.findViewById(R.id.OpprettFamilieBtn);
 
+        name = getArguments().getString("NAVN");
+        date = getArguments().getString("DATO");
+
         opprettFamilie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,15 +68,13 @@ public class FamilieOpprettFragment extends Fragment {
                     }
 
                     database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), familyID);
-
+                    database.addUserToDatabaseBIRTHDAY(name, date, String.valueOf(familyID));
                     // Setting session family to familyID
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyID));
                     editor.apply();
 
                     Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
-
-
 
 
                     Navigation.findNavController(opprettFamilie).navigate(R.id.action_familieOpprettFragment_to_mainFragment);

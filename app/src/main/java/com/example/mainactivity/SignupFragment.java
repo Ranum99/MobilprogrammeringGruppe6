@@ -22,7 +22,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SignupFragment extends Fragment {
-    public SignupFragment() {}
+    public SignupFragment() {
+        // Required empty constructor
+    }
 
     Database database;
     User user;
@@ -41,7 +43,7 @@ public class SignupFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
@@ -56,7 +58,7 @@ public class SignupFragment extends Fragment {
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
         database = new Database(getActivity());
         logo = view.findViewById(R.id.SignupLogo);
-        logo.setImageResource(R.drawable.ic_logo41);
+        logo.setImageResource(R.drawable.logo);
         aBirthday.setMaxDate(System.currentTimeMillis());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +106,10 @@ public class SignupFragment extends Fragment {
                         aPasswordConfirm.setText("");
                         aMobilnr.setText("");
 
-                        navController.navigate(R.id.familieFragment);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("DATO", birthday);
+                        bundle.putString("NAVN", name);
+                        navController.navigate(R.id.familieFragment, bundle);
                     }
 
                 } else {
@@ -116,9 +121,8 @@ public class SignupFragment extends Fragment {
 
     public boolean AddUser(String name, String email, String birthday, String mobilnr, String password) {
         boolean insertData = database.addUserToDatabase(name, email, birthday, mobilnr, password);
-        boolean insertBursdag = database.addUserToDatabaseBIRTHDAY(name, birthday);
 
-        if (insertData && insertBursdag) {
+        if (insertData ) {
             Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
             return true;
         }

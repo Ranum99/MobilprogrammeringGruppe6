@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/Login"
-        android:layout_width="280dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:text="@string/logg_inn"
@@ -18,46 +18,79 @@
 
     <EditText
         android:id="@+id/PasswordLogin"
-        android:layout_width="280dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
         android:hint="@string/passord"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/EmailLogin"
         app:layout_constraintStart_toStartOf="@+id/EmailLogin"
-        app:layout_constraintTop_toBottomOf="@+id/EmailLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailLogin"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/EmailLogin"
-        android:layout_width="280dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
         android:hint="@string/example_email_com"
         android:inputType="textEmailAddress"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginLogo"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/OpprettBruker"
-        android:layout_width="280dp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/opprett_bruker"
+        android:layout_marginTop="8dp"
+        android:includeFontPadding="false"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="@string/registrer_deg"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/Login"
-        app:layout_constraintStart_toStartOf="@+id/Login"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/Login" />
 
     <ImageView
         android:id="@+id/LoginLogo"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_logo41" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/har_du_ikke_bruker"
+        app:layout_constraintBottom_toBottomOf="@+id/OpprettBruker"
+        app:layout_constraintEnd_toStartOf="@+id/OpprettBruker"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/Login"
+        app:layout_constraintTop_toTopOf="@+id/OpprettBruker" />
 </androidx.constraintlayout.widget.ConstraintLayout>

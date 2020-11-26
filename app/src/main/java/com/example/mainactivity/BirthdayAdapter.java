@@ -1,6 +1,5 @@
 package com.example.mainactivity;
 
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,16 +13,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.sql.Array;
-import java.sql.Date;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Arrays;
 import java.util.List;
 
 public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.BirthdayViewHolder>{
@@ -61,19 +57,21 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         return BirthdayList.size();
     }
 
-    // Inner klasse
+    // Indre klasse
     public class BirthdayViewHolder extends RecyclerView.ViewHolder {
 
         // CardViwet
         private CardView card;
+
         //Elementer i cardviewet
         private TextView navn, dato, aar;
         private ImageButton delete;
+
         // Variabler
-        private String id;
         private Integer splitAar, splitMaaned, splitDag;
         private LocalDate today, birthday;
         private Period period;
+        private String FamilieId;
 
         public BirthdayViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +85,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             dato = itemView.findViewById(R.id.CardviewDate);
             aar = itemView.findViewById(R.id.CardviewAge);
 
+            FamilieId = birthdayToDisplay.getFamilieId();
             // Regner ut personens alder
             String datoinput = birthdayToDisplay.getDato();
             String[] parts = datoinput.split("\\.");
@@ -103,14 +102,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             navn.setText(birthdayToDisplay.getNavn());
             dato.setText("Født: " + birthdayToDisplay.getDato());
             aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
-            id = birthdayToDisplay.getId();
-        }
 
-        //Fjerner og oppdaterer element fra recyclerviewet
-        private void removeItem(int position) {
-            BirthdayList.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, BirthdayList.size());
         }
 
         public void setDelete(final BirthdayModel birthdayToDisplay, final int position) {
@@ -143,12 +135,20 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                             });
                     AlertDialog alert1 = builder.create();
                     alert1.show();
+
+
                 }
             };
 
             delete.setOnClickListener(deleteBursdag);
         }
 
+        //Fjerner og oppdaterer element fra recyclerviewet
+        private void removeItem(int position) {
+            BirthdayList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, BirthdayList.size());
+        }
 
         public void setEdit(final BirthdayModel birthdayToDisplay, int position) {
             card = itemView.findViewById(R.id.element);

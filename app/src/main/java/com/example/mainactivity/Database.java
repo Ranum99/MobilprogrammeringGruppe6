@@ -8,16 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.util.ArrayList;
-
 public class Database extends SQLiteOpenHelper {
-    SharedPreferences sharedPreferences;
 
     private static final String TAG = "Database";
+    SharedPreferences sharedPreferences;
 
     // Felles for alle tabeller
     public static final String COLUMN_ID = "id";
 
+    /*
+                    USER
+     */
     // Tabell USER m/ kolonner
     public static final String TABLE_USER = "Users3";
     public static final String COLUMN_NAME = "name";
@@ -30,31 +31,36 @@ public class Database extends SQLiteOpenHelper {
     // Lage tabellen USER
     private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER +
             "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_NAME + " TEXT, " +
-                COLUMN_EMAIL + " TEXT, " +
-                COLUMN_BIRTHDAY + " TEXT, " +
-                COLUMN_MOBILNR + " TEXT, " +
-                COLUMN_PASSWORD + " TEXT, " +
-                COLUMN_FAMILY + " INTEGER " +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_NAME + " TEXT, " +
+            COLUMN_EMAIL + " TEXT, " +
+            COLUMN_BIRTHDAY + " TEXT, " +
+            COLUMN_MOBILNR + " TEXT, " +
+            COLUMN_PASSWORD + " TEXT, " +
+            COLUMN_FAMILY + " INTEGER " +
             ")";
 
+    /*
+                    FAMILY
+     */
     // Tabell FAMILY m/ kolonner
     public static final String TABLE_FAMILY = "family";
     public static final String COLUMN_FAMILY_NAME = "familyName";
     private static final String COLUMN_FAMILY_PASSWORD = "password";
-    private static final String COLUMN_FAMILY_ADMIN_ID = "adminID";
+    public static final String COLUMN_FAMILY_ADMIN_ID = "adminID";
 
     // Lage tabellen FAMILY
     private static final String CREATE_TABLE_FAMILY = " CREATE TABLE " + TABLE_FAMILY +
             "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_FAMILY_NAME + " TEXT, " +
-                COLUMN_FAMILY_PASSWORD + " TEXT, " +
-                COLUMN_FAMILY_ADMIN_ID + " INTEGER " +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_FAMILY_NAME + " TEXT, " +
+            COLUMN_FAMILY_PASSWORD + " TEXT, " +
+            COLUMN_FAMILY_ADMIN_ID + " INTEGER " +
             ")";
 
-
+    /*
+                    CONVERSATION
+     */
     // Tabell CONVERSATION
     public static final String TABLE_CONVERSATION = "Conversation";
     public static final String COLUMN__USER_FROM = "userFrom";
@@ -70,7 +76,9 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__CONVERSATION_NAME + " TEXT " +
             ")";
 
-
+    /*
+                    MESSAGES
+     */
     // Tabell MESSAGES
     public static final String TABLE_MESSAGES = "Messages";
     public static final String COLUMN__MESSAGE_PART_OF_CONVERSATIONID = "conversationID";
@@ -86,7 +94,9 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__MESSAGE_TEXT + " TEXT " +
             ")";
 
-
+    /*
+                    WISHLIST
+     */
     // Tabell WISHLIST
     public static final String TABLE_WISHLIST = "Wishlist";
     public static final String COLUMN__USER_ID_WISHLIST = "userIDWithlist";
@@ -100,7 +110,9 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__NAME_WISHLIST + " TEXT " +
             ")";
 
-
+    /*
+                    WISH
+     */
     // Tabell WISH
     public static final String TABLE_WISH = "Wish";
     public static final String COLUMN__WISHLIST_ID = "wishlistID";
@@ -114,32 +126,59 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__NAME_WISH + " TEXT " +
             ")";
 
-
+    /*
+                    BIRTHDAY
+     */
     // Tabell BIRTHDAY m/ kolonner
     public static final String TABLE_BIRTHDAY = "Bursdag";
     public static final String COLUMN_NAME_BIRTHDAY = "Navn";
     public static final String COLUMN_BIRTHDAY_DATE = "Dato";
+    public static final String COLUMN_BIRTHDAY_FAMILYID = "FamilieId";
 
     // Lage tabellen BIRTHDAY
     private static final String CREATE_TABLE_BIRTHDAY = "CREATE TABLE " + TABLE_BIRTHDAY +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME_BIRTHDAY + " TEXT, " +
-            COLUMN_BIRTHDAY_DATE + " TEXT " +
+            COLUMN_BIRTHDAY_DATE + " TEXT, " +
+            COLUMN_BIRTHDAY_FAMILYID + "TEXT " +
             ")";
 
+
+    /*
+                    HANDLELISTE
+     */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE = "Handleliste";
-    public static final String COLUMN_OVERSKRIFT_HANDLELISTE = "Overskrift";
-    public static final String COLUMN_VARER = "Varer";
+    public static final String COLUMN_HANDLELISTE_UKENR = "Ukenr";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_OVERSKRIFT_HANDLELISTE + " TEXT, " +
-            COLUMN_VARER + " TEXT " +
+            COLUMN_HANDLELISTE_UKENR + " TEXT " +
             ")";
+
+
+
+    /*
+                    HANDLELISTE-LISTE
+     */
+
+
+    /*
+                    MATPLAN
+     */
+    // Tabell MATPLAN m/ kolonner
+    public static final String TABLE_MATPLAN = "Matplan";
+    public static final String COLUMN_MATPLAN_UKE = "Uke nr";
+
+    private static final String CREATE_TABLE_MATPLAN = "CREATE TABLE " + TABLE_MATPLAN +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_MATPLAN_UKE + "TEXT " +
+            ")";
+
 
     public Database(Context context) {
         super(context, TAG, null, 1);
@@ -154,7 +193,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_WISHLIST);
         db.execSQL(CREATE_TABLE_WISH);
         db.execSQL(CREATE_TABLE_FAMILY);
-        //db.execSQL(CREATE_TABLE_HANDLELISTE);
+        db.execSQL(CREATE_TABLE_MATPLAN);
+        db.execSQL(CREATE_TABLE_HANDLELISTE);
     }
 
     @Override
@@ -179,7 +219,7 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getIdOfUserData(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_USER +
-                        " WHERE " + COLUMN_EMAIL + " = ?";
+                " WHERE " + COLUMN_EMAIL + " = ?";
         return db.rawQuery(query, new String[]{email});
     }
 
@@ -273,8 +313,8 @@ public class Database extends SQLiteOpenHelper {
     public Cursor sjekkOmFamilieEksisterer(String familyID, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_FAMILY +
-                       " WHERE " + COLUMN_ID + " = " + familyID +
-                       " AND " + COLUMN_FAMILY_PASSWORD + " = " + password;
+                " WHERE " + COLUMN_ID + " = " + familyID +
+                " AND " + COLUMN_FAMILY_PASSWORD + " = " + password;
         return db.rawQuery(query, null);
     }
 
@@ -342,17 +382,42 @@ public class Database extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean addUserToDatabaseBIRTHDAY(String name, String date) {
+    /*
+    public boolean addUserToDatabaseHANDLELISTE(String overskriftHandleliste, String varer) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        ContentValues.put(COLUMN_OVERSKRIFT_HANDLELISTE, overskriftHandleliste;
+        ContentValues.put(COLUMN_VARER, varer);
+        Log.d(TAG, "addData: Adding " + overskriftHandleliste + ", " + varer + ", " + " to " + TABLE_HANDLELISTE);
+    }
+     */
+    public Cursor checkIfUserIsAdminOfFamily(String familyID, String userID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY +
+                " WHERE " + COLUMN_ID + " = " + familyID +
+                " AND " + COLUMN_FAMILY_ADMIN_ID + " = " + userID;
+        return db.rawQuery(query, null);
+    }
+
+
+
+    /*
+                BURSDAGER
+     */
+    // LEGG TIL BURSDAG
+    public boolean addUserToDatabaseBIRTHDAY(String name, String date, String familyId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME_BIRTHDAY, name);
         contentValues.put(COLUMN_BIRTHDAY_DATE, date);
+        //contentValues.put(COLUMN_BIRTHDAY_FAMILYID, familyId);
 
-        Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + " to " + TABLE_BIRTHDAY);
+        Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + familyId + ", " + " to " + TABLE_BIRTHDAY);
 
         long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
         return result != -1;
     }
+    // OPPDATER BURSDAG
     public boolean updateBirthday(String id, String newName, String newBirthday) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -364,27 +429,39 @@ public class Database extends SQLiteOpenHelper {
 
         String whereClause = "id=?";
         String whereArgs[] = {id};
-        //long result = db.insert(TABLE_NAME, null, contentValues);
         long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
         return result != -1;
     }
 
     /*
-    public boolean addUserToDatabaseHANDLELISTE(String overskriftHandleliste, String varer) {
+                    MATPLANER
+     */
+    // LEGGER UKENE INN I MATPLAN
+    public boolean addWeekToMatplan(String uke) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        ContentValues.put(COLUMN_OVERSKRIFT_HANDLELISTE, overskriftHandleliste;
-        ContentValues.put(COLUMN_VARER, varer);
+        contentValues.put(COLUMN_MATPLAN_UKE, uke);
 
-        Log.d(TAG, "addData: Adding " + overskriftHandleliste + ", " + varer + ", " + " to " + TABLE_HANDLELISTE);
+        Log.d(TAG, "addData: Adding " + uke + ", " + " to " + TABLE_MATPLAN);
 
+        long result = db.insert(TABLE_MATPLAN, null, contentValues);
+        return result != -1;
     }
-     */
-    public Cursor checkIfUserIsAdminOfFamily(String familyID, String userID) {
+    // OPPDATERER UKENE I DATABASEN
+    public boolean changeWeekMatplan (String id, String nyUke) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_FAMILY +
-                       " WHERE " + COLUMN_ID + " = " + familyID +
-                       " AND " + COLUMN_FAMILY_ADMIN_ID + " = " + userID;
-        return db.rawQuery(query, null);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_MATPLAN_UKE, nyUke);
+
+
+        Log.d(TAG, "Matplan updated: " + nyUke + ", " + " in " + TABLE_MATPLAN);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        //long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.update(TABLE_MATPLAN, contentValues, "id=?", whereArgs);
+        return result != -1;
+
     }
+
 }

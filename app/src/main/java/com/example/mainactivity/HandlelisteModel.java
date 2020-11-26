@@ -1,12 +1,16 @@
 package com.example.mainactivity;
 
-import java.util.ArrayList;
-
 public class HandlelisteModel {
-    private String nr;
+    private String nr, id;
 
-    public HandlelisteModel(int i, String nr) {
+    public HandlelisteModel(String nr, String id) {
+
+        // Setter variablene
         this.nr = nr;
+        this.id = id;
+    }
+
+    public static List<HandlelisteModel> getData(ArrayList<String> overskriftHandleliste, ArrayList<String> varer) {
     }
 
     public String getNr() {
@@ -16,17 +20,13 @@ public class HandlelisteModel {
     public void setNr(String nr) {
         this.nr = nr;
     }
-    public static ArrayList<HandlelisteModel> getData() {
-        ArrayList<HandlelisteModel> data = new ArrayList<>();
 
-        //Egendefinert. Skal hentes fra database
-        String[] nr = {"1","2","3","400","10"};
+    public String getId() {
+        return id;
+    }
 
-        for(int i = 0; i < nr.length; i++) {
-            HandlelisteModel enListe = new HandlelisteModel(i, nr[i]);
-            data.add(enListe);
-        }
-
-        return data;
+    public void setId(String id) {
+        this.id = id;
     }
 }
+
