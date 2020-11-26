@@ -26,4 +26,13 @@ public class FamilieboblaModel {
     public void setUserToName(String userToName) {
         this.userToName = userToName;
     }
+
+    @Override
+    public String toString() {
+        return "FamilieboblaModel{" +
+                "samtaleID='" + samtaleID + '\'' +
+                ", userToName='" + userToName + '\'' +
+                ", samtaleName='" + samtaleName + '\'' +
+                '}';
+    }
 }

@@ -30,10 +30,8 @@ public class FamilieboblaFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     private ArrayList<FamilieboblaModel> samtaler;
-    private ArrayList<String> names, ids, samtaleNames;
     private FloatingActionButton nySamtale;
     private TextView empty;
-    private RecyclerView familieboblaRecyclerView;
 
 
     @Override
@@ -48,14 +46,13 @@ public class FamilieboblaFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         empty = view.findViewById(R.id.emptySamtale);
-        familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
         nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
 
         // Setting names and ids to global arrays
         setNamesAndIds();
         setUpRecyclerView();
 
-        if (samtaleNames.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        if (samtaler.isEmpty()) { empty.setVisibility(View.VISIBLE); }
         else { empty.setVisibility(View.GONE); }
 
         // Go to new samtale
@@ -65,6 +62,7 @@ public class FamilieboblaFragment extends Fragment {
     private void setUpRecyclerView() {
         RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
         familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), samtaler));
+        familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     private void setNamesAndIds() {
