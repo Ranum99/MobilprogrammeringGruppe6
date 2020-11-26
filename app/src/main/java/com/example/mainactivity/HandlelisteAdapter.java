@@ -18,10 +18,19 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
 
     private List<HandlelisteModel> HandlelisteListe;
     private LayoutInflater inflater;
+    private Context context;
+    private Database database;
 
     public HandlelisteAdapter(Context context, List<HandlelisteModel> HandlelisteListe) {
         this.inflater = LayoutInflater.from(context);
         this.HandlelisteListe = HandlelisteListe;
+        this.context = context;
+    }
+
+    private void removeItem(int position) {
+        HandlelisteListe.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, HandlelisteListe.size());
     }
 
 
@@ -36,8 +45,9 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
     @Override
     public void onBindViewHolder(@NonNull HandlelisteViewHolder viewHolder, int position) {
         HandlelisteModel modelToDisplay = HandlelisteListe.get(position);
-        viewHolder.setHandleliste(modelToDisplay, position);
 
+        viewHolder.setHandleliste(modelToDisplay, position);
+        viewHolder.setDelete(modelToDisplay, position);
     }
 
     @Override
@@ -45,13 +55,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         return HandlelisteListe.size();
     }
 
-    private void removeItem(int position) {
-        HandlelisteListe.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, HandlelisteListe.size());
-    }
-
-    public class HandlelisteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class HandlelisteViewHolder extends RecyclerView.ViewHolder {
         private TextView nr;
         private ImageButton delete;
         private int position;

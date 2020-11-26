@@ -1,12 +1,18 @@
 package com.example.mainactivity;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class HandlelisteModel {
+import java.util.ArrayList;
+import java.util.List;
+
+public class HandlelisteModel extends AppCompatActivity {
     private String nr;
 
     public HandlelisteModel(int i, String nr) {
         this.nr = nr;
+    }
+
+    public static List<HandlelisteModel> getData(ArrayList<String> overskriftHandleliste, ArrayList<String> varer) {
     }
 
     public String getNr() {
