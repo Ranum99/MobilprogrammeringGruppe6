@@ -22,11 +22,11 @@ public class Database extends SQLiteOpenHelper {
     // Tabell USER m/ kolonner
     public static final String TABLE_USER = "Users3";
     public static final String COLUMN_NAME = "name";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_BIRTHDAY = "birthday";
-    private static final String COLUMN_MOBILNR = "mobilnr";
-    private static final String COLUMN_PASSWORD = "password";
-    private static final String COLUMN_FAMILY = "family";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_BIRTHDAY = "birthday";
+    public static final String COLUMN_MOBILNR = "mobilnr";
+    public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_FAMILY = "family";
 
     // Lage tabellen USER
     private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER +
