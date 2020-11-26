@@ -27,7 +27,9 @@ import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ProfilFragment extends Fragment {
-    public ProfilFragment() {}
+    public ProfilFragment() {
+        // Required
+    }
 
 
     private SharedPreferences sharedPreferences;
@@ -43,14 +45,18 @@ public class ProfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
+
+        sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
+        userID = view.findViewById(R.id.ProfilBrukerId);
+        userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
 
         // Endre profil
         endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
         endreProfilBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.profilRedigerFragment));
-        LoggUt = view.findViewById(R.id.LoggutBtn);
-        //Logg ut
 
+        //Logg ut
+        LoggUt = view.findViewById(R.id.LoggutBtn);
         LoggUt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,9 +87,5 @@ public class ProfilFragment extends Fragment {
                 alert1.show();
             }
         });
-
-        sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
-        userID = view.findViewById(R.id.ProfilBrukerId);
-        userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
     }
 }
