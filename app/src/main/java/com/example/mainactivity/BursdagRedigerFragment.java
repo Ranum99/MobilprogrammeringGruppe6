@@ -35,6 +35,8 @@ public class BursdagRedigerFragment extends Fragment {
     private DatePicker Birthday;
     private String name, date, familieId;
     SharedPreferences sharedPreferences;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_bursdag_rediger, container, false);
@@ -53,7 +55,6 @@ public class BursdagRedigerFragment extends Fragment {
         FullName = view.findViewById(R.id.BirthdayFultnavn);
         Birthday = view.findViewById(R.id.BirthdayDato);
         final String id = String.valueOf(getArguments().getString("ID"));
-
 
         String[] parts = getArguments().getString("DATO").split("\\.");
         Integer dag, maaned, aar;

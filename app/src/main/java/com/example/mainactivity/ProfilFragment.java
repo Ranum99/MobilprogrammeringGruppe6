@@ -28,9 +28,7 @@ import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ProfilFragment extends Fragment {
-    public ProfilFragment() {
-        // Required
-    }
+    public ProfilFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
