@@ -13,22 +13,25 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class FamilieboblaFragment extends Fragment {
-    private EditText search;
+
     FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
     private ArrayList<String> names, ids, samtaleNames;
+    private FloatingActionButton nySamtale;
+    private TextView empty;
+    private RecyclerView familieboblaRecyclerView;
 
 
     @Override
@@ -42,41 +45,24 @@ public class FamilieboblaFragment extends Fragment {
         //this.view = view;
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        empty = view.findViewById(R.id.emptySamtale);
+        familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
+        nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
 
         // Setting names and ids to global arrays
         setNamesAndIds();
-
         setUpRecyclerView();
 
+        if (samtaleNames.isEmpty()) { empty.setVisibility(View.VISIBLE); }
+        else { empty.setVisibility(View.GONE); }
+
         // Go to new samtale
-        Button nySamtale = view.findViewById(R.id.FamilieboblaNySamtale);
         nySamtale.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_familieboblaFragment_to_familieboblaNySamtaleFragment));
-
-
-
-        // Setting listener to btns on site (To delete a conversation)
-
-        search = view.findViewById(R.id.search);
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //showElements();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
     }
 
     private void setUpRecyclerView() {
-        RecyclerView familieboblaRecyclerView = getView().findViewById(R.id.listOfConversations);
-        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names, samtaleNames)));
 
+        familieboblaRecyclerView.setAdapter(new FamilieboblaAdapter(getContext(), FamilieboblaModel.getData(ids, names, samtaleNames)));
         familieboblaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
@@ -131,26 +117,6 @@ public class FamilieboblaFragment extends Fragment {
         this.names = names;
         this.ids = ids;
         this.samtaleNames = samtaleNames;
-    }
-
-
-
-    private void showElements() {
-        ConstraintLayout elementWraper = getActivity().findViewById(R.id.leggTilElementer);
-        final int children = elementWraper.getChildCount();
-
-        for (int i = 0; i < children; i++) {
-            Button btn = (Button) elementWraper.getChildAt(i);
-            String txtOfBtn = btn.getText().toString().toLowerCase();
-
-            if (!txtOfBtn.contains(search.getText().toString().toLowerCase()))
-                btn.setVisibility(View.GONE);
-            else {
-                btn.setVisibility(View.VISIBLE);
-
-                //goToNewSiteListener(btn.getId(), FamilieboblaSamtale.class);
-            }
-        }
     }
 
 }

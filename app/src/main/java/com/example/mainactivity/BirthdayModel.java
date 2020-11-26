@@ -1,19 +1,20 @@
 package com.example.mainactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
+public class BirthdayModel {
 
-public class BirthdayModel extends AppCompatActivity {
+    // Variabler
+    private String navn, dato, id, familieId;
 
-    private String navn, dato, mobil;
+    public BirthdayModel(String navn, String dato, String id, String familieId) {
 
-
-    public BirthdayModel(String navn, String dato, String mobil) {
+        // Setter variablene
         this.navn = navn;
         this.dato = dato;
-        this.mobil = mobil;
+        this.id = id;
+        this.familieId = familieId;
     }
 
+    // Getters and setters
     public String getNavn() {
         return navn;
     }
@@ -30,25 +31,19 @@ public class BirthdayModel extends AppCompatActivity {
         this.dato = dato;
     }
 
-    public String getMobil() {
-        return mobil;
+    public String getId() {
+        return id;
     }
 
-    public void setMobil(String mobil) {
-        this.mobil = mobil;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public static ArrayList<BirthdayModel> getData(ArrayList<String> navn, ArrayList <String> mobil, ArrayList<String> dato) {
-        ArrayList<BirthdayModel> data = new ArrayList<>();
-
-        data.clear();
-        for(int i = 0; i < navn.size(); i++) {
-            BirthdayModel enBursdag = new BirthdayModel(navn.get(i), mobil.get(i), dato.get(i));
-            data.add(enBursdag);
-        }
-
-        return data;
-
+    public String getFamilieId() {
+        return familieId;
     }
 
+    public void setFamilieId(String familieId) {
+        this.familieId = familieId;
+    }
 }

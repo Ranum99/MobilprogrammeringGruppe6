@@ -1,31 +1,40 @@
 package com.example.mainactivity;
 
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class BursdagLeggTilFragment extends Fragment {
 
-    public BursdagLeggTilFragment() {}
+    public BursdagLeggTilFragment() {
+        // Required empty constructor
+    }
 
+    // Variabler
     Database database;
+    SharedPreferences sharedPreferences;
 
+    // Elementer i layouten
     private Button lagre, avbryt;
     private EditText FullName;
-    private EditText Birthday;
-    private EditText PhoneNumber;
-
+    private DatePicker Birthday;
+    private String name, date, familieId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,30 +46,42 @@ public class BursdagLeggTilFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
+        // Instansierer variablene
         database = new Database(getActivity());
         lagre = view.findViewById(R.id.NyBursdagLagre);
         avbryt = view.findViewById(R.id.NyBursdagAvbryt);
-        FullName = view.findViewById(R.id.BirthdayFullName);
+        FullName = view.findViewById(R.id.BirthdayFullname);
         Birthday = view.findViewById(R.id.BirthdayDate);
-        PhoneNumber = view.findViewById(R.id.BirthdayPhoneNumber);
+        Birthday.setMaxDate(System.currentTimeMillis());
 
         lagre.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                String name = FullName.getText().toString();
-                String date = Birthday.getText().toString();
-                String phone = PhoneNumber.getText().toString();
+                // Henter inputen
+                name = FullName.getText().toString();
+                date = Birthday.getDayOfMonth() + "." + (Birthday.getMonth()+1) + "." + Birthday.getYear();
 
-                if (validUserInfo(name, phone, date)) {
-                    if (AddUser(name, phone, date)) {
-                        FullName.setText("");
-                        Birthday.setText("");
-                        PhoneNumber.setText("");
-                        navController.navigateUp();
-                    }
+                // Henter familieId på brukeren
+                //familieId =  sharedPreferences.getString(User.FAMILIE, null);
 
+                // Sjekker at inputen er fylt inn korrekt
+                if (name.length() == 0) {
+                    // NAVN IKKE OK
+                    Toast.makeText(getActivity(), "Fyll inn navn", Toast.LENGTH_SHORT).show();
+                    System.out.println("Navn er ikke fylt inn korrekt");
                 } else {
-                    Toast.makeText(getActivity(), "You must put something in the text field", Toast.LENGTH_SHORT).show();
+                    // NAVN OK
+                    System.out.println("Navn er fylt inn korrekt: " + name);
+                    System.out.println(date);
+
+                    InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+                    mgr.hideSoftInputFromWindow(FullName.getWindowToken(), 0);
+
+                    // Lagrer informasjonen som er fylt ut i input-feltene i databasetabellen BIRTHDAY,
+                    database.addUserToDatabaseBIRTHDAY(name, date, familieId);
+                    // Går tilbake til bursdagfragmentet
+                    navController.navigateUp();
                 }
             }
         });
@@ -71,26 +92,6 @@ public class BursdagLeggTilFragment extends Fragment {
                 navController.navigateUp();
             }
         });
-
-
     }
 
-    public boolean AddUser(String name, String phone, String date) {
-        boolean insertData = database.addUserToDatabaseBIRTHDAY(name, phone, date);
-
-        if (insertData) {
-            Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else {
-            Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }
-    private boolean validUserInfo(String name, String phone, String date) {
-        if (name.length() == 0 || phone.length() == 0 || date.length() == 0) {
-            return false;
-        }
-        return true;
-    }
 }

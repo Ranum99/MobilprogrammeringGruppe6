@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_bursdagFragment_to_bursdagLeggTilFragment"
             app:destination="@id/bursdagLeggTilFragment" />
+        <action
+            android:id="@+id/action_bursdagFragment_to_bursdagRedigerFragment2"
+            app:destination="@id/bursdagRedigerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/bursdagLeggTilFragment"
@@ -86,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
-        android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
+        android:name="com.example.mainactivity.HandlelisteLeggTil"
         android:label="fragment_handleliste_legg_til"
         tools:layout="@layout/fragment_handleliste_legg_til" >
         <action
@@ -144,11 +147,7 @@
         android:id="@+id/matplanLeggTilFragment"
         android:name="com.example.mainactivity.MatplanLeggTilFragment"
         android:label="fragment_matplan_legg_til"
-        tools:layout="@layout/fragment_matplan_legg_til" >
-        <action
-            android:id="@+id/action_matplanLeggTilFragment_to_matplanListeFragment"
-            app:destination="@id/matplanListeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_matplan_legg_til" />
     <fragment
         android:id="@+id/matplanListeFragment"
         android:name="com.example.mainactivity.MatplanListeFragment"
@@ -228,4 +227,9 @@
             android:id="@+id/action_familieOpprettFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/bursdagRedigerFragment2"
+        android:name="com.example.mainactivity.BursdagRedigerFragment"
+        android:label="fragment_bursdag_rediger"
+        tools:layout="@layout/fragment_bursdag_rediger" />
 </navigation>

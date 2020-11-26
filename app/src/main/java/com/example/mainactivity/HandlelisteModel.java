@@ -1,15 +1,13 @@
 package com.example.mainactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class HandlelisteModel {
+    private String nr, id;
 
-import java.util.ArrayList;
-import java.util.List;
+    public HandlelisteModel(String nr, String id) {
 
-public class HandlelisteModel extends AppCompatActivity {
-    private String nr;
-
-    public HandlelisteModel(int i, String nr) {
+        // Setter variablene
         this.nr = nr;
+        this.id = id;
     }
 
     public static List<HandlelisteModel> getData(ArrayList<String> overskriftHandleliste, ArrayList<String> varer) {
@@ -22,17 +20,13 @@ public class HandlelisteModel extends AppCompatActivity {
     public void setNr(String nr) {
         this.nr = nr;
     }
-    public static ArrayList<HandlelisteModel> getData() {
-        ArrayList<HandlelisteModel> data = new ArrayList<>();
 
-        //Egendefinert. Skal hentes fra database
-        String[] nr = {"1","2","3","400","10"};
+    public String getId() {
+        return id;
+    }
 
-        for(int i = 0; i < nr.length; i++) {
-            HandlelisteModel enListe = new HandlelisteModel(i, nr[i]);
-            data.add(enListe);
-        }
-
-        return data;
+    public void setId(String id) {
+        this.id = id;
     }
 }
+

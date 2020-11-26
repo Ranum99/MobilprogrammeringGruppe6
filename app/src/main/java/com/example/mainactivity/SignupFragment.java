@@ -15,19 +15,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SignupFragment extends Fragment {
-    public SignupFragment() {}
+    public SignupFragment() {
+        // Required empty constructor
+    }
 
     Database database;
     User user;
     SharedPreferences sharedPreferences;
 
-    private EditText aName, anEmail, aPassword, aPasswordConfirm, aBirthday, aMobilnr;
+    private EditText aName, anEmail, aPassword, aPasswordConfirm, aMobilnr;
+    private DatePicker aBirthday;
     private Button registrerBruker;
+    private ImageView logo;
 
 
 
@@ -37,7 +43,7 @@ public class SignupFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
@@ -46,19 +52,21 @@ public class SignupFragment extends Fragment {
         registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
         aName = view.findViewById(R.id.SignupNavnInput);
         anEmail = view.findViewById(R.id.SignupEmailInput);
+        aBirthday = view.findViewById(R.id.BirthdayDate);
         aMobilnr = view.findViewById(R.id.SignupMobilnummerInput);
         aPassword = view.findViewById(R.id.SignupOprettPassordInput);
         aPasswordConfirm = view.findViewById(R.id.SignupGjentaPassordInput);
-        aBirthday = view.findViewById(R.id.SignupFodselsdatoInput);
-
         database = new Database(getActivity());
+        logo = view.findViewById(R.id.SignupLogo);
+        logo.setImageResource(R.drawable.logo);
+        aBirthday.setMaxDate(System.currentTimeMillis());
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = aName.getText().toString();
                 String email = anEmail.getText().toString();
-                String birthday = aBirthday.getText().toString();
+                String birthday = aBirthday.getDayOfMonth() + "." + (aBirthday.getMonth()+1) + "." + aBirthday.getYear();
                 String mobilnr = aMobilnr.getText().toString();
                 String password = aPassword.getText().toString();
                 String passwordConfirm = aPasswordConfirm.getText().toString();
@@ -96,10 +104,12 @@ public class SignupFragment extends Fragment {
                         anEmail.setText("");
                         aPassword.setText("");
                         aPasswordConfirm.setText("");
-                        aBirthday.setText("");
                         aMobilnr.setText("");
 
-                        navController.navigate(R.id.familieFragment);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("DATO", birthday);
+                        bundle.putString("NAVN", name);
+                        navController.navigate(R.id.familieFragment, bundle);
                     }
 
                 } else {
@@ -111,9 +121,8 @@ public class SignupFragment extends Fragment {
 
     public boolean AddUser(String name, String email, String birthday, String mobilnr, String password) {
         boolean insertData = database.addUserToDatabase(name, email, birthday, mobilnr, password);
-        boolean insertBursdag = database.addUserToDatabaseBIRTHDAY(name, mobilnr, birthday);
 
-        if (insertData && insertBursdag) {
+        if (insertData ) {
             Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
             return true;
         }

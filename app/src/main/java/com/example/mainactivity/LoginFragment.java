@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -32,9 +33,11 @@ public class LoginFragment extends Fragment {
     SharedPreferences sharedPreferences;
     private EditText email, password;
     private Button login, opprettBruker;
+    private ImageView logo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -46,6 +49,9 @@ public class LoginFragment extends Fragment {
 
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        logo = view.findViewById(R.id.LoginLogo);
+        logo.setImageResource(R.drawable.logo);
 
         opprettBruker = view.findViewById(R.id.OpprettBruker);
         opprettBruker.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_signupFragment));
@@ -85,6 +91,10 @@ public class LoginFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
     public boolean LoginUser(String email, String password) {
 
         Cursor data = database.getData();

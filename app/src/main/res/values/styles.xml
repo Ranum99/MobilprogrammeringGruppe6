@@ -6,5 +6,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <!-- Datepicker -->
+    <style name="datepicker">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="colorControlNormal">#00897B</item>
+    </style>
+
 
 </resources>
