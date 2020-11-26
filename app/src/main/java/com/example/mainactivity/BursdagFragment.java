@@ -17,9 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -43,6 +41,7 @@ public class BursdagFragment extends Fragment{
     // Variabler for å hente fra database
     private Database database;
     private SharedPreferences sharedPreferences;
+
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<BirthdayModel> bursdager = new ArrayList<>();
 
