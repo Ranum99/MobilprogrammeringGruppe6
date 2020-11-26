@@ -43,12 +43,11 @@ public class ProfilRedigerFragment extends Fragment {
 
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
 
-        //userID = view.findViewById(R.id.userID);
-        //userID.setText(userID.getText() + sharedPreferences.getString(User.ID, null));
-
         endreNavn = view.findViewById(R.id.endreProfilNavn);
 
         endreBursdag = view.findViewById(R.id.endreProfilBursdag);
+
+
 
         endreEmail = view.findViewById(R.id.endreProfilEmail);
 
@@ -78,6 +77,14 @@ public class ProfilRedigerFragment extends Fragment {
     private void setUserData() {
         endreNavn.setText(sharedPreferences.getString(User.NAME, null));
         endreBursdag.setText(sharedPreferences.getString(User.BIRTHDAY, null));
+
+        String[] parts = getArguments().getString("DATO").split("\.");
+        Integer dag, maaned, aar;
+        dag = Integer.parseInt(parts[0]);
+        maaned = Integer.parseInt(parts[1]);
+        aar = Integer.parseInt(parts[2]);
+        System.out.println(dag + "," + maaned + "," + aar);
+
         endreEmail.setText(sharedPreferences.getString(User.EMAIL, null));
         endreMobilnr.setText(sharedPreferences.getString(User.MOBILNR, null));
     }
