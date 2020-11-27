@@ -180,6 +180,19 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
+            // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
+
+    public static final String TABLE_OPPRETT_MATPLAN = "Opprett Matplan";
+    public static final String COLUMN_STARTDAG = "Startdag";
+    public static final String COLUMN_ANTALL_DAGER = "Antall dager";
+
+    private static final String CREATE_TABLE_OPPRETT_MATPLAN = "CREATE TABLE " + TABLE_OPPRETT_MATPLAN +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_STARTDAG + "TEXT " +
+            COLUMN_ANTALL_DAGER + "TEXT " +
+            ")";
+
     public Database(Context context) {
         super(context, TAG, null, 1);
     }
@@ -194,6 +207,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_WISH);
         db.execSQL(CREATE_TABLE_FAMILY);
         db.execSQL(CREATE_TABLE_MATPLAN);
+        db.execSQL(CREATE_TABLE_OPPRETT_MATPLAN);
         db.execSQL(CREATE_TABLE_HANDLELISTE);
     }
 
@@ -436,6 +450,24 @@ public class Database extends SQLiteOpenHelper {
     /*
                     MATPLANER
      */
+
+    // LEGGER INN MIDLERTIDIG DATA FOR REGISTRERING AV MATPLAN
+    public boolean addTempDataMatplan(String id, String antallDager, String startDag) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_ANTALL_DAGER, antallDager);
+        contentValues.put(COLUMN_STARTDAG, startDag);
+
+        Log.d(TAG, "TempDataMatPlan updated: " + antallDager + ", " + startDag + ", " + " in " + TABLE_OPPRETT_MATPLAN);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        long result = db.update(TABLE_OPPRETT_MATPLAN, contentValues, "id=?", whereArgs);
+        return result != -1;
+    }
+
+
+
     // LEGGER UKENE INN I MATPLAN
     public boolean addWeekToMatplan(String uke) {
         SQLiteDatabase db = this.getWritableDatabase();

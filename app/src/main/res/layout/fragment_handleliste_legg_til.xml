@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/LeggTilHandleliste"
+        android:id="@+id/LeggTilIHandleliste"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_margin="5dp"
@@ -17,8 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ListView
-        android:id="@+id/handleliste"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/HandlelisteRecycleView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
@@ -45,7 +45,7 @@
         android:imeOptions="actionDone"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/LeggTilHandleliste"
+        app:layout_constraintEnd_toStartOf="@+id/LeggTilIHandleliste"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/HandlelisteOpprett"
+        android:id="@+id/lagreHandleliste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

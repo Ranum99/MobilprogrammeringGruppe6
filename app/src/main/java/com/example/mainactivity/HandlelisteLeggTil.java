@@ -1,11 +1,14 @@
 package com.example.mainactivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +29,12 @@ public class HandlelisteLeggTil extends Fragment {
         // Required empty constructor
     }
 
+    // Variabler
+    Database database;
+    SharedPreferences sharedPreferences;
+    EditText HandlelisteUkeNr, item;
+    ListView handleliste1;
+    Button LeggTilIHandleliste, lagreHandleliste;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +44,22 @@ public class HandlelisteLeggTil extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final NavController navController = Navigation.findNavController(view);
 
+        database = new Database(getActivity());
+        HandlelisteUkeNr = view.findViewById(R.id.HandlelisteUkeNr);
+        item = view.findViewById(R.id.item);
+        handleliste1 = view.findViewById(R.id.handleliste);
+        LeggTilIHandleliste = view.findViewById(R.id.LeggTilIHandleliste);
+        lagreHandleliste = view.findViewById(R.id.lagreHandleliste);
 
+        LeggTilIHandleliste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String leggTilGjenstand = item.getText().toString();
+                String leggTilUkeNr = HandlelisteUkeNr.getText().toString();
+
+            }
+        });
     }
 }
