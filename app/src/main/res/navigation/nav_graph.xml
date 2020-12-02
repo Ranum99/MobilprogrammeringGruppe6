@@ -81,9 +81,6 @@
         android:label="fragment_handleliste"
         tools:layout="@layout/fragment_handleliste" >
         <action
-            android:id="@+id/action_handlelisteFragment_to_handlelisteListeFragment"
-            app:destination="@id/handlelisteListeFragment" />
-        <action
             android:id="@+id/action_handlelisteFragment_to_handlelisteLeggTilFragment"
             app:destination="@id/handlelisteLeggTilFragment" />
     </fragment>
@@ -91,16 +88,7 @@
         android:id="@+id/handlelisteLeggTilFragment"
         android:name="com.example.mainactivity.HandlelisteLeggTil"
         android:label="fragment_handleliste_legg_til"
-        tools:layout="@layout/fragment_handleliste_legg_til" >
-        <action
-            android:id="@+id/action_handlelisteLeggTilFragment_to_handlelisteListeFragment"
-            app:destination="@id/handlelisteListeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/handlelisteListeFragment"
-        android:name="com.example.mainactivity.HandlelisteListeFragment"
-        android:label="fragment_handleliste_liste"
-        tools:layout="@layout/fragment_handleliste_liste" />
+        tools:layout="@layout/fragment_handleliste_legg_til" />
     <fragment
         android:id="@+id/kalenderFragment"
         android:name="com.example.mainactivity.KalenderFragment"
@@ -179,8 +167,14 @@
         tools:layout="@layout/fragment_main"
         app:startDestination="@id/action_mainFragment_to_profilRedigerFragment">
         <action
-            android:id="@+id/action_mainFragment_to_bursdagFragment"
-            app:destination="@id/bursdagFragment" />
+            android:id="@+id/action_mainFragment_to_profilRedigerFragment"
+            app:destination="@id/profilRedigerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_kalenderFragment"
+            app:destination="@id/kalenderFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_onskelisteFragment"
+            app:destination="@id/onskelisteFragment" />
         <action
             android:id="@+id/action_mainFragment_to_familieboblaFragment"
             app:destination="@id/familieboblaFragment" />
@@ -191,14 +185,8 @@
             android:id="@+id/action_mainFragment_to_matplanFragment"
             app:destination="@id/matplanFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_onskelisteFragment"
-            app:destination="@id/onskelisteFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_profilRedigerFragment"
-            app:destination="@id/profilRedigerFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_kalenderFragment"
-            app:destination="@id/kalenderFragment" />
+            android:id="@+id/action_mainFragment_to_bursdagFragment"
+            app:destination="@id/bursdagFragment" />
     </fragment>
     <fragment
         android:id="@+id/familieFragment"

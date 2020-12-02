@@ -43,6 +43,7 @@
                 android:layout_marginTop="8dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
+                android:theme="@style/datepicker"
                 app:layout_constraintEnd_toEndOf="@+id/BirthdayFultnavn"
                 app:layout_constraintStart_toStartOf="@+id/BirthdayFultnavn"
                 app:layout_constraintTop_toBottomOf="@+id/BirthdayFultnavn" />

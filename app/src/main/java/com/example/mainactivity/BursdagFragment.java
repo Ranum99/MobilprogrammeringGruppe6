@@ -49,7 +49,6 @@ public class BursdagFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_bursdag, container, false);
     }
 
@@ -64,7 +63,7 @@ public class BursdagFragment extends Fragment{
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         bursdagRecyclerView = requireView().findViewById(R.id.BursdagRecyclerview);
         empty = requireView().findViewById(R.id.emptyBirthday);
-
+        NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
 
         // Metoder
         setInfo();
@@ -74,7 +73,6 @@ public class BursdagFragment extends Fragment{
         else { empty.setVisibility(View.GONE); }
 
         // Tar deg videre til nytt fragment
-        NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
         NyBursdag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

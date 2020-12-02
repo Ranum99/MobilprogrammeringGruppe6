@@ -8,8 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 public class HandlelisteLeggTil extends Fragment {
 
@@ -30,11 +28,16 @@ public class HandlelisteLeggTil extends Fragment {
     }
 
     // Variabler
-    Database database;
-    SharedPreferences sharedPreferences;
-    EditText HandlelisteUkeNr, item;
-    ListView handleliste1;
-    Button LeggTilIHandleliste, lagreHandleliste;
+    private Database database;
+    private SharedPreferences sharedPreferences;
+    private EditText Ukenr, item;
+    private ListView varer;
+    private Button leggTil, lagre;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<HandlelisteVarerModel> vareliste = new ArrayList<>();
+    private TextView empty;
+
+    private String ukeInput, vareInput;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,19 +50,46 @@ public class HandlelisteLeggTil extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
-        HandlelisteUkeNr = view.findViewById(R.id.HandlelisteUkeNr);
+        Ukenr = view.findViewById(R.id.HandlelisteUkeNr);
         item = view.findViewById(R.id.item);
-        handleliste1 = view.findViewById(R.id.handleliste);
-        LeggTilIHandleliste = view.findViewById(R.id.LeggTilIHandleliste);
-        lagreHandleliste = view.findViewById(R.id.lagreHandleliste);
+        varer = view.findViewById(R.id.HandlelisteListview);
+        leggTil = view.findViewById(R.id.button);
+        lagre = view.findViewById(R.id.Handlelisteopprett);
+        empty = view.findViewById(R.id.emptyHandleliste);
 
-        LeggTilIHandleliste.setOnClickListener(new View.OnClickListener() {
+
+
+
+        lagre.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String leggTilGjenstand = item.getText().toString();
-                String leggTilUkeNr = HandlelisteUkeNr.getText().toString();
+            public void onClick(View v) {
+                ukeInput = Ukenr.getText().toString();
+                database.weekHandleliste(ukeInput);
+                navController.navigateUp();
+            }
+        });
+
+
+        leggTil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vareInput = item.getText().toString();
+                database.varerHandleliste(ukeInput, vareInput);
+                adapter.add(vareInput);
+                adapter.notifyDataSetChanged();
+                item.setText("");
 
             }
         });
+
+
+
+/*
+
+
+
+ */
+
     }
+
 }

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -68,8 +69,10 @@ public class HandlelisteFragment extends Fragment {
         handlelisteRecyclerView = requireView().findViewById(R.id.HandlelisteRecyclerview);
 
         // Metoder
-        setUpRecyclerView();
         setInfo();
+        setUpRecyclerView();
+
+
         if (handleliste.isEmpty()) { empty.setVisibility(View.VISIBLE); }
         else { empty.setVisibility(View.GONE); }
 
@@ -77,7 +80,7 @@ public class HandlelisteFragment extends Fragment {
         NyHandleliste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.handlelisteListeFragment);
+                navController.navigate(R.id.handlelisteLeggTilFragment);
             }
         });
     }

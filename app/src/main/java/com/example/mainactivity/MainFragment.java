@@ -50,6 +50,7 @@ public class MainFragment extends Fragment {
         familyName.setText(familieNavnet);
         familyId.setText("Familie-ID: " + sharedPreferences.getString(User.FAMILIE, null));
 
+
         //TabLayout
         pagerAdapter = new PageAdapter(this);
         viewPager.setAdapter(pagerAdapter);
@@ -70,6 +71,7 @@ public class MainFragment extends Fragment {
 
             }
         }).attach();
+
 
     }
 

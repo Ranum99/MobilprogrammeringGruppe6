@@ -49,6 +49,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Passord"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/familie_bli_medlem_BliMedlemBtn"
         app:layout_constraintStart_toStartOf="@+id/textView5"
