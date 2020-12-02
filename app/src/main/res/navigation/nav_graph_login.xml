@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_login"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.mainactivity.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_familieFragment"
+            app:destination="@id/familieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.mainactivity.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_familieFragment"
+            app:destination="@id/familieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/familieFragment"
+        android:name="com.example.mainactivity.FamilieFragment"
+        android:label="fragment_familie"
+        tools:layout="@layout/fragment_familie" >
+        <action
+            android:id="@+id/action_familieFragment_to_familieBliMedlemFragment"
+            app:destination="@id/familieBliMedlemFragment" />
+        <action
+            android:id="@+id/action_familieFragment_to_familieOpprettFragment"
+            app:destination="@id/familieOpprettFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/familieBliMedlemFragment"
+        android:name="com.example.mainactivity.FamilieBliMedlemFragment"
+        android:label="fragment_familie_bli_medlem"
+        tools:layout="@layout/fragment_familie_bli_medlem" />
+    <fragment
+        android:id="@+id/familieOpprettFragment"
+        android:name="com.example.mainactivity.FamilieOpprettFragment"
+        android:label="fragment_familie_opprett"
+        tools:layout="@layout/fragment_familie_opprett" />
+</navigation>
