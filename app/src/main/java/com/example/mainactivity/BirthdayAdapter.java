@@ -160,7 +160,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                     bundle.putString("ID", birthdayToDisplay.getId());
                     bundle.putString("DATO", birthdayToDisplay.getDato());
 
-                    Navigation.findNavController(card).navigate(R.id.bursdagRedigerFragment2, bundle);
+                    Navigation.findNavController(card).navigate(R.id.bursdagRedigerFragment, bundle);
                 }
             };
             card.setOnClickListener(edit);

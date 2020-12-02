@@ -1,6 +1,7 @@
 package com.example.mainactivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -43,7 +44,6 @@ public class FamilieOpprettFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-        final NavController navController = Navigation.findNavController(view);
 
         navn = view.findViewById(R.id.OpprettFamilieOpprettNavn);
         passord = view.findViewById(R.id.OpprettFamilieOpprettPassord);
@@ -76,8 +76,8 @@ public class FamilieOpprettFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
 
-
-                    Navigation.findNavController(opprettFamilie).navigate(R.id.action_familieOpprettFragment_to_mainFragment);
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
                 } else
                     Toast.makeText(getActivity(), "Passordene må være like", Toast.LENGTH_SHORT).show();
             }

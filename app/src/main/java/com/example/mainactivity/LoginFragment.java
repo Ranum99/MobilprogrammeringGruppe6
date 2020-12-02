@@ -82,8 +82,10 @@ public class LoginFragment extends Fragment {
 
                         if (sharedPreferences.getString(User.FAMILIE, null) == null)
                             Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
-                        else
-                            navController.navigate(R.id.mainFragment);
+                        else {
+                            Intent intent = new Intent(getContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 } else
                     Toast.makeText(getActivity(), "Du må fylle ut alle feltene", Toast.LENGTH_SHORT).show();

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/matplanFragment"
+        android:icon="@drawable/ic_action_food"
+        android:title="@string/matplan" />
+    <item
+        android:id="@+id/kalenderFragment"
+        android:icon="@drawable/ic_action_calendar"
+        android:title="@string/kalender" />
+    <item
+        android:id="@+id/onskelisteFragment"
+        android:icon="@drawable/ic_action_list"
+        android:title="@string/oenskeliste" />
+    <item
+        android:id="@+id/handlelisteFragment"
+        android:icon="@drawable/ic_action_shopping"
+        android:title="@string/Handleliste" />
+    <item
+        android:id="@+id/familieboblaFragment"
+        android:icon="@drawable/ic_action_chat"
+        android:title="@string/familiebobla" />
+</menu>

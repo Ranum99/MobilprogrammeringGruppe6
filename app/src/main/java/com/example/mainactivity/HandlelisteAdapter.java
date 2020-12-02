@@ -48,19 +48,11 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         viewHolder.setDelete(modelToDisplay, position);
         viewHolder.setEdit(modelToDisplay, position);
 
-        viewHolder.setHandleliste(modelToDisplay, position);
-        viewHolder.setDelete(modelToDisplay, position);
     }
 
     @Override
     public int getItemCount() {
         return HandlelisteListe.size();
-    }
-
-    private void removeItem(int position) {
-        HandlelisteListe.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, HandlelisteListe.size());
     }
 
     // Indre klasse
@@ -72,9 +64,6 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         //Elementer i cardviewet
         private TextView nr;
         private ImageButton delete;
-
-        //Variabler
-        private int position;
 
         public HandlelisteViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,7 +77,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
             card = itemView.findViewById(R.id.cardHandleliste);
 
             // setter teksten i cardviewet
-            nr.setText("Handleliste nr: " + modelToDisplay.getNr());
+            nr.setText(modelToDisplay.getNr());
 
         }
 
@@ -108,7 +97,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Sletter bursdagen
                                     database = new Database(context);
-                                    database.deleteRowFromTableById(Database.TABLE_HANDLELISTE ,modelToDisplay.getNr());
+                                    database.deleteRowFromTableById(Database.TABLE_HANDLELISTE, modelToDisplay.getId());
                                     removeItem(position);
                                 }
                             });
@@ -136,15 +125,12 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         }
 
         public void setEdit(final HandlelisteModel modelToDisplay, int position) {
-            card = itemView.findViewById(R.id.element);
+            card = itemView.findViewById(R.id.cardHandleliste);
             View.OnClickListener edit = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("UKENR", modelToDisplay.getNr());
-                    bundle.putString("ID", modelToDisplay.getId());
 
-                    Navigation.findNavController(card).navigate(R.id.handlelisteListeFragment, bundle);
+                    Navigation.findNavController(card).navigate(R.id.handlelisteLeggTilFragment);
                 }
             };
             card.setOnClickListener(edit);

@@ -21,26 +21,26 @@
         android:id="@+id/btnEndreProfil"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:text="@string/endreProfil"
         app:layout_constraintEnd_toEndOf="@+id/profilbilde"
         app:layout_constraintStart_toStartOf="@+id/profilbilde"
-        app:layout_constraintTop_toBottomOf="@+id/ProfilFodselsdato" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/ProfilBrukerId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/bruker_id"
         app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
-        app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
+        app:layout_constraintTop_toBottomOf="@+id/navn" />
 
     <TextView
         android:id="@+id/ProfilMobilNummer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/mobilnummer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +66,24 @@
         app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
         app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
         app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/ProfilFodselsdato"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilFodselsdato" />
+
+    <TextView
+        android:id="@+id/navn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
+        app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

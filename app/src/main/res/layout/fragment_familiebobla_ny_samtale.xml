@@ -29,19 +29,22 @@
         android:id="@+id/Familieboblatext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/start_en_samtale_med"
         android:textColor="#000000"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/users"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Spinner
         android:id="@+id/users"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/Familieboblatext"
         app:layout_constraintStart_toStartOf="@+id/Familieboblatext"
         app:layout_constraintTop_toBottomOf="@+id/Familieboblatext" />
@@ -50,8 +53,9 @@
         android:id="@+id/lagOnskeliste"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="32dp"
         android:text="@string/opprett_samtale"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/users"
         app:layout_constraintStart_toStartOf="@+id/users"
         app:layout_constraintTop_toBottomOf="@+id/wishlistName" />
@@ -60,10 +64,11 @@
         android:id="@+id/wishlistName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Samtale navn"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/lagSamtale"
         app:layout_constraintEnd_toEndOf="@+id/users"
         app:layout_constraintStart_toStartOf="@+id/users"
         app:layout_constraintTop_toBottomOf="@+id/giveNameToOnskelisteText" />
@@ -73,8 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Gi navn til samtalen:"
         android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/conversationName"
         app:layout_constraintStart_toStartOf="@+id/users"
         app:layout_constraintTop_toBottomOf="@+id/users" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,11 +22,11 @@ public class Database extends SQLiteOpenHelper {
     // Tabell USER m/ kolonner
     public static final String TABLE_USER = "Users3";
     public static final String COLUMN_NAME = "name";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_BIRTHDAY = "birthday";
-    private static final String COLUMN_MOBILNR = "mobilnr";
-    private static final String COLUMN_PASSWORD = "password";
-    private static final String COLUMN_FAMILY = "family";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_BIRTHDAY = "birthday";
+    public static final String COLUMN_MOBILNR = "mobilnr";
+    public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_FAMILY = "family";
 
     // Lage tabellen USER
     private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER +
@@ -164,11 +164,21 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
-
     /*
                     HANDLELISTE-LISTE
      */
+    // Tabell HANDLELISTE m/ kolonner
+    public static final String TABLE_HANDLELISTE_LISTE = "Handleliste";
+    public static final String COLUMN_HANDLELISTELISTE_UKENR = "Ukenr";
+    public static final String COLUMN_HANDLELISTELISTE_VARE = "Vare";
 
+    // Lage tabellen HANDLELISTE
+    private static final String CREATE_TABLE_HANDLELISTE_LISTE = "CREATE TABLE " + TABLE_HANDLELISTE_LISTE +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_HANDLELISTELISTE_UKENR + " TEXT, " +
+            COLUMN_HANDLELISTELISTE_VARE + "TEXT " +
+            ")";
 
     /*
                     MATPLAN
@@ -184,6 +194,19 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
+            // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
+
+    public static final String TABLE_OPPRETT_MATPLAN = "Opprett Matplan";
+    public static final String COLUMN_STARTDAG = "Startdag";
+    public static final String COLUMN_ANTALL_DAGER = "Antall dager";
+
+    private static final String CREATE_TABLE_OPPRETT_MATPLAN = "CREATE TABLE " + TABLE_OPPRETT_MATPLAN +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_STARTDAG + "TEXT " +
+            COLUMN_ANTALL_DAGER + "TEXT " +
+            ")";
+
     public Database(Context context) {
         super(context, TAG, null, 1);
     }
@@ -198,7 +221,9 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_WISH);
         db.execSQL(CREATE_TABLE_FAMILY);
         db.execSQL(CREATE_TABLE_MATPLAN);
+        db.execSQL(CREATE_TABLE_OPPRETT_MATPLAN);
         db.execSQL(CREATE_TABLE_HANDLELISTE);
+        db.execSQL(CREATE_TABLE_HANDLELISTE_LISTE);
     }
 
     @Override
@@ -207,11 +232,12 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MESSAGES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE_LISTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISH);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAMILY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATPLAN);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
         onCreate(db);
     }
 
@@ -393,15 +419,7 @@ public class Database extends SQLiteOpenHelper {
         return true;
     }
 
-    /*
-    public boolean addUserToDatabaseHANDLELISTE(String overskriftHandleliste, String varer) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        ContentValues.put(COLUMN_OVERSKRIFT_HANDLELISTE, overskriftHandleliste;
-        ContentValues.put(COLUMN_VARER, varer);
-        Log.d(TAG, "addData: Adding " + overskriftHandleliste + ", " + varer + ", " + " to " + TABLE_HANDLELISTE);
-    }
-     */
+
     public Cursor checkIfUserIsAdminOfFamily(String familyID, String userID) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_FAMILY +
@@ -444,9 +462,28 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+
     /*
                     MATPLANER
      */
+
+    // LEGGER INN MIDLERTIDIG DATA FOR REGISTRERING AV MATPLAN
+    public boolean addTempDataMatplan(String id, String antallDager, String startDag) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_ANTALL_DAGER, antallDager);
+        contentValues.put(COLUMN_STARTDAG, startDag);
+
+        Log.d(TAG, "TempDataMatPlan updated: " + antallDager + ", " + startDag + ", " + " in " + TABLE_OPPRETT_MATPLAN);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        long result = db.update(TABLE_OPPRETT_MATPLAN, contentValues, "id=?", whereArgs);
+        return result != -1;
+    }
+
+
+
     // LEGGER UKENE INN I MATPLAN
     public boolean addWeekToMatplan(String uke) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -473,6 +510,30 @@ public class Database extends SQLiteOpenHelper {
         long result = db.update(TABLE_MATPLAN, contentValues, "id=?", whereArgs);
         return result != -1;
 
+    }
+
+    /*
+                    HANDLELISTE
+     */
+    public boolean weekHandleliste(String uke) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HANDLELISTE_UKENR, uke);
+
+        Log.d(TAG, "Handleliste updated: " + uke +  " in " + TABLE_HANDLELISTE);
+
+        long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
+        return result != -1;
+    }
+    public boolean varerHandleliste(String uke, String vare) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HANDLELISTE_UKENR, uke);
+
+        Log.d(TAG, "Handleliste updated: " + uke +  " in " + TABLE_HANDLELISTE);
+
+        long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
+        return result != -1;
     }
 
     public long makeNewWishlist(int meID, String wishlistName) {

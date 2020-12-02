@@ -1,6 +1,7 @@
 package com.example.mainactivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -42,6 +44,7 @@ public class FamilieBliMedlemFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final NavController navcontroller = Navigation.findNavController(view);
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
@@ -65,7 +68,8 @@ public class FamilieBliMedlemFragment extends Fragment {
                     editor.putString(User.FAMILIE, String.valueOf(familyId));
                     editor.apply();
 
-                    Navigation.findNavController(bliMedlemBtn).navigate(R.id.action_familieBliMedlemFragment_to_mainFragment);
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getActivity(), "Familie id eller passord er feil", Toast.LENGTH_SHORT).show();
                 }

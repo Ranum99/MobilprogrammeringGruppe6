@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Objects;
 
 
 public class BursdagFragment extends Fragment{
@@ -48,21 +49,21 @@ public class BursdagFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_bursdag, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
         // instansierer variablene
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-        bursdagRecyclerView = getView().findViewById(R.id.BursdagRecyclerview);
-        empty = getView().findViewById(R.id.emptyBirthday);
-
+        bursdagRecyclerView = requireView().findViewById(R.id.BursdagRecyclerview);
+        empty = requireView().findViewById(R.id.emptyBirthday);
+        NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
 
         // Metoder
         setInfo();
@@ -72,7 +73,6 @@ public class BursdagFragment extends Fragment{
         else { empty.setVisibility(View.GONE); }
 
         // Tar deg videre til nytt fragment
-        NyBursdag = view.findViewById(R.id.BursdagNyBursdag);
         NyBursdag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

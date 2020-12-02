@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -50,12 +51,12 @@ public class HandlelisteFragment extends Fragment {
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<HandlelisteModel> handleliste = new ArrayList<>();
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_handleliste, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -65,11 +66,13 @@ public class HandlelisteFragment extends Fragment {
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         NyHandleliste = view.findViewById(R.id.NyHandleliste);
         empty = view.findViewById(R.id.emptyHandleliste);
-        handlelisteRecyclerView = getView().findViewById(R.id.HandlelisteRecyclerview);
+        handlelisteRecyclerView = requireView().findViewById(R.id.HandlelisteRecyclerview);
 
         // Metoder
-        setUpRecyclerView();
         setInfo();
+        setUpRecyclerView();
+
+
         if (handleliste.isEmpty()) { empty.setVisibility(View.VISIBLE); }
         else { empty.setVisibility(View.GONE); }
 
@@ -77,7 +80,7 @@ public class HandlelisteFragment extends Fragment {
         NyHandleliste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.handlelisteListeFragment);
+                navController.navigate(R.id.handlelisteLeggTilFragment);
             }
         });
     }

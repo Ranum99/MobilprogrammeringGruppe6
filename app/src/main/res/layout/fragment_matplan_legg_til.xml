@@ -6,40 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MatplanLeggTilFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <TextView
-        android:id="@+id/textView15"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Opprett matplan"
-        app:layout_constraintBottom_toTopOf="@+id/guideline16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/matplanAvbryt"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:text="Avbryt"
-        app:layout_constraintStart_toStartOf="@+id/opprettMatplan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opprettMatplan" />
 
     <Button
         android:id="@+id/opprettMatplan"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:text="Opprett"
-        app:layout_constraintStart_toStartOf="@+id/matplanStartDag"
+        app:layout_constraintBottom_toTopOf="@+id/matplanAvbryt"
+        app:layout_constraintEnd_toEndOf="@+id/matplanAvbryt"
+        app:layout_constraintStart_toStartOf="@+id/matplanAvbryt"
         app:layout_constraintTop_toBottomOf="@+id/matplanStartDag" />
 
     <TextView
@@ -47,11 +33,12 @@
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:text="Velg antall dager (1-7)"
+        app:layout_constraintBottom_toTopOf="@+id/matplanDager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline16" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Spinner
         android:id="@+id/matplanDager"
@@ -59,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="@+id/textView16"
         app:layout_constraintStart_toStartOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -68,7 +56,10 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/opprettMatplan"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -79,6 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Velg startdag"
+        app:layout_constraintBottom_toTopOf="@+id/matplanStartDag"
+        app:layout_constraintEnd_toEndOf="@+id/matplanDager"
         app:layout_constraintStart_toStartOf="@+id/matplanDager"
         app:layout_constraintTop_toBottomOf="@+id/matplanDager" />
 </androidx.constraintlayout.widget.ConstraintLayout>
