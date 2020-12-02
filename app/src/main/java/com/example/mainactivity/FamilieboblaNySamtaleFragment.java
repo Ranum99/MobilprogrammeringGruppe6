@@ -51,8 +51,8 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
 
         spinner = view.findViewById(R.id.users);
-        addSamtale = view.findViewById(R.id.lagSamtale);
-        conversationName = view.findViewById(R.id.conversationName);
+        addSamtale = view.findViewById(R.id.lagOnskeliste);
+        conversationName = view.findViewById(R.id.wishlistName);
 
         addUsersToDropdown();
 
@@ -86,6 +86,8 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
         if (!conversationName.getText().toString().isEmpty())
             addToDatabase = database.makeNewConversation(meID, selectedUser, conversationName.getText().toString());
+        else
+            Toast.makeText(getActivity(), "Du må sette et navn til samtalen", Toast.LENGTH_SHORT).show();
 
         if (addToDatabase >= 0) {
             Toast.makeText(getContext(),"Made conversation with: " + selectedUser.getName() + ", named: " + conversationName.getText(), Toast.LENGTH_SHORT).show();

@@ -16,12 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -64,7 +61,7 @@ public class OnskelisteFragment extends Fragment {
         else { empty.setVisibility(View.GONE); }
 
 
-        nyOnskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_onskelisteFragment_to_onskelisteListeFragment));
+        nyOnskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_onskelisteFragment_to_onskelisteNyListeFragment));
     }
 
     private void getWishlists() {
@@ -75,15 +72,10 @@ public class OnskelisteFragment extends Fragment {
 
         String familieID = sharedPreferences.getString(User.FAMILIE, null);
 
-        OnskelisteModel onskeliste1 = new OnskelisteModel(1, "Per", "Jul");
-        OnskelisteModel onskeliste2 = new OnskelisteModel(2, "Ole", "Bursdag");
-        onskelister.add(onskeliste1);
-        onskelister.add(onskeliste2);
-
         while(wishlistsFromDB.moveToNext()) {
             int wishlistID = Integer.parseInt(wishlistsFromDB.getString(wishlistsFromDB.getColumnIndex(Database.COLUMN_ID)));
             int wishlistUserID = Integer.parseInt(wishlistsFromDB.getString(wishlistsFromDB.getColumnIndex(Database.COLUMN__USER_ID_WISHLIST)));
-            String wishlistName = wishlistsFromDB.getString(wishlistsFromDB.getColumnIndex(Database.COLUMN__USER_ID_WISHLIST));
+            String wishlistName = wishlistsFromDB.getString(wishlistsFromDB.getColumnIndex(Database.COLUMN__NAME_WISHLIST));
 
             Cursor wishlistUser = database.getData(Database.TABLE_USER, wishlistUserID);
             wishlistUser.moveToFirst();
@@ -91,7 +83,7 @@ public class OnskelisteFragment extends Fragment {
             String userToFamily = wishlistUser.getString(6);
 
             if (userToFamily.equals(familieID)) {
-                OnskelisteModel onskeliste = new OnskelisteModel(wishlistID, userToName, wishlistName);
+                OnskelisteModel onskeliste = new OnskelisteModel(wishlistID, userToName, wishlistUserID, wishlistName);
                 onskelister.add(onskeliste);
             }
         }
@@ -100,7 +92,10 @@ public class OnskelisteFragment extends Fragment {
     }
 
     private void setUpRecyclerView() {
+        int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
+
         RecyclerView OnskelisteRecyclerview = getView().findViewById(R.id.OnskelisterRecyclerview);
-        OnskelisteRecyclerview.setAdapter(new OnskelisteAdapter(getContext(), onskelister));
+        OnskelisteRecyclerview.setAdapter(new OnskelisteAdapter(getContext(), onskelister, meID));
+        OnskelisteRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

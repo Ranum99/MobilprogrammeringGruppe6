@@ -3,11 +3,13 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,10 +28,15 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
     private OnskelisteModel modelToDisplay;
     private Context contexten;
     private Database database;
+    private SharedPreferences sharedPreferences;
 
-    public OnskelisteAdapter(Context context, List<OnskelisteModel> Onskelister) {
+    private int meID;
+
+    public OnskelisteAdapter(Context context, List<OnskelisteModel> Onskelister, int meID) {
         this.inflater = LayoutInflater.from(context);
         this.Onskelister = Onskelister;
+        this.contexten = context;
+        this.meID = meID;
     }
 
 
@@ -42,7 +49,8 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
     @NonNull
     @Override
     public OnskelisteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-        View itemView = inflater.inflate(R.layout.onskeliste_list_item, parent, false);
+        sharedPreferences = contexten.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        View itemView = inflater.inflate(R.layout.familiebobla_list_item, parent, false);
 
         return new OnskelisteViewHolder(itemView);
     }
@@ -54,6 +62,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         viewHolder.setOnskeliste(modelToDisplay);
         viewHolder.setDeleteOnOnskeliste(modelToDisplay, position);
         viewHolder.setClickOnOnskeliste(modelToDisplay);
+        viewHolder.hideElements(modelToDisplay);
     }
 
     @Override
@@ -72,19 +81,19 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void setOnskeliste(OnskelisteModel modelToDisplay) {
-            navn = itemView.findViewById(R.id.Onskelistenavn);
+            navn = itemView.findViewById(R.id.FamilieBoblaNameCardview);
             String text = modelToDisplay.getWishlistName() + " (" + modelToDisplay.getUserToName() + ")";
             navn.setText(text);
         }
 
         public void setDeleteOnOnskeliste(final OnskelisteModel modelToDisplay, final int position) {
-            delete = itemView.findViewById(R.id.OnskelisteDelete);
+            delete = itemView.findViewById(R.id.imageButton);
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
-                    builder.setTitle("Slett samtale")
-                            .setMessage("Er du sikker på at du vil slette denne samtalen med " + modelToDisplay.getUserToName() + "?");
+                    builder.setTitle("Slett ønskelisten")
+                            .setMessage("Er du sikker på at du vil slette denne ønskelisten?");
                     builder.setPositiveButton("Jepp, bare å slette",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -92,16 +101,16 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Sletter samtalen
                                     database = new Database(contexten);
-                                    database.deleteRowFromTableById(Database.TABLE_CONVERSATION , String.valueOf(modelToDisplay.getWishlistID()));
+                                    database.deleteRowFromTableById(Database.TABLE_WISHLIST , String.valueOf(modelToDisplay.getWishlistID()));
                                     removeItem(position);
-                                    System.out.println("Samtalen er slettet");
+                                    System.out.println("Ønskelisten er slettet");
                                 }
                             });
                     builder.setNegativeButton("NEI! Var bare en prank",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    System.out.println("Samtalen ble IKKE slettet");
+                                    System.out.println("Ønskelisten ble IKKE slettet");
                                     dialog.cancel();
                                 }
                             });
@@ -115,18 +124,26 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void setClickOnOnskeliste(final OnskelisteModel modelToDisplay) {
-            card = itemView.findViewById(R.id.OnskelisteCardID);
+            card = itemView.findViewById(R.id.cardID);
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putInt("onskelisteId", modelToDisplay.getWishlistID());
                     bundle.putString("onskelisteForBruker", modelToDisplay.getUserToName());
+                    bundle.putInt("onskelisteForBrukerID", modelToDisplay.getUserToID());
                     bundle.putString("onskelisteNavn", modelToDisplay.getWishlistName());
 
                     Navigation.findNavController(card).navigate(R.id.action_onskelisteFragment_to_onskelisteListeFragment, bundle);
                 }
             });
+        }
+
+        public void hideElements(OnskelisteModel modelToDisplay) {
+            delete = itemView.findViewById(R.id.imageButton);
+
+            if (modelToDisplay.getUserToID() != meID)
+                delete.setVisibility(View.INVISIBLE);
         }
     }
 

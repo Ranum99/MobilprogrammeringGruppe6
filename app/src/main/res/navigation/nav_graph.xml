@@ -71,6 +71,15 @@
             app:destination="@id/familieboblaSamtaleFragment" />
     </fragment>
     <fragment
+        android:id="@+id/onskelisteNyListeFragment"
+        android:name="com.example.mainactivity.OnskelisteLeggTilFragment"
+        android:label="fragment_onskeliste_ny_liste"
+        tools:layout="@layout/fragment_onskeliste_legg_til">
+        <action
+            android:id="@+id/action_onskelisteNyListeFragment_to_onskelisteListeFragment"
+            app:destination="@id/onskelisteListeFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/familieboblaSamtaleFragment"
         android:name="com.example.mainactivity.FamilieboblaSamtaleFragment"
         android:label="fragment_familiebobla_samtale"
@@ -161,6 +170,9 @@
         <action
             android:id="@+id/action_onskelisteFragment_to_onskelisteListeFragment"
             app:destination="@id/onskelisteListeFragment" />
+        <action
+            android:id="@+id/action_onskelisteFragment_to_onskelisteNyListeFragment"
+            app:destination="@id/onskelisteNyListeFragment" />
     </fragment>
     <fragment
         android:id="@+id/onskelisteListeFragment"

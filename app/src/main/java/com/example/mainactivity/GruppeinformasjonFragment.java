@@ -103,29 +103,14 @@ public class GruppeinformasjonFragment extends Fragment {
         if (check.getCount() > 0) {
             boolean updateCheck = database.updateUserFamily(selectedUser.getId(), 0);
             if (updateCheck) {
-                addUsersToDropdown(usersInFamily);
+                addUsersToDropdown(fillUsersInFamily());
+                addUsersToListView(fillUsersInFamily());
                 Toast.makeText(getContext(),"Kastet ut " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(),"Kunne ikke kaste ut " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
             }
         } else
             Toast.makeText(getContext(),"Bare admin kan kaste ut andre brukere", Toast.LENGTH_SHORT).show();
-    }
-
-    private void addUserToFamily(int familyID, int userIDToAdd, String myID) {
-        Cursor check = database.checkIfUserIsAdminOfFamily(String.valueOf(familyID), myID);
-
-        if (check.getCount() > 0) {
-            boolean updateCheck = database.updateUserFamily(familyID, userIDToAdd);
-            if (updateCheck) {
-                addUsersToDropdown(usersInFamily);
-                Toast.makeText(getContext(),"Brukeren ble lagt til i familien", Toast.LENGTH_SHORT).show();
-                leggTilMedlemInput.setText("");
-            } else {
-                Toast.makeText(getContext(),"Kunne ikke legge til brukeren i familien", Toast.LENGTH_SHORT).show();
-            }
-        } else
-            Toast.makeText(getContext(),"Bare admin kan legge til andre brukere", Toast.LENGTH_SHORT).show();
     }
 
     private void changeFamilyName(int familyID, String newFamilyName, String myID) {

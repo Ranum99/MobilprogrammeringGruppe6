@@ -117,13 +117,17 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_WISH = "Wish";
     public static final String COLUMN__WISHLIST_ID = "wishlistID";
     public static final String COLUMN__NAME_WISH = "nameOfWish";
+    public static final String COLUMN__WISH_CHECKED = "wishIsChecked";
+    public static final String COLUMN__WISH_USER_ID = "userIDForWish";
 
     // Lage tabellen WISH
     private static final String CREATE_TABLE_WISH = "CREATE TABLE " + TABLE_WISH +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__WISHLIST_ID + " INTEGER, " +
-            COLUMN__NAME_WISH + " TEXT " +
+            COLUMN__NAME_WISH + " TEXT, " +
+            COLUMN__WISH_CHECKED + " INTEGER, " +
+            COLUMN__WISH_USER_ID + " INTEGER " +
             ")";
 
     /*
@@ -203,10 +207,11 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONVERSATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MESSAGES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BIRTHDAY);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISHLIST);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISH);
-        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FAMILY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAMILY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATPLAN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HANDLELISTE);
         onCreate(db);
     }
 
@@ -238,6 +243,12 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getAllMessageFromConversation(int samtaleID) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_MESSAGES + " WHERE " + COLUMN__MESSAGE_PART_OF_CONVERSATIONID + " = " + samtaleID;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getAllWishesFromWishlist(int wishlistID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_WISH + " WHERE " + COLUMN__WISHLIST_ID + " = " + wishlistID;
         return db.rawQuery(query, null);
     }
 
@@ -371,9 +382,9 @@ public class Database extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Updated " + newName + ", " + newEmail + ", " + newBirthday + ", " + newMobilnr + ", " + " in " + TABLE_USER);
 
         String whereClause = "id=?";
-        String whereArgs[] = {id};
+        String[] whereArgs = {id};
         //long result = db.insert(TABLE_NAME, null, contentValues);
-        long result = db.update(TABLE_USER, contentValues, "id=?", new String[]{whereClause});
+        long result = db.update(TABLE_USER, contentValues, COLUMN_ID + " = " + id, null);
         return result != -1;
     }
 
@@ -464,4 +475,40 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    public long makeNewWishlist(int meID, String wishlistName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN__USER_ID_WISHLIST, meID);
+        values.put(COLUMN__NAME_WISHLIST, wishlistName);
+
+        System.out.println("New wishlist (Database): " + meID + " named: " + wishlistName);
+
+        return db.insert(TABLE_WISHLIST, null, values);
+    }
+
+    public long addWishToWishlist(int wishlistID, String wish, int userID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN__WISHLIST_ID, wishlistID);
+        values.put(COLUMN__NAME_WISH, wish);
+        values.put(COLUMN__WISH_CHECKED, 0);
+        values.put(COLUMN__WISH_USER_ID, userID);
+
+        System.out.println("New wish (Database): " + wish + "\nIn wishlist " + wishlistID + "\nIsChecked " + 0 + "\nUserID " + userID);
+
+        return db.insert(TABLE_WISH, null, values);
+
+    }
+
+    public boolean updateCheckBoxForWish(int wishID, int isChecked) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN__WISH_CHECKED, isChecked);
+
+        long result = db.update(TABLE_WISH, contentValues, COLUMN_ID + " = " + wishID, null);
+
+        return result != -1;
+    }
 }
