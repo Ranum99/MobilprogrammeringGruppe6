@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
@@ -21,10 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -48,7 +44,7 @@ public class ProfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
         database = new Database(getActivity());

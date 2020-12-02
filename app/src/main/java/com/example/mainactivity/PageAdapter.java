@@ -17,14 +17,11 @@ public class PageAdapter extends FragmentStateAdapter {
 
         switch (position) {
             case 0:
-                Log.d("createFragment", "returning hovedside");
-                return  new HovedsideFragment();
+                Log.d("createFragment", "returning kalendere");
+                return  new KalenderSideFragment();
             case 1:
-                Log.d("createFragment", "returning gruppeinformasjon");
-                return new GruppeinformasjonFragment();
-            case 2:
-                Log.d("createFragment", "returning profil");
-                return new ProfilFragment();
+                Log.d("createFragment", "returning bursdager");
+                return new BursdagFragment();
 
         }
         Log.d("createFragment", "returning null");
@@ -33,6 +30,6 @@ public class PageAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }

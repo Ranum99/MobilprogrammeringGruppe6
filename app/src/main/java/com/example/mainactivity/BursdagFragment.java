@@ -56,7 +56,7 @@ public class BursdagFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
         // instansierer variablene
         database = new Database(getActivity());

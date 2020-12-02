@@ -1,7 +1,6 @@
 package com.example.mainactivity;
 
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -22,9 +21,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MatplanLeggTilFragment extends Fragment {
 
@@ -49,7 +45,7 @@ public class MatplanLeggTilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
+        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment_login);
 
         // Variabler
         database = new Database(getActivity());

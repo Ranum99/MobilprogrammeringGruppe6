@@ -90,6 +90,7 @@
     <string name="matplan">Matplan</string>
     <string name="nskelister">Ønskelister</string>
     <string name="bruker_id">Bruker-ID: </string>
+    <string name="opprett_en_matplan">Opprett en matplan!</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

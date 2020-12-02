@@ -45,7 +45,7 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 

@@ -15,9 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class ProfilRedigerFragment extends Fragment {
 
@@ -40,7 +37,7 @@ public class ProfilRedigerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
         // Instansierer variabler
         avbryt = view.findViewById(R.id.EndreProfilAvbryt);

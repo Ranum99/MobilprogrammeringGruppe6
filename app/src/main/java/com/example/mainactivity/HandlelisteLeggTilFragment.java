@@ -21,9 +21,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class HandlelisteLeggTil extends Fragment {
+public class HandlelisteLeggTilFragment extends Fragment {
 
-    public HandlelisteLeggTil() {
+    public HandlelisteLeggTilFragment() {
         // Required empty constructor
     }
 

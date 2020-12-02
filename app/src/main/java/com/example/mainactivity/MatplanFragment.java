@@ -58,7 +58,7 @@ public class MatplanFragment extends Fragment {
         if (matplan.isEmpty()) { empty.setVisibility(View.VISIBLE); }
         else { empty.setVisibility(View.GONE); }
 
-        nyMatplan.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_matplanFragment_to_matplanLeggTilFragment));
+        nyMatplan.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.matplanLeggTilFragment));
     }
 
     private void setUpRecyclerView() {
