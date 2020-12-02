@@ -67,7 +67,7 @@
         android:label="fragment_familiebobla_samtale"
         tools:layout="@layout/fragment_familiebobla_samtale" />
     <fragment
-        android:id="@+id/gruppeinformasjonFragment2"
+        android:id="@+id/gruppeinformasjonFragment"
         android:name="com.example.mainactivity.GruppeinformasjonFragment"
         android:label="fragment_gruppeinformasjon"
         tools:layout="@layout/fragment_gruppeinformasjon" />
@@ -161,7 +161,7 @@
         android:id="@+id/profilFragment"
         android:name="com.example.mainactivity.ProfilFragment"
         android:label="fragment_profil"
-        tools:layout="@layout/fragment_profil" >
+        tools:layout="@layout/fragment_profil">
         <action
             android:id="@+id/action_profilFragment2_to_profilRedigerFragment"
             app:destination="@id/profilRedigerFragment" />
@@ -176,4 +176,9 @@
         android:name="com.example.mainactivity.OnskelisteListeFragment"
         android:label="fragment_onskeliste_liste"
         tools:layout="@layout/fragment_onskeliste_liste" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.mainactivity.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
