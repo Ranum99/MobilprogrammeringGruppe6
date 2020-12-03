@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/matplanFragment">
     <fragment
         android:id="@+id/handlelisteFragment"
         android:name="com.example.mainactivity.HandlelisteFragment"
-        android:label="fragment_handleliste"
+        android:label="@string/Handleliste"
         tools:layout="@layout/fragment_handleliste" >
         <action
             android:id="@+id/action_handlelisteFragment_to_handlelisteLeggTilFragment"
@@ -16,12 +17,12 @@
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
         android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
-        android:label="fragment_handleliste_legg_til"
+        android:label="@string/Handleliste"
         tools:layout="@layout/fragment_handleliste_legg_til" />
     <fragment
         android:id="@+id/bursdagFragment"
         android:name="com.example.mainactivity.BursdagFragment"
-        android:label="fragment_bursdag"
+        android:label="Bursdager"
         tools:layout="@layout/fragment_bursdag" >
         <action
             android:id="@+id/action_bursdagFragment_to_bursdagLeggTilFragment"
@@ -33,17 +34,17 @@
     <fragment
         android:id="@+id/bursdagLeggTilFragment"
         android:name="com.example.mainactivity.BursdagLeggTilFragment"
-        android:label="fragment_bursdag_legg_til"
+        android:label="Bursdager"
         tools:layout="@layout/fragment_bursdag_legg_til" />
     <fragment
         android:id="@+id/bursdagRedigerFragment"
         android:name="com.example.mainactivity.BursdagRedigerFragment"
-        android:label="fragment_bursdag_rediger"
+        android:label="Bursdager"
         tools:layout="@layout/fragment_bursdag_rediger" />
     <fragment
         android:id="@+id/familieboblaFragment"
         android:name="com.example.mainactivity.FamilieboblaFragment"
-        android:label="fragment_familiebobla"
+        android:label="FamilieBobla"
         tools:layout="@layout/fragment_familiebobla" >
         <action
             android:id="@+id/action_familieboblaFragment_to_familieboblaNySamtaleFragment"
@@ -55,7 +56,7 @@
     <fragment
         android:id="@+id/familieboblaNySamtaleFragment"
         android:name="com.example.mainactivity.FamilieboblaNySamtaleFragment"
-        android:label="fragment_familiebobla_ny_samtale"
+        android:label="FamilieBobla"
         tools:layout="@layout/fragment_familiebobla_ny_samtale" >
         <action
             android:id="@+id/action_familieboblaNySamtaleFragment_to_familieboblaSamtaleFragment"
@@ -64,7 +65,7 @@
     <fragment
         android:id="@+id/onskelisteNyListeFragment"
         android:name="com.example.mainactivity.OnskelisteLeggTilFragment"
-        android:label="fragment_onskeliste_ny_liste"
+        android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste_legg_til">
         <action
             android:id="@+id/action_onskelisteNyListeFragment_to_onskelisteListeFragment"
@@ -73,17 +74,17 @@
     <fragment
         android:id="@+id/familieboblaSamtaleFragment"
         android:name="com.example.mainactivity.FamilieboblaSamtaleFragment"
-        android:label="fragment_familiebobla_samtale"
+        android:label="FamilieBobla"
         tools:layout="@layout/fragment_familiebobla_samtale" />
     <fragment
         android:id="@+id/gruppeinformasjonFragment"
         android:name="com.example.mainactivity.GruppeinformasjonFragment"
-        android:label="fragment_gruppeinformasjon"
+        android:label="Gruppeinformasjon"
         tools:layout="@layout/fragment_gruppeinformasjon" />
     <fragment
         android:id="@+id/kalenderFragment"
         android:name="com.example.mainactivity.KalenderFragment"
-        android:label="fragment_kalender"
+        android:label="Kalender"
         tools:layout="@layout/fragment_kalender" >
         <action
             android:id="@+id/action_kalenderFragment2_to_kalenderLeggTilFragment"
@@ -98,22 +99,22 @@
     <fragment
         android:id="@+id/kalenderRedigerFragment"
         android:name="com.example.mainactivity.KalenderRedigerFragment"
-        android:label="fragment_kalender_endre"
+        android:label="Kalender"
         tools:layout="@layout/fragment_kalender_endre" />
     <fragment
         android:id="@+id/kalenderSlettFragment"
         android:name="com.example.mainactivity.KalenderSlettFragment"
-        android:label="fragment_kalender_slett"
+        android:label="Kalender"
         tools:layout="@layout/fragment_kalender_slett" />
     <fragment
         android:id="@+id/kalenderLeggTilFragment"
         android:name="com.example.mainactivity.KalenderLeggTilFragment"
-        android:label="fragment_kalender_legg_til"
+        android:label="Kalender"
         tools:layout="@layout/fragment_kalender_legg_til" />
     <fragment
         android:id="@+id/matplanFragment"
         android:name="com.example.mainactivity.MatplanFragment"
-        android:label="fragment_matplan"
+        android:label="Matplan"
         tools:layout="@layout/fragment_matplan" >
         <action
             android:id="@+id/action_matplanFragment2_to_matplanLeggTilFragment"
@@ -125,7 +126,7 @@
     <fragment
         android:id="@+id/matplanLeggTilFragment"
         android:name="com.example.mainactivity.MatplanLeggTilFragment"
-        android:label="fragment_matplan_legg_til"
+        android:label="Matplan"
         tools:layout="@layout/fragment_matplan_legg_til" >
         <action
             android:id="@+id/action_matplanLeggTilFragment_to_matplanListeFragment"
@@ -134,7 +135,7 @@
     <fragment
         android:id="@+id/matplanListeFragment"
         android:name="com.example.mainactivity.MatplanListeFragment"
-        android:label="fragment_matplan_liste"
+        android:label="Matplan"
         tools:layout="@layout/fragment_matplan_liste" >
         <action
             android:id="@+id/action_matplanListeFragment_to_matplanRedigerFragment"
@@ -143,7 +144,7 @@
     <fragment
         android:id="@+id/matplanRedigerFragment"
         android:name="com.example.mainactivity.MatplanRedigerFragment"
-        android:label="fragment_matplan_rediger"
+        android:label="Matplan"
         tools:layout="@layout/fragment_matplan_rediger" />
     <fragment
         android:id="@+id/onskelisteLeggTilFragment"
@@ -157,7 +158,7 @@
     <fragment
         android:id="@+id/onskelisteFragment"
         android:name="com.example.mainactivity.OnskelisteFragment"
-        android:label="fragment_onskeliste"
+        android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste" >
         <action
             android:id="@+id/action_onskelisteFragment2_to_onskelisteLeggTilFragment"
@@ -172,7 +173,7 @@
     <fragment
         android:id="@+id/profilFragment"
         android:name="com.example.mainactivity.ProfilFragment"
-        android:label="fragment_profil"
+        android:label="Profil"
         tools:layout="@layout/fragment_profil">
         <action
             android:id="@+id/action_profilFragment2_to_profilRedigerFragment"
@@ -181,16 +182,16 @@
     <fragment
         android:id="@+id/profilRedigerFragment"
         android:name="com.example.mainactivity.ProfilRedigerFragment"
-        android:label="fragment_profil_rediger"
+        android:label="Profil"
         tools:layout="@layout/fragment_profil_rediger" />
     <fragment
         android:id="@+id/onskelisteListeFragment"
         android:name="com.example.mainactivity.OnskelisteListeFragment"
-        android:label="fragment_onskeliste_liste"
+        android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste_liste" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.mainactivity.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Instillinger"
         tools:layout="@layout/fragment_settings" />
 </navigation>

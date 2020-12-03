@@ -45,7 +45,7 @@ public class MatplanLeggTilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment_login);
+        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
 
         // Variabler
         database = new Database(getActivity());

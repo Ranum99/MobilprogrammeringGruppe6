@@ -51,8 +51,8 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
 
         spinner = view.findViewById(R.id.users);
-        addSamtale = view.findViewById(R.id.lagOnskeliste);
-        conversationName = view.findViewById(R.id.wishlistName);
+        addSamtale = view.findViewById(R.id.lagSamtale);
+        conversationName = view.findViewById(R.id.conversationName);
 
         addUsersToDropdown();
 

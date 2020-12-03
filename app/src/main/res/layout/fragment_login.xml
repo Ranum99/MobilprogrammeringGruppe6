@@ -62,6 +62,7 @@
         android:paddingRight="0dp"
         android:text="@string/registrer_deg"
         android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="@+id/Login"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/Login" />

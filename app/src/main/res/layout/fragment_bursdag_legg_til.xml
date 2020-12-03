@@ -42,9 +42,9 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:theme="@style/datepicker"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
+                android:theme="@style/datepicker"
                 app:layout_constraintEnd_toEndOf="@+id/BirthdayFullname"
                 app:layout_constraintStart_toStartOf="@+id/BirthdayFullname"
                 app:layout_constraintTop_toBottomOf="@+id/BirthdayFullname" />
@@ -72,6 +72,7 @@
 
     <Button
         android:id="@+id/NyBursdagAvbryt"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -79,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/avbryt"
         android:textAllCaps="false"
+        android:textColor="#26817E"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

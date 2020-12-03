@@ -27,16 +27,17 @@
 
     <TextView
         android:id="@+id/Familieboblatext"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="@string/start_en_samtale_med"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/users"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline31"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Spinner
@@ -50,38 +51,41 @@
         app:layout_constraintTop_toBottomOf="@+id/Familieboblatext" />
 
     <Button
-        android:id="@+id/lagOnskeliste"
+        android:id="@+id/lagSamtale"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/opprett_samtale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/users"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/users"
-        app:layout_constraintTop_toBottomOf="@+id/wishlistName" />
+        app:layout_constraintTop_toBottomOf="@+id/conversationName" />
 
     <EditText
-        android:id="@+id/wishlistName"
-        android:layout_width="0dp"
+        android:id="@+id/conversationName"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="Samtale navn"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/lagSamtale"
-        app:layout_constraintEnd_toEndOf="@+id/users"
-        app:layout_constraintStart_toStartOf="@+id/users"
-        app:layout_constraintTop_toBottomOf="@+id/giveNameToOnskelisteText" />
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/giveNameToOnskelisteText"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="Gi navn til samtalen:"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/conversationName"
+        app:layout_constraintEnd_toEndOf="@+id/users"
         app:layout_constraintStart_toStartOf="@+id/users"
         app:layout_constraintTop_toBottomOf="@+id/users" />
 </androidx.constraintlayout.widget.ConstraintLayout>

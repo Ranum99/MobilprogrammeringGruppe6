@@ -29,7 +29,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_FAMILY = "family";
 
     // Lage tabellen USER
-    private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER +
+    private static final String CREATE_TABLE_USER = " CREATE TABLE " + TABLE_USER +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME + " TEXT, " +
@@ -68,7 +68,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN__CONVERSATION_NAME = "conversationName";
 
     // Lage tabellen CONVERSATION
-    private static final String CREATE_TABLE_CONVERSATION = "CREATE TABLE " + TABLE_CONVERSATION +
+    private static final String CREATE_TABLE_CONVERSATION = " CREATE TABLE " + TABLE_CONVERSATION +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__USER_FROM + " INTEGER, " +
@@ -86,7 +86,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN__MESSAGE_TEXT = "message";
 
     // Lage tabellen MESSAGES
-    private static final String CREATE_TABLE_MESSAGES = "CREATE TABLE " + TABLE_MESSAGES +
+    private static final String CREATE_TABLE_MESSAGES = " CREATE TABLE " + TABLE_MESSAGES +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__MESSAGE_PART_OF_CONVERSATIONID + " INTEGER, " +
@@ -103,7 +103,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN__NAME_WISHLIST = "nameOfWishlist";
 
     // Lage tabellen WISHLIST
-    private static final String CREATE_TABLE_WISHLIST = "CREATE TABLE " + TABLE_WISHLIST +
+    private static final String CREATE_TABLE_WISHLIST = " CREATE TABLE " + TABLE_WISHLIST +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__USER_ID_WISHLIST + " INTEGER, " +
@@ -121,7 +121,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN__WISH_USER_ID = "userIDForWish";
 
     // Lage tabellen WISH
-    private static final String CREATE_TABLE_WISH = "CREATE TABLE " + TABLE_WISH +
+    private static final String CREATE_TABLE_WISH = " CREATE TABLE " + TABLE_WISH +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__WISHLIST_ID + " INTEGER, " +
@@ -140,12 +140,12 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_BIRTHDAY_FAMILYID = "FamilieId";
 
     // Lage tabellen BIRTHDAY
-    private static final String CREATE_TABLE_BIRTHDAY = "CREATE TABLE " + TABLE_BIRTHDAY +
+    private static final String CREATE_TABLE_BIRTHDAY = " CREATE TABLE " + TABLE_BIRTHDAY +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME_BIRTHDAY + " TEXT, " +
             COLUMN_BIRTHDAY_DATE + " TEXT, " +
-            COLUMN_BIRTHDAY_FAMILYID + "TEXT " +
+            COLUMN_BIRTHDAY_FAMILYID + " TEXT " +
             ")";
 
 
@@ -157,7 +157,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_HANDLELISTE_UKENR = "Ukenr";
 
     // Lage tabellen HANDLELISTE
-    private static final String CREATE_TABLE_HANDLELISTE = "CREATE TABLE " + TABLE_HANDLELISTE +
+    private static final String CREATE_TABLE_HANDLELISTE = " CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_HANDLELISTE_UKENR + " TEXT " +
@@ -168,16 +168,16 @@ public class Database extends SQLiteOpenHelper {
                     HANDLELISTE-LISTE
      */
     // Tabell HANDLELISTE m/ kolonner
-    public static final String TABLE_HANDLELISTE_LISTE = "Handleliste";
-    public static final String COLUMN_HANDLELISTELISTE_UKENR = "Ukenr";
+    public static final String TABLE_HANDLELISTE_LISTE = "HandlelisteListe";
+    public static final String COLUMN_HANDLELISTELISTE_UKENR = "UkeNr";
     public static final String COLUMN_HANDLELISTELISTE_VARE = "Vare";
 
     // Lage tabellen HANDLELISTE
-    private static final String CREATE_TABLE_HANDLELISTE_LISTE = "CREATE TABLE " + TABLE_HANDLELISTE_LISTE +
+    private static final String CREATE_TABLE_HANDLELISTE_LISTE = " CREATE TABLE " + TABLE_HANDLELISTE_LISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_HANDLELISTELISTE_UKENR + " TEXT, " +
-            COLUMN_HANDLELISTELISTE_VARE + "TEXT " +
+            COLUMN_HANDLELISTELISTE_VARE + " TEXT " +
             ")";
 
     /*
@@ -185,27 +185,31 @@ public class Database extends SQLiteOpenHelper {
      */
     // Tabell MATPLAN m/ kolonner
     public static final String TABLE_MATPLAN = "Matplan";
-    public static final String COLUMN_MATPLAN_UKE = "Uke nr";
+    public static final String COLUMN_MATPLAN_UKE = "Uke_nr";
 
-    private static final String CREATE_TABLE_MATPLAN = "CREATE TABLE " + TABLE_MATPLAN +
+    private static final String CREATE_TABLE_MATPLAN = " CREATE TABLE " + TABLE_MATPLAN +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_MATPLAN_UKE + "TEXT " +
+            COLUMN_MATPLAN_UKE + " TEXT " +
             ")";
 
 
             // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
 
-    public static final String TABLE_OPPRETT_MATPLAN = "Opprett Matplan";
+    public static final String TABLE_OPPRETT_MATPLAN = "OpprettMatplan";
     public static final String COLUMN_STARTDAG = "Startdag";
-    public static final String COLUMN_ANTALL_DAGER = "Antall dager";
+    public static final String COLUMN_ANTALL_DAGER = "Antalldager";
 
-    private static final String CREATE_TABLE_OPPRETT_MATPLAN = "CREATE TABLE " + TABLE_OPPRETT_MATPLAN +
+    private static final String CREATE_TABLE_OPPRETT_MATPLAN = " CREATE TABLE " + TABLE_OPPRETT_MATPLAN +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_STARTDAG + "TEXT " +
-            COLUMN_ANTALL_DAGER + "TEXT " +
+            COLUMN_STARTDAG + " TEXT, " +
+            COLUMN_ANTALL_DAGER + " TEXT " +
             ")";
+
+
+
+
 
     public Database(Context context) {
         super(context, TAG, null, 1);
