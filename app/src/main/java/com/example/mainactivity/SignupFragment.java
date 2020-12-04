@@ -75,11 +75,13 @@ public class SignupFragment extends Fragment {
                 String passwordConfirm = aPasswordConfirm.getText().toString();
 
                 if (validUserInfo(name, email, birthday, mobilnr, password, passwordConfirm)) {
+                    if (!checkIfUserallreadyIsMember(email)) {
+                        Toast.makeText(getActivity(), "Mailen finnes fra før", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if (AddUser(name, email, birthday , mobilnr, password)) {
                         // Setter session
                         Cursor data = database.getIdOfUserData(email);
-
-
 
                         String idTilBruker = "1";
 
@@ -118,6 +120,17 @@ public class SignupFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private boolean checkIfUserallreadyIsMember(String email) {
+        Cursor insertData = database.getData(Database.TABLE_USER);
+
+        while(insertData.moveToNext()) {
+            String mailen = insertData.getString(insertData.getColumnIndex(Database.COLUMN_EMAIL));
+            if (mailen.equals(email))
+                return false;
+        }
+        return true;
     }
 
     public boolean AddUser(String name, String email, String birthday, String mobilnr, String password) {
