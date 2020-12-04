@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,17 +28,9 @@ public class HandlelisteLeggTilFragment extends Fragment {
         // Required empty constructor
     }
 
-    // Variabler
-    private Database database;
-    private SharedPreferences sharedPreferences;
-    private EditText Ukenr, item;
-    private ListView varer;
-    private Button leggTil, lagre;
-    private ArrayAdapter<String> adapter;
-    private ArrayList<HandlelisteVarerModel> vareliste = new ArrayList<>();
-    private TextView empty;
-
-    private String ukeInput, vareInput;
+   private Database database;
+    private EditText tittel;
+    private Button opprett;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,33 +43,27 @@ public class HandlelisteLeggTilFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
-        Ukenr = view.findViewById(R.id.HandlelisteUkeNr);
-        item = view.findViewById(R.id.item);
-        varer = view.findViewById(R.id.HandlelisteListview);
-        leggTil = view.findViewById(R.id.button);
-        lagre = view.findViewById(R.id.Handlelisteopprett);
-        empty = view.findViewById(R.id.emptyHandleliste);
+        tittel = view.findViewById(R.id.handlelisteTittel);
+        opprett = view.findViewById(R.id.lagHandleliste);
 
-
-
-
-        lagre.setOnClickListener(new View.OnClickListener() {
+        opprett.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ukeInput = Ukenr.getText().toString();
-                database.weekHandleliste(ukeInput);
-                navController.navigateUp();
+                if(tittel.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Du må sette en tittel på handlelisten", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    database.weekHandleliste(tittel.getText().toString());
+                    System.out.println(tittel.getText().toString());
+                    navController.navigateUp();
+
+                }
             }
         });
 
 
-        leggTil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
 
-            }
-        });
 
 
 

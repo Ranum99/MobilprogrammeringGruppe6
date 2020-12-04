@@ -1,15 +1,16 @@
 package com.example.mainactivity;
 
 public class HandlelisteModel {
-    private String tittel, id;
+    private String tittel, id, navn;
     private Integer familieID;
 
-    public HandlelisteModel(String nr, String id, Integer familieID) {
+    public HandlelisteModel(String nr, String id, Integer familieID, String navn) {
 
         // Setter variablene
         this.tittel = nr;
         this.id = id;
         this.familieID = familieID;
+        this.navn = navn;
     }
 
     public String getTittel() {
@@ -34,6 +35,14 @@ public class HandlelisteModel {
 
     public void setFamilieID(Integer familieID) {
         this.familieID = familieID;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
     }
 }
 

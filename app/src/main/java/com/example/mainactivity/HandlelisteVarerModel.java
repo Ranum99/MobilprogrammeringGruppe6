@@ -1,12 +1,12 @@
 package com.example.mainactivity;
 
 public class HandlelisteVarerModel {
-    private String id, vare, uke;
 
-    public HandlelisteVarerModel(String id, String vare, String uke) {
+    private String id, vare;
+
+    public HandlelisteVarerModel(String id, String vare) {
         this.id = id;
         this.vare = vare;
-        this.uke = uke;
     }
 
     public String getId() {
@@ -25,11 +25,4 @@ public class HandlelisteVarerModel {
         this.vare = vare;
     }
 
-    public String getUke() {
-        return uke;
-    }
-
-    public void setUke(String uke) {
-        this.uke = uke;
-    }
 }

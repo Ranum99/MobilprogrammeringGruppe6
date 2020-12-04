@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
@@ -99,6 +100,7 @@ public class ProfilFragment extends Fragment {
             }
         });
 
+
         //Logg ut
         loggUt = view.findViewById(R.id.LoggutBtn);
         loggUt.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +119,8 @@ public class ProfilFragment extends Fragment {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();
                                 editor.apply();
-                                navController.navigate(R.id.loginFragment);
+                                Intent intent = new Intent(getContext(), LoginActivity.class);
+                                startActivity(intent);
                             }
                         });
                 builder.setNegativeButton("Nei, ta meg tilbake!",

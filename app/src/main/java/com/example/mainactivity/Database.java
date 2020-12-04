@@ -169,14 +169,14 @@ public class Database extends SQLiteOpenHelper {
      */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE_LISTE = "HandlelisteListe";
-    public static final String COLUMN_HANDLELISTELISTE_TITTEL_LISTE = "TittelListe";
+    public static final String COLUMN_HANDLELISTELISTE_ID = "ListeID";
     public static final String COLUMN_HANDLELISTELISTE_VARE = "Vare";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE_LISTE = " CREATE TABLE " + TABLE_HANDLELISTE_LISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_HANDLELISTELISTE_TITTEL_LISTE + " TEXT, " +
+            COLUMN_HANDLELISTELISTE_ID + " TEXT, " +
             COLUMN_HANDLELISTELISTE_VARE + " TEXT " +
             ")";
 
@@ -281,6 +281,13 @@ public class Database extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_WISH + " WHERE " + COLUMN__WISHLIST_ID + " = " + wishlistID;
         return db.rawQuery(query, null);
     }
+
+    public Cursor getAlleVarerFraHandleliste(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_HANDLELISTE_LISTE + " WHERE " + COLUMN_HANDLELISTELISTE_ID + " = " + id;
+        return db.rawQuery(query, null);
+    }
+
 
     public boolean deleteRowFromTableById(String table, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -529,15 +536,15 @@ public class Database extends SQLiteOpenHelper {
         long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
         return result != -1;
     }
-    public boolean varerHandleliste(String tittel, String vare) {
+    public long addvarerHandleliste(String vare, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTELISTE_TITTEL_LISTE, tittel);
+        contentValues.put(COLUMN_HANDLELISTELISTE_VARE, vare);
+        contentValues.put(COLUMN_HANDLELISTELISTE_ID, id);
 
-        Log.d(TAG, "Handleliste updated: " + tittel +  " in " + TABLE_HANDLELISTE);
+        Log.d(TAG, "Handleliste updated: " + vare + " in " + TABLE_HANDLELISTE_LISTE);
 
-        long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
-        return result != -1;
+        return  db.insert(TABLE_HANDLELISTE_LISTE, null, contentValues);
     }
 
     public long makeNewWishlist(int meID, String wishlistName) {

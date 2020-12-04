@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,9 @@ import java.util.ArrayList;
 
 public class OnskelisteListeFragment extends Fragment {
 
-    public OnskelisteListeFragment() {}
+    public OnskelisteListeFragment() {
+        // Required empty constructor
+    }
 
     Database database;
     SharedPreferences sharedPreferences;
@@ -31,7 +34,8 @@ public class OnskelisteListeFragment extends Fragment {
     private String wishlistName, wishlistForUserName;
     private ArrayList<OnskelisteListeModel> wishes;
 
-    private TextView onskelisteBruker, onskeToAdd;
+    private TextView onskelisteBruker;
+    private EditText onskeToAdd;
     private Button leggTilBtn;
 
     @Override

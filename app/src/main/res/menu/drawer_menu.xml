@@ -24,6 +24,10 @@
             android:id="@+id/familieboblaFragment"
             android:icon="@drawable/ic_action_chat"
             android:title="@string/familiebobla" />
+        <item
+        android:id="@+id/bursdagFragment"
+        android:icon="@drawable/ic_action_birthday"
+        android:title="Bursdager"/>
     </group>
 
     <item android:title="">

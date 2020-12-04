@@ -13,12 +13,19 @@
         <action
             android:id="@+id/action_handlelisteFragment_to_handlelisteLeggTilFragment"
             app:destination="@id/handlelisteLeggTilFragment" />
+        <action
+            android:id="@+id/action_handlelisteFragment_to_handlelisteListeFragment"
+            app:destination="@id/handlelisteListeFragment" />
     </fragment>
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
         android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
         android:label="@string/Handleliste"
-        tools:layout="@layout/fragment_handleliste_legg_til" />
+        tools:layout="@layout/fragment_handleliste_legg_til" >
+        <action
+            android:id="@+id/action_handlelisteLeggTilFragment_to_handlelisteListeFragment"
+            app:destination="@id/handlelisteListeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bursdagFragment"
         android:name="com.example.mainactivity.BursdagFragment"
@@ -194,4 +201,9 @@
         android:name="com.example.mainactivity.SettingsFragment"
         android:label="Instillinger"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/handlelisteListeFragment"
+        android:name="com.example.mainactivity.HandlelisteListeFragment"
+        android:label="Handlelisten"
+        tools:layout="@layout/fragment_handleliste_liste" />
 </navigation>

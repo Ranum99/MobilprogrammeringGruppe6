@@ -69,7 +69,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
 
         //Cardviewet
         private CardView card;
-        private TextView nr;
+        private TextView nr, bruker;
         private ImageButton delete;
 
         public HandlelisteViewHolder(@NonNull View itemView) {
@@ -80,8 +80,10 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
 
             // Kobler variablene med sine respektive elementer i cardviewet
             nr = itemView.findViewById(R.id.handlelistenummer);
+            bruker = itemView.findViewById(R.id.bruker);
             // setter teksten i cardviewet
             nr.setText(modelToDisplay.getTittel());
+            bruker.setText("Opprettet av: " + modelToDisplay.getNavn());
 
         }
 
@@ -139,7 +141,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
                     bundle.putString("ID", modelToDisplay.getId());
                     bundle.putInt("FAMILIEID", modelToDisplay.getFamilieID());
 
-                    Navigation.findNavController(card).navigate(R.id.handlelisteLeggTilFragment, bundle);
+                    Navigation.findNavController(card).navigate(R.id.handlelisteListeFragment, bundle);
                 }
             };
             card.setOnClickListener(edit);

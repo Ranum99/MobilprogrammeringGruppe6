@@ -48,6 +48,7 @@ public class HandlelisteFragment extends Fragment {
     private Database database;
     private SharedPreferences sharedPreferences;
     private Integer familieID;
+    private String bruker;
 
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<HandlelisteModel> handleliste = new ArrayList<>();
@@ -65,6 +66,7 @@ public class HandlelisteFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         familieID = Integer.valueOf(sharedPreferences.getString(User.FAMILIE, null));
+        bruker = sharedPreferences.getString(User.NAME, null);
         NyHandleliste = view.findViewById(R.id.NyHandleliste);
         empty = view.findViewById(R.id.emptyHandleliste);
         handlelisteRecyclerView = requireView().findViewById(R.id.HandlelisteRecyclerview);
@@ -91,10 +93,10 @@ public class HandlelisteFragment extends Fragment {
 
         while(data.moveToNext()) {
 
-            String tittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTE_TITTEL));
-            String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
 
-            HandlelisteModel liste = new HandlelisteModel(tittel, id, familieID);
+            String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
+            String tittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTE_TITTEL));
+            HandlelisteModel liste = new HandlelisteModel(tittel, id, familieID, bruker);
             handlelister.add(liste);
         }
 

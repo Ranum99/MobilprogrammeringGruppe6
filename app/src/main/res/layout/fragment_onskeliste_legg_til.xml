@@ -25,6 +25,7 @@
         android:ems="10"
         android:hint="Ønskeliste navn"
         android:inputType="textPersonName"
+        android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/lagOnskeliste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
