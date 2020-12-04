@@ -103,10 +103,12 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         ArrayList<User> arrayList = new ArrayList<>();
 
         while(data.moveToNext()) {
-            if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null)) && data.getString(6).equals(sharedPreferences.getString(User.FAMILIE, null))) {
-                int id = data.getInt(0);
-                String name = data.getString(1);
-                arrayList.add( new User(id,name));
+            if (data.getString(6) != null) {
+                if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null)) && data.getString(6).equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                    int id = data.getInt(0);
+                    String name = data.getString(1);
+                    arrayList.add( new User(id,name));
+                }
             }
         }
         if (arrayList.size() > 0) {
