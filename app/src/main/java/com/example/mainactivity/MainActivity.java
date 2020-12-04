@@ -18,13 +18,12 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout drawer;
     private BottomNavigationView bottom;
     private Toolbar toolbar;
     private NavigationView navigation;
     private TextView navn, id;
-    SharedPreferences sharedPreferences;
-    Database database;
+    private SharedPreferences sharedPreferences;
+    private Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         NavController controller = Navigation.findNavController(this, R.id.fragment);
 
-
-        drawer = findViewById(R.id.DrawerLayout);
         toolbar = findViewById(R.id.toolbar);
         bottom = findViewById(R.id.bottomNavigation);
         navigation = findViewById(R.id.navDrawer);
@@ -65,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(toolbar, controller, appBarConfiguration);
         NavigationUI.setupWithNavController(bottom, controller);
         NavigationUI.setupWithNavController(navigation, controller);
-
 
     }
 

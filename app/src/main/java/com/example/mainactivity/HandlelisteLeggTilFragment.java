@@ -73,11 +73,7 @@ public class HandlelisteLeggTilFragment extends Fragment {
         leggTil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vareInput = item.getText().toString();
-                database.varerHandleliste(ukeInput, vareInput);
-                adapter.add(vareInput);
-                adapter.notifyDataSetChanged();
-                item.setText("");
+
 
             }
         });

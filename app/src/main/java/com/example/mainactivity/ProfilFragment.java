@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -33,6 +34,7 @@ public class ProfilFragment extends Fragment {
     private TextView userID, mobilnr, fodselsdato, email, navn;
     private String id, mobil, dato, aemail,anavn;
     private Button endreProfilBtn,loggUt;
+    private ImageView photo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +57,9 @@ public class ProfilFragment extends Fragment {
         fodselsdato = view.findViewById(R.id.ProfilFodselsdato);
         email = view.findViewById(R.id.email);
         navn = view.findViewById(R.id.navn);
+        photo = view.findViewById(R.id.profilbilde);
+
+        photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
 
 
         while (data.moveToNext()) {

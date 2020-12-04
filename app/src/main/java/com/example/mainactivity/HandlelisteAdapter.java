@@ -3,6 +3,7 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,37 +23,45 @@ import java.util.List;
 
 public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.HandlelisteViewHolder> {
 
-    private List<HandlelisteModel> HandlelisteListe;
+    private List<HandlelisteModel> Handlelister;
     private LayoutInflater inflater;
     private Context context;
     private Database database;
+    private SharedPreferences sharedPreferences;
+    private HandlelisteModel modelToDisplay;
+    private int familieID;
 
-    public HandlelisteAdapter(Context context, List<HandlelisteModel> HandlelisteListe) {
+
+    public HandlelisteAdapter(Context context, List<HandlelisteModel> HandlelisteListe, int iD) {
         this.inflater = LayoutInflater.from(context);
-        this.HandlelisteListe = HandlelisteListe;
+        this.Handlelister = HandlelisteListe;
         this.context = context;
+        this.familieID = iD;
     }
 
     @NonNull
     @Override
     public HandlelisteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
+        sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         View itemView = inflater.inflate(R.layout.handleliste_list_item, parent, false);
         return new HandlelisteViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HandlelisteViewHolder viewHolder, int position) {
-        HandlelisteModel modelToDisplay = HandlelisteListe.get(position);
+        modelToDisplay = Handlelister.get(position);
 
         viewHolder.setHandleliste(modelToDisplay, position);
         viewHolder.setDelete(modelToDisplay, position);
         viewHolder.setEdit(modelToDisplay, position);
 
+        //  viewHolder.hideElements(modelToDisplay);
+
     }
 
     @Override
     public int getItemCount() {
-        return HandlelisteListe.size();
+        return Handlelister.size();
     }
 
     // Indre klasse
@@ -60,8 +69,6 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
 
         //Cardviewet
         private CardView card;
-
-        //Elementer i cardviewet
         private TextView nr;
         private ImageButton delete;
 
@@ -73,11 +80,8 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
 
             // Kobler variablene med sine respektive elementer i cardviewet
             nr = itemView.findViewById(R.id.handlelistenummer);
-            delete = itemView.findViewById(R.id.handlelisteDelete);
-            card = itemView.findViewById(R.id.cardHandleliste);
-
             // setter teksten i cardviewet
-            nr.setText(modelToDisplay.getNr());
+            nr.setText(modelToDisplay.getTittel());
 
         }
 
@@ -119,9 +123,9 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
 
         //Fjerner og oppdaterer element fra recyclerviewet
         private void removeItem(int position) {
-            HandlelisteListe.remove(position);
+            Handlelister.remove(position);
             notifyItemRemoved(position);
-            notifyItemRangeChanged(position, HandlelisteListe.size());
+            notifyItemRangeChanged(position, Handlelister.size());
         }
 
         public void setEdit(final HandlelisteModel modelToDisplay, int position) {
@@ -129,8 +133,13 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
             View.OnClickListener edit = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Bundle bundle = new Bundle();
 
-                    Navigation.findNavController(card).navigate(R.id.handlelisteLeggTilFragment);
+                    bundle.putString("TITTEL", modelToDisplay.getTittel());
+                    bundle.putString("ID", modelToDisplay.getId());
+                    bundle.putInt("FAMILIEID", modelToDisplay.getFamilieID());
+
+                    Navigation.findNavController(card).navigate(R.id.handlelisteLeggTilFragment, bundle);
                 }
             };
             card.setOnClickListener(edit);

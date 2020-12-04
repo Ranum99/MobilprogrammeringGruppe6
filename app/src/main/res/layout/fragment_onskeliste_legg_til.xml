@@ -6,30 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".OnskelisteLeggTilFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <TextView
-        android:id="@+id/NyOnskelisteHeadline"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/oenskeliste"
-        app:layout_constraintBottom_toTopOf="@+id/guideline31"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/lagOnskeliste"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="OPPRETT ØNSKELISTE"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/wishlistName"
         app:layout_constraintStart_toStartOf="@+id/wishlistName"
         app:layout_constraintTop_toBottomOf="@+id/wishlistName" />
@@ -42,6 +25,7 @@
         android:ems="10"
         android:hint="Ønskeliste navn"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/lagOnskeliste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/giveNameToOnskelisteText" />
@@ -50,11 +34,13 @@
         android:id="@+id/giveNameToOnskelisteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="8dp"
         android:text="Gi navn til ønskelisten:"
         android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/wishlistName"
         app:layout_constraintStart_toStartOf="@+id/wishlistName"
-        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

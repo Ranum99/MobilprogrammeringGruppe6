@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ProfilRedigerFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -29,10 +22,10 @@
             tools:context=".ProfilRedigerFragment">
 
             <ImageView
-                android:id="@+id/profilbilde"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="24dp"
+                android:id="@+id/profilbildeRediger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:contentDescription="@string/bildeinfo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +48,7 @@
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
+                app:layout_constraintTop_toBottomOf="@+id/profilbildeRediger" />
 
             <EditText
                 android:id="@+id/profilMobilnr"
@@ -83,6 +76,7 @@
                 android:layout_marginTop="8dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
+                app:theme="@style/datepicker"
                 app:layout_constraintEnd_toEndOf="@+id/profilMobilnr"
                 app:layout_constraintStart_toStartOf="@+id/profilMobilnr"
                 app:layout_constraintTop_toBottomOf="@+id/profilMobilnr" />
@@ -115,7 +109,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Rediger profil"
+                android:text="Lagre endringer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/endreProfilEmail" />
@@ -124,24 +118,4 @@
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rediger_profil"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/EndreProfilAvbryt"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/avbryt"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class ProfilRedigerFragment extends Fragment {
 
@@ -25,6 +26,7 @@ public class ProfilRedigerFragment extends Fragment {
     private EditText endreNavn, endreEmail, endreMobilnr;
     private DatePicker endreBursdag;
     private String navn, mobil, email, dato, id;
+    private ImageView photo;
 
     public ProfilRedigerFragment() {
     }
@@ -40,13 +42,15 @@ public class ProfilRedigerFragment extends Fragment {
         final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
         // Instansierer variabler
-        avbryt = view.findViewById(R.id.EndreProfilAvbryt);
         send = view.findViewById(R.id.EndreProfilRedigerBtn);
         endreNavn = view.findViewById(R.id.endreProfilNavn);
         endreBursdag = view.findViewById(R.id.endreProfilBursdag);
         endreEmail = view.findViewById(R.id.endreProfilEmail);
         endreMobilnr = view.findViewById(R.id.profilMobilnr);
         database = new Database(getActivity());
+        photo = view.findViewById(R.id.profilbildeRediger);
+
+        photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
 
         endreNavn.setText(getArguments().getString("NAVN"));
         endreEmail.setText(getArguments().getString("EMAIL"));
@@ -69,13 +73,6 @@ public class ProfilRedigerFragment extends Fragment {
                 dato = endreBursdag.getDayOfMonth() + "." + (endreBursdag.getMonth()+1) + "." + endreBursdag.getYear();
                 id = getArguments().getString("ID");
                 database.updateUserInDatabase(id, navn, email, dato, mobil);
-                navController.navigateUp();
-            }
-        });
-
-        avbryt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 navController.navigateUp();
             }
         });

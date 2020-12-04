@@ -25,7 +25,7 @@ public class OnskelisteLeggTilFragment extends Fragment {
     Database database;
 
     private NavController navController;
-    private Button addSamtale;
+    private Button lagListe;
     private EditText wishlistName;
 
 
@@ -43,10 +43,10 @@ public class OnskelisteLeggTilFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        addSamtale = view.findViewById(R.id.lagOnskeliste);
+        lagListe = view.findViewById(R.id.lagOnskeliste);
         wishlistName = view.findViewById(R.id.wishlistName);
 
-        addSamtale.setOnClickListener(new View.OnClickListener() {
+        lagListe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 makeNewWishlist();
@@ -62,7 +62,7 @@ public class OnskelisteLeggTilFragment extends Fragment {
         if (!wishlistName.getText().toString().isEmpty())
             addToDatabase = database.makeNewWishlist(meID, wishlistName.getText().toString());
         else
-            Toast.makeText(getActivity(), "Du sette et navn på ønskelisten", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Du må sette et navn på ønskelisten", Toast.LENGTH_SHORT).show();
 
         if (addToDatabase >= 0) {
             Toast.makeText(getContext(),"Made wishlist for: " + sharedPreferences.getString(User.NAME, null) + ", named: " + wishlistName.getText(), Toast.LENGTH_SHORT).show();

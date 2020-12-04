@@ -47,6 +47,7 @@ public class HandlelisteFragment extends Fragment {
     // Variabler for å hente fra database
     private Database database;
     private SharedPreferences sharedPreferences;
+    private Integer familieID;
 
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<HandlelisteModel> handleliste = new ArrayList<>();
@@ -60,10 +61,10 @@ public class HandlelisteFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        familieID = Integer.valueOf(sharedPreferences.getString(User.FAMILIE, null));
         NyHandleliste = view.findViewById(R.id.NyHandleliste);
         empty = view.findViewById(R.id.emptyHandleliste);
         handlelisteRecyclerView = requireView().findViewById(R.id.HandlelisteRecyclerview);
@@ -77,36 +78,33 @@ public class HandlelisteFragment extends Fragment {
         else { empty.setVisibility(View.GONE); }
 
         // Tar deg videre til nytt fragment
-        NyHandleliste.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.handlelisteLeggTilFragment);
-            }
-        });
+        NyHandleliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.handlelisteLeggTilFragment));
+
     }
 
     // Metoder for å fylle Arraylisten med data fra databasen
     private void setInfo() {
+        // Henter data fra databasetabell Handleliste
         Cursor data = database.getData(Database.TABLE_HANDLELISTE);
 
-        ArrayList<HandlelisteModel> alleLister = new ArrayList<>();
+        ArrayList<HandlelisteModel> handlelister = new ArrayList<>();
 
         while(data.moveToNext()) {
 
-            String ukenr = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTE_UKENR));
+            String tittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTE_TITTEL));
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
 
-            HandlelisteModel liste = new HandlelisteModel(ukenr, id);
-            alleLister.add(liste);
+            HandlelisteModel liste = new HandlelisteModel(tittel, id, familieID);
+            handlelister.add(liste);
         }
 
-        this.handleliste = alleLister;
+        this.handleliste = handlelister;
 
     }
 
     private void setUpRecyclerView() {
 
-        handlelisteRecyclerView.setAdapter(new HandlelisteAdapter(getContext(), handleliste));
+        handlelisteRecyclerView.setAdapter(new HandlelisteAdapter(getContext(), handleliste, familieID));
         handlelisteRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

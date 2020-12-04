@@ -182,7 +182,7 @@
     <fragment
         android:id="@+id/profilRedigerFragment"
         android:name="com.example.mainactivity.ProfilRedigerFragment"
-        android:label="Profil"
+        android:label="Rediger profil"
         tools:layout="@layout/fragment_profil_rediger" />
     <fragment
         android:id="@+id/onskelisteListeFragment"

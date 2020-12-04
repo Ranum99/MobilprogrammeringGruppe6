@@ -154,13 +154,13 @@ public class Database extends SQLiteOpenHelper {
      */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE = "Handleliste";
-    public static final String COLUMN_HANDLELISTE_UKENR = "Ukenr";
+    public static final String COLUMN_HANDLELISTE_TITTEL = "Tittel";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE = " CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_HANDLELISTE_UKENR + " TEXT " +
+            COLUMN_HANDLELISTE_TITTEL + " TEXT " +
             ")";
 
 
@@ -169,14 +169,14 @@ public class Database extends SQLiteOpenHelper {
      */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE_LISTE = "HandlelisteListe";
-    public static final String COLUMN_HANDLELISTELISTE_UKENR = "UkeNr";
+    public static final String COLUMN_HANDLELISTELISTE_TITTEL_LISTE = "TittelListe";
     public static final String COLUMN_HANDLELISTELISTE_VARE = "Vare";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE_LISTE = " CREATE TABLE " + TABLE_HANDLELISTE_LISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_HANDLELISTELISTE_UKENR + " TEXT, " +
+            COLUMN_HANDLELISTELISTE_TITTEL_LISTE + " TEXT, " +
             COLUMN_HANDLELISTELISTE_VARE + " TEXT " +
             ")";
 
@@ -522,19 +522,19 @@ public class Database extends SQLiteOpenHelper {
     public boolean weekHandleliste(String uke) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTE_UKENR, uke);
+        contentValues.put(COLUMN_HANDLELISTE_TITTEL, uke);
 
         Log.d(TAG, "Handleliste updated: " + uke +  " in " + TABLE_HANDLELISTE);
 
         long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
         return result != -1;
     }
-    public boolean varerHandleliste(String uke, String vare) {
+    public boolean varerHandleliste(String tittel, String vare) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTE_UKENR, uke);
+        contentValues.put(COLUMN_HANDLELISTELISTE_TITTEL_LISTE, tittel);
 
-        Log.d(TAG, "Handleliste updated: " + uke +  " in " + TABLE_HANDLELISTE);
+        Log.d(TAG, "Handleliste updated: " + tittel +  " in " + TABLE_HANDLELISTE);
 
         long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
         return result != -1;
