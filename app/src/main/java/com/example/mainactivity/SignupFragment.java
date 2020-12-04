@@ -21,6 +21,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SignupFragment extends Fragment {
     public SignupFragment() {
         // Required empty constructor
@@ -112,8 +115,6 @@ public class SignupFragment extends Fragment {
                         navController.navigate(R.id.familieFragment, bundle);
                     }
 
-                } else {
-                    Toast.makeText(getActivity(), "Fyll ut feltene", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -133,8 +134,17 @@ public class SignupFragment extends Fragment {
     }
 
     private boolean validUserInfo(String name, String email, String birthday, String mobilnr, String password, String passwordConfirm) {
-        if (name.length() == 0 || email.length() == 0 || password.length() == 0 || passwordConfirm.length() == 0 || birthday.length() == 0 || mobilnr.length() == 0)
+        Pattern mailRegEx = Pattern.compile("^[-a-z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-z0-9~!$%^&*_=+}{\\'?]+)*@([a-z0-9_][-a-z0-9_]*(\\.[-a-z0-9_]+)*\\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$");
+        Matcher matcher = mailRegEx.matcher(email);
+
+        if (name.length() == 0 || email.length() == 0 || password.length() == 0 || passwordConfirm.length() == 0 || birthday.length() == 0 || mobilnr.length() == 0) {
+            Toast.makeText(getActivity(), "Fyll ut feltene", Toast.LENGTH_SHORT).show();
             return false;
+        }
+        if (!matcher.find()) {
+            Toast.makeText(getActivity(), "Du må fylle inn en riktig mail", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return password.equals(passwordConfirm);
 
         //Kan evt. legge in regEx på email etterhvert.
