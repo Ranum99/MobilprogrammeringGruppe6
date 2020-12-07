@@ -63,7 +63,7 @@ public class BursdagLeggTilFragment extends Fragment {
                 date = Birthday.getDayOfMonth() + "." + (Birthday.getMonth()+1) + "." + Birthday.getYear();
 
                 // Henter familieId på brukeren
-                //familieId =  sharedPreferences.getString(User.FAMILIE, null);
+                familieId =  sharedPreferences.getString(User.FAMILIE, null);
 
                 // Sjekker at inputen er fylt inn korrekt
                 if (name.length() == 0) {

@@ -93,17 +93,9 @@ public class BursdagFragment extends Fragment{
         while(data.moveToNext()) {
 
             String navnet = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
-            System.out.println(navnet);
             String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
-            System.out.println(datoen);
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
-<<<<<<< Updated upstream
             String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
-=======
-            System.out.println(id);
-            String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
-            System.out.println(familieId);
->>>>>>> Stashed changes
 
             System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
 
@@ -130,6 +122,7 @@ public class BursdagFragment extends Fragment{
                 splitAarc1 = Integer.parseInt(partsc1[2]);
                 splitMaanedc1 = Integer.parseInt(partsc1[1]);
                 splitDagc1 = Integer.parseInt(partsc1[0]);
+
                 String[] partsc2 = c2.getDato().split("\\.");
                 splitAarc2 = Integer.parseInt(partsc2[2]);
                 splitMaanedc2 = Integer.parseInt(partsc2[1]);
