@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +51,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
     @Override
     public OnskelisteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         sharedPreferences = contexten.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-        View itemView = inflater.inflate(R.layout.familiebobla_list_item, parent, false);
+        View itemView = inflater.inflate(R.layout.handleliste_list_item, parent, false);
 
         return new OnskelisteViewHolder(itemView);
     }
@@ -72,8 +73,8 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
 
     public class OnskelisteViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView navn;
-        private ConstraintLayout card;
+        private TextView tittel, navn;
+        private CardView card;
         private ImageButton delete;
 
         public OnskelisteViewHolder(@NonNull View itemView) {
@@ -81,13 +82,14 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void setOnskeliste(OnskelisteModel modelToDisplay) {
-            navn = itemView.findViewById(R.id.FamilieBoblaNameCardview);
-            String text = modelToDisplay.getWishlistName() + " (" + modelToDisplay.getUserToName() + ")";
-            navn.setText(text);
+            tittel = itemView.findViewById(R.id.handlelistenummer);
+            navn = itemView.findViewById(R.id.bruker);
+            tittel.setText(modelToDisplay.getWishlistName());
+            navn.setText("Opprettet av: " + modelToDisplay.getUserToName());
         }
 
         public void setDeleteOnOnskeliste(final OnskelisteModel modelToDisplay, final int position) {
-            delete = itemView.findViewById(R.id.imageButton);
+            delete = itemView.findViewById(R.id.handlelisteDelete);
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -124,7 +126,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void setClickOnOnskeliste(final OnskelisteModel modelToDisplay) {
-            card = itemView.findViewById(R.id.cardID);
+            card = itemView.findViewById(R.id.cardHandleliste);
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -140,7 +142,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void hideElements(OnskelisteModel modelToDisplay) {
-            delete = itemView.findViewById(R.id.imageButton);
+            delete = itemView.findViewById(R.id.handlelisteDelete);
 
             if (modelToDisplay.getUserToID() != meID)
                 delete.setVisibility(View.INVISIBLE);

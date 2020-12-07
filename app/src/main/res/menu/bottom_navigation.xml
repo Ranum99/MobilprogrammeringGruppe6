@@ -6,17 +6,17 @@
         android:icon="@drawable/ic_action_food"
         android:title="@string/matplan" />
     <item
-        android:id="@+id/kalenderFragment"
-        android:icon="@drawable/ic_action_calendar"
-        android:title="@string/kalender" />
+        android:id="@+id/handlelisteFragment"
+        android:icon="@drawable/ic_action_shopping"
+        android:title="@string/Handleliste" />
     <item
         android:id="@+id/onskelisteFragment"
         android:icon="@drawable/ic_action_list"
         android:title="@string/oenskeliste" />
     <item
-        android:id="@+id/handlelisteFragment"
-        android:icon="@drawable/ic_action_shopping"
-        android:title="@string/Handleliste" />
+        android:id="@+id/kalenderFragment"
+        android:icon="@drawable/ic_action_calendar"
+        android:title="@string/kalender" />
     <item
         android:id="@+id/familieboblaFragment"
         android:icon="@drawable/ic_action_chat"
