@@ -97,8 +97,10 @@ public class BursdagFragment extends Fragment{
 
             System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
 
-            BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId);
-            alleBursdager.add(bursdag);
+            if (familieId.equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId);
+                alleBursdager.add(bursdag);
+            }
 
         }
 
