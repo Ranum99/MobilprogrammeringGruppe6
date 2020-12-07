@@ -1,5 +1,7 @@
 package com.example.mainactivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ public class FamilieFragment extends Fragment {
 
     private Button bliMedlemIFamilie, opprettFamilie;
     private String navn, dato;
+    SharedPreferences sharedPreferences;
 
     public FamilieFragment() {
         // Required empty public constructor
@@ -34,6 +37,11 @@ public class FamilieFragment extends Fragment {
 
         bliMedlemIFamilie = view.findViewById(R.id.bliMedlem);
         opprettFamilie = view.findViewById(R.id.OpprettFamilie);
+
+        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        navn = sharedPreferences.getString(User.NAME, null);
+        dato = sharedPreferences.getString(User.BIRTHDAY, null);
 
         Bundle bundle = new Bundle();
         bundle.putString("NAVN", navn);

@@ -93,7 +93,9 @@ public class BursdagFragment extends Fragment{
             String navnet = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
             String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
-            String familieId = familieIdBruker;
+            String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
+
+            System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
 
             BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId);
             alleBursdager.add(bursdag);

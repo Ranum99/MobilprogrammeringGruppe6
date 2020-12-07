@@ -452,7 +452,7 @@ public class Database extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME_BIRTHDAY, name);
         contentValues.put(COLUMN_BIRTHDAY_DATE, date);
-        //contentValues.put(COLUMN_BIRTHDAY_FAMILYID, familyId);
+        contentValues.put(COLUMN_BIRTHDAY_FAMILYID, familyId);
 
         Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + familyId + ", " + " to " + TABLE_BIRTHDAY);
 
