@@ -97,13 +97,7 @@ public class BursdagFragment extends Fragment{
             String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
             System.out.println(datoen);
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
-<<<<<<< Updated upstream
             String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
-=======
-            System.out.println(id);
-            String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
-            System.out.println(familieId);
->>>>>>> Stashed changes
 
             if (familieId == null)
                 database.deleteRowFromTableById(Database.TABLE_BIRTHDAY, id);
@@ -124,7 +118,7 @@ public class BursdagFragment extends Fragment{
     private void setUpRecyclerView() {
 
         // Sortere bursdager
-        Comparator<BirthdayModel> byBirthday = new Comparator<BirthdayModel>() {
+        /*Comparator<BirthdayModel> byBirthday = new Comparator<BirthdayModel>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             public int compare(BirthdayModel c1, BirthdayModel c2) {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M");
@@ -144,7 +138,7 @@ public class BursdagFragment extends Fragment{
                 return LocalDate.parse(c1Dato, format).compareTo(LocalDate.parse(c2Dato, format));
             }
         };
-        Collections.sort(bursdager, byBirthday);
+        Collections.sort(bursdager, byBirthday);*/
 
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
