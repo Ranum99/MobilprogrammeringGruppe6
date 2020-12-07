@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -168,11 +169,19 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
         public void hideElements(OnskelisteListeModel wishesToDisplay) {
             checkBox = itemView.findViewById(R.id.checkBox);
             delete = itemView.findViewById(R.id.OnskelisteDelete);
+            wish = itemView.findViewById(R.id.Onskelistenavn);
 
             if (wishesToDisplay.getUserID() != meID)
                 delete.setVisibility(View.INVISIBLE);
-            else
+            else {
                 checkBox.setVisibility(View.INVISIBLE);
+
+                ConstraintLayout constraintLayout = itemView.findViewById(R.id.OnskelisteCardID);
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone(constraintLayout);
+                constraintSet.connect(R.id.Onskelistenavn, ConstraintSet.START, R.id.OnskelisteCardID, ConstraintSet.START, 42);
+                constraintSet.applyTo(constraintLayout);
+            }
         }
     }
 

@@ -49,7 +49,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
 
     @Override
     public int getItemCount() {
-        return 0;
+        return varelisteListe.size();
     }
 
 

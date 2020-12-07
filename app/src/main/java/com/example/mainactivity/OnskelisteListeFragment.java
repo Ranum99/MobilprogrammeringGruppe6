@@ -99,10 +99,6 @@ public class OnskelisteListeFragment extends Fragment {
             boolean isChecked = wishes.getInt(wishes.getColumnIndex(Database.COLUMN__WISH_CHECKED)) == 1;
             int userID = wishes.getInt(wishes.getColumnIndex(Database.COLUMN__WISH_USER_ID));
 
-            System.out.println(wishlistID + " ----- " + this.wishlistID);
-
-            System.out.println("\nWishlistID: " + wishlistID + "\nWishID: " + wishID + "\nWish: " + wish + "\nIsChecked: " + isChecked + " \n\n");
-
             if (wishlistID == this.wishlistID) {
                 OnskelisteListeModel wish1 = new OnskelisteListeModel(wishID, wishlistID, userID, wish, isChecked);
 

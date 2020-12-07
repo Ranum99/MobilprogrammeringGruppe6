@@ -35,9 +35,6 @@ public class FamilieFragment extends Fragment {
         bliMedlemIFamilie = view.findViewById(R.id.bliMedlem);
         opprettFamilie = view.findViewById(R.id.OpprettFamilie);
 
-        navn = getArguments().getString("NAVN");
-        dato = getArguments().getString("DATO");
-
         Bundle bundle = new Bundle();
         bundle.putString("NAVN", navn);
         bundle.putString("DATO", dato);
