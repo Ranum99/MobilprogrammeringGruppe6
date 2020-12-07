@@ -100,6 +100,10 @@ public class GruppeinformasjonFragment extends Fragment {
     private void kickUserFromFamily(String familyID, String myID) {
         Cursor check = database.checkIfUserIsAdminOfFamily(familyID, myID);
 
+        if (selectedUser == null) {
+            Toast.makeText(getContext(),"Du må velge en bruker å kaste ut", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (check.getCount() > 0) {
             boolean updateCheck = database.updateUserFamily(selectedUser.getId(), 0);
             if (updateCheck) {
