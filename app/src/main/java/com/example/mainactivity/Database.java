@@ -155,12 +155,14 @@ public class Database extends SQLiteOpenHelper {
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE = "Handleliste";
     public static final String COLUMN_HANDLELISTE_TITTEL = "Tittel";
+    public static final String COLUMN_HANDLELISTE_USERID = "BrukerID";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE = " CREATE TABLE " + TABLE_HANDLELISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_HANDLELISTE_TITTEL + " TEXT " +
+            COLUMN_HANDLELISTE_TITTEL + " TEXT, " +
+            COLUMN_HANDLELISTE_USERID + " INTEGER " +
             ")";
 
 
@@ -526,12 +528,13 @@ public class Database extends SQLiteOpenHelper {
     /*
                     HANDLELISTE
      */
-    public boolean weekHandleliste(String uke) {
+    public boolean weekHandleliste(String tittel, int userID) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTE_TITTEL, uke);
+        contentValues.put(COLUMN_HANDLELISTE_TITTEL, tittel);
+        contentValues.put(COLUMN_HANDLELISTE_USERID, userID);
 
-        Log.d(TAG, "Handleliste updated: " + uke +  " in " + TABLE_HANDLELISTE);
+        Log.d(TAG, "Handleliste updated: " + tittel +  " in " + TABLE_HANDLELISTE);
 
         long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
         return result != -1;

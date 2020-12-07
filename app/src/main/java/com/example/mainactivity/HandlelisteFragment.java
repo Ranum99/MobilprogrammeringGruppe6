@@ -96,8 +96,17 @@ public class HandlelisteFragment extends Fragment {
 
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String tittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTE_TITTEL));
-            HandlelisteModel liste = new HandlelisteModel(tittel, id, familieID, bruker);
-            handlelister.add(liste);
+            int userID = data.getInt(data.getColumnIndex(Database.COLUMN_HANDLELISTE_USERID));
+
+            Cursor userName = database.getData(Database.TABLE_USER, userID);
+            userName.moveToFirst();
+            String nameOfUser = userName.getString(1);
+            String userFamily = userName.getString(6);
+
+            if (userFamily.equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                HandlelisteModel liste = new HandlelisteModel(tittel, id, familieID, nameOfUser);
+                handlelister.add(liste);
+            }
         }
 
         this.handleliste = handlelister;

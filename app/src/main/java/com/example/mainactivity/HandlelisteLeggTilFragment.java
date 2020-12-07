@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -28,9 +29,12 @@ public class HandlelisteLeggTilFragment extends Fragment {
         // Required empty constructor
     }
 
-   private Database database;
+    private Database database;
+    private SharedPreferences sharedPreferences;
     private EditText tittel;
     private Button opprett;
+
+    private int meID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +47,10 @@ public class HandlelisteLeggTilFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
+        sharedPreferences = getContext().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
+
         tittel = view.findViewById(R.id.handlelisteTittel);
         opprett = view.findViewById(R.id.lagHandleliste);
 
@@ -53,7 +61,7 @@ public class HandlelisteLeggTilFragment extends Fragment {
                     Toast.makeText(getContext(), "Du må sette en tittel på handlelisten", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    database.weekHandleliste(tittel.getText().toString());
+                    database.weekHandleliste(tittel.getText().toString(), meID);
                     System.out.println(tittel.getText().toString());
                     navController.navigateUp();
 
