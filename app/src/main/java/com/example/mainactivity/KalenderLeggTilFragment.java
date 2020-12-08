@@ -193,22 +193,6 @@ public class KalenderLeggTilFragment extends Fragment {
             public void onClick(View v) {
                 addActivityToCalendar();
 
-                if (txtActivity.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "Fyll inn aktivitet", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (dateFrom == null) {
-                    Toast.makeText(getActivity(), "Fyll inn dato fra", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (dateTo != null || timeTo != null) {
-                    if (fullDateFrom.after(fullDateTo)) {
-                        Toast.makeText(getActivity(), "Dato/tid fra må være tidligere en dato/tid til", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                }
-
                 System.out.println("DATE FROM: " + fullDateFrom);
                 System.out.println("DATE TO: " + fullDateTo);
 
@@ -249,7 +233,14 @@ public class KalenderLeggTilFragment extends Fragment {
         }
 
         if (dateTo != null || timeTo != null) {
+            if (dateTo == null) {
+                fullDateTo.setYear(fullDateFrom.getYear());
+                fullDateTo.setMonth(fullDateFrom.getMonth());
+                fullDateTo.setDate(fullDateFrom.getDate());
+            }
             if (fullDateFrom.after(fullDateTo)) {
+                System.out.println(fullDateFrom);
+                System.out.println(fullDateTo);
                 Toast.makeText(getActivity(), "Dato/tid fra må være tidligere en dato/tid til", Toast.LENGTH_SHORT).show();
                 return false;
             }

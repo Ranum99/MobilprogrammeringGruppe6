@@ -87,7 +87,6 @@ public class KalenderSideFragment extends Fragment {
         Cursor data = database.getData(Database.TABLE_CALENDAR_ACTIVITY);
 
         ArrayList<KalenderSideModel> aktiviteter = new ArrayList<>();
-        KalenderSideModel kalenderSideModel1 = new KalenderSideModel("10.12.2020", null, "Født", "Aleksander", "10:00", "11:00");
 
         while (data.moveToNext()) {
             int activityID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN_ID)));
@@ -120,11 +119,11 @@ public class KalenderSideFragment extends Fragment {
             if (userFamily.equals(sharedPreferences.getString(User.FAMILIE, null))){
                 if (fullDateTo != null) {
                     if ((fullDateFrom.before(fullDateSelected) || fullDateFrom.equals(fullDateSelected)) && (fullDateTo.after(fullDateSelected) || fullDateTo.equals(fullDateSelected))) {
-                        KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity);
+                        KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID);
                         aktiviteter.add(kalenderSideModel);
                     }
                 } else if (fullDateFrom.equals(fullDateSelected)) {
-                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity);
+                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID);
                     aktiviteter.add(kalenderSideModel);
                 }
             }
