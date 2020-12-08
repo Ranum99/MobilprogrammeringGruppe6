@@ -99,9 +99,6 @@ public class BursdagFragment extends Fragment{
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
 
-            if (familieId == null)
-                database.deleteRowFromTableById(Database.TABLE_BIRTHDAY, id);
-
             System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
 
             if (familieId.equals(sharedPreferences.getString(User.FAMILIE, null))) {

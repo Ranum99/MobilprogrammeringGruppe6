@@ -210,6 +210,30 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
+    /*
+                    KALENDER
+     */
+
+    public static final String TABLE_CALENDAR_ACTIVITY = "KalenderActivity";
+    public static final String COLUMN__CALENDAR_ACTIVITY_DATE_FROM = "DateFrom";
+    public static final String COLUMN__CALENDAR_ACTIVITY_DATE_TO = "DateTo";
+    public static final String COLUMN__CALENDAR_ACTIVITY_TIME_FROM = "TimeFrom";
+    public static final String COLUMN__CALENDAR_ACTIVITY_TIME_TO = "TimeTo";
+    public static final String COLUMN__CALENDAR_ACTIVITY_USER_ID = "UserID";
+    public static final String COLUMN__CALENDAR_ACTIVITY_ACTIVITY = "Activity";
+
+    private static final String CREATE_TABLE_CALENDAR = " CREATE TABLE " + TABLE_CALENDAR_ACTIVITY +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN__CALENDAR_ACTIVITY_DATE_FROM + " TEXT, " +
+            COLUMN__CALENDAR_ACTIVITY_DATE_TO + " TEXT, " +
+            COLUMN__CALENDAR_ACTIVITY_TIME_FROM + " TEXT, " +
+            COLUMN__CALENDAR_ACTIVITY_TIME_TO + " TEXT, " +
+            COLUMN__CALENDAR_ACTIVITY_USER_ID + " INTEGER, " +
+            COLUMN__CALENDAR_ACTIVITY_ACTIVITY + " TEXT " +
+            ")";
+
+
 
 
 
@@ -230,6 +254,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_OPPRETT_MATPLAN);
         db.execSQL(CREATE_TABLE_HANDLELISTE);
         db.execSQL(CREATE_TABLE_HANDLELISTE_LISTE);
+        db.execSQL(CREATE_TABLE_CALENDAR);
     }
 
     @Override
@@ -244,6 +269,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISH);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAMILY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATPLAN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALENDAR_ACTIVITY);
         onCreate(db);
     }
 
@@ -585,5 +611,21 @@ public class Database extends SQLiteOpenHelper {
         long result = db.update(TABLE_WISH, contentValues, COLUMN_ID + " = " + wishID, null);
 
         return result != -1;
+    }
+
+    public long addActivityToCalandar(String dateFrom, String dateTo, String timeFrom, String timeTo, int meID, String theActivity) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN__CALENDAR_ACTIVITY_DATE_FROM, dateFrom);
+        values.put(COLUMN__CALENDAR_ACTIVITY_DATE_TO, dateTo);
+        values.put(COLUMN__CALENDAR_ACTIVITY_TIME_FROM, timeFrom);
+        values.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
+        values.put(COLUMN__CALENDAR_ACTIVITY_USER_ID, meID);
+        values.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
+
+        System.out.println("New activity in calendar (Database): " + theActivity + " for user: " + meID);
+
+        return db.insert(TABLE_CALENDAR_ACTIVITY, null, values);
     }
 }
