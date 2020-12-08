@@ -75,7 +75,6 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
     public class KalenderViewHolder extends RecyclerView.ViewHolder {
 
         private TextView aktivitet, userName, datoOgTid;
-        private ConstraintLayout card;
         private ImageButton delete;
 
         public KalenderViewHolder(@NonNull final View itemView) {
@@ -83,6 +82,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
 
         }
 
+        // Setter aktivitet og brukernavn på CardView
         public void setAktivitet(final KalenderSideModel ActivityToDisplay) {
             aktivitet = itemView.findViewById(R.id.aktivitet);
             userName = itemView.findViewById(R.id.brukerNavn);
@@ -91,6 +91,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
             userName.setText("Aktivitet for: " + ActivityToDisplay.getUserName());
         }
 
+        // Bygger opp en tekst og setter dato på CardView
         public void setDato(KalenderSideModel kalenderSideModel) {
             datoOgTid = itemView.findViewById(R.id.datoOgTid);
 
@@ -111,6 +112,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
             datoOgTid.setText(datoOfTidText);
         }
 
+        // Sletter en aktivitet
         public void setDeleteOnActivity(final KalenderSideModel kalenderSideModel, final int position) {
                 delete = itemView.findViewById(R.id.slettAktivitet);
                 View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -147,6 +149,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                 delete.setOnClickListener(onClickListener);
             }
 
+        // Dersom man er "eier" av aktiviteten kan man slette den, hvis ikke vil slett-kanppen bli gjemt
         public void hideDelete(KalenderSideModel kalenderSideModel, int position) {
             if (meID == kalenderSideModel.getUserID())
                 setDeleteOnActivity(kalenderSideModel, position);

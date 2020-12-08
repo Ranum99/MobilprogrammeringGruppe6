@@ -53,11 +53,12 @@ public class KalenderSideFragment extends Fragment {
 
         calendar = view.findViewById(R.id.calendarView);
 
-        // Setting today's date as selected date
+        // Setter dagens dato som den valgt datoen, slik at man vil se dagens aktiviteter fra start
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "dd.MM.yyyy");
         Date date = new Date();
         selectedDate = simpleDateFormat.format(date);
 
+        // RecyclerView vil oppdatere seg dersom man trykker på en annen dato i CalenderView
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -70,6 +71,7 @@ public class KalenderSideFragment extends Fragment {
             }
         });
 
+        // Henter aktiviteter og legger de inn i RecyclerView
         setActivitiesAndIds();
         setUpRecyclerView();
 
@@ -89,17 +91,19 @@ public class KalenderSideFragment extends Fragment {
         ArrayList<KalenderSideModel> aktiviteter = new ArrayList<>();
 
         while (data.moveToNext()) {
-            int activityID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN_ID)));
+            int activityID = data.getInt(data.getColumnIndex(Database.COLUMN_ID));
             String dateFrom = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_DATE_FROM));
             String dateTo = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_DATE_TO));
             String timeFrom = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_TIME_FROM));
             String timeTo = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_TIME_TO));
-            int userID = Integer.parseInt(data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_USER_ID)));
+            int userID = data.getInt(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_USER_ID));
             String theActivity = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_ACTIVITY));
 
+            // Lager gjør de om fra String til Date for å kunne bruke innebygde metoder
             String[] dateFromSplitted = dateFrom.split("\\.");
             Date fullDateFrom = new Date(Integer.parseInt(dateFromSplitted[2]) - 1900, Integer.parseInt(dateFromSplitted[1]) - 1, Integer.parseInt(dateFromSplitted[0]));
 
+            // Lager gjør de om fra String til Date for å kunne bruke innebygde metoder
             String[] dateToSplitted;
             Date fullDateTo = null;
             if (dateTo != null) {
@@ -107,22 +111,24 @@ public class KalenderSideFragment extends Fragment {
                 fullDateTo = new Date(Integer.parseInt(dateToSplitted[2]) - 1900, Integer.parseInt(dateToSplitted[1]) - 1, Integer.parseInt(dateToSplitted[0]));
             }
 
+            // Lager gjør de om fra String til Date for å kunne bruke innebygde metoder
             String[] dateSelectedSplitted = selectedDate.split("\\.");
             Date fullDateSelected = new Date(Integer.parseInt(dateSelectedSplitted[2]) - 1900, Integer.parseInt(dateSelectedSplitted[1]) - 1, Integer.parseInt(dateSelectedSplitted[0]));
 
-
+            // Henter brukers fulle navn og familie-ID
             Cursor userTo = database.getData(Database.TABLE_USER, userID);
             userTo.moveToFirst();
             String userName = userTo.getString(1);
             String userFamily = userTo.getString(6);
 
+            // Dersom man har samme familie-ID vil den bli lagt til i listen
             if (userFamily.equals(sharedPreferences.getString(User.FAMILIE, null))){
-                if (fullDateTo != null) {
+                if (fullDateTo != null) { // Dersom det er en til dato og aktiviteten er lik eller mellom datoene blir den lagt med
                     if ((fullDateFrom.before(fullDateSelected) || fullDateFrom.equals(fullDateSelected)) && (fullDateTo.after(fullDateSelected) || fullDateTo.equals(fullDateSelected))) {
                         KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID);
                         aktiviteter.add(kalenderSideModel);
                     }
-                } else if (fullDateFrom.equals(fullDateSelected)) {
+                } else if (fullDateFrom.equals(fullDateSelected)) { // Dersom det ikke er noe til dato, men aktiviteten er på datoen som er valgt blir den lagt med
                     KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID);
                     aktiviteter.add(kalenderSideModel);
                 }
@@ -130,6 +136,5 @@ public class KalenderSideFragment extends Fragment {
         }
 
         this.aktiviteter = aktiviteter;
-
     }
 }

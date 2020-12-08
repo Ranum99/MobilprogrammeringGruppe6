@@ -23,10 +23,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class KalenderLeggTilFragment extends Fragment {
 
@@ -42,9 +40,7 @@ public class KalenderLeggTilFragment extends Fragment {
     private NavController navController;
 
     private Date fullDateFrom, fullDateTo;
-
-    private String dateFrom, dateTo, theActivity, userID, timeFrom, timeTo;
-
+    private String dateFrom, dateTo, timeFrom, timeTo;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
 
@@ -57,6 +53,7 @@ public class KalenderLeggTilFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Instansierer variabler
         navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
@@ -69,9 +66,11 @@ public class KalenderLeggTilFragment extends Fragment {
         txtTimeTo = view.findViewById(R.id.txtTimeTo);
         txtActivity = view.findViewById(R.id.txtActivity);
 
-        fullDateFrom = new Date(0,0,0,0,0,0);
-        fullDateTo = new Date(0,0,0,0,0,0);
+        fullDateFrom = new Date();
+        fullDateTo = new Date();
 
+        // Setter listener på textfelter
+        // Her henter man er DatePicker, og gjør at bruker kan velge en dato
         txtDateFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,10 +79,8 @@ public class KalenderLeggTilFragment extends Fragment {
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 Date date = new Date((year-1900), monthOfYear, dayOfMonth);
@@ -102,6 +99,7 @@ public class KalenderLeggTilFragment extends Fragment {
             }
         });
 
+        // Her henter man er DatePicker, og gjør at bruker kan velge en dato
         txtDateTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,10 +108,8 @@ public class KalenderLeggTilFragment extends Fragment {
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 Date date = new Date((year-1900), monthOfYear, dayOfMonth);
@@ -132,6 +128,7 @@ public class KalenderLeggTilFragment extends Fragment {
             }
         });
 
+        // Her henter man er TimePicker, og gjør at bruker kan velge en tid
         txtTimeFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,10 +136,8 @@ public class KalenderLeggTilFragment extends Fragment {
                 mHour = c.get(Calendar.HOUR_OF_DAY);
                 mMinute = c.get(Calendar.MINUTE);
 
-                // Launch Time Picker Dialog
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
                         new TimePickerDialog.OnTimeSetListener() {
-
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 Date time = new Date(0,0,0, hourOfDay, minute);
@@ -160,6 +155,7 @@ public class KalenderLeggTilFragment extends Fragment {
             }
         });
 
+        // Her henter man er TimePicker, og gjør at bruker kan velge en tid
         txtTimeTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,10 +163,8 @@ public class KalenderLeggTilFragment extends Fragment {
                 mHour = c.get(Calendar.HOUR_OF_DAY);
                 mMinute = c.get(Calendar.MINUTE);
 
-                // Launch Time Picker Dialog
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
                         new TimePickerDialog.OnTimeSetListener() {
-
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 Date time = new Date(0,0,0, hourOfDay, minute);
@@ -192,22 +186,11 @@ public class KalenderLeggTilFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addActivityToCalendar();
-
-                System.out.println("DATE FROM: " + fullDateFrom);
-                System.out.println("DATE TO: " + fullDateTo);
-
-                System.out.println("\n\n");
-
-                System.out.println("Date from: " + dateFrom);
-                System.out.println("Date to: " + dateTo);
-                System.out.println("Time from: " + timeFrom);
-                System.out.println("Time to: " + timeTo);
-                System.out.println("Bruker ID: " + sharedPreferences.getString(User.ID, null));
-                System.out.println("Activity: " + txtActivity.getText().toString());
             }
         });
     }
 
+    // Legger aktiviteten til i databasen dersom sjekk går gjennom
     private void addActivityToCalendar() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
@@ -222,6 +205,10 @@ public class KalenderLeggTilFragment extends Fragment {
         }
     }
 
+    // Sjekker at:
+        // Man har fylt inn en aktivitet
+        // Man har fylt ut en dato fra (dato til, tid fra og tid til kan stå tomme dersom brukeren vil det)
+        // Til slutt sjekker den om tid fra (dato og tid) er før tid til
     private boolean sjekkInput() {
         if (txtActivity.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Fyll inn aktivitet", Toast.LENGTH_SHORT).show();
@@ -239,8 +226,6 @@ public class KalenderLeggTilFragment extends Fragment {
                 fullDateTo.setDate(fullDateFrom.getDate());
             }
             if (fullDateFrom.after(fullDateTo)) {
-                System.out.println(fullDateFrom);
-                System.out.println(fullDateTo);
                 Toast.makeText(getActivity(), "Dato/tid fra må være tidligere en dato/tid til", Toast.LENGTH_SHORT).show();
                 return false;
             }
