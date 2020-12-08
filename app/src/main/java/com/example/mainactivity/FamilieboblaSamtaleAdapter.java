@@ -13,17 +13,14 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<FamilieboblaSamtaleAdapter.FamilieboblaViewHolder>{
 
     private List<FamilieboblaSamtaleModel> MessageListe;
     private LayoutInflater inflater;
-    private ArrayList<ConstraintLayout> cards = new ArrayList<>();
     private FamilieboblaSamtaleModel MessageToDisplay;
     private Context contexten;
-    private Database database;
     private SharedPreferences sharedPreferences;
 
     private int meID;
@@ -38,7 +35,6 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
     @NonNull
     @Override
     public FamilieboblaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-
         sharedPreferences = getContexten().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
@@ -48,7 +44,6 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
 
     @Override
     public void onBindViewHolder(@NonNull FamilieboblaSamtaleAdapter.FamilieboblaViewHolder viewHolder, int position) {
-
         MessageToDisplay = MessageListe.get(position);
 
         viewHolder.setMessage(MessageToDisplay);
@@ -80,6 +75,7 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
             String text = SamtaleToDisplay.getMessage();
 
             if (SamtaleToDisplay.getUserFromId() == meID) {
+                // Dersom jeg har sendt meldingen blir boksen satt til høyre og fylt med bakgrunnsfarge
                 cardView.setCardBackgroundColor(Color.parseColor("#09E5FF"));
                 message.setTextColor(Color.parseColor("#FFFFFF"));
 
@@ -88,9 +84,9 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
                 params.horizontalBias = 1f; // here is one modification for example. modify anything else you want :)
                 cardView.setLayoutParams(params);
             } else {
+                // Fyller en annen bakgrunnsfarge
                 cardView.setCardBackgroundColor(Color.parseColor("#231f21"));
                 message.setTextColor(Color.parseColor("#FFFFFF"));
-
             }
 
             message.setText(text);

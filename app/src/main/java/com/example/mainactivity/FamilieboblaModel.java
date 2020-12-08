@@ -1,6 +1,5 @@
 package com.example.mainactivity;
 
-import java.util.ArrayList;
 
 public class FamilieboblaModel {
     private String samtaleID, userToName, samtaleName;
@@ -21,18 +20,5 @@ public class FamilieboblaModel {
 
     public String getSamtaleName() {
         return samtaleName;
-    }
-
-    public void setUserToName(String userToName) {
-        this.userToName = userToName;
-    }
-
-    @Override
-    public String toString() {
-        return "FamilieboblaModel{" +
-                "samtaleID='" + samtaleID + '\'' +
-                ", userToName='" + userToName + '\'' +
-                ", samtaleName='" + samtaleName + '\'' +
-                '}';
     }
 }

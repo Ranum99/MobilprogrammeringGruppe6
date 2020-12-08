@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class FamilieboblaFragment extends Fragment {
 
-    FamilieboblaSamtaleFragment fs;
     Database database;
     SharedPreferences sharedPreferences;
 
@@ -42,7 +41,6 @@ public class FamilieboblaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //this.view = view;
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         empty = view.findViewById(R.id.emptySamtale);
