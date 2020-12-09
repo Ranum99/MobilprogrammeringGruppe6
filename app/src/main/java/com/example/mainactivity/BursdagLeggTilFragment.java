@@ -56,6 +56,9 @@ public class BursdagLeggTilFragment extends Fragment {
         Birthday = view.findViewById(R.id.BirthdayDate);
         Birthday.setMaxDate(System.currentTimeMillis());
 
+        // Henter familieId på brukeren
+        familieId = sharedPreferences.getString(User.FAMILIE, null);
+
         lagre.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -64,9 +67,6 @@ public class BursdagLeggTilFragment extends Fragment {
                 name = FullName.getText().toString();
                 date = Birthday.getDayOfMonth() + "." + (Birthday.getMonth()+1) + "." + Birthday.getYear();
                 familieId = sharedPreferences.getString(User.FAMILIE, null);
-
-                // Henter familieId på brukeren
-                familieId =  sharedPreferences.getString(User.FAMILIE, null);
 
                 // Sjekker at inputen er fylt inn korrekt
                 if (name.length() == 0) {
@@ -83,6 +83,7 @@ public class BursdagLeggTilFragment extends Fragment {
 
                     // Lagrer informasjonen som er fylt ut i input-feltene i databasetabellen BIRTHDAY,
                     database.addUserToDatabaseBIRTHDAY(name, date, familieId);
+
                     // Går tilbake til bursdagfragmentet
                     navController.navigateUp();
                 }
