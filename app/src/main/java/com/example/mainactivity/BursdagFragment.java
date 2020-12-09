@@ -78,6 +78,8 @@ public class BursdagFragment extends Fragment{
         NyBursdag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("ID", sharedPreferences.getString(User.FAMILIE, null));
                 navController.navigate(R.id.bursdagLeggTilFragment);
             }
         });
@@ -111,30 +113,6 @@ public class BursdagFragment extends Fragment{
 
     // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
-
-        // Sortere bursdager
-        /*Comparator<BirthdayModel> byBirthday = new Comparator<BirthdayModel>() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public int compare(BirthdayModel c1, BirthdayModel c2) {
-                DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M");
-
-                String[] partsc1 = c1.getDato().split("\\.");
-                splitAarc1 = Integer.parseInt(partsc1[2]);
-                splitMaanedc1 = Integer.parseInt(partsc1[1]);
-                splitDagc1 = Integer.parseInt(partsc1[0]);
-
-                String[] partsc2 = c2.getDato().split("\\.");
-                splitAarc2 = Integer.parseInt(partsc2[2]);
-                splitMaanedc2 = Integer.parseInt(partsc2[1]);
-                splitDagc2 = Integer.parseInt(partsc2[0]);
-
-                String c1Dato = String.valueOf(splitDagc1) + String.valueOf(splitMaanedc1);
-                String c2Dato = String.valueOf(splitDagc2) + String.valueOf(splitMaanedc2);
-
-                return LocalDate.parse(c1Dato, format).compareTo(LocalDate.parse(c2Dato, format));
-            }
-        };
-        Collections.sort(bursdager, byBirthday);*/
 
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
