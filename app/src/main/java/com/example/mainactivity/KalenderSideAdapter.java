@@ -5,15 +5,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -59,8 +62,6 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
         viewHolder.setAktivitet(kalenderSideModel);
         viewHolder.setDato(kalenderSideModel);
         viewHolder.hideDelete(kalenderSideModel, position);
-
-        //viewHolder.setClickOnSamtale(AktivitetsListe);
     }
 
     @Override
@@ -76,6 +77,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
 
         private TextView aktivitet, userName, datoOgTid;
         private ImageButton delete;
+        private ConstraintLayout kortID;
 
         public KalenderViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -120,7 +122,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
                         builder.setTitle("Slett aktivitet")
-                                .setMessage("Er du sikker på at du vil slette denne aktiviteten med ?");
+                                .setMessage("Er du sikker på at du vil slette denne aktiviteten med?");
                         builder.setPositiveButton("Jepp, bare å slette",
                                 new DialogInterface.OnClickListener() {
                                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -151,12 +153,59 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
 
         // Dersom man er "eier" av aktiviteten kan man slette den, hvis ikke vil slett-kanppen bli gjemt
         public void hideDelete(KalenderSideModel kalenderSideModel, int position) {
-            if (meID == kalenderSideModel.getUserID())
+            if (meID == kalenderSideModel.getUserID()) {
                 setDeleteOnActivity(kalenderSideModel, position);
-            else {
+                setClickOnSamtale(kalenderSideModel);
+            } else {
                 delete = itemView.findViewById(R.id.slettAktivitet);
                 delete.setVisibility(View.INVISIBLE);
+
+                kortID = itemView.findViewById(R.id.kortID);
+                kortID.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        Toast.makeText(contexten, "Dette er da ikke din aktivitet...?", Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
             }
+        }
+
+        private void setClickOnSamtale(final KalenderSideModel kalenderSideModel) {
+            kortID = itemView.findViewById(R.id.kortID);
+            kortID.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
+                    builder.setTitle("Endre aktivitet")
+                            .setMessage("Vil du endre aktiviteten: " + kalenderSideModel.getTheActivity() + "?");
+                    builder.setPositiveButton("Mhm",
+                            new DialogInterface.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("dateFrom", kalenderSideModel.getDateFrom());
+                                    bundle.putString("dateTo", kalenderSideModel.getDateTo());
+                                    bundle.putString("timeFrom", kalenderSideModel.getTimeFrom());
+                                    bundle.putString("timeTo", kalenderSideModel.getTimeTo());
+                                    bundle.putString("theActivity", kalenderSideModel.getTheActivity());
+                                    bundle.putInt("activityID", kalenderSideModel.getActivityID());
+                                    Navigation.findNavController(kortID).navigate(R.id.action_kalenderFragment2_to_kalenderRedigerFragment, bundle);
+                                }
+                            });
+                    builder.setNegativeButton("Nope",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert1 = builder.create();
+                    alert1.show();
+                    return true;
+                }
+            });
         }
     }
 }

@@ -218,6 +218,11 @@ public class KalenderLeggTilFragment extends Fragment {
             Toast.makeText(getActivity(), "Fyll inn dato fra", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (timeFrom == null) {
+            fullDateFrom.setHours(0);
+            fullDateFrom.setMinutes(0);
+            fullDateFrom.setSeconds(0);
+        }
 
         if (dateTo != null || timeTo != null) {
             if (dateTo == null) {

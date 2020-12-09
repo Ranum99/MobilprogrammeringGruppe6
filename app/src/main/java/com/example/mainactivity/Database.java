@@ -613,6 +613,21 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public boolean editActivityInCalandar(int activityID, String dateFrom, String dateTo, String timeFrom, String timeTo, String theActivity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_DATE_FROM, dateFrom);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_DATE_TO, dateTo);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_TIME_FROM, timeFrom);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
+
+        long result = db.update(TABLE_CALENDAR_ACTIVITY, contentValues, COLUMN_ID + " = " + activityID, null);
+
+        return result != -1;
+    }
+
     public long addActivityToCalandar(String dateFrom, String dateTo, String timeFrom, String timeTo, int meID, String theActivity) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
