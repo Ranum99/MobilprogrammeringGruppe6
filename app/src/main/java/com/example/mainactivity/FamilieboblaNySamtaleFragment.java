@@ -29,8 +29,9 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     SharedPreferences sharedPreferences;
     Database database;
 
-    private Spinner spinner;
     private User selectedUser;
+
+    private Spinner spinner;
     private NavController navController;
     private TextView conversationName;
     private Button addSamtale;
@@ -49,18 +50,17 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-
         spinner = view.findViewById(R.id.users);
         addSamtale = view.findViewById(R.id.lagSamtale);
         conversationName = view.findViewById(R.id.conversationName);
 
+        // Fyller dropdown med familiemedlemmer
         addUsersToDropdown();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedUser = (User) parent.getItemAtPosition(position);
-                System.out.println(selectedUser);
             }
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
@@ -78,11 +78,11 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         });
     }
 
+    // Lager en ny samtale med et annet familiemedlem dersom samtalenavn er fylt ut
     private void makeNewSamtale() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
         long addToDatabase = -1;
-
 
         if (!conversationName.getText().toString().isEmpty())
             addToDatabase = database.makeNewConversation(meID, selectedUser, conversationName.getText().toString());
@@ -99,18 +99,20 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
 
     private void addUsersToDropdown() {
         Cursor data = database.getData();
-        System.out.println("ME: " + sharedPreferences.getString(User.NAME, null));
+
         ArrayList<User> arrayList = new ArrayList<>();
 
         while(data.moveToNext()) {
-            if (data.getString(6) != null) {
+            if (data.getString(6) != null) { // Sjekker at familie kolonnen i databasen ikke er tom
+                // Meg-bruker blir ikke lagt til i listen, og bare andre medlemmer av samme familie blir lagt til
                 if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null)) && data.getString(6).equals(sharedPreferences.getString(User.FAMILIE, null))) {
                     int id = data.getInt(0);
                     String name = data.getString(1);
-                    arrayList.add( new User(id,name));
+                    arrayList.add( new User(id, name));
                 }
             }
         }
+        // Så lenge listen ikke er tom blir spinneren fylt med brukere
         if (arrayList.size() > 0) {
             ArrayAdapter<User> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrayList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

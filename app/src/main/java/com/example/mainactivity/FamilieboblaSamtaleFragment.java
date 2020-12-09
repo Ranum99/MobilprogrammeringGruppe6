@@ -32,7 +32,7 @@ public class FamilieboblaSamtaleFragment extends Fragment {
     private String samtaleName, samtaleTo;
     private ArrayList<FamilieboblaSamtaleModel> messages;
 
-    private TextView samtaleTitle, messageToSend;
+    private TextView samtaleTitle, messageToSend, brukerNavn;
     private Button sendButton;
 
     @Override
@@ -47,13 +47,18 @@ public class FamilieboblaSamtaleFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
+        // Henter argumenter som ble sendt via bundle
         setSamtaleId(Integer.parseInt(getArguments().getString("samtaleId")));
         setSamtaleName(getArguments().getString("samtaleName"));
         setSamtaleTo(getArguments().getString("samtaleTo"));
 
-        String text = samtaleName + " (" + samtaleTo + ")";
-        samtaleTitle = view.findViewById(R.id.SamtaleBrukernavn);
-        samtaleTitle.setText(text);
+        // Setter samtalenavn og hvem det er en samtale med
+        samtaleTitle = view.findViewById(R.id.Samtalenavn);
+        samtaleTitle.setText(samtaleName);
+
+        String samtaleMed = "Samtale med: " + samtaleTo;
+        brukerNavn = view.findViewById(R.id.brukerNavn);
+        brukerNavn.setText(samtaleMed);
 
         messageToSend = view.findViewById(R.id.familieboblaSamtale_messageToSend);
         sendButton = view.findViewById(R.id.familieboblaSamtale_sendMessageBtn);
@@ -64,8 +69,8 @@ public class FamilieboblaSamtaleFragment extends Fragment {
             }
         });
 
+        // Henter meldinger og viser de i RecyclerView
         setMessagesInConversation();
-
         setUpRecyclerView();
     }
 
@@ -75,6 +80,7 @@ public class FamilieboblaSamtaleFragment extends Fragment {
 
         familieboblaSamtaleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Går til bunnen av samtalen, slik at man slipper å scrolle til de siste meldingene
         familieboblaSamtaleRecyclerView.scrollToPosition(messages.size() - 1);
     }
 
@@ -90,17 +96,16 @@ public class FamilieboblaSamtaleFragment extends Fragment {
             int fromID = Integer.parseInt(messages.getString(messages.getColumnIndex(Database.COLUMN__MESSAGE_USER_FROM)));
             String message = messages.getString(messages.getColumnIndex(Database.COLUMN__MESSAGE_TEXT));
 
-            System.out.println("\nConversationID: " + conversationID + "\nMessageID: " + messageID + "\nFrom: " + fromID + "\nMessage: " + message + " \n\n");
-
+            // Dersom samtaleID fra database og lokalt er like vil den bli lagt til i array
             if (samtaleId == conversationID) {
                 FamilieboblaSamtaleModel message2 = new FamilieboblaSamtaleModel(messageID, fromID, conversationID, message);
-
                 allMessages.add(message2);
             }
         }
         this.messages = allMessages;
     }
 
+    // Legger en melding til i databasen og henter meldingene på nytt
     private void sendMessage() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
@@ -110,7 +115,6 @@ public class FamilieboblaSamtaleFragment extends Fragment {
             addToDatabase = database.sendMessage(samtaleId, meID, messageToSend.getText().toString());
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Sent the message: " + messageToSend.getText().toString(), Toast.LENGTH_SHORT).show();
             messageToSend.setText("");
             setMessagesInConversation();
             setUpRecyclerView();

@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class BursdagLeggTilFragment extends Fragment {
 
         // Instansierer variablene
         database = new Database(getActivity());
+        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         lagre = view.findViewById(R.id.NyBursdagLagre);
         avbryt = view.findViewById(R.id.NyBursdagAvbryt);
         FullName = view.findViewById(R.id.BirthdayFullname);
@@ -61,6 +63,7 @@ public class BursdagLeggTilFragment extends Fragment {
                 // Henter inputen
                 name = FullName.getText().toString();
                 date = Birthday.getDayOfMonth() + "." + (Birthday.getMonth()+1) + "." + Birthday.getYear();
+                familieId = sharedPreferences.getString(User.FAMILIE, null);
 
                 // Henter familieId på brukeren
                 familieId =  sharedPreferences.getString(User.FAMILIE, null);

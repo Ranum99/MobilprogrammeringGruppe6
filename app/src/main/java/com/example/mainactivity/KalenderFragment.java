@@ -12,7 +12,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -27,7 +26,6 @@ public class KalenderFragment extends Fragment {
     private ViewPager2 viewPager;
     private PageAdapter pagerAdapter;
 
-    private TextView familyName, familyId;
     SharedPreferences sharedPreferences;
     Database database;
 

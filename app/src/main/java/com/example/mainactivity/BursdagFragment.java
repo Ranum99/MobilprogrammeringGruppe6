@@ -113,7 +113,7 @@ public class BursdagFragment extends Fragment{
     private void setUpRecyclerView() {
 
         // Sortere bursdager
-        Comparator<BirthdayModel> byBirthday = new Comparator<BirthdayModel>() {
+        /*Comparator<BirthdayModel> byBirthday = new Comparator<BirthdayModel>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             public int compare(BirthdayModel c1, BirthdayModel c2) {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M");
@@ -134,7 +134,7 @@ public class BursdagFragment extends Fragment{
                 return LocalDate.parse(c1Dato, format).compareTo(LocalDate.parse(c2Dato, format));
             }
         };
-        Collections.sort(bursdager, byBirthday);
+        Collections.sort(bursdager, byBirthday);*/
 
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
