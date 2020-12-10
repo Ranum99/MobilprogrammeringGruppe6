@@ -197,7 +197,7 @@ public class KalenderLeggTilFragment extends Fragment {
         long addToDatabase = -1;
 
         if (sjekkInput())
-            addToDatabase = database.addActivityToCalandar(dateFrom, dateTo, timeFrom, timeTo, meID, txtActivity.getText().toString(), 0);
+            addToDatabase = database.addActivityToCalandar(dateFrom, dateTo, timeFrom, timeTo, meID, txtActivity.getText().toString());
 
         if (addToDatabase >= 0) {
             Toast.makeText(getContext(),"Added activity: " + txtActivity.getText().toString() + " to calendar", Toast.LENGTH_SHORT).show();

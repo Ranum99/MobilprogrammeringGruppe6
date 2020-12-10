@@ -98,7 +98,6 @@ public class KalenderSideFragment extends Fragment {
             String timeTo = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_TIME_TO));
             int userID = data.getInt(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_USER_ID));
             String theActivity = data.getString(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_ACTIVITY));
-            boolean isBirthday = data.getInt(data.getColumnIndex(Database.COLUMN__CALENDAR_ACTIVITY_IS_BIRTHDAY)) == 1;
 
             // Lager gjør de om fra String til Date for å kunne bruke innebygde metoder
             String[] dateFromSplitted = dateFrom.split("\\.");
@@ -126,16 +125,11 @@ public class KalenderSideFragment extends Fragment {
             if (userFamily.equals(sharedPreferences.getString(User.FAMILIE, null))){
                 if (fullDateTo != null) { // Dersom det er en til dato og aktiviteten er lik eller mellom datoene blir den lagt med
                     if ((fullDateFrom.before(fullDateSelected) || fullDateFrom.equals(fullDateSelected)) && (fullDateTo.after(fullDateSelected) || fullDateTo.equals(fullDateSelected))) {
-                        KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID, isBirthday);
+                        KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID, false);
                         aktiviteter.add(kalenderSideModel);
                     }
-                } else if (fullDateFrom.equals(fullDateSelected) && !isBirthday) { // Dersom det ikke er noe til dato, men aktiviteten er på datoen som er valgt blir den lagt med
-                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID, isBirthday);
-                    aktiviteter.add(kalenderSideModel);
-                }
-                // Legge til bursdager
-                if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth() && isBirthday) {
-                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID, isBirthday);
+                } else if (fullDateFrom.equals(fullDateSelected)) { // Dersom det ikke er noe til dato, men aktiviteten er på datoen som er valgt blir den lagt med
+                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID, false);
                     aktiviteter.add(kalenderSideModel);
                 }
             }

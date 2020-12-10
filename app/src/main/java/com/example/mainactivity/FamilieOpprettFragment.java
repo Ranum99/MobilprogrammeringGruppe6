@@ -71,9 +71,6 @@ public class FamilieOpprettFragment extends Fragment {
 
                     database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), familyID);
                     database.addUserToDatabaseBIRTHDAY(name, date, String.valueOf(familyID));
-                    String bursdagFor = "Bursdag for " + name;
-
-                    database.addActivityToCalandar(date, null, null, null, Integer.parseInt(sharedPreferences.getString(User.ID, null)), bursdagFor, 1);
                     // Setting session family to familyID
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyID));

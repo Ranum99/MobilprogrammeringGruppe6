@@ -90,7 +90,10 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
             userName = itemView.findViewById(R.id.brukerNavn);
 
             aktivitet.setText(ActivityToDisplay.getTheActivity());
-            userName.setText("Aktivitet for: " + ActivityToDisplay.getUserName());
+            if (!kalenderSideModel.getIsBirthday())
+                userName.setText("Aktivitet for: " + ActivityToDisplay.getUserName());
+            else
+                userName.setVisibility(View.GONE);
         }
 
         // Bygger opp en tekst og setter dato på CardView
