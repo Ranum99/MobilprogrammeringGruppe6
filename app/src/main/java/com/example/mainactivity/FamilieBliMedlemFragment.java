@@ -63,6 +63,8 @@ public class FamilieBliMedlemFragment extends Fragment {
 
                     database.updateUserFamily(meID, familyId);
                     database.addUserToDatabaseBIRTHDAY(navn, dato, String.valueOf(familyId));
+                    String bursdagFor = "Bursdag for " + navn;
+                    database.addActivityToCalandar(dato, null, null, null, Integer.parseInt(sharedPreferences.getString(User.ID, null)), bursdagFor, 1);
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyId));

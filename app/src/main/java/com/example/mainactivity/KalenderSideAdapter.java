@@ -153,7 +153,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
 
         // Dersom man er "eier" av aktiviteten kan man slette den, hvis ikke vil slett-kanppen bli gjemt
         public void hideDelete(KalenderSideModel kalenderSideModel, int position) {
-            if (meID == kalenderSideModel.getUserID()) {
+            if (meID == kalenderSideModel.getUserID() && !kalenderSideModel.getIsBirthday()) {
                 setDeleteOnActivity(kalenderSideModel, position);
                 setClickOnSamtale(kalenderSideModel);
             } else {
@@ -164,7 +164,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                 kortID.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        Toast.makeText(contexten, "Dette er da ikke din aktivitet...?", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(contexten, "Oida, denne har ikke du rettigheter til å ordne med", Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 });

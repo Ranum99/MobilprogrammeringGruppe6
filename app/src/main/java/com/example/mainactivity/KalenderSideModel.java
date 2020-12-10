@@ -3,8 +3,9 @@ package com.example.mainactivity;
 public class KalenderSideModel {
     private String dateFrom, dateTo, timeFrom, timeTo, userName, theActivity;
     private int userID, activityID;
+    private boolean isBirthday;
 
-    public KalenderSideModel(String dateFrom, String dateTo, String timeFrom, String timeTo, String userName, String theActivity, int userID, int activityID) {
+    public KalenderSideModel(String dateFrom, String dateTo, String timeFrom, String timeTo, String userName, String theActivity, int userID, int activityID, boolean isBirthday) {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.timeFrom = timeFrom;
@@ -13,6 +14,7 @@ public class KalenderSideModel {
         this.theActivity = theActivity;
         this.userID = userID;
         this.activityID = activityID;
+        this.isBirthday = isBirthday;
     }
 
     public String getDateFrom() {
@@ -45,5 +47,9 @@ public class KalenderSideModel {
 
     public int getActivityID() {
         return activityID;
+    }
+
+    public boolean getIsBirthday() {
+        return isBirthday;
     }
 }

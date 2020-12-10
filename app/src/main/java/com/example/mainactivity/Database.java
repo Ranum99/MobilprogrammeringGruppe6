@@ -221,6 +221,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN__CALENDAR_ACTIVITY_TIME_TO = "TimeTo";
     public static final String COLUMN__CALENDAR_ACTIVITY_USER_ID = "UserID";
     public static final String COLUMN__CALENDAR_ACTIVITY_ACTIVITY = "Activity";
+    public static final String COLUMN__CALENDAR_ACTIVITY_IS_BIRTHDAY = "isBirthday";
 
     private static final String CREATE_TABLE_CALENDAR = " CREATE TABLE " + TABLE_CALENDAR_ACTIVITY +
             "(" +
@@ -230,7 +231,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__CALENDAR_ACTIVITY_TIME_FROM + " TEXT, " +
             COLUMN__CALENDAR_ACTIVITY_TIME_TO + " TEXT, " +
             COLUMN__CALENDAR_ACTIVITY_USER_ID + " INTEGER, " +
-            COLUMN__CALENDAR_ACTIVITY_ACTIVITY + " TEXT " +
+            COLUMN__CALENDAR_ACTIVITY_ACTIVITY + " TEXT, " +
+            COLUMN__CALENDAR_ACTIVITY_IS_BIRTHDAY + " INTEGER " +
             ")";
 
 
@@ -320,7 +322,7 @@ public class Database extends SQLiteOpenHelper {
     public boolean deleteRowFromTableById(String table, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        long result = db.delete(table, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        long result = db.delete(table, COLUMN_ID + " = " + id, null);
 
         return result != -1;
     }
@@ -628,7 +630,7 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public long addActivityToCalandar(String dateFrom, String dateTo, String timeFrom, String timeTo, int meID, String theActivity) {
+    public long addActivityToCalandar(String dateFrom, String dateTo, String timeFrom, String timeTo, int meID, String theActivity, int isBirthday) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
 
@@ -638,6 +640,7 @@ public class Database extends SQLiteOpenHelper {
         values.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
         values.put(COLUMN__CALENDAR_ACTIVITY_USER_ID, meID);
         values.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
+        values.put(COLUMN__CALENDAR_ACTIVITY_IS_BIRTHDAY, isBirthday);
 
         System.out.println("New activity in calendar (Database): " + theActivity + " for user: " + meID);
 

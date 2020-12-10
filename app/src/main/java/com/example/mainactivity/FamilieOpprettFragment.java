@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 public class FamilieOpprettFragment extends Fragment {
 
     private TextView navn, passord, passordIgjen;
@@ -69,6 +71,9 @@ public class FamilieOpprettFragment extends Fragment {
 
                     database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), familyID);
                     database.addUserToDatabaseBIRTHDAY(name, date, String.valueOf(familyID));
+                    String bursdagFor = "Bursdag for " + name;
+
+                    database.addActivityToCalandar(date, null, null, null, Integer.parseInt(sharedPreferences.getString(User.ID, null)), bursdagFor, 1);
                     // Setting session family to familyID
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyID));
