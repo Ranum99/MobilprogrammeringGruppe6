@@ -3,15 +3,16 @@ package com.example.mainactivity;
 public class BirthdayModel {
 
     // Variabler
-    private String navn, dato, id, familieId;
+    private String navn, dato, id, familieId, userID;
 
-    public BirthdayModel(String navn, String dato, String id, String familieId) {
+    public BirthdayModel(String navn, String dato, String id, String familieId, String userID) {
 
         // Setter variablene
         this.navn = navn;
         this.dato = dato;
         this.id = id;
         this.familieId = familieId;
+        this.userID = userID;
     }
 
     // Getters and setters
@@ -41,6 +42,10 @@ public class BirthdayModel {
 
     public String getFamilieId() {
         return familieId;
+    }
+
+    public String getUserID() {
+        return userID;
     }
 
     public void setFamilieId(String familieId) {

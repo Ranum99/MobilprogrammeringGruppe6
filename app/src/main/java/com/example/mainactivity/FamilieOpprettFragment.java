@@ -70,7 +70,7 @@ public class FamilieOpprettFragment extends Fragment {
                     }
 
                     database.updateUserFamily(Integer.parseInt(sharedPreferences.getString(User.ID, null)), familyID);
-                    database.addUserToDatabaseBIRTHDAY(name, date, String.valueOf(familyID));
+                    database.addUserToDatabaseBIRTHDAY(name, date, String.valueOf(familyID), sharedPreferences.getString(User.ID, null));
                     // Setting session family to familyID
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyID));

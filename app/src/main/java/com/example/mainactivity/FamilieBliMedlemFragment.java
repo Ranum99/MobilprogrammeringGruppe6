@@ -62,7 +62,7 @@ public class FamilieBliMedlemFragment extends Fragment {
                     int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
                     database.updateUserFamily(meID, familyId);
-                    database.addUserToDatabaseBIRTHDAY(navn, dato, String.valueOf(familyId));
+                    database.addUserToDatabaseBIRTHDAY(navn, dato, String.valueOf(familyId), String.valueOf(meID));
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyId));

@@ -3,6 +3,7 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,6 +29,9 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     private LayoutInflater inflater;
     private Context context;
     private Database database;
+    private SharedPreferences sharedPreferences;
+
+    private String meID;
 
     public BirthdayAdapter(Context context, List<BirthdayModel> BirthdayList) {
         this.inflater = LayoutInflater.from(context);
@@ -38,6 +42,9 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     @NonNull
     @Override
     public BirthdayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
+        sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        meID = sharedPreferences.getString(User.ID, null);
+
         View itemView = inflater.inflate(R.layout.birthday_list_item, parent, false);
         return new BirthdayViewHolder(itemView);
     }
@@ -48,8 +55,13 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         BirthdayModel birthdayToDisplay = BirthdayList.get(position);
 
         viewHolder.setBirthday(birthdayToDisplay, position);
-        viewHolder.setDelete(birthdayToDisplay, position);
-        viewHolder.setEdit(birthdayToDisplay, position);
+
+        if (birthdayToDisplay.getUserID().equals(meID)) {
+            viewHolder.setDelete(birthdayToDisplay, position);
+            viewHolder.setEdit(birthdayToDisplay, position);
+        } else {
+            viewHolder.hideElements();
+        }
     }
 
     @Override
@@ -164,6 +176,11 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                 }
             };
             card.setOnClickListener(edit);
+        }
+
+        public void hideElements() {
+            delete = itemView.findViewById(R.id.deleteBursdag);
+            delete.setVisibility(View.GONE);
         }
     }
 
