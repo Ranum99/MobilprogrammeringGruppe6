@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -48,6 +49,7 @@ public class ProfilRedigerFragment extends Fragment {
         endreEmail = view.findViewById(R.id.endreProfilEmail);
         endreMobilnr = view.findViewById(R.id.profilMobilnr);
         database = new Database(getActivity());
+        sharedPreferences = getContext().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         photo = view.findViewById(R.id.profilbildeRediger);
 
         photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
@@ -73,6 +75,8 @@ public class ProfilRedigerFragment extends Fragment {
                 dato = endreBursdag.getDayOfMonth() + "." + (endreBursdag.getMonth()+1) + "." + endreBursdag.getYear();
                 id = getArguments().getString("ID");
                 database.updateUserInDatabase(id, navn, email, dato, mobil);
+                System.out.println(dato);
+                database.updateOneColumnFromTable(Database.TABLE_BIRTHDAY, Database.COLUMN_BIRTHDAY_DATE, dato, Database.COLUMN_BIRTHDAY_USERID, sharedPreferences.getString(User.ID, null));
                 navController.navigateUp();
             }
         });

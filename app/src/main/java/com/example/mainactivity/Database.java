@@ -340,6 +340,16 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public boolean updateOneColumnFromTable(String table, String column, String newColumnValue, String whereClauseColumn, String whereArgsValue) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(column, newColumnValue);
+
+        long result = db.update(table, contentValues, whereClauseColumn + " = " + whereArgsValue, null);
+
+        return result != -1;
+    }
+
     public boolean updateUserFamily(int userId, Integer familyId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -58,7 +58,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
         viewHolder.setBirthday(birthdayToDisplay, position);
 
-        System.out.println("IS NULL: " + birthdayToDisplay.getMadeByUserID());
         Cursor check = database.checkIfUserIsAdminOfFamily(birthdayToDisplay.getFamilieId(), meID);
 
         if ((birthdayToDisplay.getMadeByUserID() != null && birthdayToDisplay.getMadeByUserID().equals(meID)) || (check.getCount() > 0 && birthdayToDisplay.getMadeByUserID() != null)) {
