@@ -36,6 +36,7 @@ public class BursdagLeggTilFragment extends Fragment {
     private EditText FullName;
     private DatePicker Birthday;
     private String name, date, familieId;
+    private int meID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class BursdagLeggTilFragment extends Fragment {
 
         // Henter familieId på brukeren
         familieId = sharedPreferences.getString(User.FAMILIE, null);
+        meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
         lagre.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -83,6 +85,9 @@ public class BursdagLeggTilFragment extends Fragment {
 
                     // Lagrer informasjonen som er fylt ut i input-feltene i databasetabellen BIRTHDAY,
                     database.addUserToDatabaseBIRTHDAY(name, date, familieId);
+
+                    String bursdagFor = "Bursdag for " + name;
+                    database.addActivityToCalandar(date,null,null,null, meID, bursdagFor, 1);
 
                     // Går tilbake til bursdagfragmentet
                     navController.navigateUp();
