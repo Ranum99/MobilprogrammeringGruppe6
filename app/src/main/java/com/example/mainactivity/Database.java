@@ -139,6 +139,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_BIRTHDAY_DATE = "Dato";
     public static final String COLUMN_BIRTHDAY_FAMILYID = "FamilieId";
     public static final String COLUMN_BIRTHDAY_USERID = "UserID";
+    public static final String COLUMN_BIRTHDAY_MADEBY_USERID = "MadeByUserID";
 
     // Lage tabellen BIRTHDAY
     private static final String CREATE_TABLE_BIRTHDAY = " CREATE TABLE " + TABLE_BIRTHDAY +
@@ -147,7 +148,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_NAME_BIRTHDAY + " TEXT, " +
             COLUMN_BIRTHDAY_DATE + " TEXT, " +
             COLUMN_BIRTHDAY_FAMILYID + " TEXT, " +
-            COLUMN_BIRTHDAY_USERID + " TEXT " +
+            COLUMN_BIRTHDAY_USERID + " TEXT, " +
+            COLUMN_BIRTHDAY_MADEBY_USERID + " TEXT " +
             ")";
 
 
@@ -475,13 +477,14 @@ public class Database extends SQLiteOpenHelper {
                 BURSDAGER
      */
     // LEGG TIL BURSDAG
-    public boolean addUserToDatabaseBIRTHDAY(String name, String date, String familyId, String meID) {
+    public boolean addUserToDatabaseBIRTHDAY(String name, String date, String familyId, String meID, String madeByUserID) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME_BIRTHDAY, name);
         contentValues.put(COLUMN_BIRTHDAY_DATE, date);
         contentValues.put(COLUMN_BIRTHDAY_FAMILYID, familyId);
         contentValues.put(COLUMN_BIRTHDAY_USERID, meID);
+        contentValues.put(COLUMN_BIRTHDAY_MADEBY_USERID, madeByUserID);
 
         Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + familyId + ", " + " to " + TABLE_BIRTHDAY);
 

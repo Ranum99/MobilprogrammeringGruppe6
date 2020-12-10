@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     @NonNull
     @Override
     public BirthdayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
+        database = new Database(context);
         sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         meID = sharedPreferences.getString(User.ID, null);
 
@@ -56,7 +58,10 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
         viewHolder.setBirthday(birthdayToDisplay, position);
 
-        if (birthdayToDisplay.getUserID().equals(meID)) {
+        System.out.println("IS NULL: " + birthdayToDisplay.getMadeByUserID());
+        Cursor check = database.checkIfUserIsAdminOfFamily(birthdayToDisplay.getFamilieId(), meID);
+
+        if ((birthdayToDisplay.getMadeByUserID() != null && birthdayToDisplay.getMadeByUserID().equals(meID)) || (check.getCount() > 0 && birthdayToDisplay.getMadeByUserID() != null)) {
             viewHolder.setDelete(birthdayToDisplay, position);
             viewHolder.setEdit(birthdayToDisplay, position);
         } else {

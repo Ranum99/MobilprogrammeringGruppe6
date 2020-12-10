@@ -98,12 +98,19 @@ public class BursdagFragment extends Fragment{
             String datoen = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String familieId = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
-            String userID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_USERID));
+            String userID = null;
+            String madeByUserID = null;
 
-            System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
+            if (data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_USERID)) != null)
+                userID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_USERID));
+
+            if (data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_MADEBY_USERID)) != null)
+                madeByUserID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_MADEBY_USERID));
+
+            //System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
 
             if (familieId.equals(sharedPreferences.getString(User.FAMILIE, null))) {
-                BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId, userID);
+                BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId, userID, madeByUserID);
                 alleBursdager.add(bursdag);
             }
 

@@ -3,9 +3,9 @@ package com.example.mainactivity;
 public class BirthdayModel {
 
     // Variabler
-    private String navn, dato, id, familieId, userID;
+    private String navn, dato, id, familieId, userID, madeByUserID;
 
-    public BirthdayModel(String navn, String dato, String id, String familieId, String userID) {
+    public BirthdayModel(String navn, String dato, String id, String familieId, String userID, String madeByUserID) {
 
         // Setter variablene
         this.navn = navn;
@@ -13,6 +13,7 @@ public class BirthdayModel {
         this.id = id;
         this.familieId = familieId;
         this.userID = userID;
+        this.madeByUserID = madeByUserID;
     }
 
     // Getters and setters
@@ -46,6 +47,10 @@ public class BirthdayModel {
 
     public String getUserID() {
         return userID;
+    }
+
+    public String getMadeByUserID() {
+        return madeByUserID;
     }
 
     public void setFamilieId(String familieId) {

@@ -83,7 +83,7 @@ public class BursdagLeggTilFragment extends Fragment {
                     mgr.hideSoftInputFromWindow(FullName.getWindowToken(), 0);
 
                     // Lagrer informasjonen som er fylt ut i input-feltene i databasetabellen BIRTHDAY,
-                    database.addUserToDatabaseBIRTHDAY(name, date, familieId, meID);
+                    database.addUserToDatabaseBIRTHDAY(name, date, familieId, null, meID);
 
                     // Går tilbake til bursdagfragmentet
                     navController.navigateUp();

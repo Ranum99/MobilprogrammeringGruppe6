@@ -154,8 +154,6 @@ public class KalenderSideFragment extends Fragment {
                     aktiviteter.add(kalenderSideModel);
                 }
             }
-
-            System.out.println(bursdagID + " - " + name + " - " + dato + " - " + familieID);
         }
 
         this.aktiviteter = aktiviteter;
