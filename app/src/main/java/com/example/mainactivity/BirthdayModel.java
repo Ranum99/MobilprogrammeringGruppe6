@@ -1,5 +1,7 @@
 package com.example.mainactivity;
 
+import java.util.Date;
+
 public class BirthdayModel {
 
     // Variabler

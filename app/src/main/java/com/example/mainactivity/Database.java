@@ -629,6 +629,7 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+
     public boolean editActivityInCalandar(int activityID, String dateFrom, String dateTo, String timeFrom, String timeTo, String theActivity) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -88,6 +88,7 @@ public class HandlelisteListeFragment extends Fragment {
             String ID = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String vareTittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTELISTE_VARE));
 
+
             HandlelisteVarerModel envare = new HandlelisteVarerModel(ID, vareTittel);
             allevarer.add(envare);
         }

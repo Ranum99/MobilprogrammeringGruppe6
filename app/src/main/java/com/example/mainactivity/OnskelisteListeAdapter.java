@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,27 +12,20 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListeAdapter.OnskelisteViewHolder>{
 
     private List<OnskelisteListeModel> WishListe;
     private LayoutInflater inflater;
-    private ArrayList<ConstraintLayout> cards = new ArrayList<>();
-    private OnskelisteListeModel WishesToDisplay;
     private Context contexten;
     private Database database;
-    private SharedPreferences sharedPreferences;
-
     private int meID;
 
     public OnskelisteListeAdapter(Context context, List<OnskelisteListeModel> WishListe) {
@@ -42,21 +34,20 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
         this.contexten = context;
     }
 
-
     private void removeItem(int position) {
         WishListe.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, WishListe.size());
     }
 
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @NonNull
     @Override
     public OnskelisteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
 
+        SharedPreferences sharedPreferences = getContexten().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         database = new Database(contexten);
-        sharedPreferences = getContexten().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-        meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
+        meID = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString(User.ID, null)));
 
         View itemView = inflater.inflate(R.layout.onskeliste_list_item, parent, false);
         return new OnskelisteViewHolder(itemView);
@@ -65,12 +56,12 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
     @Override
     public void onBindViewHolder(@NonNull OnskelisteListeAdapter.OnskelisteViewHolder viewHolder, int position) {
 
-        WishesToDisplay = WishListe.get(position);
+        OnskelisteListeModel wishesToDisplay = WishListe.get(position);
 
-        viewHolder.setWish(WishesToDisplay);
-        viewHolder.setDelete(WishesToDisplay, position);
-        viewHolder.setCheckBox(WishesToDisplay);
-        viewHolder.hideElements(WishesToDisplay);
+        viewHolder.setWish(wishesToDisplay);
+        viewHolder.setDelete(wishesToDisplay, position);
+        viewHolder.setCheckBox(wishesToDisplay);
+        viewHolder.hideElements(wishesToDisplay);
     }
 
     @Override
@@ -86,7 +77,6 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
 
         private TextView wish;
         private CheckBox checkBox;
-        private CardView cardView;
         private ImageButton delete;
 
         public OnskelisteViewHolder(@NonNull final View itemView) {

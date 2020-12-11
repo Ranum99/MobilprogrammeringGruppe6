@@ -32,7 +32,7 @@ public class BursdagLeggTilFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     // Elementer i layouten
-    private Button lagre, avbryt;
+    private Button lagre;
     private EditText FullName;
     private DatePicker Birthday;
     private String name, date, familieId, meID;
@@ -51,7 +51,6 @@ public class BursdagLeggTilFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         lagre = view.findViewById(R.id.NyBursdagLagre);
-        avbryt = view.findViewById(R.id.NyBursdagAvbryt);
         FullName = view.findViewById(R.id.BirthdayFullname);
         Birthday = view.findViewById(R.id.BirthdayDate);
         Birthday.setMaxDate(System.currentTimeMillis());
@@ -91,12 +90,7 @@ public class BursdagLeggTilFragment extends Fragment {
             }
         });
 
-        avbryt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigateUp();
-            }
-        });
+
     }
 
 }
