@@ -1,15 +1,21 @@
 package com.example.mainactivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVareAdapter.HandlelisteVareViewHolder> {
@@ -18,8 +24,6 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
     private LayoutInflater inflater;
     private Context context;
     private Database database;
-    private SharedPreferences sharedPreferences;
-    private HandlelisteVarerModel modelToDisplay;
 
     public HandlelisteVareAdapter(Context context, List<HandlelisteVarerModel> vareliste) {
         this.inflater = LayoutInflater.from(context);
@@ -33,17 +37,17 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
         View itemView = inflater.inflate(R.layout.vare_list_item, parent, false);
 
         database = new Database(context);
-        sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         return new HandlelisteVareViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HandlelisteVareViewHolder holder, int position) {
-        modelToDisplay = varelisteListe.get(position);
+        HandlelisteVarerModel modelToDisplay = varelisteListe.get(position);
 
         holder.setVare(modelToDisplay);
         holder.setDelete(modelToDisplay, position);
+        holder.setBought(modelToDisplay, position);
 
     }
 
@@ -59,34 +63,65 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
             super(itemView);
         }
 
-        private TextView vare;
+        private TextView vare = itemView.findViewById(R.id.vareText);
+        private CardView VareBoks = itemView.findViewById(R.id.VareBoks);
+
 
         public void setVare(HandlelisteVarerModel modelToDisplay) {
-
-            vare = itemView.findViewById(R.id.vareText);
             vare.setText(modelToDisplay.getVare());
-
         }
 
         public void setDelete(final HandlelisteVarerModel modelToDisplay, final int position) {
-            new View.OnLongClickListener() {
-
+            VareBoks.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
 
-                    database.deleteRowFromTableById(Database.TABLE_HANDLELISTE_LISTE, modelToDisplay.getId());
-                    removeItem(position);
-                    return true;
-                }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Slett vare")
+                            .setMessage("Er du sikker på at du vil slette denne varen?");
+                    builder.setPositiveButton("Ja",
+                            new DialogInterface.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // Sletter varen
+                                    database = new Database(context);
+                                    database.deleteRowFromTableById(Database.TABLE_HANDLELISTE_LISTE, modelToDisplay.getId());
+                                    Toast.makeText(context, "Varen " + modelToDisplay.getVare() + " er slettet", Toast.LENGTH_SHORT).show();
+                                    removeItem(position);
+                                }
+                            });
+                    builder.setNegativeButton("Nei",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // Går ut av popup'en og tilbake til siden uten å gjøre noe
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert1 = builder.create();
+                    alert1.show();
 
-            };
+                    return false;
+                }
+            });
 
         }
+        public void setBought(final HandlelisteVarerModel modelToDisplay, int position) {
 
+            VareBoks.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
         private void removeItem(int position) {
             varelisteListe.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, varelisteListe.size());
         }
+
+
     }
 }

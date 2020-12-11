@@ -19,8 +19,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Objects;
@@ -106,8 +109,6 @@ public class BursdagFragment extends Fragment{
 
             if (data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_MADEBY_USERID)) != null)
                 madeByUserID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_MADEBY_USERID));
-
-            //System.out.println(navnet + " - " + datoen + " - " + id + " - " + familieId);
 
             if (familieId.equals(sharedPreferences.getString(User.FAMILIE, null))) {
                 BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId, userID, madeByUserID);

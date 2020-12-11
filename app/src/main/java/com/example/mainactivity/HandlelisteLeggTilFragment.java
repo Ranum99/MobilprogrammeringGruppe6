@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,6 +64,10 @@ public class HandlelisteLeggTilFragment extends Fragment {
                 else {
                     database.weekHandleliste(tittel.getText().toString(), meID);
                     System.out.println(tittel.getText().toString());
+
+                    InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+
+                    mgr.hideSoftInputFromWindow(tittel.getWindowToken(), 0);
                     navController.navigateUp();
 
                 }
