@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FamilieOpprettFragment">
+
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Familienavn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/opprettPassord"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieOpprettNavn"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettNavn"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettNavn" />
+
+    <EditText
+        android:id="@+id/OpprettFamilieOpprettPassord"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Opprett Passord"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Gjenta passord"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieOpprettPassord"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettPassord"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettPassord" />
+
+    <EditText
+        android:id="@+id/OpprettFamilieGjentaPassord"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Gjenta passord"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Button
+        android:id="@+id/OpprettFamilieBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Opprett Familie"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieGjentaPassord"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieGjentaPassord"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieGjentaPassord" />
+
+    <Button
+        android:id="@+id/OpprettFamilieAvbryt"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Avbryt"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieBtn" />
+
+    <EditText
+        android:id="@+id/OpprettFamilieOpprettNavn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Familienavn"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

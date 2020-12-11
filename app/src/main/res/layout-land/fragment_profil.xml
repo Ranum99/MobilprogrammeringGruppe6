@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilFragment">
+
+    <ImageView
+        android:id="@+id/profilbilde"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/bildeinfo"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEndreProfil"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/endreProfil"
+        app:layout_constraintEnd_toEndOf="@+id/profilbilde"
+        app:layout_constraintStart_toStartOf="@+id/profilbilde"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/ProfilBrukerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/bruker_id"
+        app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
+        app:layout_constraintTop_toBottomOf="@+id/navn" />
+
+    <TextView
+        android:id="@+id/ProfilMobilNummer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/mobilnummer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilBrukerId" />
+
+    <TextView
+        android:id="@+id/ProfilFodselsdato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/foedselsdato"
+        app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilMobilNummer" />
+
+    <Button
+        android:id="@+id/LoggutBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Logg ut"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
+        app:layout_constraintStart_toStartOf="@+id/btnEndreProfil" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/ProfilFodselsdato"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilFodselsdato" />
+
+    <TextView
+        android:id="@+id/navn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
+        app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
