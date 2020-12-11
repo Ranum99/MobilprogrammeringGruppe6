@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".FamilieBliMedlemFragment">
 
-
     <EditText
         android:id="@+id/familie_bli_medlem_familieID"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:autofillHints="@string/familyId"
         android:ems="10"
-        android:hint="Familieid"
+        android:hint="@string/familyId"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -25,7 +26,8 @@
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skriv inn FamilieId"
+        android:layout_marginTop="40dp"
+        android:text="@string/fillFamilyId"
         app:layout_constraintBottom_toTopOf="@+id/familie_bli_medlem_familieID"
         app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_familieID"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Skriv inn passord"
+        android:text="@string/fillPassword"
         app:layout_constraintBottom_toTopOf="@+id/familie_bli_medlem_passord"
         app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_familieID"
         app:layout_constraintTop_toBottomOf="@+id/familie_bli_medlem_familieID" />
@@ -48,34 +50,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Passord"
+        android:hint="@string/passord"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/familie_bli_medlem_BliMedlemBtn"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        android:autofillHints="@string/passord" />
 
     <Button
         android:id="@+id/familie_bli_medlem_BliMedlemBtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Bli Medlem"
-        app:layout_constraintBottom_toTopOf="@+id/BliMedlemAvbryt"
-        app:layout_constraintEnd_toEndOf="@+id/familie_bli_medlem_passord"
-        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_passord"
-        app:layout_constraintTop_toBottomOf="@+id/familie_bli_medlem_passord" />
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/bliMedlem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/familie_bli_medlem_familieID"
+        app:layout_constraintTop_toTopOf="@+id/familie_bli_medlem_familieID" />
 
     <Button
         android:id="@+id/BliMedlemAvbryt"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Avbryt"
+        android:layout_marginBottom="144dp"
+        android:text="@string/avbryt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/familie_bli_medlem_BliMedlemBtn"
-        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_BliMedlemBtn"
-        app:layout_constraintTop_toBottomOf="@+id/familie_bli_medlem_BliMedlemBtn" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_BliMedlemBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

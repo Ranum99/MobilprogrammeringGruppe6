@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".BursdagFragment">
 
-
     <TextView
         android:id="@+id/emptyBirthday"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Legg til en bursdag!"
+        android:text="@string/addBirthday"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
