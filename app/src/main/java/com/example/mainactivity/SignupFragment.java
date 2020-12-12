@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -158,8 +159,10 @@ public class SignupFragment extends Fragment {
             Toast.makeText(getActivity(), "Du må fylle inn en riktig mail", Toast.LENGTH_SHORT).show();
             return false;
         }
-        return password.equals(passwordConfirm);
-
-        //Kan evt. legge in regEx på email etterhvert.
+        if (!password.equals(passwordConfirm)) {
+            Toast.makeText(getActivity(), "Passordene er ikke like", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
