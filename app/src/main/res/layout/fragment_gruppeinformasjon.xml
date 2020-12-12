@@ -37,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:autofillHints="@string/endre_familienavn"
-                android:ems="10"
                 android:gravity="center"
                 android:hint="@string/endre_familienavn"
                 android:imeOptions="actionDone"

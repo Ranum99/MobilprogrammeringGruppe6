@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:autofillHints="@string/familyId"
-        android:ems="10"
         android:hint="@string/familyId"
         android:imeOptions="actionDone"
         app:boxCornerRadiusBottomEnd="10dp"

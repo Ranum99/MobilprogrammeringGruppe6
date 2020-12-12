@@ -39,8 +39,6 @@
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         android:autofillHints="@string/vare_navn"
-        android:background="@drawable/custom_input"
-        android:ems="10"
         android:hint="@string/vare_navn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/vareLeggTil"

@@ -29,8 +29,6 @@
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_input"
-        android:ems="10"
         android:hint="@string/tittel"
         android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/lagHandleliste"

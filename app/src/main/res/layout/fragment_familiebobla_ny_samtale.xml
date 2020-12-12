@@ -74,7 +74,6 @@
         android:layout_marginTop="8dp"
         android:autofillHints="@string/chatName"
         android:layout_marginBottom="32dp"
-        android:ems="10"
         android:gravity="center"
         android:hint="@string/chatName"
         app:layout_constraintBottom_toTopOf="@+id/lagSamtale"
