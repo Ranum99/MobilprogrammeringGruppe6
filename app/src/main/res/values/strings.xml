@@ -137,6 +137,7 @@
     <string name="registerSignup">Registrer deg</string>
     <string name="handleliste_tittel">Handleliste tittel</string>
     <string name="legg_til_aktivitet">Legg til aktivitet:</string>
+    <string name="mobilnummerLogin">Mobilnummer</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>
