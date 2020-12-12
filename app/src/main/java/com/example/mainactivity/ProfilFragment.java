@@ -49,7 +49,7 @@ public class ProfilFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
-        // Gets that instance saved in LoginFragment for autologgin
+        // Gets that instance saved in LoginFragment for autologin
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
         database = new Database(getActivity());
         Cursor data = database.getData(Database.TABLE_USER, Integer.parseInt(sharedPreferences.getString(User.ID, null)));

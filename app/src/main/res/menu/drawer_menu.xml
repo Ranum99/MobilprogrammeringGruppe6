@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <group>
         <item
             android:id="@+id/matplanFragment"
             android:icon="@drawable/ic_action_food"
-            android:title="@string/matplan" />
+            android:title="@string/matplan"
+            android:menuCategory="secondary" />
         <item
             android:id="@+id/handlelisteFragment"
             android:icon="@drawable/ic_action_shopping"
-            android:title="@string/Handleliste" />
+            android:title="@string/Handleliste"
+            android:menuCategory="secondary" />
         <item
             android:id="@+id/onskelisteFragment"
             android:icon="@drawable/ic_action_list"
-            android:title="@string/oenskeliste" />
+            android:title="@string/oenskeliste"
+            android:menuCategory="secondary" />
         <item
             android:id="@+id/kalenderFragment"
             android:icon="@drawable/ic_action_calendar"
-            android:title="@string/kalender" />
+            android:title="@string/kalender"
+            android:menuCategory="secondary" />
         <item
             android:id="@+id/bursdagFragment"
             android:icon="@drawable/ic_action_birthday"
-            android:title="Bursdager"/>
+            android:title="@string/birthdays"
+            android:menuCategory="secondary" />
         <item
             android:id="@+id/familieboblaFragment"
             android:icon="@drawable/ic_action_chat"
-            android:title="@string/familiebobla" />
+            android:title="@string/familiebobla"
+            android:menuCategory="secondary" />
     </group>
 
-    <item android:title="">
+    <item
+        android:title=""
+        android:menuCategory="secondary"
+        >
         <menu>
-
             <item
                 android:id="@+id/profilFragment"
                 android:icon="@drawable/ic_action_profile"
-                android:title="Profil" />
+                android:title="@string/profileNav"
+                android:menuCategory="secondary" />
             <item
                 android:id="@+id/gruppeinformasjonFragment"
                 android:icon="@drawable/ic_action_group"
-                android:title="Gruppeinformasjon" />
+                android:title="@string/groupInfo"
+                android:menuCategory="secondary" />
             <item
                 android:id="@+id/settingsFragment"
                 android:icon="@drawable/ic_action_settings"
-                android:title="Settings" />
-
+                android:title="@string/SettingsNav"
+                android:menuCategory="secondary" />
         </menu>
     </item>
 </menu>

@@ -4,21 +4,26 @@
     <item
         android:id="@+id/matplanFragment"
         android:icon="@drawable/ic_action_food"
-        android:title="@string/matplan" />
+        android:title="@string/matplan"
+        android:menuCategory="secondary"/>
     <item
         android:id="@+id/handlelisteFragment"
         android:icon="@drawable/ic_action_shopping"
-        android:title="@string/Handleliste" />
+        android:title="@string/Handleliste"
+        android:menuCategory="secondary" />
     <item
         android:id="@+id/onskelisteFragment"
         android:icon="@drawable/ic_action_list"
-        android:title="@string/oenskeliste" />
+        android:title="@string/oenskeliste"
+        android:menuCategory="secondary" />
     <item
         android:id="@+id/kalenderFragment"
         android:icon="@drawable/ic_action_calendar"
-        android:title="@string/kalender" />
+        android:title="@string/kalender"
+        android:menuCategory="secondary" />
     <item
         android:id="@+id/familieboblaFragment"
         android:icon="@drawable/ic_action_chat"
-        android:title="@string/familiebobla" />
+        android:title="@string/familiebobla"
+        android:menuCategory="secondary" />
 </menu>

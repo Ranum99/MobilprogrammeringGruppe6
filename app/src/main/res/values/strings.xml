@@ -138,6 +138,10 @@
     <string name="handleliste_tittel">Handleliste tittel</string>
     <string name="legg_til_aktivitet">Legg til aktivitet:</string>
     <string name="mobilnummerLogin">Mobilnummer</string>
+    <string name="birthdays">Bursdager</string>
+    <string name="profileNav">Profil</string>
+    <string name="groupInfo">Gruppeinformasjon</string>
+    <string name="SettingsNav">Settings</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>
