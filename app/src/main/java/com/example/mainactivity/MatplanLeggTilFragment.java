@@ -1,6 +1,9 @@
 package com.example.mainactivity;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,10 +20,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MatplanLeggTilFragment extends Fragment {
 
@@ -29,11 +38,15 @@ public class MatplanLeggTilFragment extends Fragment {
     }
 
     // Variabler
-    private Spinner antallDager, startdag;
-    private Button avbryt, opprett;
-    private String valgtStartDag, valgtAntallDager, id;
+    private TextInputEditText fraDato, tilDato;
+    private Button opprettBtn;
     Database database;
     SharedPreferences sharedPreferences;
+    private NavController navController;
+
+    private Date fromDate, toDate;
+    private String dateFromString, dateToString;
+    private int mYear, mMonth, mDay, familyID;
 
 
     @Override
@@ -45,80 +58,128 @@ public class MatplanLeggTilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
 
-        // Variabler
+        // Instansierer variabler
+        navController = Navigation.findNavController(view);
+
         database = new Database(getActivity());
-        antallDager = view.findViewById(R.id.matplanDager);
-        startdag = view.findViewById(R.id.matplanStartDag);
-        avbryt = view.findViewById(R.id.matplanAvbryt);
-        opprett = view.findViewById(R.id.opprettMatplan);
+        sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("1");
-        arrayList.add("2");
-        arrayList.add("3");
-        arrayList.add("4");
-        arrayList.add("5");
-        arrayList.add("6");
-        arrayList.add("7");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                requireActivity().getBaseContext(),
-                android.R.layout.simple_spinner_item,
-                arrayList);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        antallDager.setAdapter(arrayAdapter);
-        antallDager.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                valgtAntallDager = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Du har valgt å lage en matplan for " + valgtAntallDager + " dager", Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        fraDato = view.findViewById(R.id.txtDateFromMatplan);
+        tilDato = view.findViewById(R.id.txtDateToMatplan);
+        opprettBtn = view.findViewById(R.id.opprettMatplan);
 
-        ArrayList<String> arrayList2 = new ArrayList<>();
-        arrayList2.add("Mandag");
-        arrayList2.add("Tirsdag");
-        arrayList2.add("Onsdag");
-        arrayList2.add("Torsdag");
-        arrayList2.add("Fredag");
-        arrayList2.add("Lørdag");
-        arrayList2.add("Søndag");
-        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(
-                requireActivity().getBaseContext(),
-                android.R.layout.simple_spinner_item,
-                arrayList2);
-        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        startdag.setAdapter(arrayAdapter2);
-        startdag.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                valgtStartDag = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Du har valgt " + valgtStartDag + " som startdag", Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        familyID = Integer.parseInt(sharedPreferences.getString(User.FAMILIE, null));
 
-        avbryt.setOnClickListener(new View.OnClickListener() {
+        fromDate = new Date();
+        toDate = new Date();
+
+        fraDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigateUp();
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                Date date = new Date((year-1900), monthOfYear, dayOfMonth);
+
+                                fromDate.setYear(year-1900);
+                                fromDate.setMonth(monthOfYear);
+                                fromDate.setDate(dayOfMonth);
+
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "dd.MM.yyyy");
+
+                                fraDato.setText(simpleDateFormat.format(date));
+                                dateFromString = simpleDateFormat.format(date);
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
             }
         });
-        opprett.setOnClickListener(new View.OnClickListener() {
+
+        tilDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                assert getArguments() != null;
-                id = getArguments().getString("ID");
-                database.addTempDataMatplan(id, valgtAntallDager, valgtStartDag);
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                navController.navigate(R.id.matplanListeFragment);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                Date date = new Date((year-1900), monthOfYear, dayOfMonth);
+
+                                toDate.setYear(year-1900);
+                                toDate.setMonth(monthOfYear);
+                                toDate.setDate(dayOfMonth);
+
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "dd.MM.yyyy");
+
+                                tilDato.setText(simpleDateFormat.format(date));
+                                dateToString = simpleDateFormat.format(date);
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
             }
         });
+
+        opprettBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dateFromString.isEmpty() || dateToString.isEmpty()) {
+                    Toast.makeText(getActivity(), "Fyll inn alle feltene", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String[] dagerIUka = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
+
+                Calendar calFrom = Calendar.getInstance();
+                Calendar calTo = Calendar.getInstance();
+                calFrom.setTime(fromDate);
+                calTo.setTime(toDate);
+
+                if (calFrom.get(Calendar.WEEK_OF_YEAR) != calTo.get(Calendar.WEEK_OF_YEAR)) {
+                    Toast.makeText(getActivity(), "Må være i samme uke", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int week = calFrom.get(Calendar.WEEK_OF_YEAR);
+
+                boolean addToDatabase = false;
+
+                if (sjekkOfMatplanFinnesFraFor(week))
+                    addToDatabase = database.addWeekToMatplan(dateFromString, dateToString, familyID, week);
+
+                if (addToDatabase) {
+                    System.out.println("Lagt til matplan i uke " + calTo.get(Calendar.WEEK_OF_YEAR) + " fra " + dagerIUka[calFrom.get(Calendar.DAY_OF_WEEK) - 1].toLowerCase() + " til " + dagerIUka[calTo.get(Calendar.DAY_OF_WEEK) - 1].toLowerCase());
+                    navController.navigateUp();
+                } else {
+                    Toast.makeText(getActivity(), "Matplan i uke " + week + " finnes allerede fra før", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+
+            private boolean sjekkOfMatplanFinnesFraFor(int week) {
+                boolean matplanEksisterer = true;
+
+                Cursor leggTilMatplan = database.sjekkOmMatplanFinnes(familyID, week);
+
+                if (leggTilMatplan.getCount() != 0)
+                    matplanEksisterer = false;
+
+                System.out.println("Matplan eksisterer: " + matplanEksisterer);
+
+                return matplanEksisterer;
+            }
+        });
+
+
     }
 }

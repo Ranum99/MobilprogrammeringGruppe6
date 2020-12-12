@@ -191,12 +191,18 @@ public class Database extends SQLiteOpenHelper {
      */
     // Tabell MATPLAN m/ kolonner
     public static final String TABLE_MATPLAN = "Matplan";
+    public static final String COLUMN_MATPLAN_FROM_DATE = "FromDate";
+    public static final String COLUMN_MATPLAN_TO_DATE = "ToDate";
+    public static final String COLUMN_MATPLAN_FAMILY_ID = "FamilyID";
     public static final String COLUMN_MATPLAN_UKE = "Uke_nr";
 
     private static final String CREATE_TABLE_MATPLAN = " CREATE TABLE " + TABLE_MATPLAN +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_MATPLAN_UKE + " TEXT " +
+            COLUMN_MATPLAN_FROM_DATE + " TEXT, " +
+            COLUMN_MATPLAN_TO_DATE + " TEXT, " +
+            COLUMN_MATPLAN_FAMILY_ID + " INTEGER, " +
+            COLUMN_MATPLAN_UKE + " INTEGER " +
             ")";
 
 
@@ -408,6 +414,14 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
+    public Cursor sjekkOmMatplanFinnes(int familyID, int week) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_MATPLAN +
+                " WHERE " + COLUMN_MATPLAN_FAMILY_ID + " = " + familyID +
+                " AND " + COLUMN_MATPLAN_UKE + " = " + week;
+        return db.rawQuery(query, null);
+    }
+
     public Cursor getFamilyIdByLastRow() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_FAMILY  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
@@ -537,19 +551,23 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-
-
     // LEGGER UKENE INN I MATPLAN
-    public boolean addWeekToMatplan(String uke) {
+    public boolean addWeekToMatplan(String fromDate, String toDate, int familyID, int week) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_MATPLAN_UKE, uke);
+        contentValues.put(COLUMN_MATPLAN_FROM_DATE, fromDate);
+        contentValues.put(COLUMN_MATPLAN_TO_DATE, toDate);
+        contentValues.put(COLUMN_MATPLAN_FAMILY_ID, familyID);
+        contentValues.put(COLUMN_MATPLAN_UKE, week);
 
-        Log.d(TAG, "addData: Adding " + uke + ", " + " to " + TABLE_MATPLAN);
+        Log.d(TAG, "addData: Adding " + week + ", " + fromDate + " to " + toDate + " in " + TABLE_MATPLAN + " for family " + familyID);
 
         long result = db.insert(TABLE_MATPLAN, null, contentValues);
         return result != -1;
     }
+
+
+
     // OPPDATERER UKENE I DATABASEN
     public boolean changeWeekMatplan (String id, String nyUke) {
         SQLiteDatabase db = this.getWritableDatabase();
