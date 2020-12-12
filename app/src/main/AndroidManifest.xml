@@ -13,8 +13,6 @@
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="adjustPan">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +23,11 @@
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="com.example.MAINACTIVITY" />
 
-
-
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
