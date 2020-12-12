@@ -49,6 +49,7 @@ public class ProfilFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
 
+        // Gets that instance saved in LoginFragment for autologgin
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
         database = new Database(getActivity());
         Cursor data = database.getData(Database.TABLE_USER, Integer.parseInt(sharedPreferences.getString(User.ID, null)));
@@ -114,7 +115,7 @@ public class ProfilFragment extends Fragment {
                             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                // Tømmer sharedPreferences
+                                // Tømmer sharedPreferences slik at autologin ikke fungerer lenger
                                 sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();

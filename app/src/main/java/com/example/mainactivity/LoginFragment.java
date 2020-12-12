@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -29,6 +28,7 @@ import android.widget.Toast;
 import java.util.Objects;
 
 public class LoginFragment extends Fragment {
+
     public LoginFragment() {}
 
     Database database;
@@ -36,6 +36,7 @@ public class LoginFragment extends Fragment {
     private EditText email, password;
     private Button login, opprettBruker;
     private ImageView logo;
+    int autoSave;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +50,15 @@ public class LoginFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
+        // User.SESSION is a unique variable to identify the instance of this shared preference
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        int j = sharedPreferences.getInt("key",0);
+
+        // Default is 0 so autologin is disabled
+        if(j > 0) {
+            Intent activity = new Intent(getContext(), MainActivity.class);
+            startActivity(activity);
+        }
 
         logo = view.findViewById(R.id.LoginLogo);
         logo.setImageResource(R.drawable.logo);
@@ -112,6 +121,10 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.BIRTHDAY, data.getString(3));
                 editor.putString(User.MOBILNR, data.getString(4));
                 editor.putString(User.FAMILIE, data.getString(6));
+
+                // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
+                autoSave = 1;
+                editor.putInt("key", autoSave);
                 editor.apply();
 
                 return true;
