@@ -71,19 +71,19 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
 
         public void setMatplan(MatplanModel matplanToDisplay, int position) {
             uke = itemView.findViewById(R.id.CardviewMatplan);
-            uke.setText("Matplan uke " + matplanToDisplay.getUkenr());
+            uke.setText("Matplan uke " + matplanToDisplay.getWeek());
 
         }
 
         public void setDelete(final MatplanModel matplanToDisplay, final int position) {
             delete = itemView.findViewById(R.id.deletematplan);
             // pop up som spør om brukeren vil slette oppføringer
-            View.OnClickListener deleteBursdag = new View.OnClickListener() {
+            View.OnClickListener deleteMatplan = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Slett bursdag")
-                            .setMessage("Er du sikker på at du vil slette denne bursdagen?");
+                    builder.setTitle("Slett matplan")
+                            .setMessage("Er du sikker på at du vil slette denne matplanen?");
                     builder.setPositiveButton("Ja",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -91,7 +91,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Sletter matplanen
                                     database = new Database(context);
-                                    database.deleteRowFromTableById(Database.TABLE_MATPLAN ,matplanToDisplay.getId());
+                                    database.deleteRowFromTableById(Database.TABLE_MATPLAN, String.valueOf(matplanToDisplay.getMatplanID()));
                                     removeItem(position);
                                 }
                             });
@@ -108,7 +108,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                 }
             };
 
-            delete.setOnClickListener(deleteBursdag);
+            delete.setOnClickListener(deleteMatplan);
         }
 
         //Fjerner og oppdaterer element fra recyclerviewet
@@ -124,8 +124,8 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("ID", matplanToDisplay.getId());
-                    bundle.putString("UKE", matplanToDisplay.getUkenr());
+                    bundle.putInt("ID", matplanToDisplay.getMatplanID());
+                    bundle.putInt("UKE", matplanToDisplay.getWeek());
 
                     Navigation.findNavController(card).navigate(R.id.matplanListeFragment, bundle);
                 }

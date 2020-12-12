@@ -3,27 +3,34 @@ package com.example.mainactivity;
 public class MatplanModel {
 
     // Variabler
-    private String ukenr, id;
+    private int matplanID, familyID, week;
+    private String fromDate, toDate;
 
-    public MatplanModel(String id, String uke) {
-        this.id = id;
-        this.ukenr = uke;
+    public MatplanModel(int matplanID, int familyID, int week, String fromDate, String toDate) {
+        this.matplanID = matplanID;
+        this.familyID = familyID;
+        this.week = week;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
     }
 
-    // Getters and setters
-    public String getUkenr() {
-        return ukenr;
+    public int getMatplanID() {
+        return matplanID;
     }
 
-    public void setUkenr(String ukenr) {
-        this.ukenr = ukenr;
+    public int getFamilyID() {
+        return familyID;
     }
 
-    public String getId() {
-        return id;
+    public int getWeek() {
+        return week;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getFromDate() {
+        return fromDate;
+    }
+
+    public String getToDate() {
+        return toDate;
     }
 }

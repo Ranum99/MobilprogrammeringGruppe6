@@ -138,6 +138,11 @@ public class MatplanLeggTilFragment extends Fragment {
                     return;
                 }
 
+                if (toDate.before(fromDate)) {
+                    Toast.makeText(getActivity(), "Til dato må være før/lik som fra dato", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 String[] dagerIUka = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
 
                 Calendar calFrom = Calendar.getInstance();
@@ -146,7 +151,7 @@ public class MatplanLeggTilFragment extends Fragment {
                 calTo.setTime(toDate);
 
                 if (calFrom.get(Calendar.WEEK_OF_YEAR) != calTo.get(Calendar.WEEK_OF_YEAR)) {
-                    Toast.makeText(getActivity(), "Må være i samme uke", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Datoene må være i samme uke", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 int week = calFrom.get(Calendar.WEEK_OF_YEAR);
