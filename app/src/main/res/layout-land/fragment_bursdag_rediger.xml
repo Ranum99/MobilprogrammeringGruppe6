@@ -39,7 +39,6 @@
                 android:hint="@string/fullt_navn"
                 android:autofillHints="@string/fullt_navn"
                 android:imeOptions="actionDone"
-                android:background="@drawable/custom_input"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"

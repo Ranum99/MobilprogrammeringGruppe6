@@ -53,7 +53,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:autofillHints="@string/message"
-        android:ems="10"
         android:gravity="center"
         android:hint="@string/message"
         android:imeOptions="actionDone"

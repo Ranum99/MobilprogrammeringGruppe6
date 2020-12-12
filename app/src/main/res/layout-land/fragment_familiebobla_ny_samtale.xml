@@ -69,8 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:autofillHints="@string/chatName"
-        android:background="@drawable/custom_input"
-        android:ems="10"
         android:gravity="center"
         android:hint="@string/chatName"
         android:imeOptions="actionDone"

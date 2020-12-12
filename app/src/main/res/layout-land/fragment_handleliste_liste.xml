@@ -36,8 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autofillHints="@string/createPassword"
-        android:background="@drawable/custom_input"
-        android:ems="10"
         android:hint="@string/vare_navn"
         android:imeOptions="actionDone"
         android:inputType="textPersonName"
