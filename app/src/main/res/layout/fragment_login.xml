@@ -62,11 +62,11 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:hint="@string/example_email_com"
+        android:hint="@string/loginEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LoginLogo"
-        android:autofillHints="@string/example_email_com">
+        android:autofillHints="@string/loginEmail">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/EmailLogin"

@@ -3,6 +3,7 @@
     <string name="gruppe">Gruppe</string>
     <string name="hovedside">Hovedside</string>
     <string name="profil">Profil</string>
+    <string name="legg_til_aktivitet2">Legg til aktivitet</string>
     <string name="action_settings">Settings</string>
     <string name="gruppeinformasjon">Gruppeinformasjon</string>
     <string name="kastUtMedlem">Kast ut medlem:</string>
@@ -136,6 +137,7 @@
     <string name="registerSignup">Registrer deg</string>
     <string name="handleliste_tittel">Handleliste tittel</string>
     <string name="legg_til_aktivitet">Legg til aktivitet:</string>
+    <string name="mobilnummerLogin">Mobilnummer</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

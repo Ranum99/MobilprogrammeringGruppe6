@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +25,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static android.app.Activity.RESULT_OK;
 
 public class SignupFragment extends Fragment {
     public SignupFragment() {
@@ -37,8 +44,6 @@ public class SignupFragment extends Fragment {
     private DatePicker aBirthday;
     private Button registrerBruker;
     private ImageView logo;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -158,8 +163,10 @@ public class SignupFragment extends Fragment {
             Toast.makeText(getActivity(), "Du må fylle inn en riktig mail", Toast.LENGTH_SHORT).show();
             return false;
         }
-        return password.equals(passwordConfirm);
-
-        //Kan evt. legge in regEx på email etterhvert.
+        if (!password.equals(passwordConfirm)) {
+            Toast.makeText(getActivity(), "Passordene er ikke like", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
