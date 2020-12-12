@@ -22,7 +22,6 @@
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="16dp"
-        android:focusable="false"
         android:hint="@string/dato_fra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:focusable="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +62,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:focusable="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -91,7 +92,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:focusable="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -120,7 +122,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:focusable="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -167,7 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/endre_aktivitet2"
+        android:text="@string/legg_til_aktivitet"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
