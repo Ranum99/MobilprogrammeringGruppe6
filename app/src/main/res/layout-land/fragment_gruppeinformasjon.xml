@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GruppeinformasjonFragment">
+    tools:context=".GruppeinformasjonFragment"
+    android:orientation="horizontal">
 
     <ScrollView
         android:layout_width="0dp"
@@ -26,40 +27,59 @@
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:text="Endre familienavn"
-                app:layout_constraintStart_toStartOf="@+id/EndreFamilieNavnInput"
-                app:layout_constraintTop_toBottomOf="@+id/EndreFamilieNavnInput" />
+                android:text="@string/endre_familienavn"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-            <EditText
-                android:id="@+id/EndreFamilieNavnInput"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:autofillHints="@string/familienavn"
                 android:ems="10"
-                android:hint="Familienavn"
+                android:gravity="center"
+                android:hint="@string/familienavn"
+                android:imeOptions="actionDone"
                 android:inputType="textPersonName"
+                android:background="@drawable/custom_input"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
                 app:layout_constraintStart_toStartOf="@+id/EndreFamilienavn"
-                app:layout_constraintTop_toBottomOf="@+id/EndreFamilienavn" />
+                app:layout_constraintTop_toBottomOf="@+id/EndreFamilienavn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EndreFamilieNavnInput"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/EndreFamilienavn"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Endre familienavn:"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/endre_familienavnTextView"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/listeOverMedlemmer"
-                app:layout_constraintTop_toBottomOf="@+id/listeOverMedlemmer" />
+                app:layout_constraintStart_toEndOf="@+id/KastUtMedlem"
+                app:layout_constraintTop_toTopOf="@+id/KastUtMedlem" />
 
             <ListView
                 android:id="@+id/listeOverMedlemmer"
-                android:layout_width="250dp"
+                android:layout_width="580dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="8dp"
                 android:scrollbarStyle="insideInset"
-                app:layout_constraintStart_toStartOf="@+id/MedlemmerHeadline"
+                app:layout_constraintEnd_toEndOf="@+id/EndreFamilieNavnBtn"
+                app:layout_constraintStart_toStartOf="@+id/KastUtMedlemBtn"
                 app:layout_constraintTop_toBottomOf="@+id/MedlemmerHeadline" />
 
             <TextView
@@ -67,8 +87,10 @@
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Medlemmer:"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/medlemmer"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/KastUtMedlemBtn"
                 app:layout_constraintTop_toBottomOf="@+id/KastUtMedlemBtn" />
@@ -78,7 +100,7 @@
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/kastUtMedlem"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
@@ -88,8 +110,9 @@
                 android:id="@+id/kastUtMedlemDropdown"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.11"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/KastUtMedlem" />
 
@@ -98,7 +121,7 @@
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:text="Kast Ut Medlem"
+                android:text="@string/kastUtMedlem"
                 app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
                 app:layout_constraintTop_toBottomOf="@+id/kastUtMedlemDropdown" />
         </androidx.constraintlayout.widget.ConstraintLayout>

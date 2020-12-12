@@ -4,22 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FamilieBliMedlemFragment">
+    tools:context=".FamilieBliMedlemFragment"
+    android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/familie_bli_medlem_familieID"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:autofillHints="@string/familyId"
+        android:layout_marginTop="10dp"
+        android:autofillHints="@string/passord"
         android:ems="10"
-        android:hint="@string/familyId"
+        android:hint="@string/passord"
+        android:imeOptions="actionDone"
+        android:background="@drawable/custom_input"
         android:inputType="textPersonName"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/familie_bli_medlem_familieID"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView4"
@@ -28,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/fillFamilyId"
-        app:layout_constraintBottom_toTopOf="@+id/familie_bli_medlem_familieID"
-        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_familieID"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -40,43 +56,56 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/fillPassword"
-        app:layout_constraintBottom_toTopOf="@+id/familie_bli_medlem_passord"
-        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_familieID"
-        app:layout_constraintTop_toBottomOf="@+id/familie_bli_medlem_familieID" />
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <EditText
-        android:id="@+id/familie_bli_medlem_passord"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="@string/passord"
         android:ems="10"
         android:hint="@string/passord"
         android:imeOptions="actionDone"
-        android:inputType="textPassword"
+        android:background="@drawable/custom_input"
+        android:inputType="textPersonName"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:autofillHints="@string/passord" />
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/familie_bli_medlem_passord"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/familie_bli_medlem_BliMedlemBtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:text="@string/bliMedlem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/familie_bli_medlem_familieID"
-        app:layout_constraintTop_toTopOf="@+id/familie_bli_medlem_familieID" />
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
 
     <Button
         android:id="@+id/BliMedlemAvbryt"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
         android:text="@string/avbryt"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/familie_bli_medlem_BliMedlemBtn"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_BliMedlemBtn" />
+        app:layout_constraintStart_toStartOf="@+id/familie_bli_medlem_BliMedlemBtn"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,26 +38,42 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="Send"
+        android:text="@string/send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-    <EditText
-        android:id="@+id/familieboblaSamtale_messageToSend"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:autofillHints="@string/message"
         android:ems="10"
-        android:hint="Melding"
-        android:inputType="textPersonName"
+        android:gravity="center"
+        android:hint="@string/message"
+        android:imeOptions="actionDone"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/familieboblaSamtale_sendMessageBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/familieboblaSamtale_messageToSend"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:inputType="textLongMessage"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/samtaleDisplay"
@@ -72,7 +88,7 @@
         android:id="@+id/brukerNavn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/textView"
         app:layout_constraintEnd_toEndOf="@+id/Samtalenavn"
         app:layout_constraintStart_toStartOf="@+id/Samtalenavn"
         app:layout_constraintTop_toBottomOf="@+id/Samtalenavn" />

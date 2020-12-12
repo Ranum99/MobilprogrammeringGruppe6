@@ -51,7 +51,6 @@ public class BursdagRedigerFragment extends Fragment {
         // Instansierer variablene
         database = new Database(getActivity());
         lagre = view.findViewById(R.id.RedigerBursdagLagre);
-        avbryt = view.findViewById(R.id.RedigerBursdagAvbryt);
         FullName = view.findViewById(R.id.BirthdayFultnavn);
         Birthday = view.findViewById(R.id.BirthdayDato);
         final String id = String.valueOf(getArguments().getString("ID"));

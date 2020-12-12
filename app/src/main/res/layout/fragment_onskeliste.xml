@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnskelisteFragment">
+    tools:context=".OnskelisteFragment"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/emptyOnskeliste"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opprett en ønskeliste!"
+        android:text="@string/createWishlist"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

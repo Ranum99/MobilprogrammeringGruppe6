@@ -26,20 +26,36 @@
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:text="Endre familienavn"
-                app:layout_constraintStart_toStartOf="@+id/EndreFamilieNavnInput"
-                app:layout_constraintTop_toBottomOf="@+id/EndreFamilieNavnInput" />
+                android:text="@string/endre_familienavn"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-            <EditText
-                android:id="@+id/EndreFamilieNavnInput"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:autofillHints="@string/endre_familienavn"
                 android:ems="10"
-                android:hint="Familienavn"
-                android:inputType="textPersonName"
+                android:gravity="center"
+                android:hint="@string/endre_familienavn"
+                android:imeOptions="actionDone"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
                 app:layout_constraintStart_toStartOf="@+id/EndreFamilienavn"
-                app:layout_constraintTop_toBottomOf="@+id/EndreFamilienavn" />
+                app:layout_constraintTop_toBottomOf="@+id/EndreFamilienavn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EndreFamilieNavnInput"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/EndreFamilienavn"
@@ -47,7 +63,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Endre familienavn:"
+                android:text="@string/endre_familienavnTextView"
                 android:textSize="18sp"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/listeOverMedlemmer"
@@ -68,7 +84,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Medlemmer:"
+                android:text="@string/medlemmer"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/KastUtMedlemBtn"
                 app:layout_constraintTop_toBottomOf="@+id/KastUtMedlemBtn" />
@@ -98,7 +114,7 @@
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:text="Kast Ut Medlem"
+                android:text="@string/kastUtMedlem"
                 app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
                 app:layout_constraintTop_toBottomOf="@+id/kastUtMedlemDropdown" />
         </androidx.constraintlayout.widget.ConstraintLayout>

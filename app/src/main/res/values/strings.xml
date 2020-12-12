@@ -34,11 +34,9 @@
     <string name="skriv">Hva vil du handle?</string>
     <string name="skriv2">Skriv inn</string>
     <string name="id">Bruker-ID</string>
-
     <string name="legg_til_en_bursdag">Legg til en bursdag</string>
     <string name="ola_nordmann">Ola Nordmann</string>
     <string name="logg_ut">Logg ut</string>
-    <string name="legg_til">Legg til</string>
     <string name="rediger">Rediger</string>
     <string name="add_button_text">Legg Til</string>
     <string name="item_editText_hint">Skriv en ny gjenstand</string>
@@ -92,7 +90,6 @@
     <string name="opprett_en_matplan">Opprett en matplan!</string>
     <string name="exampleYear">x år</string>
     <string name="deleteBtn">deleteBtn</string>
-    <string name="familienavn">Familienavn</string>
     <string name="familieidDrawer">FamilieID</string>
     <string name="textview">TextView</string>
     <string name="message">Message</string>
@@ -106,6 +103,37 @@
     <string name="familyName">Familienavn</string>
     <string name="createPassword">Opprett passord</string>
     <string name="repeatPassword">Gjenta passord</string>
+    <string name="start_en_samtale">Start en samtale!</string>
+    <string name="chatName">Samtale navn</string>
+    <string name="giveChatName">Gi navn til samtalen:</string>
+    <string name="endre_familienavn">Endre familienavn</string>
+    <string name="familienavn">Familie navn</string>
+    <string name="endre_familienavnTextView">Endre familienavn:</string>
+    <string name="medlemmer">Medlemmer:</string>
+    <string name="opprett_en_handleliste">Opprett en handleliste!</string>
+    <string name="opprett_handleliste">Opprett handleliste</string>
+    <string name="tittel">Tittel</string>
+    <string name="vare_navn">Vare navn</string>
+    <string name="legg_til">Legg til</string>
+    <string name="dato_fra">Dato fra</string>
+    <string name="tid_fra">Tid fra</string>
+    <string name="tid_til">Tid til</string>
+    <string name="dato_til">Dato til</string>
+    <string name="aktivitet">Aktivitet</string>
+    <string name="endre_aktivitet">Endre aktivitet</string>
+    <string name="endre_aktivitet2">Endre aktivitet:</string>
+    <string name="opprett">Opprett</string>
+    <string name="antallDagerMatplan">Velg antall dager (1–7)</string>
+    <string name="startdagMatplan">Velg startdag</string>
+    <string name="slett">Slett</string>
+    <string name="createWishlist">Opprett en ønskeliste</string>
+    <string name="create_wishlist">Opprett ønskeliste</string>
+    <string name="nameWishlist">Ønskeliste navn</string>
+    <string name="giveWishlistName">Gi navn til ønskelisten:</string>
+    <string name="Awish">Ønske</string>
+    <string name="saveChanges">Lagre endringer</string>
+    <string name="changeTheme">Endre fargetema</string>
+    <string name="registerSignup">Registrer deg</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

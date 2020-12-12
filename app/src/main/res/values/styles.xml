@@ -11,6 +11,4 @@
     <style name="datepicker">
         <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
-
-
 </resources>

@@ -4,42 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnskelisteLeggTilFragment">
+    tools:context=".OnskelisteLeggTilFragment"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/lagOnskeliste"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="OPPRETT ØNSKELISTE"
+        android:layout_marginTop="50dp"
+        android:text="@string/create_wishlist"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/wishlistName"
-        app:layout_constraintStart_toStartOf="@+id/wishlistName"
-        app:layout_constraintTop_toBottomOf="@+id/wishlistName" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <EditText
-        android:id="@+id/wishlistName"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="@string/nameWishlist"
+        android:background="@drawable/custom_input"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Ønskeliste navn"
-        android:inputType="textPersonName"
+        android:hint="@string/nameWishlist"
+        android:inputType="text"
         android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/lagOnskeliste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/giveNameToOnskelisteText" />
+        app:layout_constraintTop_toBottomOf="@+id/giveNameToOnskelisteText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/wishlistName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/giveNameToOnskelisteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Gi navn til ønskelisten:"
+        android:text="@string/giveWishlistName"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/wishlistName"
-        app:layout_constraintStart_toStartOf="@+id/wishlistName"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 

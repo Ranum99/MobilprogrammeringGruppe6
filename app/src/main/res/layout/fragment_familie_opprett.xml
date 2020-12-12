@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FamilieOpprettFragment">
+    tools:context=".FamilieOpprettFragment"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView8"
@@ -24,22 +25,36 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/opprettPassord"
-        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieOpprettNavn"
-        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettNavn"
-        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettNavn" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
-    <EditText
-        android:id="@+id/OpprettFamilieOpprettPassord"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="@string/createPassword"
-        android:inputType="textPassword"
+        android:hint="@string/passord"
+        android:imeOptions="actionDone"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        android:autofillHints="@string/createPassword" />
+        android:autofillHints="@string/passord" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/OpprettFamilieOpprettPassord"
+            android:layout_width="250dp"
+            android:inputType="textPassword"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView7"
@@ -48,53 +63,82 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/repeatPassword"
-        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieOpprettPassord"
-        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieOpprettPassord"
-        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieOpprettPassord" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <EditText
-        android:id="@+id/OpprettFamilieGjentaPassord"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="@string/repeatPassword"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/repeatPassword"
         android:imeOptions="actionDone"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        android:autofillHints="@string/passord" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/OpprettFamilieGjentaPassord"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/OpprettFamilieBtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Opprett Familie"
-        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieGjentaPassord"
-        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieGjentaPassord"
-        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieGjentaPassord" />
+        android:text="@string/createNewFamilyBtn"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <Button
         android:id="@+id/OpprettFamilieAvbryt"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Avbryt"
+        android:text="@string/avbryt"
         app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieBtn"
         app:layout_constraintStart_toStartOf="@+id/OpprettFamilieBtn"
         app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieBtn" />
 
-    <EditText
-        android:id="@+id/OpprettFamilieOpprettNavn"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="@string/familyName"
+        android:imeOptions="actionDone"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Familienavn"
-        android:inputType="textPersonName"
+        android:hint="@string/familyName"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/OpprettFamilieOpprettNavn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

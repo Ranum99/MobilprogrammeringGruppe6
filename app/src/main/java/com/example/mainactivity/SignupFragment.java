@@ -147,7 +147,7 @@ public class SignupFragment extends Fragment {
     }
 
     private boolean validUserInfo(String name, String email, String birthday, String mobilnr, String password, String passwordConfirm) {
-        Pattern mailRegEx = Pattern.compile("^[-a-z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-z0-9~!$%^&*_=+}{\\'?]+)*@([a-z0-9_][-a-z0-9_]*(\\.[-a-z0-9_]+)*\\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$");
+        Pattern mailRegEx = Pattern.compile("^[-a-z0-9~!$%^&_=+}{'?]+(.[-a-z0-9~!$%^&=+}{'?]+)*@([a-z0-9][-a-z0-9]*(.[-a-z0-9]+)*.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}))(:[0-9]{1,5})?$");
         Matcher matcher = mailRegEx.matcher(email);
 
         if (name.length() == 0 || email.length() == 0 || password.length() == 0 || passwordConfirm.length() == 0 || birthday.length() == 0 || mobilnr.length() == 0) {

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".LoginFragment"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/Login"
@@ -12,30 +13,48 @@
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:text="@string/logg_inn"
-        app:layout_constraintEnd_toEndOf="@+id/PasswordLogin"
-        app:layout_constraintStart_toStartOf="@+id/PasswordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
-    <EditText
-        android:id="@+id/PasswordLogin"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/custom_input"
         android:ems="10"
         android:hint="@string/passord"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/EmailLogin"
-        app:layout_constraintStart_toStartOf="@+id/EmailLogin"
-        app:layout_constraintTop_toBottomOf="@+id/EmailLogin"
-        android:autofillHints="" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:autofillHints="@string/passord">
 
-    <EditText
-        android:id="@+id/EmailLogin"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/PasswordLogin"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
@@ -45,11 +64,18 @@
         android:ems="10"
         android:hint="@string/example_email_com"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LoginLogo"
-        android:autofillHints="" />
+        android:autofillHints="@string/loginEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EmailLogin"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/OpprettBruker"

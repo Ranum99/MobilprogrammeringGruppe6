@@ -18,29 +18,40 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-
-            <EditText
-                android:id="@+id/BirthdayFullname"
-                android:layout_width="250dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="200dp"
                 android:layout_marginRight="200dp"
-                android:autofillHints=""
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                android:autofillHints="name"
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/fullt_navn"
                 android:imeOptions="actionDone"
                 android:inputType="textPersonName"
-                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.097"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/BirthdayFullname"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <DatePicker
                 android:id="@+id/BirthdayDate"
@@ -53,8 +64,8 @@
                 android:theme="@style/datepicker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.456"
-                app:layout_constraintStart_toEndOf="@+id/BirthdayFullname"
-                app:layout_constraintTop_toTopOf="@+id/BirthdayFullname" />
+                app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+                app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
 
             <Button
                 android:id="@+id/NyBursdagLagre"
@@ -67,6 +78,7 @@
                 android:layout_marginEnd="80dp"
                 android:layout_marginRight="80dp"
                 android:text="@string/lagre"
+                app:layout_constraintBottom_toBottomOf="@+id/BirthdayDate"
                 app:layout_constraintEnd_toStartOf="@+id/BirthdayDate"
                 app:layout_constraintStart_toStartOf="@+id/NyBursdagAvbryt"
                 app:layout_constraintTop_toBottomOf="@+id/NyBursdagAvbryt" />
@@ -81,9 +93,8 @@
                 android:layout_marginRight="80dp"
                 android:text="@string/avbryt"
                 app:layout_constraintEnd_toStartOf="@+id/BirthdayDate"
-                app:layout_constraintStart_toStartOf="@+id/BirthdayFullname"
-                app:layout_constraintTop_toBottomOf="@+id/BirthdayFullname" />
-
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
