@@ -55,7 +55,6 @@
                 android:ems="10"
                 android:hint="@string/gjentaPassord"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -69,6 +68,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPassword"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +86,6 @@
                 android:ems="10"
                 android:hint="@string/passord"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -101,6 +100,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPassword"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:autofillHints="@string/email"
+                android:autofillHints="@string/opprettBrukerEmail"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/ic_email"
                 android:drawableLeft="@drawable/ic_email"
@@ -118,7 +118,6 @@
                 android:ems="10"
                 android:hint="@string/opprettBrukerEmail"
                 android:imeOptions="actionDone"
-                android:inputType="textEmailAddress"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -131,6 +130,7 @@
                     android:id="@+id/SignupEmailInput"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
                     android:imeOptions="actionDone"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -160,7 +160,6 @@
                 android:ems="10"
                 android:hint="@string/PhoneNumberHint"
                 android:imeOptions="actionDone"
-                android:inputType="phone"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -173,6 +172,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="phone"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -182,12 +182,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:autofillHints="@string/navn"
+                android:autofillHints="@string/ola_nordmann"
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/ola_nordmann"
                 android:imeOptions="actionDone"
-                android:inputType="text"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -202,6 +201,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 

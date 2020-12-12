@@ -32,7 +32,6 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/nameWishlist"
-        android:inputType="text"
         android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/lagOnskeliste"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +42,7 @@
             android:id="@+id/wishlistName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>

@@ -22,10 +22,12 @@
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="80dp"
         android:text="@string/handleliste_tittel"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +45,6 @@
         android:background="@drawable/custom_input"
         android:ems="10"
         android:hint="@string/tittel"
-        android:inputType="textPersonName"
         android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/lagHandleliste"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +57,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:inputType="text"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 

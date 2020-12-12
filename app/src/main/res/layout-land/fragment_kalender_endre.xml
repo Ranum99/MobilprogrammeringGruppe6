@@ -19,7 +19,6 @@
         android:focusable="false"
         android:hint="@string/dato_fra"
         android:imeOptions="actionDone"
-        android:inputType="date"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -34,7 +33,9 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:focusable="false"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -46,10 +47,8 @@
         android:autofillHints="@string/tid_fra"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:focusable="false"
         android:hint="@string/tid_fra"
         android:imeOptions="actionDone"
-        android:inputType="time"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -63,6 +62,7 @@
             android:id="@+id/txtTimeFrom"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +79,6 @@
         android:focusable="false"
         android:hint="@string/tid_til"
         android:imeOptions="actionDone"
-        android:inputType="time"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -93,6 +92,7 @@
             android:id="@+id/txtTimeTo"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -107,10 +107,8 @@
         android:autofillHints="@string/dato_til"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:focusable="false"
         android:hint="@string/dato_til"
         android:imeOptions="actionDone"
-        android:inputType="date"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -123,6 +121,7 @@
             android:id="@+id/txtDateTo"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -136,7 +135,6 @@
         android:autofillHints="@string/aktivitet"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:focusable="false"
         android:hint="@string/aktivitet"
         android:imeOptions="actionDone"
         android:inputType="text"
