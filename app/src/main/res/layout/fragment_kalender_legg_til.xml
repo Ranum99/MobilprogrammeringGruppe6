@@ -16,13 +16,11 @@
         android:background="@drawable/custom_input"
         android:ems="10"
         android:imeOptions="actionDone"
-        android:inputType="date"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="16dp"
-        android:focusable="false"
         android:hint="@string/dato_fra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +29,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtDateFrom"
             android:layout_width="250dp"
+            android:inputType="date"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:singleLine="true" />
@@ -45,14 +44,12 @@
         android:background="@drawable/custom_input"
         android:ems="10"
         android:imeOptions="actionDone"
-        android:inputType="time"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="16dp"
         android:hint="@string/tid_fra"
-        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" >
@@ -62,6 +59,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:inputType="time"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +71,6 @@
         android:autofillHints="@string/tid_til"
         android:background="@drawable/custom_input"
         android:imeOptions="actionDone"
-        android:inputType="time"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -81,7 +78,6 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/tid_til"
-        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -91,6 +87,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:inputType="time"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +99,6 @@
         android:autofillHints="@string/dato_til"
         android:background="@drawable/custom_input"
         android:imeOptions="actionDone"
-        android:inputType="date"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -110,7 +106,6 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/dato_til"
-        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -120,6 +115,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:inputType="date"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,9 +133,7 @@
         app:boxCornerRadiusTopStart="10dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:focusable="false"
         android:hint="@string/aktivitet"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -149,6 +143,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:inputType="text"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -13,12 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:autofillHints="@string/passord"
+        android:autofillHints="@string/familyId"
         android:ems="10"
-        android:hint="@string/passord"
+        android:hint="@string/familyId"
         android:imeOptions="actionDone"
         android:background="@drawable/custom_input"
-        android:inputType="textPersonName"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -33,6 +32,7 @@
             android:id="@+id/familie_bli_medlem_familieID"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +71,6 @@
         android:hint="@string/passord"
         android:imeOptions="actionDone"
         android:background="@drawable/custom_input"
-        android:inputType="textPersonName"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -84,6 +83,7 @@
             android:id="@+id/familie_bli_medlem_passord"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>

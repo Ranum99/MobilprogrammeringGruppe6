@@ -38,7 +38,6 @@
         android:ems="10"
         android:hint="@string/passord"
         android:imeOptions="actionDone"
-        android:inputType="textPassword"
         android:background="@drawable/custom_input"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -48,12 +47,13 @@
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        android:autofillHints="@string/createPassword" >
+        android:autofillHints="@string/passord" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/OpprettFamilieOpprettPassord"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -74,7 +74,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="@string/passord"
+        android:autofillHints="@string/repeatPassword"
         app:boxCornerRadiusBottomEnd="10dp"
         android:background="@drawable/custom_input"
         app:boxCornerRadiusBottomStart="10dp"
@@ -84,7 +84,6 @@
         android:ems="10"
         android:hint="@string/repeatPassword"
         android:imeOptions="actionDone"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7">
@@ -93,6 +92,7 @@
             android:id="@+id/OpprettFamilieGjentaPassord"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_input"
-        android:autofillHints="@string/passord"
+        android:autofillHints="@string/familyName"
         android:imeOptions="actionDone"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -132,7 +132,6 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/familyName"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8">
@@ -141,6 +140,7 @@
             android:id="@+id/OpprettFamilieOpprettNavn"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
             android:imeOptions="actionDone"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>

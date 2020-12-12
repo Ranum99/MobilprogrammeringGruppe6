@@ -76,7 +76,6 @@
         android:layout_marginTop="8dp"
         android:autofillHints="@string/chatName"
         android:hint="@string/chatName"
-        android:inputType="textPersonName"
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:gravity="center"
@@ -90,6 +89,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:inputType="textPersonName"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 

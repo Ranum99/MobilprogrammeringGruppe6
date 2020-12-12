@@ -5,6 +5,4 @@
     android:layout_height="match_parent"
     tools:context=".MatplanRedigerFragment"
     android:orientation="vertical">
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

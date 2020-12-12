@@ -57,7 +57,6 @@
                 android:ems="10"
                 android:hint="@string/gjentaPassord"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
@@ -68,6 +67,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPassword"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,10 +88,9 @@
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/passord"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/SignupEmailInput"
-                app:layout_constraintStart_toStartOf="@+id/SignupEmailInput"
-                app:layout_constraintTop_toBottomOf="@+id/SignupEmailInput"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
                 android:drawableStart="@drawable/ic_password">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -99,13 +98,20 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPassword"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/SignupEmailInput"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout5"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
                 android:layout_marginTop="8dp"
                 android:autofillHints=""
                 android:background="@drawable/custom_input"
@@ -113,11 +119,19 @@
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/opprettBrukerEmail"
-                android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
                 app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
                 app:layout_constraintTop_toBottomOf="@+id/BirthdayDate"
-                android:drawableStart="@drawable/ic_email" />
+                android:drawableStart="@drawable/ic_email" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SignupEmailInput"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <DatePicker
                 android:id="@+id/BirthdayDate"
@@ -146,7 +160,6 @@
                 android:ems="10"
                 android:hint="@string/PhoneNumberHint"
                 android:imeOptions="actionDone"
-                android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
@@ -155,6 +168,7 @@
                     android:id="@+id/SignupMobilnummerInput"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="phone"
                     android:imeOptions="actionDone"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -174,7 +188,6 @@
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/ola_nordmann"
-                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SignupLogo">
@@ -184,6 +197,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -43,7 +43,6 @@
                 android:ems="10"
                 android:hint="@string/endreProfilNavn"
                 android:imeOptions="actionDone"
-                android:inputType="text"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -57,6 +56,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +75,6 @@
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/PhoneNumberHint"
-                android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -84,6 +83,7 @@
                     android:id="@+id/profilMobilnr"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="phone"
                     android:imeOptions="actionDone"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -115,7 +115,6 @@
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="@string/endreProfilEmail"
-                android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/endreProfilBursdag">
@@ -125,6 +124,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
