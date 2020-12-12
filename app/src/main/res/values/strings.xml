@@ -135,6 +135,7 @@
     <string name="changeTheme">Endre fargetema</string>
     <string name="registerSignup">Registrer deg</string>
     <string name="handleliste_tittel">Handleliste tittel</string>
+    <string name="legg_til_aktivitet">Legg til aktivitet:</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

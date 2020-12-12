@@ -58,7 +58,7 @@ public class KalenderRedigerFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        btnChangeActivity = view.findViewById(R.id.btnAddActivity);
+        btnChangeActivity = view.findViewById(R.id.btnChangeActivity);
         txtDateFrom = view.findViewById(R.id.txtDateFrom);
         txtDateTo = view.findViewById(R.id.txtDateTo);
         txtTimeFrom = view.findViewById(R.id.txtTimeFrom);
