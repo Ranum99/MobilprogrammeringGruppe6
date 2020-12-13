@@ -3,10 +3,12 @@ package com.example.mainactivity;
 public class HandlelisteVarerModel {
 
     private String id, vare;
+    private boolean isChecked;
 
-    public HandlelisteVarerModel(String id, String vare) {
+    public HandlelisteVarerModel(String id, String vare, boolean isChecked) {
         this.id = id;
         this.vare = vare;
+        this.isChecked = isChecked;
     }
 
     public String getId() {
@@ -25,4 +27,11 @@ public class HandlelisteVarerModel {
         this.vare = vare;
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 }

@@ -3,7 +3,6 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -69,6 +68,14 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
 
         public void setVare(HandlelisteVarerModel modelToDisplay) {
             vare.setText(modelToDisplay.getVare());
+            if (modelToDisplay.isChecked()) {
+                vare.setTextColor(Color.parseColor("#545454"));
+                vare.setTypeface(null, Typeface.ITALIC);
+            } else {
+                vare.setTextColor(Color.parseColor("#000000"));
+                vare.setTypeface(null, Typeface.NORMAL);
+            }
+
         }
 
         public void setDelete(final HandlelisteVarerModel modelToDisplay, final int position) {
@@ -112,7 +119,22 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
             VareBoks.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    modelToDisplay.setChecked(!modelToDisplay.isChecked());
+                    if (modelToDisplay.isChecked()) {
+                        vare.setTextColor(Color.parseColor("#000000"));
+                        vare.setTypeface(null, Typeface.NORMAL);
+                    } else {
+                        vare.setTextColor(Color.parseColor("#545454"));
+                        vare.setTypeface(null, Typeface.ITALIC);
+                    }
 
+                    int isChecked;
+                    if (modelToDisplay.isChecked())
+                        isChecked = 0;
+                    else
+                        isChecked = 1;
+
+                    database.updateVareIsCheckedHandleliste(Integer.parseInt(modelToDisplay.getId()), isChecked);
                 }
             });
         }
