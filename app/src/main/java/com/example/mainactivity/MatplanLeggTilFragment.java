@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,7 +47,8 @@ public class MatplanLeggTilFragment extends Fragment {
 
     private Date fromDate, toDate;
     private String dateFromString, dateToString;
-    private int mYear, mMonth, mDay, familyID;
+    private int mYear, mMonth, mDay, familyID, matplanID;
+    private String[] dagerIUka = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
 
 
     @Override
@@ -143,8 +145,6 @@ public class MatplanLeggTilFragment extends Fragment {
                     return;
                 }
 
-                String[] dagerIUka = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
-
                 Calendar calFrom = Calendar.getInstance();
                 Calendar calTo = Calendar.getInstance();
                 calFrom.setTime(fromDate);
@@ -155,20 +155,44 @@ public class MatplanLeggTilFragment extends Fragment {
                     return;
                 }
                 int week = calFrom.get(Calendar.WEEK_OF_YEAR);
+                int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
 
                 boolean addToDatabase = false;
 
                 if (sjekkOfMatplanFinnesFraFor(week))
                     addToDatabase = database.addWeekToMatplan(dateFromString, dateToString, familyID, week);
 
+                Cursor matplanIdQuery = database.getMatplanIdByLastRow();
+                matplanID = 1;
+                while(matplanIdQuery.moveToNext()) {
+                    matplanID = Integer.parseInt(matplanIdQuery.getString(0));
+                }
+
                 if (addToDatabase) {
-                    System.out.println("Lagt til matplan i uke " + calTo.get(Calendar.WEEK_OF_YEAR) + " fra " + dagerIUka[calFrom.get(Calendar.DAY_OF_WEEK) - 1].toLowerCase() + " til " + dagerIUka[calTo.get(Calendar.DAY_OF_WEEK) - 1].toLowerCase());
+                    Toast.makeText(getActivity(), "Matplan i uke " + week + " er opprettet", Toast.LENGTH_SHORT).show();
+                    addDaysToMatplan(matplanID, daysBetween);
                     navController.navigateUp();
                 } else {
                     Toast.makeText(getActivity(), "Matplan i uke " + week + " finnes allerede fra før", Toast.LENGTH_SHORT).show();
                 }
             }
 
+            private void addDaysToMatplan(int matplanID, int daysBetween) {
+                //Cursor addDaysToMatplan = database.addDaysToMatplan(matplanID);
+                Date date = fromDate;
+
+                for (int i = 0; i < daysBetween; i++) {
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(date);
+
+                    String day = dagerIUka[cal.get(Calendar.DAY_OF_WEEK) - 1];
+
+                    database.makeSubMatplan(matplanID, day);
+
+                    date.setDate(date.getDate() + 1);
+                }
+            }
 
 
             private boolean sjekkOfMatplanFinnesFraFor(int week) {

@@ -72,7 +72,6 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
         public void setMatplan(MatplanModel matplanToDisplay, int position) {
             uke = itemView.findViewById(R.id.CardviewMatplan);
             uke.setText("Matplan uke " + matplanToDisplay.getWeek());
-
         }
 
         public void setDelete(final MatplanModel matplanToDisplay, final int position) {
@@ -125,6 +124,8 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putInt("ID", matplanToDisplay.getMatplanID());
+                    bundle.putString("fromDate", matplanToDisplay.getFromDate());
+                    bundle.putString("toDate", matplanToDisplay.getToDate());
                     bundle.putInt("UKE", matplanToDisplay.getWeek());
 
                     Navigation.findNavController(card).navigate(R.id.matplanListeFragment, bundle);

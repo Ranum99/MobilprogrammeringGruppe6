@@ -28,8 +28,8 @@ public class GruppeinformasjonFragment extends Fragment {
     SharedPreferences sharedPreferences;
     Database database;
 
-    private Button endreFamilieNavn, leggTilMedlem, kastUtMedlem;
-    private EditText familieNavnInput, leggTilMedlemInput;
+    private Button endreFamilieNavn, kastUtMedlem;
+    private EditText familieNavnInput;
     private ListView listeOverMedlemmer;
     private Spinner medlemDropdown;
 
@@ -50,15 +50,15 @@ public class GruppeinformasjonFragment extends Fragment {
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         endreFamilieNavn = view.findViewById(R.id.EndreFamilieNavnBtn);
-
         kastUtMedlem = view.findViewById(R.id.KastUtMedlemBtn);
         familieNavnInput = view.findViewById(R.id.EndreFamilieNavnInput);
-
         listeOverMedlemmer = view.findViewById(R.id.listeOverMedlemmer);
         medlemDropdown = view.findViewById(R.id.kastUtMedlemDropdown);
 
+        // Henter familiemedlemmer fra database
         usersInFamily = fillUsersInFamily();
 
+        // Fyller familiemedlemmer i dropdown og liste
         addUsersToDropdown(usersInFamily);
         addUsersToListView(usersInFamily);
 
@@ -66,7 +66,6 @@ public class GruppeinformasjonFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedUser = (User) parent.getItemAtPosition(position);
-                System.out.println(selectedUser);
             }
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
@@ -82,8 +81,6 @@ public class GruppeinformasjonFragment extends Fragment {
                 kickUserFromFamily(familyID, myID);
             }
         });
-
-
 
         endreFamilieNavn.setOnClickListener(new View.OnClickListener() {
             @Override
