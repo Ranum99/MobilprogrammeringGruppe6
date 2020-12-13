@@ -51,7 +51,7 @@ public class ProfilRedigerFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = requireContext().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        photo = view.findViewById(R.id.profilbilde);
+        photo = view.findViewById(R.id.profilbildeRediger);
         photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
 
         assert getArguments() != null;
