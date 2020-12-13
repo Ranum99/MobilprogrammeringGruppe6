@@ -37,6 +37,7 @@
         android:layout_marginBottom="10dp"
         android:autofillHints="@string/createPassword"
         android:hint="@string/vare_navn"
+        android:ems="10"
         android:imeOptions="actionDone"
         android:inputType="textPersonName"
         app:boxCornerRadiusBottomEnd="10dp"

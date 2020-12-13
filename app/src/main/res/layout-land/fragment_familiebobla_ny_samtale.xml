@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/Familieboblatext"
-        android:layout_width="250dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="8dp"
@@ -37,68 +37,56 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/users"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline31"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Spinner
         android:id="@+id/users"
-        android:layout_width="250dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/Familieboblatext"
         app:layout_constraintStart_toStartOf="@+id/Familieboblatext"
         app:layout_constraintTop_toBottomOf="@+id/Familieboblatext" />
 
     <Button
         android:id="@+id/lagSamtale"
-        android:layout_width="250dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:text="@string/opprett_samtale"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="@+id/users"
-        app:layout_constraintTop_toBottomOf="@+id/users" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="10dp"
         android:autofillHints="@string/chatName"
         android:gravity="center"
         android:hint="@string/chatName"
+        android:ems="10"
         android:imeOptions="actionDone"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/lagSamtale"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/users">
+        app:layout_constraintEnd_toEndOf="@+id/users"
+        app:layout_constraintStart_toStartOf="@+id/users"
+        app:layout_constraintTop_toBottomOf="@+id/users">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/conversationName"
-            android:layout_width="250dp"
+            android:layout_width="500dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textPersonName"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:gravity="center"
-        android:text="@string/giveChatName"
-        android:textColor="#000000"
-        app:layout_constraintStart_toEndOf="@+id/Familieboblatext"
-        app:layout_constraintTop_toTopOf="@+id/Familieboblatext" />
 </androidx.constraintlayout.widget.ConstraintLayout>

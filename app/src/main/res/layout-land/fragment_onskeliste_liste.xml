@@ -47,6 +47,7 @@
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         android:hint="@string/Awish"
+        android:ems="10"
         android:autofillHints="@string/Awish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leggTil"

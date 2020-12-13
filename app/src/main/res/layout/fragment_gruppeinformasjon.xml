@@ -35,8 +35,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:autofillHints="@string/endre_familienavn"
+                android:ems="10"
                 android:gravity="center"
                 android:hint="@string/endre_familienavn"
                 android:imeOptions="actionDone"
@@ -44,8 +45,9 @@
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:layout_constraintStart_toStartOf="@+id/EndreFamilienavn"
-                app:layout_constraintTop_toBottomOf="@+id/EndreFamilienavn">
+                app:layout_constraintEnd_toEndOf="@+id/listeOverMedlemmer"
+                app:layout_constraintStart_toStartOf="@+id/listeOverMedlemmer"
+                app:layout_constraintTop_toBottomOf="@+id/listeOverMedlemmer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EndreFamilieNavnInput"
@@ -55,18 +57,6 @@
                     android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/EndreFamilienavn"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/endre_familienavnTextView"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/listeOverMedlemmer"
-                app:layout_constraintTop_toBottomOf="@+id/listeOverMedlemmer" />
 
             <ListView
                 android:id="@+id/listeOverMedlemmer"
