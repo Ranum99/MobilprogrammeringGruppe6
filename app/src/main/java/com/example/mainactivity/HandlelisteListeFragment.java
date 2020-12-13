@@ -87,9 +87,10 @@ public class HandlelisteListeFragment extends Fragment {
         while(data.moveToNext()) {
             String ID = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String vareTittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTELISTE_VARE));
+            boolean isChecked = data.getInt(data.getColumnIndex(Database.COLUMN_HANDLELISTELISTE_CHECKED)) == 1;
 
 
-            HandlelisteVarerModel envare = new HandlelisteVarerModel(ID, vareTittel);
+            HandlelisteVarerModel envare = new HandlelisteVarerModel(ID, vareTittel, isChecked);
             allevarer.add(envare);
         }
         this.varer = allevarer;

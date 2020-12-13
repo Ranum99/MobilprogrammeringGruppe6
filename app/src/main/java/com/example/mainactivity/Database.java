@@ -126,7 +126,7 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__WISHLIST_ID + " INTEGER, " +
             COLUMN__NAME_WISH + " TEXT, " +
-            COLUMN__WISH_CHECKED + " INTEGER, " +
+            COLUMN__WISH_CHECKED + " INTEGER DEFAULT 0, " +
             COLUMN__WISH_USER_ID + " INTEGER " +
             ")";
 
@@ -177,13 +177,15 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_HANDLELISTE_LISTE = "HandlelisteListe";
     public static final String COLUMN_HANDLELISTELISTE_ID = "ListeID";
     public static final String COLUMN_HANDLELISTELISTE_VARE = "Vare";
+    public static final String COLUMN_HANDLELISTELISTE_CHECKED = "Checked";
 
     // Lage tabellen HANDLELISTE
     private static final String CREATE_TABLE_HANDLELISTE_LISTE = " CREATE TABLE " + TABLE_HANDLELISTE_LISTE +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_HANDLELISTELISTE_ID + " TEXT, " +
-            COLUMN_HANDLELISTELISTE_VARE + " TEXT " +
+            COLUMN_HANDLELISTELISTE_VARE + " TEXT, " +
+            COLUMN_HANDLELISTELISTE_CHECKED + " INTEGER DEFAULT 0 " +
             ")";
 
     /*
@@ -577,6 +579,19 @@ public class Database extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Adding " + week + ", " + fromDate + " to " + toDate + " in " + TABLE_MATPLAN + " for family " + familyID);
 
         long result = db.insert(TABLE_MATPLAN, null, contentValues);
+        return result != -1;
+    }
+
+
+
+
+    public boolean updateVareIsCheckedHandleliste(int listeID, int isChecked) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HANDLELISTELISTE_CHECKED, isChecked);
+
+        long result = db.update(TABLE_HANDLELISTE_LISTE, contentValues, COLUMN_ID + " = " + listeID, null);
+
         return result != -1;
     }
 
