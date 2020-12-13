@@ -1,10 +1,13 @@
 package com.example.mainactivity;
 
 import android.app.AlertDialog;
+import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +15,18 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapter.FamilieboblaViewHolder>{
 
     private List<FamilieboblaModel> SamtaleListe;
     private LayoutInflater inflater;
-    private ArrayList<ConstraintLayout> cards = new ArrayList<>();
     private FamilieboblaModel SamtaleToDisplay;
     private Context contexten;
     private Database database;
@@ -66,24 +68,24 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
 
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView navn;
+        private TextView navn, userName;
         private ConstraintLayout card;
         private ImageButton delete;
 
         public FamilieboblaViewHolder(@NonNull final View itemView) {
             super(itemView);
-
         }
 
-
+        // Setter navn og brukernavn på CardView
         public void setSamtale(final FamilieboblaModel SamtaleToDisplay) {
             navn = itemView.findViewById(R.id.FamilieBoblaNameCardview);
+            userName = itemView.findViewById(R.id.userNameFamiliebobla);
 
-            String text = SamtaleToDisplay.getSamtaleName() + " (" + SamtaleToDisplay.getUserToName() + ")";
-
-            navn.setText(text);
+            navn.setText(SamtaleToDisplay.getSamtaleName());
+            userName.setText("Samtale med: " + SamtaleToDisplay.getUserToName());
         }
 
+        // Sletter en samtale fra databasen
         public void setDeleteOnSamtale(final FamilieboblaModel SamtaleToDisplay, final int position) {
             delete = itemView.findViewById(R.id.imageButton);
             View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -121,6 +123,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
             delete.setOnClickListener(onClickListener);
         }
 
+        // Dersom man klikker på samtalen, kommer man inn til selve samtalen, og det blir sendt med en bundle med info
         public void setClickOnSamtale(final FamilieboblaModel SamtaleToDisplay) {
             card = itemView.findViewById(R.id.cardID);
             card.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +133,6 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                     bundle.putString("samtaleId", SamtaleToDisplay.getIden());
                     bundle.putString("samtaleTo", SamtaleToDisplay.getUserToName());
                     bundle.putString("samtaleName", SamtaleToDisplay.getSamtaleName());
-
 
                     Navigation.findNavController(card).navigate(R.id.action_familieboblaFragment_to_familieboblaSamtaleFragment, bundle);
                 }

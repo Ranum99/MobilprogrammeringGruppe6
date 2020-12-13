@@ -9,14 +9,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,14 +80,14 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void setOnskeliste(OnskelisteModel modelToDisplay) {
-            tittel = itemView.findViewById(R.id.handlelistenummer);
-            navn = itemView.findViewById(R.id.bruker);
+            tittel = itemView.findViewById(R.id.aktivitet);
+            navn = itemView.findViewById(R.id.brukerNavn);
             tittel.setText(modelToDisplay.getWishlistName());
             navn.setText("Opprettet av: " + modelToDisplay.getUserToName());
         }
 
         public void setDeleteOnOnskeliste(final OnskelisteModel modelToDisplay, final int position) {
-            delete = itemView.findViewById(R.id.handlelisteDelete);
+            delete = itemView.findViewById(R.id.slettAktivitet);
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -142,7 +140,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void hideElements(OnskelisteModel modelToDisplay) {
-            delete = itemView.findViewById(R.id.handlelisteDelete);
+            delete = itemView.findViewById(R.id.slettAktivitet);
 
             if (modelToDisplay.getUserToID() != meID)
                 delete.setVisibility(View.INVISIBLE);

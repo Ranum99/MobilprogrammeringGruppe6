@@ -62,8 +62,6 @@ public class MatplanFragment extends Fragment {
         else { empty.setVisibility(View.GONE); }
 
         nyMatplan.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.matplanLeggTilFragment));
-
-        System.out.println(matplaner.size());
     }
 
     private void getFoodplans() {

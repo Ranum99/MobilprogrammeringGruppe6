@@ -220,6 +220,22 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
+            // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
+
+    public static final String TABLE_OPPRETT_SUBMATPLAN = "OpprettSubMatplan";
+    public static final String COLUMN__SUBMATPLAN_MATPLANID = "MatplanID";
+    public static final String COLUMN__SUBMATPLAN_DAY = "Day";
+    public static final String COLUMN__SUBMATPLAN_FOOD = "Food";
+
+    private static final String CREATE_TABLE_OPPRETT_SUBMATPLAN = " CREATE TABLE " + TABLE_OPPRETT_SUBMATPLAN +
+            "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN__SUBMATPLAN_MATPLANID + " INTEGER, " +
+            COLUMN__SUBMATPLAN_DAY + " TEXT, " +
+            COLUMN__SUBMATPLAN_FOOD + " TEXT DEFAULT NULL " +
+            ")";
+
+
     /*
                     KALENDER
      */
@@ -262,6 +278,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_FAMILY);
         db.execSQL(CREATE_TABLE_MATPLAN);
         db.execSQL(CREATE_TABLE_OPPRETT_MATPLAN);
+        db.execSQL(CREATE_TABLE_OPPRETT_SUBMATPLAN);
         db.execSQL(CREATE_TABLE_HANDLELISTE);
         db.execSQL(CREATE_TABLE_HANDLELISTE_LISTE);
         db.execSQL(CREATE_TABLE_CALENDAR);
@@ -279,6 +296,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WISH);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAMILY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATPLAN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_OPPRETT_SUBMATPLAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALENDAR_ACTIVITY);
         onCreate(db);
     }
@@ -677,5 +695,40 @@ public class Database extends SQLiteOpenHelper {
         System.out.println("New activity in calendar (Database): " + theActivity + " for user: " + meID);
 
         return db.insert(TABLE_CALENDAR_ACTIVITY, null, values);
+    }
+
+    public Cursor getMatplanIdByLastRow() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_MATPLAN  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
+        return db.rawQuery(query, null);
+    }
+
+    public long makeSubMatplan(int matplanID, String day) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN__SUBMATPLAN_MATPLANID, matplanID);
+        values.put(COLUMN__SUBMATPLAN_DAY, day);
+
+        System.out.println("New SUBMATPLAN (Database): " + "\nIn wishlist " + matplanID + "\nDay " + day);
+
+        return db.insert(TABLE_OPPRETT_SUBMATPLAN, null, values);
+
+    }
+
+    public Cursor getAllFoodplansForFoodplan(int matplanID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_OPPRETT_SUBMATPLAN + " WHERE " + COLUMN__SUBMATPLAN_MATPLANID + " = " + matplanID;
+        return db.rawQuery(query, null);
+    }
+
+    public boolean updateFoodInMatplan(int subMatplanID, String food) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN__SUBMATPLAN_FOOD, food);
+
+        long result = db.update(TABLE_OPPRETT_SUBMATPLAN, contentValues, COLUMN_ID + " = " + subMatplanID, null);
+
+        return result != -1;
     }
 }
