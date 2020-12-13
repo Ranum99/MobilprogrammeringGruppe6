@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottom;
     private Toolbar toolbar;
     private NavigationView navigation;
-    private TextView navn;
+    private static TextView navn;
     private TextView id;
     private SharedPreferences sharedPreferences;
     private Database database;
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setText(String newFamilyName) {
+    public static void setText(String newFamilyName) {
         navn.setText(newFamilyName);
     }
 
