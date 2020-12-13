@@ -17,9 +17,6 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -30,7 +27,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     private LayoutInflater inflater;
     private Context context;
     private Database database;
-    private SharedPreferences sharedPreferences;
 
     private String meID;
 
@@ -44,7 +40,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     @Override
     public BirthdayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         database = new Database(context);
-        sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         meID = sharedPreferences.getString(User.ID, null);
 
         View itemView = inflater.inflate(R.layout.birthday_list_item, parent, false);
@@ -80,14 +76,14 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         private CardView card;
 
         //Elementer i cardviewet
-        private TextView navn, dato, aar;
+        TextView navn, dato, aar;
         private ImageButton delete;
 
         // Variabler
-        private Integer splitAar, splitMaaned, splitDag;
-        private LocalDate today, birthday;
-        private Period period;
-        private String FamilieId;
+        Integer splitAar, splitMaaned, splitDag;
+        LocalDate today, birthday;
+        Period period;
+        String FamilieId;
 
         public BirthdayViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,7 +100,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             FamilieId = birthdayToDisplay.getFamilieId();
             // Regner ut personens alder
             String datoinput = birthdayToDisplay.getDato();
-            String[] parts = datoinput.split("\\.");
+            String[] parts = datoinput.split(context.getString(R.string.splitValue));
 
             splitAar = Integer.parseInt(parts[2]);
             splitMaaned = Integer.parseInt(parts[1]);
