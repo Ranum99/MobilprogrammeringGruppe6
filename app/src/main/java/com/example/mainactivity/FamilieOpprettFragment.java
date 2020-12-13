@@ -26,6 +26,7 @@ public class FamilieOpprettFragment extends Fragment {
     private TextView navn, passord, passordIgjen;
     private Button opprettFamilie;
     int autoSave;
+    String tutorialKey = "tutorialKey";
 
     private String name, date;
     Database database;
@@ -49,6 +50,13 @@ public class FamilieOpprettFragment extends Fragment {
 
         // User.SESSION is a unique variable to identify the instance of this shared preference
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        boolean firstTime = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE).getBoolean(tutorialKey, true);
+
+        if (firstTime) {
+            runTutorial();
+            this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE).edit().putBoolean(tutorialKey, false).apply();
+        }
 
         int j = sharedPreferences.getInt("key",0);
 
