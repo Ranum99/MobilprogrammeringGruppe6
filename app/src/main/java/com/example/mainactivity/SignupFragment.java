@@ -57,14 +57,6 @@ public class SignupFragment extends Fragment {
 
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        int j = sharedPreferences.getInt("key",0);
-
-        // Default is 0 so autologin is disabled
-        if(j > 0) {
-            Intent activity = new Intent(getContext(), MainActivity.class);
-            startActivity(activity);
-        }
-
         registrerBruker = view.findViewById(R.id.SignupRegistrerBruker);
         aName = view.findViewById(R.id.SignupNavnInput);
         anEmail = view.findViewById(R.id.SignupEmailInput);
