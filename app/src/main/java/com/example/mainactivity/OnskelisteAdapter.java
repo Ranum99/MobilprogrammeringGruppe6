@@ -140,7 +140,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void hideElements(OnskelisteModel modelToDisplay) {
-            delete = itemView.findViewById(R.id.slettAktivitet);
+            delete = itemView.findViewById(R.id.handlelisteDelete);
 
             if (modelToDisplay.getUserToID() != meID)
                 delete.setVisibility(View.INVISIBLE);

@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 
 public class OnskelisteListeFragment extends Fragment {
@@ -37,6 +39,7 @@ public class OnskelisteListeFragment extends Fragment {
     private TextView onskelisteBruker;
     private EditText onskeToAdd;
     private Button leggTilBtn;
+    private TextInputLayout onskeToAddParent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class OnskelisteListeFragment extends Fragment {
         onskelisteBruker = view.findViewById(R.id.OnskelisteBruker);
         onskelisteBruker.setText(text);
 
+        onskeToAddParent = view.findViewById(R.id.textInputLayout);
         onskeToAdd = view.findViewById(R.id.onskeToAdd);
         leggTilBtn = view.findViewById(R.id.leggTil);
         leggTilBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +79,7 @@ public class OnskelisteListeFragment extends Fragment {
     }
 
     private void hideElements() {
-        onskeToAdd.setVisibility(View.INVISIBLE);
+        onskeToAddParent.setVisibility(View.INVISIBLE);
         leggTilBtn.setVisibility(View.INVISIBLE);
     }
 
@@ -124,8 +128,5 @@ public class OnskelisteListeFragment extends Fragment {
             setWishesInWishlist();
             setUpRecyclerView();
         }
-
-
-        System.out.println(onskeToAdd.getText().toString());
     }
 }

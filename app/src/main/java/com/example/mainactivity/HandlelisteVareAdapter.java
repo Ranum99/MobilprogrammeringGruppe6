@@ -9,6 +9,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -64,18 +65,14 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
 
         private TextView vare = itemView.findViewById(R.id.vareText);
         private CardView VareBoks = itemView.findViewById(R.id.VareBoks);
+        private CheckBox checkBox = itemView.findViewById(R.id.handlelisteCheckBox);
 
 
         public void setVare(HandlelisteVarerModel modelToDisplay) {
             vare.setText(modelToDisplay.getVare());
-            if (modelToDisplay.isChecked()) {
-                vare.setTextColor(Color.parseColor("#545454"));
-                vare.setTypeface(null, Typeface.ITALIC);
-            } else {
-                vare.setTextColor(Color.parseColor("#000000"));
-                vare.setTypeface(null, Typeface.NORMAL);
-            }
 
+            if (modelToDisplay.isChecked())
+                checkBox.setChecked(true);
         }
 
         public void setDelete(final HandlelisteVarerModel modelToDisplay, final int position) {
@@ -115,29 +112,37 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
 
         }
         public void setBought(final HandlelisteVarerModel modelToDisplay, int position) {
-
             VareBoks.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    modelToDisplay.setChecked(!modelToDisplay.isChecked());
-                    if (modelToDisplay.isChecked()) {
-                        vare.setTextColor(Color.parseColor("#000000"));
-                        vare.setTypeface(null, Typeface.NORMAL);
-                    } else {
-                        vare.setTextColor(Color.parseColor("#545454"));
-                        vare.setTypeface(null, Typeface.ITALIC);
-                    }
-
-                    int isChecked;
-                    if (modelToDisplay.isChecked())
-                        isChecked = 0;
+                    if (checkBox.isChecked())
+                        checkBox.setChecked(false);
                     else
-                        isChecked = 1;
-
-                    database.updateVareIsCheckedHandleliste(Integer.parseInt(modelToDisplay.getId()), isChecked);
+                        checkBox.setChecked(true);
+                    setAsBought(modelToDisplay);
+                }
+            });
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setAsBought(modelToDisplay);
                 }
             });
         }
+
+        public void setAsBought(final HandlelisteVarerModel modelToDisplay) {
+            int isChecked;
+            if (checkBox.isChecked()) {
+                isChecked = 1;
+            } else {
+                isChecked = 0;
+            }
+
+
+            System.out.println(isChecked);
+            database.updateVareIsCheckedHandleliste(Integer.parseInt(modelToDisplay.getId()), isChecked);
+        }
+
         private void removeItem(int position) {
             varelisteListe.remove(position);
             notifyItemRemoved(position);
