@@ -80,14 +80,14 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         }
 
         public void setOnskeliste(OnskelisteModel modelToDisplay) {
-            tittel = itemView.findViewById(R.id.aktivitet);
-            navn = itemView.findViewById(R.id.brukerNavn);
+            tittel = itemView.findViewById(R.id.handlelistenummer);
+            navn = itemView.findViewById(R.id.bruker);
             tittel.setText(modelToDisplay.getWishlistName());
             navn.setText("Opprettet av: " + modelToDisplay.getUserToName());
         }
 
         public void setDeleteOnOnskeliste(final OnskelisteModel modelToDisplay, final int position) {
-            delete = itemView.findViewById(R.id.slettAktivitet);
+            delete = itemView.findViewById(R.id.handlelisteDelete);
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

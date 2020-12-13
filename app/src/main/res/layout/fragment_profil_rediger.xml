@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:autofillHints="@string/endreProfilNavn"
-                android:hint="@string/endreProfilNavn"
+                android:hint="@string/fullt_navn"
                 android:ems="10"
                 android:imeOptions="actionDone"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -87,7 +87,7 @@
                 android:ems="10"
                 android:layout_marginTop="16dp"
                 android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
-                android:hint="@string/PhoneNumberHint"
+                android:hint="@string/mobilnummer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -96,8 +96,8 @@
                     android:id="@+id/profilMobilnr"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
                     android:imeOptions="actionDone"
+                    android:inputType="phone"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 

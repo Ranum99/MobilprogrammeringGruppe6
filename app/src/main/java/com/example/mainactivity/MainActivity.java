@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottom;
     private Toolbar toolbar;
     private NavigationView navigation;
-    private TextView navn, id;
+    private static TextView navn;
+    private TextView id;
     private SharedPreferences sharedPreferences;
     private Database database;
     NavController controller;
@@ -74,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         id = header.findViewById(R.id.DrawerFamilyId);
         navn.setText(familieNavnet);
         id.setText("Familie-ID: " + sharedPreferences.getString(User.FAMILIE, null));
+    }
+
+    public static void setText(String newFamilyName) {
+        navn.setText(newFamilyName);
     }
 
     private String getFamilyName() {

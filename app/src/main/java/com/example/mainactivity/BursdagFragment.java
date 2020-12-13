@@ -49,8 +49,6 @@ public class BursdagFragment extends Fragment{
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<BirthdayModel> bursdager = new ArrayList<>();
 
-    private Integer splitAarc1, splitMaanedc1, splitDagc1, splitAarc2, splitMaanedc2, splitDagc2;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -122,6 +120,19 @@ public class BursdagFragment extends Fragment{
 
     // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
+
+        Comparator<BirthdayModel> byMonth = new Comparator<BirthdayModel>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public int compare(BirthdayModel c1, BirthdayModel c2) {
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M.uuuu");
+                LocalDate d1 = LocalDate.parse(c1.getDato(), format);
+                LocalDate d2 = LocalDate.parse(c2.getDato(), format);
+                return d1.getMonth().compareTo(d2.getMonth());
+            }
+        };
+        Collections.sort(bursdager, byMonth);
+
+
 
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -91,6 +91,7 @@ public class ProfilRedigerFragment extends Fragment {
         aar = Integer.parseInt(parts[2]);
 
         endreBursdag.updateDate(aar, maaned-1, dag);
+        endreBursdag.setMaxDate(System.currentTimeMillis());
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
