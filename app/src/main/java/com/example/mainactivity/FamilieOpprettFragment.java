@@ -25,6 +25,8 @@ public class FamilieOpprettFragment extends Fragment {
 
     private TextView navn, passord, passordIgjen;
     private Button opprettFamilie;
+    int autoSave;
+    String tutorialKey = "tutorialKey";
 
     private String name, date;
     Database database;
@@ -45,7 +47,24 @@ public class FamilieOpprettFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         database = new Database(getActivity());
+
+        // User.SESSION is a unique variable to identify the instance of this shared preference
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        boolean firstTime = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE).getBoolean(tutorialKey, true);
+
+        if (firstTime) {
+            //runTutorial();
+            this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE).edit().putBoolean(tutorialKey, false).apply();
+        }
+
+        int j = sharedPreferences.getInt("key",0);
+
+        // Default is 0 so autologin is disabled
+        if(j > 0) {
+            Intent activity = new Intent(getContext(), MainActivity.class);
+            startActivity(activity);
+        }
 
         navn = view.findViewById(R.id.OpprettFamilieOpprettNavn);
         passord = view.findViewById(R.id.OpprettFamilieOpprettPassord);
@@ -74,6 +93,11 @@ public class FamilieOpprettFragment extends Fragment {
                     // Setting session family to familyID
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyID));
+
+                    // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
+                    autoSave = 1;
+                    editor.putInt("key", autoSave);
+
                     editor.apply();
 
                     Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();

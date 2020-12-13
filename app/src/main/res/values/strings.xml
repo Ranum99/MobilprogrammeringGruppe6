@@ -147,6 +147,7 @@
     <string name="mat">Mat</string>
     <string name="datoer">datoer</string>
     <string name="endreBilde">Endre profilbilde</string>
+    <string name="leggTilMatplan">Legg til matplan</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

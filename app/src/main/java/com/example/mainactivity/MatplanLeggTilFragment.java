@@ -28,11 +28,13 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class MatplanLeggTilFragment extends Fragment {
 
@@ -81,10 +83,16 @@ public class MatplanLeggTilFragment extends Fragment {
         fraDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
+                if (fromDate.equals(new Date())) {
+                    final Calendar c = Calendar.getInstance();
+                    mYear = c.get(Calendar.YEAR);
+                    mMonth = c.get(Calendar.MONTH);
+                    mDay = c.get(Calendar.DAY_OF_MONTH);
+                } else {
+                    mYear = fromDate.getYear() + 1900;
+                    mMonth = fromDate.getMonth();
+                    mDay = fromDate.getDate();
+                }
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
@@ -109,10 +117,16 @@ public class MatplanLeggTilFragment extends Fragment {
         tilDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
+                if (toDate.equals(new Date())) {
+                    final Calendar c = Calendar.getInstance();
+                    mYear = c.get(Calendar.YEAR);
+                    mMonth = c.get(Calendar.MONTH);
+                    mDay = c.get(Calendar.DAY_OF_MONTH);
+                } else {
+                    mYear = toDate.getYear() + 1900;
+                    mMonth = toDate.getMonth();
+                    mDay = toDate.getDate();
+                }
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
@@ -152,12 +166,13 @@ public class MatplanLeggTilFragment extends Fragment {
                 calFrom.setTime(fromDate);
                 calTo.setTime(toDate);
 
-                if (calFrom.get(Calendar.WEEK_OF_YEAR) != calTo.get(Calendar.WEEK_OF_YEAR)) {
-                    Toast.makeText(getActivity(), "Datoene må være i samme uke", Toast.LENGTH_SHORT).show();
+                int week = calFrom.get(Calendar.WEEK_OF_YEAR);
+                int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                if (daysBetween > 7) {
+                    Toast.makeText(getActivity(), "Det må maks være syv dager mellom til og fra dato", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                int week = calFrom.get(Calendar.WEEK_OF_YEAR);
-                int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 
                 boolean addToDatabase = false;
 
@@ -180,7 +195,7 @@ public class MatplanLeggTilFragment extends Fragment {
             }
 
             private void addDaysToMatplan(int matplanID, int daysBetween) {
-                //Cursor addDaysToMatplan = database.addDaysToMatplan(matplanID);
+                Date dateFromTemp = fromDate;
                 Date date = fromDate;
 
                 for (int i = 0; i < daysBetween; i++) {
@@ -189,12 +204,17 @@ public class MatplanLeggTilFragment extends Fragment {
 
                     String dateOnStringForm = date.getDate() + "." + (date.getMonth() + 1) + "." + (date.getYear() + 1900);
 
-                    String day = dagerIUka[cal.get(Calendar.DAY_OF_WEEK) - 1];
+                    Locale current = getResources().getConfiguration().locale;
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE", current);
 
-                    database.makeSubMatplan(matplanID, day, dateOnStringForm, familyID);
+                    String dayOfWeek = sdf.format(date);
+                    dayOfWeek = dayOfWeek.substring(0, 1).toUpperCase() + dayOfWeek.substring(1);
+
+                    database.makeSubMatplan(matplanID, dayOfWeek, dateOnStringForm, familyID);
 
                     date.setDate(date.getDate() + 1);
                 }
+                fromDate = dateFromTemp;
             }
 
             private boolean sjekkOfMatplanFinnesFraFor(int week) {
