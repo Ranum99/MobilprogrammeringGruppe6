@@ -148,6 +148,8 @@
     <string name="datoer">datoer</string>
     <string name="endreBilde">Endre profilbilde</string>
     <string name="leggTilMatplan">Legg til matplan</string>
+    <string name="untitled">untitled</string>
+    <string name="endre_fargetema">Endre fargetema</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>
