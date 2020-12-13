@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
         android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
-        android:label="@string/Handleliste"
+        android:label="@string/opprett_handleliste"
         tools:layout="@layout/fragment_handleliste_legg_til" >
         <action
             android:id="@+id/action_handlelisteLeggTilFragment_to_handlelisteListeFragment"
@@ -41,12 +41,12 @@
     <fragment
         android:id="@+id/bursdagLeggTilFragment"
         android:name="com.example.mainactivity.BursdagLeggTilFragment"
-        android:label="Bursdager"
+        android:label="Legg til bursdag"
         tools:layout="@layout/fragment_bursdag_legg_til" />
     <fragment
         android:id="@+id/bursdagRedigerFragment"
         android:name="com.example.mainactivity.BursdagRedigerFragment"
-        android:label="Bursdager"
+        android:label="Rediger bursdag"
         tools:layout="@layout/fragment_bursdag_rediger" />
     <fragment
         android:id="@+id/familieboblaFragment"
@@ -63,20 +63,11 @@
     <fragment
         android:id="@+id/familieboblaNySamtaleFragment"
         android:name="com.example.mainactivity.FamilieboblaNySamtaleFragment"
-        android:label="FamilieBobla"
+        android:label="Opprett samtale"
         tools:layout="@layout/fragment_familiebobla_ny_samtale" >
         <action
             android:id="@+id/action_familieboblaNySamtaleFragment_to_familieboblaSamtaleFragment"
             app:destination="@id/familieboblaSamtaleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/onskelisteNyListeFragment"
-        android:name="com.example.mainactivity.OnskelisteLeggTilFragment"
-        android:label="Ønskeliste"
-        tools:layout="@layout/fragment_onskeliste_legg_til">
-        <action
-            android:id="@+id/action_onskelisteNyListeFragment_to_onskelisteListeFragment"
-            app:destination="@id/onskelisteListeFragment" />
     </fragment>
     <fragment
         android:id="@+id/familieboblaSamtaleFragment"
@@ -148,8 +139,8 @@
     <fragment
         android:id="@+id/onskelisteLeggTilFragment"
         android:name="com.example.mainactivity.OnskelisteLeggTilFragment"
-        android:label="fragment_onskeliste_legg_til"
-        tools:layout="@layout/fragment_onskeliste_legg_til" >
+        android:label="Opprett ønskeliste"
+        tools:layout="@layout/fragment_onskeliste_legg_til">
         <action
             android:id="@+id/action_onskelisteLeggTilFragment_to_onskelisteListeFragment"
             app:destination="@id/onskelisteListeFragment" />
@@ -160,14 +151,11 @@
         android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste" >
         <action
-            android:id="@+id/action_onskelisteFragment2_to_onskelisteLeggTilFragment"
+            android:id="@+id/action_onskelisteFragment_to_onskelisteLeggTilFragment"
             app:destination="@id/onskelisteLeggTilFragment" />
         <action
             android:id="@+id/action_onskelisteFragment_to_onskelisteListeFragment"
             app:destination="@id/onskelisteListeFragment" />
-        <action
-            android:id="@+id/action_onskelisteFragment_to_onskelisteNyListeFragment"
-            app:destination="@id/onskelisteNyListeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profilFragment"
@@ -191,7 +179,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.mainactivity.SettingsFragment"
-        android:label="Instillinger"
+        android:label="Innstillinger"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/handlelisteListeFragment"
