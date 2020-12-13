@@ -22,6 +22,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class KalenderSideFragment extends Fragment {
@@ -81,6 +83,20 @@ public class KalenderSideFragment extends Fragment {
 
     private void setUpRecyclerView() {
         RecyclerView kalenderRecyclerView = getView().findViewById(R.id.activityOnDay);
+
+        Comparator<KalenderSideModel> byTime = new Comparator<KalenderSideModel>() {
+            @Override
+            public int compare(KalenderSideModel o1, KalenderSideModel o2) {
+                String d1 = o1.getTimeFrom();
+                String d2 = o2.getTimeFrom();
+                return d1.compareTo(d2);
+
+            }
+        };
+
+        Collections.sort(aktiviteter, byTime);
+
+
         kalenderRecyclerView.setAdapter(new KalenderSideAdapter(getContext(), aktiviteter));
         kalenderRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -105,8 +121,8 @@ public class KalenderSideFragment extends Fragment {
 
             if (familieID.equals(sharedPreferences.getString(User.FAMILIE, null))){
                 if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth()) {
-                    String bursdagFor = "Bursdag for " + name;
-                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, null, null, null, bursdagFor, 0, 0, true);
+                    String bursdagFor = name + "har bursdag i dag!";
+                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, "00:01", null, null, bursdagFor, 0, 0, true);
                     aktiviteter.add(kalenderSideModel);
                 }
             }
