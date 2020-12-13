@@ -61,7 +61,7 @@ public class OnskelisteFragment extends Fragment {
         else { empty.setVisibility(View.GONE); }
 
 
-        nyOnskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_onskelisteFragment_to_onskelisteNyListeFragment));
+        nyOnskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.onskelisteLeggTilFragment));
     }
 
     private void getWishlists() {
