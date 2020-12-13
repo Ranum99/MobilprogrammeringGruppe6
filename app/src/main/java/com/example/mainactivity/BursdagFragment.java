@@ -14,10 +14,14 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.chrono.ChronoLocalDate;
@@ -26,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -49,6 +54,8 @@ public class BursdagFragment extends Fragment{
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<BirthdayModel> bursdager = new ArrayList<>();
 
+    private Integer splitAarc1, splitMaanedc1, splitDagc1, splitAarc2, splitMaanedc2, splitDagc2;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +66,7 @@ public class BursdagFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(getActivity(), R.id.fragment);
+        final NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment);
 
         // instansierer variablene
         database = new Database(getActivity());
@@ -118,6 +125,7 @@ public class BursdagFragment extends Fragment{
         this.bursdager = alleBursdager;
     }
 
+
     // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
 
@@ -132,10 +140,21 @@ public class BursdagFragment extends Fragment{
         };
         Collections.sort(bursdager, byMonth);
 
+        Comparator<BirthdayModel> Day = new Comparator<BirthdayModel>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public int compare(BirthdayModel c1, BirthdayModel c2) {
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M.uuuu");
+                LocalDate d1 = LocalDate.parse(c1.getDato(), format);
+                LocalDate d2 = LocalDate.parse(c2.getDato(), format);
+                return String.valueOf(d1.getDayOfYear()).compareTo(String.valueOf(d2.getDayOfYear()));
+            }
+        };
+        Collections.sort(bursdager, Day);
 
 
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
+
 
 }
