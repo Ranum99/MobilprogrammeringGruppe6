@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,11 +11,17 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,10 +35,15 @@ public class MainActivity extends AppCompatActivity {
     NavController controller;
     AppBarConfiguration appBarConfiguration;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(isNetworkAvailable() == false) {
+            Snackbar.make(findViewById(R.id.Main), "Du har ikke nett", Snackbar.LENGTH_SHORT).show();
+        }
 
         database = new Database(this);
         sharedPreferences = this.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
@@ -40,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         bottom = findViewById(R.id.bottomNavigation);
         navigation = findViewById(R.id.navDrawer);
@@ -90,9 +102,17 @@ public class MainActivity extends AppCompatActivity {
         return name;
     }
 
+
     @Override
     public boolean onSupportNavigateUp() {
         return NavigationUI.navigateUp(controller, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 }
