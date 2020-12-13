@@ -74,7 +74,7 @@ public class MatplanFragment extends Fragment {
             int week = foodplansFromDB.getInt(foodplansFromDB.getColumnIndex(Database.COLUMN_MATPLAN_UKE));
 
             if (familieID.equals(String.valueOf(familyID))) {
-                MatplanModel matplan = new MatplanModel(matplanID, familyID, week, fromDate, toDate);
+                MatplanModel matplan = new MatplanModel(matplanID, week, fromDate, toDate);
                 matplaner.add(matplan);
             }
         }
