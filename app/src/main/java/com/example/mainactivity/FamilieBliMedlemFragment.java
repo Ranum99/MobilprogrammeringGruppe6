@@ -27,6 +27,7 @@ public class FamilieBliMedlemFragment extends Fragment {
 
     private int familyId = 0;
     private String navn, dato;
+    int autoSave;
 
     Database database;
     SharedPreferences sharedPreferences;
@@ -34,7 +35,6 @@ public class FamilieBliMedlemFragment extends Fragment {
     public FamilieBliMedlemFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,7 +47,17 @@ public class FamilieBliMedlemFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navcontroller = Navigation.findNavController(view);
         database = new Database(getActivity());
+
+        // User.SESSION is a unique variable to identify the instance of this shared preference
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        int j = sharedPreferences.getInt("key",0);
+
+        // Default is 0 so autologin is disabled
+        if(j > 0) {
+            Intent activity = new Intent(getContext(), MainActivity.class);
+            startActivity(activity);
+        }
 
         familyID = view.findViewById(R.id.familie_bli_medlem_familieID);
         password = view.findViewById(R.id.familie_bli_medlem_passord);
@@ -67,6 +77,10 @@ public class FamilieBliMedlemFragment extends Fragment {
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.FAMILIE, String.valueOf(familyId));
+
+                    // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
+                    autoSave = 1;
+                    editor.putInt("key", autoSave);
                     editor.apply();
 
                     InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);

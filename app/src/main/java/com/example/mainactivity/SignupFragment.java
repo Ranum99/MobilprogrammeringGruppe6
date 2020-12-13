@@ -44,7 +44,6 @@ public class SignupFragment extends Fragment {
     private DatePicker aBirthday;
     private Button registrerBruker;
     private ImageView logo;
-    int autoSave;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -56,7 +55,6 @@ public class SignupFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
-        // User.SESSION is a unique variable to identify the instance of this shared preference
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
         int j = sharedPreferences.getInt("key",0);
@@ -118,10 +116,6 @@ public class SignupFragment extends Fragment {
                         editor.putString(User.EMAIL, email);
                         editor.putString(User.BIRTHDAY, birthday);
                         editor.putString(User.MOBILNR, mobilnr);
-
-                        // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
-                        autoSave = 1;
-                        editor.putInt("key", autoSave);
                         editor.apply();
 
                         aName.setText("");
