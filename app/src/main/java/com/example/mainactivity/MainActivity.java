@@ -24,23 +24,28 @@ public class MainActivity extends AppCompatActivity {
     private TextView navn, id;
     private SharedPreferences sharedPreferences;
     private Database database;
+    NavController controller;
+    AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setTheme(R.style.DarkTheme);
         setContentView(R.layout.activity_main);
 
         database = new Database(this);
         sharedPreferences = this.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        NavController controller = Navigation.findNavController(this, R.id.fragment);
+        controller = Navigation.findNavController(this, R.id.fragment);
 
         toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         bottom = findViewById(R.id.bottomNavigation);
         navigation = findViewById(R.id.navDrawer);
+        DrawerLayout drawer = findViewById(R.id.DrawerLayout);
 
-        AppBarConfiguration appBarConfiguration =
+        appBarConfiguration =
                 new AppBarConfiguration.Builder(
                         R.id.matplanFragment,
                         R.id.kalenderFragment,
@@ -49,21 +54,26 @@ public class MainActivity extends AppCompatActivity {
                         R.id.familieboblaFragment,
                         R.id.profilFragment,
                         R.id.gruppeinformasjonFragment,
-                        R.id.settingsFragment )
+                        R.id.settingsFragment ).setDrawerLayout(drawer)
                         .build();
 
-        String familieNavnet = getFamilyName();
+        NavigationUI.setupActionBarWithNavController(this, controller, appBarConfiguration);
+        NavigationUI.setupWithNavController(navigation, controller);
+        getSupportActionBar().setDisplayHomeAsUpEnabled (true);
 
+
+
+        //NavigationUI.setupWithNavController(toolbar, controller, appBarConfiguration);
+        NavigationUI.setupWithNavController(bottom, controller);
+
+
+
+        String familieNavnet = getFamilyName();
         View header = navigation.getHeaderView(0);
         navn = header.findViewById(R.id.DrawerFamilyName);
         id = header.findViewById(R.id.DrawerFamilyId);
         navn.setText(familieNavnet);
         id.setText("Familie-ID: " + sharedPreferences.getString(User.FAMILIE, null));
-
-        NavigationUI.setupWithNavController(toolbar, controller, appBarConfiguration);
-        NavigationUI.setupWithNavController(bottom, controller);
-        NavigationUI.setupWithNavController(navigation, controller);
-
     }
 
     private String getFamilyName() {
@@ -75,4 +85,9 @@ public class MainActivity extends AppCompatActivity {
         return name;
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(controller, appBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 }

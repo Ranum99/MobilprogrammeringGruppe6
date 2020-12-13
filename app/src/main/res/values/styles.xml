@@ -6,12 +6,6 @@
         <item name="colorAccent">#00B0FF</item>
     </style>
 
-    <style name="DarkTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#CDDC39</item>
-        <item name="colorPrimaryDark">#FF5722</item>
-        <item name="colorAccent">#E91E63</item>
-    </style>
-
     <!-- Datepicker -->
     <style name="datepicker">
         <item name="colorControlNormal">@color/colorPrimary</item>
