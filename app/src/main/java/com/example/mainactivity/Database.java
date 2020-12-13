@@ -432,14 +432,6 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
-    public Cursor sjekkOmMatplanFinnes(int familyID, int week) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_MATPLAN +
-                " WHERE " + COLUMN_MATPLAN_FAMILY_ID + " = " + familyID +
-                " AND " + COLUMN_MATPLAN_UKE + " = " + week;
-        return db.rawQuery(query, null);
-    }
-
     public Cursor getFamilyIdByLastRow() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_FAMILY  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";

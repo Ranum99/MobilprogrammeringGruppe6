@@ -1,7 +1,9 @@
 package com.example.mainactivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
@@ -157,7 +159,6 @@ public class MatplanLeggTilFragment extends Fragment {
                 int week = calFrom.get(Calendar.WEEK_OF_YEAR);
                 int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 
-
                 boolean addToDatabase = false;
 
                 if (sjekkOfMatplanFinnesFraFor(week))
@@ -174,7 +175,7 @@ public class MatplanLeggTilFragment extends Fragment {
                     addDaysToMatplan(matplanID, daysBetween);
                     navController.navigateUp();
                 } else {
-                    Toast.makeText(getActivity(), "Matplan i uke " + week + " finnes allerede fra før", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Matplan i uke " + week + " finnes allerede fra før på disse datoene", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -194,18 +195,21 @@ public class MatplanLeggTilFragment extends Fragment {
                 }
             }
 
-
             private boolean sjekkOfMatplanFinnesFraFor(int week) {
-                boolean matplanEksisterer = true;
+                Cursor insertData = database.getData(Database.TABLE_MATPLAN);
 
-                Cursor leggTilMatplan = database.sjekkOmMatplanFinnes(familyID, week);
+                while(insertData.moveToNext()) {
+                    String uke = insertData.getString(insertData.getColumnIndex(Database.COLUMN_MATPLAN_UKE));
+                    String fromDate = insertData.getString(insertData.getColumnIndex(Database.COLUMN_MATPLAN_FROM_DATE));
+                    String toDate = insertData.getString(insertData.getColumnIndex(Database.COLUMN_MATPLAN_TO_DATE));
+                    String familieID = insertData.getString(insertData.getColumnIndex(Database.COLUMN_MATPLAN_FAMILY_ID));
 
-                if (leggTilMatplan.getCount() != 0)
-                    matplanEksisterer = false;
+                    if (familieID.equals(String.valueOf(familyID)) && uke.equals(String.valueOf(week)) && fromDate.equals(dateFromString) && toDate.equals(dateToString)) {
+                        return false;
+                    }
+                }
 
-                System.out.println("Matplan eksisterer: " + matplanEksisterer);
-
-                return matplanEksisterer;
+                return true;
             }
         });
 

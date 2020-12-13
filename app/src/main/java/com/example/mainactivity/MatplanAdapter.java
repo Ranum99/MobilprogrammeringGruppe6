@@ -45,6 +45,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
         viewHolder.setMatplan(matplanToDisplay, position);
         viewHolder.setDelete(matplanToDisplay, position);
         viewHolder.setMatplanen(matplanToDisplay, position);
+        viewHolder.setDate(matplanToDisplay);
     }
 
     @Override
@@ -58,7 +59,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
         private CardView card;
 
         // Elementer i cardviewet
-        private TextView uke;
+        private TextView uke, dato;
         private ImageButton delete;
 
         // Variabler
@@ -124,14 +125,18 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putInt("ID", matplanToDisplay.getMatplanID());
-                    bundle.putString("fromDate", matplanToDisplay.getFromDate());
-                    bundle.putString("toDate", matplanToDisplay.getToDate());
                     bundle.putInt("UKE", matplanToDisplay.getWeek());
 
                     Navigation.findNavController(card).navigate(R.id.matplanListeFragment, bundle);
                 }
             };
             card.setOnClickListener(edit);
+        }
+
+        public void setDate(MatplanModel matplanToDisplay) {
+            dato = itemView.findViewById(R.id.datoMatplan);
+            String datoer = matplanToDisplay.getFromDate() + " - " + matplanToDisplay.getToDate();
+            dato.setText(datoer);
         }
     }
 }

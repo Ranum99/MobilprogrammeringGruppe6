@@ -143,6 +143,7 @@
     <string name="groupInfo">Gruppeinformasjon</string>
     <string name="SettingsNav">Settings</string>
     <string name="mat">Mat</string>
+    <string name="datoer">datoer</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>
