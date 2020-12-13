@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/element"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -52,18 +53,18 @@
             app:layout_constraintBottom_toBottomOf="@+id/CardviewFullName"
             app:layout_constraintStart_toEndOf="@+id/CardviewFullName" />
 
-        <ImageButton
-            android:id="@+id/deleteBursdag"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:contentDescription="@string/deleteBtn"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
+            app:srcCompat="@drawable/ic_action_delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
