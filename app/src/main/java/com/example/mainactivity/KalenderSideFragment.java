@@ -113,7 +113,7 @@ public class KalenderSideFragment extends Fragment {
 
             if (familieID.equals(sharedPreferences.getString(User.FAMILIE, null))){
                 if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth()) {
-                    String bursdagFor = name + "har bursdag i dag!";
+                    String bursdagFor = name + " har bursdag i dag!";
                     KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, "00:01", null, null, bursdagFor, 0, 0, true);
                     aktiviteter.add(kalenderSideModel);
                 }

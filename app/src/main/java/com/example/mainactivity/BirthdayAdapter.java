@@ -77,7 +77,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
         //Elementer i cardviewet
         TextView navn, dato, aar;
-        private ImageView delete;
+        ImageView delete;
 
         // Variabler
         Integer splitAar, splitMaaned, splitDag;
@@ -177,7 +177,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         }
 
         public void hideElements() {
-            delete = itemView.findViewById(R.id.deleteBursdag);
+            delete = itemView.findViewById(R.id.delete);
             delete.setVisibility(View.GONE);
         }
     }

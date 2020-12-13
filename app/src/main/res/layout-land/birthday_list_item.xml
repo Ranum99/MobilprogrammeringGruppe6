@@ -53,7 +53,7 @@
             android:layout_marginStart="8dp" />
 
         <ImageView
-            android:id="@+id/deleteBursdag"
+            android:id="@+id/delete"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="8dp"
