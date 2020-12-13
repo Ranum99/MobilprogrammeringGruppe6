@@ -12,9 +12,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
+import android.net.NetworkRequest;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,12 +32,26 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottom;
     private Toolbar toolbar;
     private NavigationView navigation;
-    private static TextView navn;
+    private TextView navn;
     private TextView id;
     private SharedPreferences sharedPreferences;
     private Database database;
     NavController controller;
     AppBarConfiguration appBarConfiguration;
+
+
+    // to check if we are connected to Network
+    boolean isConnected = true;
+
+    // to check if we are monitoring Network
+    boolean monitoringConnectivity = false;
+
+    private static final String TAG = "LOGINACTIVITY";
+
+    ConnectivityManager.NetworkCallback connectivityCallback;
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -89,7 +107,30 @@ public class MainActivity extends AppCompatActivity {
         id.setText("Familie-ID: " + sharedPreferences.getString(User.FAMILIE, null));
     }
 
-    public static void setText(String newFamilyName) {
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        connectivityCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onAvailable(Network network) {
+                isConnected = true;
+                Log.d(TAG, "INTERNET CONNECTED");
+            }
+
+            @Override
+            public void onLost(Network network) {
+                isConnected = false;
+                Log.d(TAG, "INTERNET LOST");
+            }
+        };
+
+        checkConnectivity();
+
+    }
+
+    public void setText(String newFamilyName) {
         navn.setText(newFamilyName);
     }
 
@@ -113,6 +154,34 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void checkConnectivity() {
+        // here we are getting the connectivity service from connectivity manager
+        final ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+
+        // Getting network Info
+        // give Network Access Permission in Manifest
+        final NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        // isConnected is a boolean variable
+        // here we check if network is connected or is getting connected
+        isConnected = activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+
+        if (!isConnected) {
+            // SHOW ANY ACTION YOU WANT TO SHOW
+            // WHEN WE ARE NOT CONNECTED TO INTERNET/NETWORK
+            Log.d(TAG, " NO NETWORK!");
+            // if Network is not connected we will register a network callback to  monitor network
+            connectivityManager.registerNetworkCallback(
+                    new NetworkRequest.Builder()
+                            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                            .build(), connectivityCallback);
+            monitoringConnectivity = true;
+        }
+
     }
 
 }
