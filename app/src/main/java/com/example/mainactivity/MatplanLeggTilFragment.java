@@ -28,11 +28,13 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class MatplanLeggTilFragment extends Fragment {
 
@@ -180,7 +182,6 @@ public class MatplanLeggTilFragment extends Fragment {
             }
 
             private void addDaysToMatplan(int matplanID, int daysBetween) {
-                //Cursor addDaysToMatplan = database.addDaysToMatplan(matplanID);
                 Date date = fromDate;
 
                 for (int i = 0; i < daysBetween; i++) {
@@ -189,9 +190,13 @@ public class MatplanLeggTilFragment extends Fragment {
 
                     String dateOnStringForm = date.getDate() + "." + (date.getMonth() + 1) + "." + (date.getYear() + 1900);
 
-                    String day = dagerIUka[cal.get(Calendar.DAY_OF_WEEK) - 1];
+                    Locale current = getResources().getConfiguration().locale;
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE", current);
 
-                    database.makeSubMatplan(matplanID, day, dateOnStringForm, familyID);
+                    String dayOfWeek = sdf.format(date);
+                    dayOfWeek = dayOfWeek.substring(0, 1).toUpperCase() + dayOfWeek.substring(1);
+
+                    database.makeSubMatplan(matplanID, dayOfWeek, dateOnStringForm, familyID);
 
                     date.setDate(date.getDate() + 1);
                 }
