@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <!-- Grønn -->
     <color name="colorPrimary">#11999e</color>
     <color name="colorPrimaryDark">#006a70</color>
     <color name="colorAccent">#03A9F4</color>
+    <!-- Oransje -->
+    <!-- Blå -->
+    <!-- ?? -->
+
+
     <color name="Grey">#888888</color>
     <color name="ic_launcher_background">#FFFFFF</color>
 </resources>
