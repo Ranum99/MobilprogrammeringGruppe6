@@ -1,43 +1,30 @@
 package com.example.mainactivity;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 public class MatplanLeggTilFragment extends Fragment {
-
     public MatplanLeggTilFragment() {
         // Required empty constructor
     }
@@ -48,12 +35,10 @@ public class MatplanLeggTilFragment extends Fragment {
     Database database;
     SharedPreferences sharedPreferences;
     private NavController navController;
-
     private Date fromDate, toDate;
     private String dateFromString, dateToString;
     private int mYear, mMonth, mDay, familyID, matplanID;
     private String[] dagerIUka = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -173,7 +158,6 @@ public class MatplanLeggTilFragment extends Fragment {
                     Toast.makeText(getActivity(), "Det må maks være syv dager mellom til og fra dato", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 boolean addToDatabase = false;
 
                 if (sjekkOfMatplanFinnesFraFor(week))
@@ -230,11 +214,8 @@ public class MatplanLeggTilFragment extends Fragment {
                         return false;
                     }
                 }
-
                 return true;
             }
         });
-
-
     }
 }

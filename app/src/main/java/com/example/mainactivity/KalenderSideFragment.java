@@ -4,30 +4,24 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
 public class KalenderSideFragment extends Fragment {
-
     public KalenderSideFragment() {
         // Required empty public constructor
     }
@@ -90,12 +84,10 @@ public class KalenderSideFragment extends Fragment {
                 String d1 = o1.getTimeFrom();
                 String d2 = o2.getTimeFrom();
                 return d1.compareTo(d2);
-
             }
         };
 
         Collections.sort(aktiviteter, byTime);
-
 
         kalenderRecyclerView.setAdapter(new KalenderSideAdapter(getContext(), aktiviteter));
         kalenderRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -127,7 +119,6 @@ public class KalenderSideFragment extends Fragment {
                 }
             }
         }
-
 
         data = database.getData(Database.TABLE_CALENDAR_ACTIVITY);
 
@@ -171,7 +162,6 @@ public class KalenderSideFragment extends Fragment {
                 }
             }
         }
-
         this.aktiviteter = aktiviteter;
     }
 }

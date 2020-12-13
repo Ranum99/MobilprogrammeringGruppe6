@@ -5,21 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Date;
 
 public class FamilieOpprettFragment extends Fragment {
 
@@ -35,7 +29,6 @@ public class FamilieOpprettFragment extends Fragment {
     public FamilieOpprettFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,7 +90,6 @@ public class FamilieOpprettFragment extends Fragment {
                     // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
                     autoSave = 1;
                     editor.putInt("key", autoSave);
-
                     editor.apply();
 
                     Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();

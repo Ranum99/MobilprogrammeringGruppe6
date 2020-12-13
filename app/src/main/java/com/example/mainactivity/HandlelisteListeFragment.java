@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 
 public class HandlelisteListeFragment extends Fragment {
-
     public HandlelisteListeFragment() {
         // Required empty constructor
     }
@@ -36,7 +30,6 @@ public class HandlelisteListeFragment extends Fragment {
     private Button leggTil;
     private EditText varelinje;
     private RecyclerView vareliste;
-
     private String id;
     private String sendtTittel;
 
@@ -76,7 +69,6 @@ public class HandlelisteListeFragment extends Fragment {
     private void setUpRecyclerView() {
         vareliste.setAdapter(new HandlelisteVareAdapter(getContext(), varer));
         vareliste.setLayoutManager(new LinearLayoutManager(getContext()));
-
     }
 
     private void setInfo() {
@@ -89,15 +81,12 @@ public class HandlelisteListeFragment extends Fragment {
             String vareTittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTELISTE_VARE));
             boolean isChecked = data.getInt(data.getColumnIndex(Database.COLUMN_HANDLELISTELISTE_CHECKED)) == 1;
 
-
             HandlelisteVarerModel envare = new HandlelisteVarerModel(ID, vareTittel, isChecked);
             allevarer.add(envare);
         }
         this.varer = allevarer;
-
     }
     private void addVare() {
-
         long addToDatabase = -1;
 
         if( !varelinje.getText().toString().isEmpty()) {
@@ -113,10 +102,6 @@ public class HandlelisteListeFragment extends Fragment {
             setInfo();
             setUpRecyclerView();
         }
-
         System.out.println(varelinje.getText().toString());
-
-
-
     }
 }

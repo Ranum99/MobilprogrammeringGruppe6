@@ -3,13 +3,11 @@ package com.example.mainactivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class OnskelisteLeggTilFragment extends Fragment {
-
     public OnskelisteLeggTilFragment() {}
 
     SharedPreferences sharedPreferences;
@@ -27,7 +24,6 @@ public class OnskelisteLeggTilFragment extends Fragment {
     private NavController navController;
     private Button lagListe;
     private EditText wishlistName;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +52,6 @@ public class OnskelisteLeggTilFragment extends Fragment {
 
     private void makeNewWishlist() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
-
         long addToDatabase = -1;
 
         if (!wishlistName.getText().toString().isEmpty())

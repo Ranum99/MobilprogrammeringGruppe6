@@ -1,6 +1,5 @@
 package com.example.mainactivity;
 
-
 public class FamilieboblaModel {
     private String samtaleID, userToName, samtaleName;
 

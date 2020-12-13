@@ -5,7 +5,6 @@ public class HandlelisteModel {
     private Integer familieID;
 
     public HandlelisteModel(String nr, String id, Integer familieID, String navn) {
-
         // Setter variablene
         this.tittel = nr;
         this.id = id;

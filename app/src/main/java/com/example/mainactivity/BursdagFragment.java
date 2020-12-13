@@ -14,25 +14,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Objects;
-
 
 public class BursdagFragment extends Fragment{
 
@@ -55,7 +45,6 @@ public class BursdagFragment extends Fragment{
     private ArrayList<BirthdayModel> bursdager = new ArrayList<>();
 
     private Integer splitAarc1, splitMaanedc1, splitDagc1, splitAarc2, splitMaanedc2, splitDagc2;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -119,16 +108,12 @@ public class BursdagFragment extends Fragment{
                 BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId, userID, madeByUserID);
                 alleBursdager.add(bursdag);
             }
-
         }
-
         this.bursdager = alleBursdager;
     }
 
-
     // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
-
         Comparator<BirthdayModel> byMonth = new Comparator<BirthdayModel>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             public int compare(BirthdayModel c1, BirthdayModel c2) {
@@ -151,10 +136,7 @@ public class BursdagFragment extends Fragment{
         };
         Collections.sort(bursdager, Day);
 
-
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-
-
 }

@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputLayout;
-
 import java.util.ArrayList;
 
 public class OnskelisteListeFragment extends Fragment {
-
     public OnskelisteListeFragment() {
         // Required empty constructor
     }
@@ -35,7 +30,6 @@ public class OnskelisteListeFragment extends Fragment {
     private int wishlistID, wishlistForUserID;
     private String wishlistName, wishlistForUserName;
     private ArrayList<OnskelisteListeModel> wishes;
-
     private TextView onskelisteBruker;
     private EditText onskeToAdd;
     private Button leggTilBtn;
@@ -114,7 +108,6 @@ public class OnskelisteListeFragment extends Fragment {
 
     private void addWish() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
-
         long addToDatabase = -1;
 
         if (!onskeToAdd.getText().toString().isEmpty())

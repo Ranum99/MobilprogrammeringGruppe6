@@ -1,30 +1,24 @@
 package com.example.mainactivity;
 
 import android.app.AlertDialog;
-import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapter.FamilieboblaViewHolder>{
-
     private List<FamilieboblaModel> SamtaleListe;
     private LayoutInflater inflater;
     private FamilieboblaModel SamtaleToDisplay;
@@ -36,7 +30,6 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
         this.SamtaleListe = SamtaleListe;
         this.contexten = context;
     }
-
 
     private void removeItem(int position) {
         SamtaleListe.remove(position);
@@ -65,12 +58,11 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
         return SamtaleListe.size();
     }
 
-
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
 
         private TextView navn, userName;
         private ConstraintLayout card;
-        private ImageButton delete;
+        private ImageView delete;
 
         public FamilieboblaViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -119,7 +111,6 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                     System.out.println(SamtaleToDisplay.getIden() + " - " + getNavn());
                 }
             };
-
             delete.setOnClickListener(onClickListener);
         }
 
@@ -138,10 +129,8 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                 }
             });
         }
-
         public String getNavn() {
             return navn.getText().toString();
         }
     }
-
 }

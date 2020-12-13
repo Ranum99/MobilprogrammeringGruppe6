@@ -3,27 +3,21 @@ package com.example.mainactivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 
 public class OnskelisteFragment extends Fragment {
-
     Database database;
     SharedPreferences sharedPreferences;
 
@@ -34,9 +28,9 @@ public class OnskelisteFragment extends Fragment {
     private FloatingActionButton nyOnskeliste;
     private TextView empty;
     private RecyclerView OnskelisteRecyclerview;
+
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<OnskelisteModel> onskelister = new ArrayList<>();
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,11 +49,9 @@ public class OnskelisteFragment extends Fragment {
         OnskelisteRecyclerview = getView().findViewById(R.id.OnskelisterRecyclerview);
         empty = view.findViewById(R.id.emptyOnskeliste);
 
-
         setUpRecyclerView();
         if (onskelister.isEmpty()) { empty.setVisibility(View.VISIBLE); }
         else { empty.setVisibility(View.GONE); }
-
 
         nyOnskeliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.onskelisteLeggTilFragment));
     }
@@ -87,7 +79,6 @@ public class OnskelisteFragment extends Fragment {
                 onskelister.add(onskeliste);
             }
         }
-
         this.onskelister = onskelister;
     }
 

@@ -5,13 +5,11 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class KalenderLeggTilFragment extends Fragment {
-
     public KalenderLeggTilFragment() {
     }
 
@@ -38,11 +34,9 @@ public class KalenderLeggTilFragment extends Fragment {
     private TextView txtDateFrom, txtDateTo, txtTimeFrom, txtTimeTo;
     private EditText txtActivity;
     private NavController navController;
-
     private Date fullDateFrom, fullDateTo;
     private String dateFrom, dateTo, timeFrom, timeTo;
     private int mYear, mMonth, mDay, mHour, mMinute;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,7 +59,6 @@ public class KalenderLeggTilFragment extends Fragment {
         txtTimeFrom = view.findViewById(R.id.txtTimeFrom);
         txtTimeTo = view.findViewById(R.id.txtTimeTo);
         txtActivity = view.findViewById(R.id.txtActivity);
-
         fullDateFrom = new Date();
         fullDateTo = new Date();
 
@@ -181,7 +174,6 @@ public class KalenderLeggTilFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-
         btnAddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,7 +215,6 @@ public class KalenderLeggTilFragment extends Fragment {
             fullDateFrom.setMinutes(0);
             fullDateFrom.setSeconds(0);
         }
-
         if (dateTo != null || timeTo != null) {
             if (dateTo == null) {
                 fullDateTo.setYear(fullDateFrom.getYear());

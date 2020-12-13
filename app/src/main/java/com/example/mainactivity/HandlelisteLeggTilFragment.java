@@ -3,29 +3,20 @@ package com.example.mainactivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class HandlelisteLeggTilFragment extends Fragment {
-
     public HandlelisteLeggTilFragment() {
         // Required empty constructor
     }
@@ -34,7 +25,6 @@ public class HandlelisteLeggTilFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private EditText tittel;
     private Button opprett;
-
     private int meID;
 
     @Override
@@ -69,23 +59,8 @@ public class HandlelisteLeggTilFragment extends Fragment {
 
                     mgr.hideSoftInputFromWindow(tittel.getWindowToken(), 0);
                     navController.navigateUp();
-
                 }
             }
         });
-
-
-
-
-
-
-
-/*
-
-
-
- */
-
     }
-
 }

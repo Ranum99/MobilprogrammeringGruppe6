@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -17,16 +16,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import java.util.Objects;
 
 public class ProfilRedigerFragment extends Fragment {
-
     Database database;
     SharedPreferences sharedPreferences;
 
     private EditText endreNavn, endreEmail, endreMobilnr;
     private DatePicker endreBursdag;
     private String navn, mobil, email, dato, id;
+    private ImageView photo;
 
     public ProfilRedigerFragment() {
     }
@@ -50,6 +50,9 @@ public class ProfilRedigerFragment extends Fragment {
         endreMobilnr = view.findViewById(R.id.profilMobilnr);
         database = new Database(getActivity());
         sharedPreferences = requireContext().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
+
+        photo = view.findViewById(R.id.profilbilde);
+        photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
 
         assert getArguments() != null;
         endreNavn.setText(getArguments().getString("NAVN"));

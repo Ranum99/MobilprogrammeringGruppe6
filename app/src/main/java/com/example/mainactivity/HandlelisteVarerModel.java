@@ -1,7 +1,6 @@
 package com.example.mainactivity;
 
 public class HandlelisteVarerModel {
-
     private String id, vare;
     private boolean isChecked;
 

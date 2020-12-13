@@ -1,9 +1,6 @@
 package com.example.mainactivity;
 
-import java.util.ArrayList;
-
 public class OnskelisteModel {
-
     private int wishlistID, userToID;
     private String userToName, wishlistName;
 

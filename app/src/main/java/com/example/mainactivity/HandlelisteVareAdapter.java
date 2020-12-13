@@ -3,8 +3,6 @@ package com.example.mainactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVareAdapter.HandlelisteVareViewHolder> {
-
     private List<HandlelisteVarerModel> varelisteListe;
     private LayoutInflater inflater;
     private Context context;
@@ -48,7 +45,6 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
         holder.setVare(modelToDisplay);
         holder.setDelete(modelToDisplay, position);
         holder.setBought(modelToDisplay, position);
-
     }
 
     @Override
@@ -56,9 +52,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
         return varelisteListe.size();
     }
 
-
     public class HandlelisteVareViewHolder extends RecyclerView.ViewHolder {
-
         public HandlelisteVareViewHolder(@NonNull View itemView) {
             super(itemView);
         }
@@ -66,7 +60,6 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
         private TextView vare = itemView.findViewById(R.id.vareText);
         private CardView VareBoks = itemView.findViewById(R.id.VareBoks);
         private CheckBox checkBox = itemView.findViewById(R.id.handlelisteCheckBox);
-
 
         public void setVare(HandlelisteVarerModel modelToDisplay) {
             vare.setText(modelToDisplay.getVare());
@@ -137,8 +130,6 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
             } else {
                 isChecked = 0;
             }
-
-
             System.out.println(isChecked);
             database.updateVareIsCheckedHandleliste(Integer.parseInt(modelToDisplay.getId()), isChecked);
         }
@@ -148,7 +139,5 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, varelisteListe.size());
         }
-
-
     }
 }

@@ -4,26 +4,20 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
-
 public class FamilieboblaSamtaleFragment extends Fragment {
-
     public FamilieboblaSamtaleFragment() {}
 
     Database database;
@@ -32,7 +26,6 @@ public class FamilieboblaSamtaleFragment extends Fragment {
     private int samtaleId;
     private String samtaleName, samtaleTo;
     private ArrayList<FamilieboblaSamtaleModel> messages;
-
     private TextView samtaleTitle, messageToSend, brukerNavn;
     private Button sendButton;
 
@@ -109,7 +102,6 @@ public class FamilieboblaSamtaleFragment extends Fragment {
     // Legger en melding til i databasen og henter meldingene på nytt
     private void sendMessage() {
         int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
-
         long addToDatabase = -1;
 
         if (!messageToSend.getText().toString().isEmpty())

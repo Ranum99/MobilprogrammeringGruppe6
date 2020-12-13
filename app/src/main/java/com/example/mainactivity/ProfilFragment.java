@@ -9,27 +9,25 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class ProfilFragment extends Fragment {
     public ProfilFragment() {
         // Required empty constructor
     }
+
     private Database database;
     private SharedPreferences sharedPreferences;
     private TextView userID, mobilnr, fodselsdato, email, navn;
@@ -60,9 +58,7 @@ public class ProfilFragment extends Fragment {
         email = view.findViewById(R.id.email);
         navn = view.findViewById(R.id.navn);
         photo = view.findViewById(R.id.profilbilde);
-
         photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
-
 
         while (data.moveToNext()) {
             userID.setText("Bruker id: " + data.getString(data.getColumnIndex(Database.COLUMN_ID)));
@@ -77,8 +73,6 @@ public class ProfilFragment extends Fragment {
             aemail = data.getString(data.getColumnIndex(Database.COLUMN_EMAIL));
             anavn = data.getString(data.getColumnIndex(Database.COLUMN_NAME));
         }
-
-
         System.out.println(id + ", " + mobil + ", " + dato + ", " + aemail + ", " + anavn);
 
         // Endre profil
@@ -86,8 +80,6 @@ public class ProfilFragment extends Fragment {
         endreProfilBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Bundle bundle = new Bundle();
                 bundle.putString("ID", id);
                 bundle.putString("MOBILNUMMER", mobil);
@@ -96,11 +88,8 @@ public class ProfilFragment extends Fragment {
                 bundle.putString("NAVN", anavn);
 
                 navController.navigate(R.id.profilRedigerFragment, bundle);
-
-
             }
         });
-
 
         //Logg ut
         loggUt = view.findViewById(R.id.LoggutBtn);
@@ -135,7 +124,5 @@ public class ProfilFragment extends Fragment {
                 alert1.show();
             }
         });
-
-
     }
 }

@@ -19,7 +19,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class BursdagLeggTilFragment extends Fragment {
 
@@ -89,8 +88,5 @@ public class BursdagLeggTilFragment extends Fragment {
                 }
             }
         });
-
-
     }
-
 }

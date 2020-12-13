@@ -4,27 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MatplanListeFragment extends Fragment {
-
     // Variabler for å hente fra database
     private Database database;
     private SharedPreferences sharedPreferences;
@@ -66,7 +57,6 @@ public class MatplanListeFragment extends Fragment {
     private void setUpRecyclerView() {
         matplanListeRecyclerview = getView().findViewById(R.id.MatplanListeRecyclerview);
         matplanListeRecyclerview.setAdapter(new MatplanListeAdapter(getContext(), allFoodplans));
-
         matplanListeRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
@@ -84,13 +74,12 @@ public class MatplanListeFragment extends Fragment {
 
             // Dersom samtaleID fra database og lokalt er like vil den bli lagt til i array
             if (matplanID == this.matplanID) {
-                MatplanListeModel matplanData = new MatplanListeModel(subMatplanID, matplanID, day, food);
+                MatplanListeModel matplanData = new MatplanListeModel(subMatplanID, day, food);
                 allFoodplans.add(matplanData);
             }
         }
         this.allFoodplans = allFoodplans;
     }
-
 
     public void setMatplanID(int matplanID) {
         this.matplanID = matplanID;

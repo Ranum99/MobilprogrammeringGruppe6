@@ -1,7 +1,6 @@
 package com.example.mainactivity;
 
 public class User {
-
     public int id, mobilnr;
     public String name, email, password, birthday;
 

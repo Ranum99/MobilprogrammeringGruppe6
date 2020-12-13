@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListeAdapter.OnskelisteViewHolder>{
-
     private List<OnskelisteListeModel> WishListe;
     private LayoutInflater inflater;
     private Context contexten;
@@ -44,7 +43,6 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
     @NonNull
     @Override
     public OnskelisteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-
         SharedPreferences sharedPreferences = getContexten().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         database = new Database(contexten);
         meID = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString(User.ID, null)));
@@ -55,7 +53,6 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
 
     @Override
     public void onBindViewHolder(@NonNull OnskelisteListeAdapter.OnskelisteViewHolder viewHolder, int position) {
-
         OnskelisteListeModel wishesToDisplay = WishListe.get(position);
 
         viewHolder.setWish(wishesToDisplay);
@@ -74,15 +71,13 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
     }
 
     public class OnskelisteViewHolder extends RecyclerView.ViewHolder {
-
         private TextView wish;
         private CheckBox checkBox;
-        private ImageButton delete;
+        private ImageView delete;
 
         public OnskelisteViewHolder(@NonNull final View itemView) {
             super(itemView);
         }
-
 
         public void setWish(final OnskelisteListeModel wishesToDisplay) {
             wish = itemView.findViewById(R.id.Onskelistenavn);
@@ -124,7 +119,6 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
                     alert1.show();
                 }
             };
-
             delete.setOnClickListener(onClickListener);
         }
 
@@ -174,6 +168,5 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
             }
         }
     }
-
 }
 

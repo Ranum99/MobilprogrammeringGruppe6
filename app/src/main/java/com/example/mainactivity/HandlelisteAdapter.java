@@ -9,16 +9,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.HandlelisteViewHolder> {
@@ -30,7 +27,6 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
     private SharedPreferences sharedPreferences;
     private HandlelisteModel modelToDisplay;
     private int familieID;
-
 
     public HandlelisteAdapter(Context context, List<HandlelisteModel> HandlelisteListe, int iD) {
         this.inflater = LayoutInflater.from(context);
@@ -54,9 +50,6 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         viewHolder.setHandleliste(modelToDisplay, position);
         viewHolder.setDelete(modelToDisplay, position);
         viewHolder.setEdit(modelToDisplay, position);
-
-        //  viewHolder.hideElements(modelToDisplay);
-
     }
 
     @Override
@@ -70,21 +63,19 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
         //Cardviewet
         private CardView card;
         private TextView nr, bruker;
-        private ImageButton delete;
+        private ImageView delete;
 
         public HandlelisteViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         public void setHandleliste(HandlelisteModel modelToDisplay, int position) {
-
             // Kobler variablene med sine respektive elementer i cardviewet
             nr = itemView.findViewById(R.id.handlelistenummer);
             bruker = itemView.findViewById(R.id.bruker);
             // setter teksten i cardviewet
             nr.setText(modelToDisplay.getTittel());
             bruker.setText("Opprettet av: " + modelToDisplay.getNavn());
-
         }
 
         public void setDelete(final HandlelisteModel modelToDisplay, final int position) {
@@ -119,7 +110,6 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
                     alert1.show();
                 }
             };
-
             delete.setOnClickListener(deleteHandleliste);
         }
 

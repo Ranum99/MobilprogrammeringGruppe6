@@ -1,9 +1,6 @@
 package com.example.mainactivity;
 
-import java.util.Date;
-
 public class BirthdayModel {
-
     // Variabler
     private String navn, dato, id, familieId, userID, madeByUserID;
 

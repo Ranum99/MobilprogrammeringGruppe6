@@ -1,7 +1,6 @@
 package com.example.mainactivity;
 
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -14,7 +13,6 @@ public class PageAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-
         switch (position) {
             case 0:
                 Log.d("createFragment", "returning kalendere");
@@ -22,7 +20,6 @@ public class PageAdapter extends FragmentStateAdapter {
             case 1:
                 Log.d("createFragment", "returning bursdager");
                 return new BursdagFragment();
-
         }
         Log.d("createFragment", "returning null");
         return null;

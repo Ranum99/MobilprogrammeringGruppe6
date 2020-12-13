@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class FamilieboblaNySamtaleFragment extends Fragment {
@@ -30,7 +27,6 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     Database database;
 
     private User selectedUser;
-
     private Spinner spinner;
     private NavController navController;
     private TextView conversationName;
@@ -44,7 +40,6 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         navController = Navigation.findNavController(view);
 
         database = new Database(getActivity());
@@ -93,7 +88,6 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
             Toast.makeText(getContext(),"Made conversation with: " + selectedUser.getName() + ", named: " + conversationName.getText(), Toast.LENGTH_SHORT).show();
             navController.navigateUp();
         }
-
         System.out.println("New conversation with: " + selectedUser);
     }
 

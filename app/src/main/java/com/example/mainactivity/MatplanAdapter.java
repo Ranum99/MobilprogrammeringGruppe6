@@ -8,18 +8,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanViewHolder> {
-
     private List<MatplanModel> Matplanlist;
     private LayoutInflater inflater;
     private Context context;
@@ -54,16 +52,12 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
     }
 
     public class MatplanViewHolder extends RecyclerView.ViewHolder {
-
         // Cardviewet
         private CardView card;
 
         // Elementer i cardviewet
         private TextView uke, dato;
-        private ImageButton delete;
-
-        // Variabler
-
+        private ImageView delete;
 
         public MatplanViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,7 +101,6 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                     alert1.show();
                 }
             };
-
             delete.setOnClickListener(deleteMatplan);
         }
 

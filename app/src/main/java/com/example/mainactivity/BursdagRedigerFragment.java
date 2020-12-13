@@ -18,8 +18,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ResourceBundle;
-
 public class BursdagRedigerFragment extends Fragment {
 
     public BursdagRedigerFragment() {
@@ -33,9 +31,7 @@ public class BursdagRedigerFragment extends Fragment {
     private Button lagre;
     private EditText FullName;
     private DatePicker Birthday;
-    private String name, date, familieId;
-    SharedPreferences sharedPreferences;
-
+    private String name, date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,6 +93,5 @@ public class BursdagRedigerFragment extends Fragment {
                 }
             }
         });
-
     }
 }

@@ -5,13 +5,11 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class KalenderRedigerFragment extends Fragment {
-
     public KalenderRedigerFragment() {
     }
 
@@ -211,14 +207,12 @@ public class KalenderRedigerFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-
         btnChangeActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeActivityToCalendar();
             }
         });
-
     }
 
     private void changeActivityToCalendar() {

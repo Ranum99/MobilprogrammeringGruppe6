@@ -2,22 +2,18 @@ package com.example.mainactivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapter.MatplanListeViewHolder>{
-
     private List<MatplanListeModel> MatplanListe;
     private LayoutInflater inflater;
     private MatplanListeModel MatplanToDisplay;
@@ -25,21 +21,18 @@ public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapte
     private SharedPreferences sharedPreferences;
     private Database database;
 
-    private int meID;
-
     public MatplanListeAdapter(Context context, List<MatplanListeModel> MessageListe) {
         this.inflater = LayoutInflater.from(context);
         this.MatplanListe = MessageListe;
         this.contexten = context;
     }
 
-
     @NonNull
     @Override
     public MatplanListeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         database = new Database(contexten);
         sharedPreferences = getContexten().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-        meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
+        int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
 
         View itemView = inflater.inflate(R.layout.matplan_liste_list_item, parent, false);
         return new MatplanListeViewHolder(itemView);
@@ -65,7 +58,6 @@ public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapte
     }
 
     public class MatplanListeViewHolder extends RecyclerView.ViewHolder {
-
         private TextView day;
         private EditText food;
         private CardView cardView;
@@ -74,16 +66,13 @@ public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapte
             super(itemView);
         }
 
-
         public void setMatplan(final MatplanListeModel MatplanToDisplay) {
             day = itemView.findViewById(R.id.dayOfWeek);
-
             day.setText(MatplanToDisplay.getDay());
         }
 
         public void setFood(MatplanListeModel matplanToDisplay) {
             food = itemView.findViewById(R.id.foodInMatplan);
-
             food.setText(matplanToDisplay.getFood());
         }
 

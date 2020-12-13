@@ -5,36 +5,21 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class HandlelisteFragment extends Fragment {
-
     public HandlelisteFragment() {
         // Required empty constructor
     }
@@ -75,13 +60,11 @@ public class HandlelisteFragment extends Fragment {
         setInfo();
         setUpRecyclerView();
 
-
         if (handleliste.isEmpty()) { empty.setVisibility(View.VISIBLE); }
         else { empty.setVisibility(View.GONE); }
 
         // Tar deg videre til nytt fragment
         NyHandleliste.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.handlelisteLeggTilFragment));
-
     }
 
     // Metoder for å fylle Arraylisten med data fra databasen
@@ -92,8 +75,6 @@ public class HandlelisteFragment extends Fragment {
         ArrayList<HandlelisteModel> handlelister = new ArrayList<>();
 
         while(data.moveToNext()) {
-
-
             String id = data.getString(data.getColumnIndex(Database.COLUMN_ID));
             String tittel = data.getString(data.getColumnIndex(Database.COLUMN_HANDLELISTE_TITTEL));
             int userID = data.getInt(data.getColumnIndex(Database.COLUMN_HANDLELISTE_USERID));
@@ -108,13 +89,10 @@ public class HandlelisteFragment extends Fragment {
                 handlelister.add(liste);
             }
         }
-
         this.handleliste = handlelister;
-
     }
 
     private void setUpRecyclerView() {
-
         handlelisteRecyclerView.setAdapter(new HandlelisteAdapter(getContext(), handleliste, familieID));
         handlelisteRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

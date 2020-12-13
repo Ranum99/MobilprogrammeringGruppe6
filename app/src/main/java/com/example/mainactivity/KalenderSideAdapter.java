@@ -9,16 +9,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapter.KalenderViewHolder>{
@@ -29,7 +27,6 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
     private Context contexten;
     private Database database;
     private SharedPreferences sharedPreferences;
-
     private int meID;
 
     public KalenderSideAdapter(Context context, List<KalenderSideModel> AktivitetsListe) {
@@ -37,7 +34,6 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
         this.AktivitetsListe = AktivitetsListe;
         this.contexten = context;
     }
-
 
     private void removeItem(int position) {
         AktivitetsListe.remove(position);
@@ -74,14 +70,12 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
     }
 
     public class KalenderViewHolder extends RecyclerView.ViewHolder {
-
         private TextView aktivitet, userName, datoOgTid;
-        private ImageButton delete;
+        private ImageView delete;
         private ConstraintLayout kortID;
 
         public KalenderViewHolder(@NonNull final View itemView) {
             super(itemView);
-
         }
 
         // Setter aktivitet og brukernavn på CardView
@@ -113,7 +107,6 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                     datoOfTidText += " -";
                 datoOfTidText += " (" + kalenderSideModel.getTimeTo() + ")";
             }
-
             datoOgTid.setText(datoOfTidText);
         }
 
@@ -150,7 +143,6 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                         alert1.show();
                     }
                 };
-
                 delete.setOnClickListener(onClickListener);
             }
 

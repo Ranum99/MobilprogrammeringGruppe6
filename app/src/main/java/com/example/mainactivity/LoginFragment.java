@@ -3,9 +3,7 @@ package com.example.mainactivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,11 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
@@ -89,7 +84,6 @@ public class LoginFragment extends Fragment {
                         email.setText("");
                         password.setText("");
 
-
                         if (sharedPreferences.getString(User.FAMILIE, null) == null)
                             Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
                         else {
@@ -108,7 +102,6 @@ public class LoginFragment extends Fragment {
         super.onResume();
     }
     public boolean LoginUser(String email, String password) {
-
         Cursor data = database.getData();
 
         while(data.moveToNext()) {
@@ -133,5 +126,4 @@ public class LoginFragment extends Fragment {
         Toast.makeText(getActivity(), "Ikke gyldig bruker", Toast.LENGTH_SHORT).show();
         return false;
     }
-
 }

@@ -17,11 +17,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
     private BottomNavigationView bottom;
     private Toolbar toolbar;
     private NavigationView navigation;
-    private static TextView navn;
+    private TextView navn;
     private TextView id;
     private SharedPreferences sharedPreferences;
     private Database database;
@@ -62,12 +61,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigation, controller);
         getSupportActionBar().setDisplayHomeAsUpEnabled (true);
 
-
-
         //NavigationUI.setupWithNavController(toolbar, controller, appBarConfiguration);
         NavigationUI.setupWithNavController(bottom, controller);
-
-
 
         String familieNavnet = getFamilyName();
         View header = navigation.getHeaderView(0);
@@ -77,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         id.setText("Familie-ID: " + sharedPreferences.getString(User.FAMILIE, null));
     }
 
-    public static void setText(String newFamilyName) {
+    public void setText(String newFamilyName) {
         navn.setText(newFamilyName);
     }
 

@@ -7,12 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<FamilieboblaSamtaleAdapter.FamilieboblaViewHolder>{
@@ -22,7 +20,6 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
     private FamilieboblaSamtaleModel MessageToDisplay;
     private Context contexten;
     private SharedPreferences sharedPreferences;
-
     private int meID;
 
     public FamilieboblaSamtaleAdapter(Context context, List<FamilieboblaSamtaleModel> MessageListe) {
@@ -30,7 +27,6 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
         this.MessageListe = MessageListe;
         this.contexten = context;
     }
-
 
     @NonNull
     @Override
@@ -59,14 +55,12 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
     }
 
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
-
         private TextView message;
         private CardView cardView;
 
         public FamilieboblaViewHolder(@NonNull final View itemView) {
             super(itemView);
         }
-
 
         public void setMessage(final FamilieboblaSamtaleModel SamtaleToDisplay) {
             message = itemView.findViewById(R.id.familieboblaSamtaleMessage);
@@ -88,9 +82,7 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
                 cardView.setCardBackgroundColor(Color.parseColor("#231f21"));
                 message.setTextColor(Color.parseColor("#FFFFFF"));
             }
-
             message.setText(text);
         }
     }
-
 }

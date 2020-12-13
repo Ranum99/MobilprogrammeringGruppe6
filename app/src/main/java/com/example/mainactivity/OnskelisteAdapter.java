@@ -11,24 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.OnskelisteViewHolder> {
-
     private List<OnskelisteModel> Onskelister;
     private LayoutInflater inflater;
     private OnskelisteModel modelToDisplay;
     private Context contexten;
     private Database database;
     private SharedPreferences sharedPreferences;
-
     private int meID;
 
     public OnskelisteAdapter(Context context, List<OnskelisteModel> Onskelister, int meID) {
@@ -37,7 +33,6 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         this.contexten = context;
         this.meID = meID;
     }
-
 
     private void removeItem(int position) {
         Onskelister.remove(position);
@@ -70,7 +65,6 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
     }
 
     public class OnskelisteViewHolder extends RecyclerView.ViewHolder {
-
         private TextView tittel, navn;
         private CardView card;
         private ImageButton delete;
@@ -119,7 +113,6 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
                     System.out.println(modelToDisplay.getWishlistID() + " - " + modelToDisplay.getWishlistName() + "(" + modelToDisplay.getUserToName() + ")");
                 }
             };
-
             delete.setOnClickListener(onClickListener);
         }
 
@@ -146,5 +139,4 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
                 delete.setVisibility(View.INVISIBLE);
         }
     }
-
 }
