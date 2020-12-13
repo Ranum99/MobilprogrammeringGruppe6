@@ -187,9 +187,11 @@ public class MatplanLeggTilFragment extends Fragment {
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(date);
 
+                    String dateOnStringForm = date.getDate() + "." + (date.getMonth() + 1) + "." + (date.getYear() + 1900);
+
                     String day = dagerIUka[cal.get(Calendar.DAY_OF_WEEK) - 1];
 
-                    database.makeSubMatplan(matplanID, day);
+                    database.makeSubMatplan(matplanID, day, dateOnStringForm, familyID);
 
                     date.setDate(date.getDate() + 1);
                 }

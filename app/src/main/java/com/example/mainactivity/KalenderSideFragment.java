@@ -92,7 +92,51 @@ public class KalenderSideFragment extends Fragment {
 
         ArrayList<KalenderSideModel> aktiviteter = new ArrayList<>();
 
-        Cursor data = database.getData(Database.TABLE_CALENDAR_ACTIVITY);
+        Cursor data = database.getData(Database.TABLE_OPPRETT_SUBMATPLAN);
+
+        while (data.moveToNext()) {
+            String food = data.getString(data.getColumnIndex(Database.COLUMN__SUBMATPLAN_FOOD));
+            if (food != null) {
+                if (!food.isEmpty()) {
+                    int familyID = data.getInt(data.getColumnIndex(Database.COLUMN__SUBMATPLAN_FAMILYID));
+                    if (String.valueOf(familyID).equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                        String date = data.getString(data.getColumnIndex(Database.COLUMN__SUBMATPLAN_DATE));
+                        Date fullDate = new Date(Integer.parseInt(date.split("\\.")[2]) - 1900, Integer.parseInt(date.split("\\.")[1]) - 1, Integer.parseInt(date.split("\\.")[0]));
+                        String activity = "Mat i dag: " + food;
+
+                        if (fullDate.equals(fullDateSelected)) {
+                            KalenderSideModel kalenderSideModel = new KalenderSideModel(date, null, null, null, null, activity, 0, 0, true);
+                            aktiviteter.add(kalenderSideModel);
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        data = database.getData(Database.TABLE_BIRTHDAY);
+
+        while (data.moveToNext()) {
+            int bursdagID = data.getInt(data.getColumnIndex(Database.COLUMN_ID));
+            String name = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
+            String dato = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
+            String familieID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
+
+
+            String[] dateFromSplitted = dato.split("\\.");
+            Date fullDateFrom = new Date(Integer.parseInt(dateFromSplitted[2]) - 1900, Integer.parseInt(dateFromSplitted[1]) - 1, Integer.parseInt(dateFromSplitted[0]));
+
+            if (familieID.equals(sharedPreferences.getString(User.FAMILIE, null))){
+                if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth()) {
+                    String bursdagFor = "Bursdag for " + name;
+                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, null, null, null, bursdagFor, 0, 0, true);
+                    aktiviteter.add(kalenderSideModel);
+                }
+            }
+        }
+
+
+        data = database.getData(Database.TABLE_CALENDAR_ACTIVITY);
 
         while (data.moveToNext()) {
             int activityID = data.getInt(data.getColumnIndex(Database.COLUMN_ID));
@@ -130,27 +174,6 @@ public class KalenderSideFragment extends Fragment {
                     }
                 } else if (fullDateFrom.equals(fullDateSelected)) { // Dersom det ikke er noe til dato, men aktiviteten er på datoen som er valgt blir den lagt med
                     KalenderSideModel kalenderSideModel = new KalenderSideModel(dateFrom, dateTo, timeFrom, timeTo, userName, theActivity, userID, activityID, false);
-                    aktiviteter.add(kalenderSideModel);
-                }
-            }
-        }
-
-        data = database.getData(Database.TABLE_BIRTHDAY);
-
-        while (data.moveToNext()) {
-            int bursdagID = data.getInt(data.getColumnIndex(Database.COLUMN_ID));
-            String name = data.getString(data.getColumnIndex(Database.COLUMN_NAME_BIRTHDAY));
-            String dato = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_DATE));
-            String familieID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_FAMILYID));
-
-
-            String[] dateFromSplitted = dato.split("\\.");
-            Date fullDateFrom = new Date(Integer.parseInt(dateFromSplitted[2]) - 1900, Integer.parseInt(dateFromSplitted[1]) - 1, Integer.parseInt(dateFromSplitted[0]));
-
-            if (familieID.equals(sharedPreferences.getString(User.FAMILIE, null))){
-                if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth()) {
-                    String bursdagFor = "Bursdag for " + name;
-                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, null, null, null, bursdagFor, 0, 0, true);
                     aktiviteter.add(kalenderSideModel);
                 }
             }

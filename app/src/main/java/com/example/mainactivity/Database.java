@@ -225,14 +225,18 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_OPPRETT_SUBMATPLAN = "OpprettSubMatplan";
     public static final String COLUMN__SUBMATPLAN_MATPLANID = "MatplanID";
     public static final String COLUMN__SUBMATPLAN_DAY = "Day";
+    public static final String COLUMN__SUBMATPLAN_DATE = "Date";
     public static final String COLUMN__SUBMATPLAN_FOOD = "Food";
+    public static final String COLUMN__SUBMATPLAN_FAMILYID = "FamilyID";
 
     private static final String CREATE_TABLE_OPPRETT_SUBMATPLAN = " CREATE TABLE " + TABLE_OPPRETT_SUBMATPLAN +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN__SUBMATPLAN_MATPLANID + " INTEGER, " +
             COLUMN__SUBMATPLAN_DAY + " TEXT, " +
-            COLUMN__SUBMATPLAN_FOOD + " TEXT DEFAULT NULL " +
+            COLUMN__SUBMATPLAN_DATE + " TEXT, " +
+            COLUMN__SUBMATPLAN_FOOD + " TEXT DEFAULT NULL, " +
+            COLUMN__SUBMATPLAN_FAMILYID + " INTEGER " +
             ")";
 
 
@@ -695,14 +699,16 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
-    public long makeSubMatplan(int matplanID, String day) {
+    public long makeSubMatplan(int matplanID, String day, String dateOnStringFrom, int familyID) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(COLUMN__SUBMATPLAN_MATPLANID, matplanID);
         values.put(COLUMN__SUBMATPLAN_DAY, day);
+        values.put(COLUMN__SUBMATPLAN_DATE, dateOnStringFrom);
+        values.put(COLUMN__SUBMATPLAN_FAMILYID, familyID);
 
-        System.out.println("New SUBMATPLAN (Database): " + "\nIn wishlist " + matplanID + "\nDay " + day);
+        System.out.println("New SUBMATPLAN (Database): " + "\nIn wishlist " + matplanID + "\nDay " + day + "\nDate " + dateOnStringFrom);
 
         return db.insert(TABLE_OPPRETT_SUBMATPLAN, null, values);
 
