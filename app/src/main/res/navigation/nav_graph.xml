@@ -126,16 +126,7 @@
         android:id="@+id/matplanListeFragment"
         android:name="com.example.mainactivity.MatplanListeFragment"
         android:label="Matplan"
-        tools:layout="@layout/fragment_matplan_liste" >
-        <action
-            android:id="@+id/action_matplanListeFragment_to_matplanRedigerFragment"
-            app:destination="@id/matplanRedigerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/matplanRedigerFragment"
-        android:name="com.example.mainactivity.MatplanRedigerFragment"
-        android:label="Matplan"
-        tools:layout="@layout/fragment_matplan_rediger" />
+        tools:layout="@layout/fragment_matplan_liste" />
     <fragment
         android:id="@+id/onskelisteLeggTilFragment"
         android:name="com.example.mainactivity.OnskelisteLeggTilFragment"
