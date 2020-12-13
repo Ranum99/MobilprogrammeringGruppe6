@@ -5,55 +5,44 @@
         <item
             android:id="@+id/matplanFragment"
             android:icon="@drawable/ic_action_food"
-            android:title="@string/matplan"
-            android:menuCategory="secondary" />
+            android:title="@string/matplan" />
         <item
             android:id="@+id/handlelisteFragment"
             android:icon="@drawable/ic_action_shopping"
-            android:title="@string/Handleliste"
-            android:menuCategory="secondary" />
+            android:title="@string/Handleliste" />
         <item
             android:id="@+id/onskelisteFragment"
             android:icon="@drawable/ic_action_list"
-            android:title="@string/oenskeliste"
-            android:menuCategory="secondary" />
+            android:title="@string/oenskeliste" />
         <item
             android:id="@+id/kalenderFragment"
             android:icon="@drawable/ic_action_calendar"
-            android:title="@string/kalender"
-            android:menuCategory="secondary" />
+            android:title="@string/kalender" />
         <item
             android:id="@+id/bursdagFragment"
             android:icon="@drawable/ic_action_birthday"
-            android:title="@string/birthdays"
-            android:menuCategory="secondary" />
+            android:title="@string/birthdays" />
         <item
             android:id="@+id/familieboblaFragment"
             android:icon="@drawable/ic_action_chat"
-            android:title="@string/familiebobla"
-            android:menuCategory="secondary" />
+            android:title="@string/familiebobla" />
     </group>
 
     <item
-        android:title=""
-        android:menuCategory="secondary"
-        >
+        android:title="" >
         <menu>
             <item
                 android:id="@+id/profilFragment"
                 android:icon="@drawable/ic_action_profile"
-                android:title="@string/profileNav"
-                android:menuCategory="secondary" />
+                android:title="@string/profileNav" />
             <item
                 android:id="@+id/gruppeinformasjonFragment"
                 android:icon="@drawable/ic_action_group"
-                android:title="@string/groupInfo"
-                android:menuCategory="secondary" />
+                android:title="@string/groupInfo" />
             <item
                 android:id="@+id/settingsFragment"
                 android:icon="@drawable/ic_action_settings"
-                android:title="@string/SettingsNav"
-                android:menuCategory="secondary" />
+                android:title="@string/SettingsNav" />
         </menu>
     </item>
 </menu>
