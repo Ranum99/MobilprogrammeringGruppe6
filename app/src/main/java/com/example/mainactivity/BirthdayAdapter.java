@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -77,7 +78,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
         //Elementer i cardviewet
         TextView navn, dato, aar;
-        private ImageButton delete;
+        private ImageView delete;
 
         // Variabler
         Integer splitAar, splitMaaned, splitDag;
@@ -118,7 +119,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
         }
 
         public void setDelete(final BirthdayModel birthdayToDisplay, final int position) {
-            delete = itemView.findViewById(R.id.deleteBursdag);
+            delete = itemView.findViewById(R.id.delete);
             // pop up som spør om brukeren vil slette oppføringer
             View.OnClickListener deleteBursdag = new View.OnClickListener() {
                 @Override
@@ -137,7 +138,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
                                     removeItem(position);
                                 }
                             });
-                    builder.setNegativeButton("NEI!",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
