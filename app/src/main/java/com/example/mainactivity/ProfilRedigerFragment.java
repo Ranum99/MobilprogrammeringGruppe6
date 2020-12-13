@@ -40,7 +40,7 @@ public class ProfilRedigerFragment extends Fragment {
     private EditText endreNavn, endreEmail, endreMobilnr;
     private DatePicker endreBursdag;
     private String navn, mobil, email, dato, id;
-    private Button btnChangePicture;
+    //private Button btnChangePicture;
     // PICK_PHOTO_CODE is a constant integer
     public final static int PICK_PHOTO_CODE = 1046;
 
@@ -77,7 +77,7 @@ public class ProfilRedigerFragment extends Fragment {
         endreMobilnr = view.findViewById(R.id.profilMobilnr);
         database = new Database(getActivity());
         sharedPreferences = requireContext().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
-        btnChangePicture = view.findViewById(R.id.btnChangePicture);
+        //btnChangePicture = view.findViewById(R.id.btnChangePicture);
 
         assert getArguments() != null;
         endreNavn.setText(getArguments().getString("NAVN"));
@@ -109,12 +109,12 @@ public class ProfilRedigerFragment extends Fragment {
             }
         });
 
-        btnChangePicture.setOnClickListener(new View.OnClickListener() {
+        /*btnChangePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view1) {
                 // onPickPhoto(view1);
             }
-        });
+        });*/
     }
 
     /*

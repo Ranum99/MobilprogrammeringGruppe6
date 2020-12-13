@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/profilbildeRediger"
-                android:layout_width="686dp"
-                android:layout_height="206dp"
+                android:layout_width="680dp"
+                android:layout_height="125dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/bildeinfo"
                 app:layout_constraintEnd_toEndOf="parent"
