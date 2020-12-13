@@ -98,7 +98,7 @@ public class OnskelisteListeFragment extends Fragment {
             int userID = wishes.getInt(wishes.getColumnIndex(Database.COLUMN__WISH_USER_ID));
 
             if (wishlistID == this.wishlistID) {
-                OnskelisteListeModel wish1 = new OnskelisteListeModel(wishID, wishlistID, userID, wish, isChecked);
+                OnskelisteListeModel wish1 = new OnskelisteListeModel(wishID, userID, wish, isChecked);
 
                 allWishes.add(wish1);
             }
