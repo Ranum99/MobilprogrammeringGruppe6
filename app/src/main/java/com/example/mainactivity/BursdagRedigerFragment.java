@@ -30,7 +30,7 @@ public class BursdagRedigerFragment extends Fragment {
     private Database database;
 
     // Elementer i layouten
-    private Button lagre, avbryt;
+    private Button lagre;
     private EditText FullName;
     private DatePicker Birthday;
     private String name, date, familieId;
@@ -98,11 +98,5 @@ public class BursdagRedigerFragment extends Fragment {
             }
         });
 
-        avbryt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigateUp();
-            }
-        });
     }
 }

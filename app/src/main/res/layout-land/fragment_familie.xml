@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/bliMedlem"
-        android:layout_width="300dp"
+        android:layout_width="500dp"
         android:layout_height="80dp"
         android:text="@string/joinFamilyBtn"
         app:layout_constraintBottom_toTopOf="@+id/OpprettFamilie"
@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/OpprettFamilie"
-        android:layout_width="300dp"
+        android:layout_width="500dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
         android:text="@string/createNewFamilyBtn"

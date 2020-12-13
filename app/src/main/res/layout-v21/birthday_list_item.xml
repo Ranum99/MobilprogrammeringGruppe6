@@ -37,7 +37,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/dd_mm_yyyy"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/CardviewFullName"
             app:layout_constraintTop_toBottomOf="@+id/CardviewFullName" />
@@ -48,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/fyller_x_r"
             app:layout_constraintBottom_toBottomOf="@+id/CardviewFullName"
             app:layout_constraintStart_toEndOf="@+id/CardviewFullName" />

@@ -142,6 +142,8 @@
     <string name="profileNav">Profil</string>
     <string name="groupInfo">Gruppeinformasjon</string>
     <string name="SettingsNav">Settings</string>
+    <string name="fyller_x_r">Fyller x år</string>
+    <string name="splitValue">\\.</string>
     <string name="mat">Mat</string>
     <string name="datoer">datoer</string>
     <string-array name="Ukedager">

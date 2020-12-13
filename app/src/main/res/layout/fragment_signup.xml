@@ -46,19 +46,19 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autofillHints="@string/passord2"
+                android:drawableStart="@drawable/ic_password"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="12dp"
+                android:hint="@string/gjentaPassord"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                android:autofillHints="@string/passord2"
-                android:drawableLeft="@drawable/ic_password"
-                android:drawablePadding="12dp"
-                android:hint="@string/gjentaPassord"
-                android:imeOptions="actionDone"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-                android:drawableStart="@drawable/ic_password">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/SignupGjentaPassordInput"
@@ -74,26 +74,24 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
+                android:layout_marginTop="8dp"
+                android:autofillHints="@string/passord"
+                android:drawableStart="@drawable/ic_password"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="12dp"
+                android:hint="@string/passord"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                android:layout_marginTop="8dp"
-                android:autofillHints="@string/passord"
-                android:drawableLeft="@drawable/ic_password"
-                android:drawablePadding="12dp"
-                android:hint="@string/passord"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
-                android:drawableStart="@drawable/ic_password">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/SignupOprettPassordInput"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -103,26 +101,24 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
+                android:layout_marginTop="8dp"
+                android:autofillHints="@string/loginEmail"
+                android:drawableStart="@drawable/ic_email"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="12dp"
+                android:hint="@string/loginEmail"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                android:layout_marginTop="8dp"
-                android:autofillHints="@string/loginEmail"
-                android:drawableLeft="@drawable/ic_email"
-                android:drawablePadding="12dp"
-                android:hint="@string/loginEmail"
                 app:layout_constraintEnd_toEndOf="@+id/BirthdayDate"
                 app:layout_constraintStart_toStartOf="@+id/BirthdayDate"
-                app:layout_constraintTop_toBottomOf="@+id/BirthdayDate"
-                android:drawableStart="@drawable/ic_email" >
+                app:layout_constraintTop_toBottomOf="@+id/BirthdayDate">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/SignupEmailInput"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
                     android:inputType="textEmailAddress"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -144,14 +140,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
+                android:hint="@string/mobilnummerLogin"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                android:layout_marginTop="8dp"
-                android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
-                android:hint="@string/mobilnummerLogin"
-                android:imeOptions="actionDone"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
@@ -160,8 +155,8 @@
                     android:id="@+id/SignupMobilnummerInput"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
                     android:imeOptions="actionDone"
+                    android:inputType="phone"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,14 +165,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
+                android:layout_marginTop="16dp"
+                android:autofillHints="@string/fullt_navn"
+                android:hint="@string/fullt_navn"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                android:layout_marginTop="16dp"
-                android:autofillHints="@string/fullt_navn"
-                android:hint="@string/fullt_navn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SignupLogo">
@@ -186,7 +180,6 @@
                     android:id="@+id/SignupNavnInput"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
                     android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
