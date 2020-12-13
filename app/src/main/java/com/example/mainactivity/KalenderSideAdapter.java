@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -102,7 +103,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
 
             String datoOfTidText = kalenderSideModel.getDateFrom();
 
-            if (kalenderSideModel.getTimeFrom() != null)
+            if (kalenderSideModel.getTimeFrom() != null && !kalenderSideModel.getIsBirthday())
                 datoOfTidText += " (" + kalenderSideModel.getTimeFrom() + ")";
 
             if (kalenderSideModel.getDateTo() != null)
