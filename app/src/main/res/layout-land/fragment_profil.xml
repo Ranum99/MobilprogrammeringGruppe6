@@ -15,7 +15,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="36dp"
         android:contentDescription="@string/bildeinfo"
-        android:src="@drawable/ic_launcher_background"
+        app:srcCompat="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"

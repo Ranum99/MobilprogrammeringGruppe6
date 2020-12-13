@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/element"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -24,7 +23,8 @@
             android:text="@string/fullt_navn"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/CardviewDate"
@@ -37,7 +37,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/CardviewFullName"
-            app:layout_constraintTop_toBottomOf="@+id/CardviewFullName" />
+            app:layout_constraintTop_toBottomOf="@+id/CardviewFullName"
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:id="@+id/CardviewAge"
@@ -47,7 +48,8 @@
             android:layout_marginBottom="3dp"
             android:text="@string/fyller_x_r"
             app:layout_constraintBottom_toBottomOf="@+id/CardviewFullName"
-            app:layout_constraintStart_toEndOf="@+id/CardviewFullName" />
+            app:layout_constraintStart_toEndOf="@+id/CardviewFullName"
+            android:layout_marginStart="8dp" />
 
         <ImageView
             android:id="@+id/delete"
