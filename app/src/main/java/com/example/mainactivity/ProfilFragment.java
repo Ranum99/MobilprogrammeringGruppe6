@@ -66,7 +66,7 @@ public class ProfilFragment extends Fragment {
 
         while (data.moveToNext()) {
             userID.setText("Bruker id: " + data.getString(data.getColumnIndex(Database.COLUMN_ID)));
-            mobilnr.setText("Mobilnummer: " + data.getString(data.getColumnIndex(Database.COLUMN_MOBILNR)));
+            mobilnr.setText("Mobilnummer: +47 " + data.getString(data.getColumnIndex(Database.COLUMN_MOBILNR)));
             fodselsdato.setText("Fødselsdato: " + data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY)));
             email.setText("Email: " + data.getString(data.getColumnIndex(Database.COLUMN_EMAIL)));
             navn.setText(data.getString(data.getColumnIndex(Database.COLUMN_NAME)));
