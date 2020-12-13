@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -67,7 +68,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
     public class OnskelisteViewHolder extends RecyclerView.ViewHolder {
         private TextView tittel, navn;
         private CardView card;
-        private ImageButton delete;
+        private ImageView delete;
 
         public OnskelisteViewHolder(@NonNull View itemView) {
             super(itemView);
