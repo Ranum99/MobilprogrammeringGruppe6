@@ -154,12 +154,13 @@ public class MatplanLeggTilFragment extends Fragment {
                 calFrom.setTime(fromDate);
                 calTo.setTime(toDate);
 
-                if (calFrom.get(Calendar.WEEK_OF_YEAR) != calTo.get(Calendar.WEEK_OF_YEAR)) {
-                    Toast.makeText(getActivity(), "Datoene må være i samme uke", Toast.LENGTH_SHORT).show();
+                int week = calFrom.get(Calendar.WEEK_OF_YEAR);
+                int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                if (daysBetween > 7) {
+                    Toast.makeText(getActivity(), "Det må maks være syv dager mellom til og fra dato", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                int week = calFrom.get(Calendar.WEEK_OF_YEAR);
-                int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 
                 boolean addToDatabase = false;
 
@@ -182,6 +183,7 @@ public class MatplanLeggTilFragment extends Fragment {
             }
 
             private void addDaysToMatplan(int matplanID, int daysBetween) {
+                Date dateFromTemp = fromDate;
                 Date date = fromDate;
 
                 for (int i = 0; i < daysBetween; i++) {
@@ -200,6 +202,7 @@ public class MatplanLeggTilFragment extends Fragment {
 
                     date.setDate(date.getDate() + 1);
                 }
+                fromDate = dateFromTemp;
             }
 
             private boolean sjekkOfMatplanFinnesFraFor(int week) {
