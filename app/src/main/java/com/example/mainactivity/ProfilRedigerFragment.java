@@ -44,6 +44,8 @@ public class ProfilRedigerFragment extends Fragment {
     // PICK_PHOTO_CODE is a constant integer
     public final static int PICK_PHOTO_CODE = 1046;
 
+    private int PICK_PROFILE_IMAGE_REQUEST = 1;
+
     public ProfilRedigerFragment() {
     }
 
@@ -110,11 +112,12 @@ public class ProfilRedigerFragment extends Fragment {
         btnChangePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view1) {
-                onPickPhoto(view1);
+                // onPickPhoto(view1);
             }
         });
     }
 
+    /*
     // Trigger gallery selection for a photo
     public void onPickPhoto(View view) {
         // Create intent for picking a photo from the gallery
@@ -161,4 +164,5 @@ public class ProfilRedigerFragment extends Fragment {
             ivPreview.setImageBitmap(selectedImage);
         }
     }
+     */
 }
