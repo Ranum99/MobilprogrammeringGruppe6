@@ -54,7 +54,7 @@ public class FamilieOpprettFragment extends Fragment {
         boolean firstTime = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE).getBoolean(tutorialKey, true);
 
         if (firstTime) {
-            runTutorial();
+            //runTutorial();
             this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE).edit().putBoolean(tutorialKey, false).apply();
         }
 
