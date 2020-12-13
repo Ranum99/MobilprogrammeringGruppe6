@@ -146,6 +146,7 @@
     <string name="splitValue">\\.</string>
     <string name="mat">Mat</string>
     <string name="datoer">datoer</string>
+    <string name="endreBilde">Endre profilbilde</string>
     <string-array name="Ukedager">
         <item>Mandag</item>
         <item>Tirsdag</item>

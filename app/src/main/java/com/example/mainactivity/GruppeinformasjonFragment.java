@@ -122,7 +122,7 @@ public class GruppeinformasjonFragment extends Fragment {
             if (kickCheck) {
                 Toast.makeText(getContext(),"Familienavnet ble endret til " + newFamilyName, Toast.LENGTH_SHORT).show();
                 familieNavnInput.setText("");
-                //TODO: Må oppdatere tittel i MainFragment
+                MainActivity.setText(newFamilyName);
             } else
                 Toast.makeText(getContext(),"Kunne ikke endre familienavnet", Toast.LENGTH_SHORT).show();
         } else

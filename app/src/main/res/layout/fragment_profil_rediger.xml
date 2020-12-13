@@ -21,6 +21,20 @@
             android:layout_height="wrap_content"
             tools:context=".ProfilRedigerFragment">
 
+            <Button
+                android:id="@+id/btnChangePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:text="@string/endreBilde"
+                app:layout_constraintBottom_toBottomOf="@+id/profilbildeRediger"
+                app:layout_constraintEnd_toStartOf="@+id/profilbildeRediger"
+                app:layout_constraintHorizontal_bias="0.13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/profilbildeRediger"
+                app:layout_constraintVertical_bias="0.483" />
+
             <ImageView
                 android:id="@+id/profilbildeRediger"
                 android:layout_width="wrap_content"
@@ -28,6 +42,7 @@
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/bildeinfo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.709"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@drawable/ic_launcher_background" />
