@@ -1,9 +1,14 @@
 package com.example.mainactivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -12,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import android.provider.Settings;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -21,9 +27,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import com.google.android.material.snackbar.Snackbar;
+import java.util.Objects;
 
 public class LoginFragment extends Fragment {
-
     public LoginFragment() {}
 
     Database database;
@@ -40,7 +47,7 @@ public class LoginFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
@@ -80,15 +87,23 @@ public class LoginFragment extends Fragment {
                 String passordet = password.getText().toString();
 
                 if (emailen.length() != 0 && passordet.length() != 0) {
-                    if (LoginUser(emailen, passordet)) {
-                        email.setText("");
-                        password.setText("");
+                    if(isNetworkAvailable() == false) {
+                        Snackbar.make(view.findViewById(R.id.Login), "Du har ikke nett",
+                                Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
+                    else {
+                        if (LoginUser(emailen, passordet)) {
 
-                        if (sharedPreferences.getString(User.FAMILIE, null) == null)
-                            Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
-                        else {
-                            Intent intent = new Intent(getContext(), MainActivity.class);
-                            startActivity(intent);
+                            email.setText("");
+                            password.setText("");
+
+                            if (sharedPreferences.getString(User.FAMILIE, null) == null)
+                                Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
+                            else {
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
                         }
                     }
                 } else
@@ -126,4 +141,12 @@ public class LoginFragment extends Fragment {
         Toast.makeText(getActivity(), "Ikke gyldig bruker", Toast.LENGTH_SHORT).show();
         return false;
     }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
 }

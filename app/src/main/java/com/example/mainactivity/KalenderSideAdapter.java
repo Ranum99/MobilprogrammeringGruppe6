@@ -96,7 +96,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
 
             String datoOfTidText = kalenderSideModel.getDateFrom();
 
-            if (kalenderSideModel.getTimeFrom() != null)
+            if (kalenderSideModel.getTimeFrom() != null && !kalenderSideModel.getIsBirthday())
                 datoOfTidText += " (" + kalenderSideModel.getTimeFrom() + ")";
 
             if (kalenderSideModel.getDateTo() != null)
