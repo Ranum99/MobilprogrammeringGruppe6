@@ -36,12 +36,8 @@ public class ProfilFragment extends Fragment {
         // Required empty constructor
     }
 
-    private Database database;
     private SharedPreferences sharedPreferences;
-    private TextView userID, mobilnr, fodselsdato, email, navn;
     private String id, mobil, dato, aemail,anavn;
-    private Button endreProfilBtn,loggUt;
-    private ImageView photo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,15 +53,15 @@ public class ProfilFragment extends Fragment {
 
         // Gets that instance saved in LoginFragment for autologin
         sharedPreferences = requireActivity().getSharedPreferences(User.SESSION, MODE_PRIVATE);
-        database = new Database(getActivity());
+        Database database = new Database(getActivity());
         Cursor data = database.getData(Database.TABLE_USER, Integer.parseInt(sharedPreferences.getString(User.ID, null)));
 
-        userID = view.findViewById(R.id.ProfilBrukerId);
-        mobilnr = view.findViewById(R.id.ProfilMobilNummer);
-        fodselsdato = view.findViewById(R.id.ProfilFodselsdato);
-        email = view.findViewById(R.id.email);
-        navn = view.findViewById(R.id.navn);
-        photo = view.findViewById(R.id.profilbilde);
+        TextView userID = view.findViewById(R.id.ProfilBrukerId);
+        TextView mobilnr = view.findViewById(R.id.ProfilMobilNummer);
+        TextView fodselsdato = view.findViewById(R.id.ProfilFodselsdato);
+        TextView email = view.findViewById(R.id.email);
+        TextView navn = view.findViewById(R.id.navn);
+        ImageView photo = view.findViewById(R.id.profilbilde);
         photo.setImageResource(R.drawable.ic_baseline_account_circle_24);
 
         while (data.moveToNext()) {
@@ -84,7 +80,7 @@ public class ProfilFragment extends Fragment {
         System.out.println(id + ", " + mobil + ", " + dato + ", " + aemail + ", " + anavn);
 
         // Endre profil
-        endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
+        Button endreProfilBtn = view.findViewById(R.id.btnEndreProfil);
         endreProfilBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +96,7 @@ public class ProfilFragment extends Fragment {
         });
 
         //Logg ut
-        loggUt = view.findViewById(R.id.LoggutBtn);
+        Button loggUt = view.findViewById(R.id.LoggutBtn);
         loggUt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
