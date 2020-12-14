@@ -4,16 +4,15 @@
     android:id="@+id/element"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
+    android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
-    android:background="@color/backgroundColor"
     app:cardElevation="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardBursdag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp">
+        android:background="@color/backgroundListItem">
 
         <TextView
             android:id="@+id/CardviewFullName"
@@ -23,7 +22,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="@string/fullt_navn"
-            android:textColor="@color/textColor"
+            android:textColor="@color/headlineCardView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="16dp" />
@@ -37,7 +36,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/dd_mm_yyyy"
             android:textStyle="bold"
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/CardviewFullName"
             app:layout_constraintTop_toBottomOf="@+id/CardviewFullName"
@@ -50,7 +49,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="3dp"
             android:text="@string/fyller_x_r"
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/CardviewFullName"
             app:layout_constraintStart_toEndOf="@+id/CardviewFullName"
             android:layout_marginStart="8dp" />
@@ -67,7 +66,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_delete" />
+            app:srcCompat="@drawable/ic_action_delete"
+            app:tint="@color/tint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
