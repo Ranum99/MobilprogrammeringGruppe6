@@ -11,7 +11,6 @@
     <color name="calenderBackgroundColor">#FFFFFF</color>
     <color name="backgroundListItem">#FCFCFC</color>
     <color name="headlineCardView">#000000</color>
-    <!-- <color name="tintDeleteButton">#888888</color> -->
 
     <color name="Grey">#888888</color>
     <color name="ic_launcher_background">#FFFFFF</color>
@@ -24,4 +23,23 @@
     <color name="onBackground">#000000</color>
     <color name="onSurface">#FFFFFF</color>
     <color name="onPrimary">#121212</color>
+
+    <!-- Datepicker -->
+    <color name="headerBackground">#11999e</color>
+    <color name="calenderBackground">#FCFCFC</color>
+    <color name="selectedDay">#03A9F4</color>
+    <color name="daysOfTheMonth">#000000</color>
+    <color name="daysOfTheWeek">#000000</color>
+    <color name="buttonColor">#11999e</color>
+    <color name="backgroundTint">#FFFFFF</color>
+
+    <!-- AlertDialog -->
+    <color name="backgroundColorAlert">#FCFCFC</color>
+    <color name="textColorAlert">#000000</color>
+    <color name="buttonColorAlert">#11999e</color>
+
+    <!-- TimePickerDialog -->
+    <color name="TimePickerAccent">#03A9F4</color>
+    <color name="TimePickerColorControl">#11999e</color>
+    <color name="backgroundColorTimePicker">#FFFFFF</color>
 </resources>

@@ -121,10 +121,10 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                 View.OnClickListener onClickListener = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(contexten, R.style.MyDialogStyle);
                         builder.setTitle("Slett aktivitet")
-                                .setMessage("Er du sikker på at du vil slette denne aktiviteten med?");
-                        builder.setPositiveButton("Jepp, bare å slette",
+                                .setMessage("Er du sikker på at du vil slette denne aktiviteten?");
+                        builder.setPositiveButton("Ja",
                                 new DialogInterface.OnClickListener() {
                                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                                     @Override
@@ -136,7 +136,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                                         Log.i("KalenderSideAdapter", "Aktiviteten ble slettet");
                                     }
                                 });
-                        builder.setNegativeButton("NEI! Var bare en prank",
+                        builder.setNegativeButton("Nei",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int id) {
@@ -176,7 +176,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
             kortID.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(contexten, R.style.MyDialogStyle);
                     builder.setTitle("Endre aktivitet")
                             .setMessage("Vil du endre aktiviteten: " + kalenderSideModel.getTheActivity() + "?");
                     builder.setPositiveButton("Ja",

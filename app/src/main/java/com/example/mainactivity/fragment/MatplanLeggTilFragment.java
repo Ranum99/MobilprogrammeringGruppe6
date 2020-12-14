@@ -85,7 +85,7 @@ public class MatplanLeggTilFragment extends Fragment {
                     mDay = fromDate.getDate();
                 }
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {

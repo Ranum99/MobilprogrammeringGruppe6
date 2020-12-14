@@ -96,7 +96,7 @@ public class KalenderRedigerFragment extends Fragment {
                 mMonth = fullDateFrom.getMonth();
                 mDay = fullDateFrom.getDate();
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -131,7 +131,7 @@ public class KalenderRedigerFragment extends Fragment {
                     mDay = fullDateTo.getDate();
                 }
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {

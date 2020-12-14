@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="my_dialog_theme" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="colorAccent">@color/headerBackground</item>                    <!--header background-->
+        <item name="android:windowBackground">@color/calenderBackground</item>     <!--calendar background-->
+        <item name="android:colorControlActivated">@color/selectedDay</item>       <!--selected day-->
+        <item name="android:textColorPrimary">@color/daysOfTheMonth</item>         <!--days of the month-->
+        <item name="android:textColorSecondary">@color/daysOfTheWeek</item>        <!--days of the week-->
+        <item name="android:buttonBarPositiveButtonStyle">@style/DatePickerButtonStyle</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DatePickerButtonStyle</item>
+    </style>
+
+    <style name="DatePickerButtonStyle" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/buttonColor</item>
+        <item name="android:backgroundTint">@color/backgroundTint</item>
+    </style>
+
+    <style name="MyDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/backgroundColorAlert</item>
+        <item name="android:textColorPrimary">@color/textColorAlert</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/TimePickerAccent</item>
+        <item name="colorControlNormal">@color/TimePickerColorControl</item>
+        <item name="android:background">@color/backgroundColorTimePicker</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+</resources>
