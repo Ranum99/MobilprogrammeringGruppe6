@@ -4,7 +4,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/colorTextBlack</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="backgroundColor">@color/backgroundListItem</item>
+        <!-- <item name="android:tint">@color/tintDeleteButton</item> -->
+        <item name="android:actionMenuTextColor">@color/textColorPrimary</item>
     </style>
 
     <!-- Datepicker -->

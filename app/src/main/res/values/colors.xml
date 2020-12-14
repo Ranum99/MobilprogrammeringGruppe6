@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <!-- Grønn -->
+    <!-- For Normal/Light Mode -->
     <color name="colorPrimary">#11999e</color>
-    <color name="colorPrimaryDark">#006a70</color>
+    <color name="colorPrimaryDark">#03A9F4</color>
     <color name="colorAccent">#03A9F4</color>
-    <color name="colorTextBlack">#000000</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="backgroundColor">#FCFCFC</color>
+    <color name="textColor">#000000</color>
+    <color name="calenderBackgroundColor">#FFFFFF</color>
+    <color name="backgroundListItem">#FCFCFC</color>
+    <color name="headlineCardView">#000000</color>
+    <!-- <color name="tintDeleteButton">#888888</color> -->
+
     <color name="Grey">#888888</color>
     <color name="ic_launcher_background">#FFFFFF</color>
 
-    <!-- For Normal/Light Mode -->
-    <color name="backgroundColor">#FCFCFC</color>
-    <color name="textColor">#000000</color>
+    <color name="background">#FCFCFC</color>
+    <color name="surface">#FCFCFC</color>
+    <color name="primary">#03A9F4</color>
+    <color name="secondary">#03A9F4</color>
+    <color name="onBackground">#000000</color>
+    <color name="onSurface">#03A9F4</color>
+    <color name="onPrimary">#121212</color>
 </resources>
