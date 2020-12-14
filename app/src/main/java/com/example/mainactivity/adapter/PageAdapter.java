@@ -17,13 +17,13 @@ public class PageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                Log.d("createFragment", "returning kalendere");
-                return  new KalenderSideFragment();
+                Log.i("PageAdapter", "Returning kalendere");
+                return new KalenderSideFragment();
             case 1:
-                Log.d("createFragment", "returning bursdager");
+                Log.i("PageAdapter", "Returning bursdager");
                 return new BursdagFragment();
         }
-        Log.d("createFragment", "returning null");
+        Log.e("PageAdapter", "Returning null");
         return null;
     }
 

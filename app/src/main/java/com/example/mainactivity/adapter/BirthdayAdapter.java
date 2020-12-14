@@ -27,12 +27,14 @@ import java.util.List;
 
 public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.BirthdayViewHolder>{
 
+    // Variabler
     private List<BirthdayModel> BirthdayList;
     private LayoutInflater inflater;
     private Context context;
     private Database database;
     private String meID;
 
+    // Konstruktør
     public BirthdayAdapter(Context context, List<BirthdayModel> BirthdayList) {
         this.inflater = LayoutInflater.from(context);
         this.BirthdayList = BirthdayList;
@@ -42,10 +44,12 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     @NonNull
     @Override
     public BirthdayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
+        // Henter databasen og shared preferences. Setter brukerID
         database = new Database(context);
         SharedPreferences sharedPreferences = context.getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
         meID = sharedPreferences.getString(User.ID, null);
 
+        // Fyller opp listen med bursdager
         View itemView = inflater.inflate(R.layout.birthday_list_item, parent, false);
         return new BirthdayViewHolder(itemView);
     }
@@ -55,10 +59,13 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
     public void onBindViewHolder(@NonNull BirthdayViewHolder viewHolder, int position) {
         BirthdayModel birthdayToDisplay = BirthdayList.get(position);
 
+        // Setter hvilken bursdag som skal vises
         viewHolder.setBirthday(birthdayToDisplay, position);
 
+        // Sjekker om brukeren er administrator av familien
         Cursor check = database.checkIfUserIsAdminOfFamily(birthdayToDisplay.getFamilieId(), meID);
 
+        // Brukeren får kun redigere eller slette bursdager de selv har laget
         if ((birthdayToDisplay.getMadeByUserID() != null && birthdayToDisplay.getMadeByUserID().equals(meID)) || (check.getCount() > 0 && birthdayToDisplay.getMadeByUserID() != null)) {
             viewHolder.setDelete(birthdayToDisplay, position);
             viewHolder.setEdit(birthdayToDisplay, position);
@@ -74,11 +81,10 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
 
     // Indre klasse
     public class BirthdayViewHolder extends RecyclerView.ViewHolder {
-
         // CardViwet
         private CardView card;
 
-        //Elementer i cardviewet
+        // Elementer i cardviewet
         TextView navn, dato, aar;
         ImageView delete;
 
@@ -101,6 +107,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             aar = itemView.findViewById(R.id.CardviewAge);
 
             FamilieId = birthdayToDisplay.getFamilieId();
+
             // Regner ut personens alder
             String datoinput = birthdayToDisplay.getDato();
             String[] parts = datoinput.split(context.getString(R.string.splitValue));
@@ -117,7 +124,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             navn.setText(birthdayToDisplay.getNavn());
             dato.setText("Født: " + birthdayToDisplay.getDato());
             aar.setText("Fyller " + String.valueOf(period.getYears()+1) + " år");
-
         }
 
         public void setDelete(final BirthdayModel birthdayToDisplay, final int position) {
@@ -156,13 +162,14 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             delete.setOnClickListener(deleteBursdag);
         }
 
-        //Fjerner og oppdaterer element fra recyclerviewet
+        // Fjerner og oppdaterer element fra recyclerviewet
         private void removeItem(int position) {
             BirthdayList.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, BirthdayList.size());
         }
 
+        // Setter verdiene for valgt bursdag og sender dem til et nytt fragment
         public void setEdit(final BirthdayModel birthdayToDisplay, int position) {
             card = itemView.findViewById(R.id.element);
             View.OnClickListener edit = new View.OnClickListener() {
@@ -179,6 +186,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             card.setOnClickListener(edit);
         }
 
+        // Skjuler slett knappen hvis brukeren ikke har laget bursdagen selv
         public void hideElements() {
             delete = itemView.findViewById(R.id.delete);
             delete.setVisibility(View.GONE);

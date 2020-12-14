@@ -15,6 +15,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,6 +117,7 @@ public class ProfilFragment extends Fragment {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();
                                 editor.apply();
+                                Log.i("ProfilFragment","Brukeren logget ut");
                                 Intent intent = new Intent(getContext(), LoginActivity.class);
                                 startActivity(intent);
                             }
@@ -123,6 +126,7 @@ public class ProfilFragment extends Fragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
+                                Log.i("ProfilFragment", "Brukeren ble ikke logget ut");
                                 dialog.cancel();
                             }
                         });

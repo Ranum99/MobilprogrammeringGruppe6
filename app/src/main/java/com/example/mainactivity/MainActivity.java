@@ -51,17 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
     ConnectivityManager.NetworkCallback connectivityCallback;
 
-
-
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(isNetworkAvailable() == false) {
+        if(!isNetworkAvailable()) {
             Snackbar.make(findViewById(R.id.Main), "Du har ikke nett", Snackbar.LENGTH_SHORT).show();
+            Log.e("MainActivity", "Brukeren har ikke nettverkstilkobling");
         }
 
         database = new Database(this);
@@ -113,13 +111,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAvailable(Network network) {
                 isConnected = true;
-                Log.d(TAG, "INTERNET CONNECTED");
+                Log.i("MainActivity", "INTERNET CONNECTED");
             }
 
             @Override
             public void onLost(Network network) {
                 isConnected = false;
-                Log.d(TAG, "INTERNET LOST");
+                Log.e("MainActivity", "INTERNET LOST");
             }
         };
 
@@ -170,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         if (!isConnected) {
             // SHOW ANY ACTION YOU WANT TO SHOW
             // WHEN WE ARE NOT CONNECTED TO INTERNET/NETWORK
-            Log.d(TAG, " NO NETWORK!");
+            Log.e("MainActivity", " NO NETWORK!");
             // if Network is not connected we will register a network callback to  monitor network
             connectivityManager.registerNetworkCallback(
                     new NetworkRequest.Builder()

@@ -4,12 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
@@ -87,7 +87,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
                                     // Sletter varen
                                     database = new Database(context);
                                     database.deleteRowFromTableById(Database.TABLE_HANDLELISTE_LISTE, modelToDisplay.getId());
-                                    Toast.makeText(context, "Varen " + modelToDisplay.getVare() + " er slettet", Toast.LENGTH_SHORT).show();
+                                    Log.i("HandlelisteVareAdapter", "Varen " + modelToDisplay.getVare() + " er slettet");
                                     removeItem(position);
                                 }
                             });
@@ -96,6 +96,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Går ut av popup'en og tilbake til siden uten å gjøre noe
+                                    Log.i("HandlelisteVareAdapter", "Varen " + modelToDisplay.getVare() + " ble ikke slettet");
                                     dialog.cancel();
                                 }
                             });

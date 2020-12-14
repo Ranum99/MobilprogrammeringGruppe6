@@ -12,6 +12,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -142,11 +144,13 @@ public class MatplanLeggTilFragment extends Fragment {
             public void onClick(View v) {
                 if (dateFromString.isEmpty() || dateToString.isEmpty()) {
                     Toast.makeText(getActivity(), "Fyll inn alle feltene", Toast.LENGTH_SHORT).show();
+                    Log.e("MatplanLeggTil", "Brukeren fylte ikke inn alle feltene");
                     return;
                 }
 
                 if (toDate.before(fromDate)) {
                     Toast.makeText(getActivity(), "Til dato må være før/lik som fra dato", Toast.LENGTH_SHORT).show();
+                    Log.e("MatplanLeggTil", "Brukeren fylte inn til dato som ikke er før/lik fra dato");
                     return;
                 }
 
@@ -160,6 +164,7 @@ public class MatplanLeggTilFragment extends Fragment {
 
                 if (daysBetween > 7) {
                     Toast.makeText(getActivity(), "Det må maks være syv dager mellom til og fra dato", Toast.LENGTH_SHORT).show();
+                    Log.e("MatplanLeggTil", "Det er over syv dager mellom til og fra dato");
                     return;
                 }
                 boolean addToDatabase = false;
@@ -174,11 +179,12 @@ public class MatplanLeggTilFragment extends Fragment {
                 }
 
                 if (addToDatabase) {
-                    Toast.makeText(getActivity(), "Matplan i uke " + week + " er opprettet", Toast.LENGTH_SHORT).show();
+                    Log.i("MatplanLeggTilFragment", "Matplan i uke " + week + " er opprettet");
                     addDaysToMatplan(matplanID, daysBetween);
                     navController.navigateUp();
                 } else {
                     Toast.makeText(getActivity(), "Matplan i uke " + week + " finnes allerede fra før på disse datoene", Toast.LENGTH_SHORT).show();
+                    Log.e("MatplanLeggTilFragment", "Matplan for denne uken finnes allerede");
                 }
             }
 

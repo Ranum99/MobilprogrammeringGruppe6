@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +78,7 @@ public class SignupFragment extends Fragment {
                 if (validUserInfo(name, email, birthday, mobilnr, password, passwordConfirm)) {
                     if (!checkIfUserallreadyIsMember(email)) {
                         Toast.makeText(getActivity(), "Mailen finnes fra før", Toast.LENGTH_SHORT).show();
+                        Log.e("SignupFragment", "Bruker skrev en mail som finnes fra før");
                         return;
                     }
                     if (AddUser(name, email, birthday , mobilnr, password)) {
@@ -85,7 +88,7 @@ public class SignupFragment extends Fragment {
                         String idTilBruker = "1";
 
                         while(data.moveToNext()) {
-                            System.out.println("ID of user: " + data.getString(data.getColumnIndex(Database.COLUMN_ID)));
+                            Log.i("SignupFragment", "ID of user: " + data.getString(data.getColumnIndex(Database.COLUMN_ID)));
                             idTilBruker = data.getString(data.getColumnIndex(Database.COLUMN_ID));
                         }
 
@@ -135,11 +138,12 @@ public class SignupFragment extends Fragment {
         boolean insertData = database.addUserToDatabase(name, email, birthday, mobilnr, password);
 
         if (insertData ) {
-            Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+            Log.i("SignupFragment", "Data successfully inserted");
             return true;
         }
         else {
             Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+            Log.e("SignupFragment", "Something went wrong");
             return false;
         }
     }
@@ -150,14 +154,17 @@ public class SignupFragment extends Fragment {
 
         if (name.length() == 0 || email.length() == 0 || password.length() == 0 || passwordConfirm.length() == 0 || birthday.length() == 0 || mobilnr.length() == 0) {
             Toast.makeText(getActivity(), "Fyll ut feltene", Toast.LENGTH_SHORT).show();
+            Log.e("SignupFragment", "Brukeren fylte ikke ut feltene");
             return false;
         }
         if (!matcher.find()) {
             Toast.makeText(getActivity(), "Du må fylle inn en riktig mail", Toast.LENGTH_SHORT).show();
+            Log.e("SignupFragment", "Brukeren fylte ikke inn riktig email");
             return false;
         }
         if (!password.equals(passwordConfirm)) {
             Toast.makeText(getActivity(), "Passordene er ikke like", Toast.LENGTH_SHORT).show();
+            Log.e("SignupFragment", "Brukeren skrev to ulike passord");
             return false;
         }
         return true;

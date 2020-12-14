@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,7 +121,8 @@ public class FamilieboblaSamtaleFragment extends Fragment {
             setMessagesInConversation();
             setUpRecyclerView();
         } else {
-            Toast.makeText(getContext(),"Kunne ikke sende meldingen: " + messageToSend.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Det oppstod en feil!", Toast.LENGTH_SHORT).show();
+            Log.e("FamilieboblaSamtale", "Kunne ikke sende meldingen: " + messageToSend.getText().toString());
         }
     }
 

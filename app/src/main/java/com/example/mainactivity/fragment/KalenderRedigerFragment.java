@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -227,7 +229,7 @@ public class KalenderRedigerFragment extends Fragment {
             changeInDatabase = database.editActivityInCalandar(activityID, dateFrom, dateTo, timeFrom, timeTo, txtActivity.getText().toString());
 
         if (changeInDatabase) {
-            Toast.makeText(getContext(),"Changed activity: " + txtActivity.getText().toString() + " in calendar", Toast.LENGTH_SHORT).show();
+            Log.i("KalenderRediger", "Changed activity: " + txtActivity.getText().toString() + " in calendar");
             navController.navigateUp();
         }
 
@@ -248,10 +250,12 @@ public class KalenderRedigerFragment extends Fragment {
     private boolean sjekkInput() {
         if (txtActivity.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Fyll inn aktivitet", Toast.LENGTH_SHORT).show();
+            Log.e("KalenderRediger", "Bruker fylte ikke inn en aktivitet");
             return false;
         }
         if (dateFrom == null) {
             Toast.makeText(getActivity(), "Fyll inn dato fra", Toast.LENGTH_SHORT).show();
+            Log.e("KalenderRediger", "Bruker fylte ikke inn dato fra");
             return false;
         }
         if (timeFrom == null) {
@@ -268,6 +272,7 @@ public class KalenderRedigerFragment extends Fragment {
             }
             if (fullDateFrom.after(fullDateTo)) {
                 Toast.makeText(getActivity(), "Dato/tid fra må være tidligere en dato/tid til", Toast.LENGTH_SHORT).show();
+                Log.e("KalenderRediger", "Bruker fylte inn dato/tid som er tidligere enn dato/tid til");
                 return false;
             }
         }

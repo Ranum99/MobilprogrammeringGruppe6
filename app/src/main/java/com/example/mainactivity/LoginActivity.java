@@ -1,5 +1,6 @@
 package com.example.mainactivity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 
@@ -19,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if(haveNetworkConnection() == false) {
+        if(!haveNetworkConnection()) {
             showDialog();
         }
 
@@ -53,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 })
                 .setNegativeButton("Connect to Cellular", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.P)
                     public void onClick(DialogInterface dialog, int id) {
                         startActivity(new Intent(Settings.ACTION_DATA_USAGE_SETTINGS));
                     }

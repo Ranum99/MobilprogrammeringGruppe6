@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,7 @@ public class LoginFragment extends Fragment {
                         Snackbar.make(view.findViewById(R.id.Login), "Du har ikke nett",
                                 Snackbar.LENGTH_SHORT)
                                 .show();
+                                Log.e("LoginFragment", "Brukeren har ikke nettverkstilkobling");
                     }
                     else {
                         if (LoginUser(emailen, passordet)) {
@@ -109,6 +111,7 @@ public class LoginFragment extends Fragment {
                     }
                 } else
                     Toast.makeText(getActivity(), "Du må fylle ut alle feltene", Toast.LENGTH_SHORT).show();
+                    Log.e("LoginFragment", "Brukeren fylte ikke ut alle feltene");
             }
         });
     }
@@ -140,6 +143,7 @@ public class LoginFragment extends Fragment {
             }
         }
         Toast.makeText(getActivity(), "Ikke gyldig bruker", Toast.LENGTH_SHORT).show();
+        Log.e("LoginFragment", "Brukeren er ikke gyldig");
         return false;
     }
 

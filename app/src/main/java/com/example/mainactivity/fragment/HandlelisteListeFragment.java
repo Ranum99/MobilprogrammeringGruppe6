@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,13 +100,15 @@ public class HandlelisteListeFragment extends Fragment {
 
         if( !varelinje.getText().toString().isEmpty()) {
             addToDatabase = database.addvarerHandleliste(varelinje.getText().toString(), id);
+            Log.i("HandlelisteListe", "En vare ble lagt til i listen");
         }
         else {
             Toast.makeText(getContext(),"Du må skrive inn en vare først", Toast.LENGTH_SHORT).show();
+            Log.e("HandlelisteListe", "Brukeren skrev ikke inn en vare");
         }
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Added vare: " + varelinje.getText().toString(), Toast.LENGTH_SHORT).show();
+            Log.i("HandlelisteListe", "Added vare : " + varelinje.getText().toString());
             varelinje.setText("");
             setInfo();
             setUpRecyclerView();

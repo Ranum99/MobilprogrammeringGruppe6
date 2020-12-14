@@ -10,6 +10,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,11 +77,10 @@ public class BursdagLeggTilFragment extends Fragment {
                 if (name.length() == 0) {
                     // NAVN IKKE OK
                     Toast.makeText(getActivity(), "Fyll inn navn", Toast.LENGTH_SHORT).show();
-                    System.out.println("Navn er ikke fylt inn korrekt");
+                    Log.e("BursdagLeggTilFragment", "Navn er ikke fylt inn korrekt");
                 } else {
                     // NAVN OK
-                    System.out.println("Navn er fylt inn korrekt: " + name);
-                    System.out.println(date);
+                    Log.i("BursdagLeggTilFragment", "Navn er fylt inn korrekt: " + name + ". Dato: " + date);
 
                     InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
                     mgr.hideSoftInputFromWindow(FullName.getWindowToken(), 0);

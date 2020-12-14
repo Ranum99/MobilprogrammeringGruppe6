@@ -2,12 +2,12 @@ package com.example.mainactivity.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -97,9 +97,9 @@ public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapte
                     boolean updateFood = database.updateFoodInMatplan(matplanToDisplay.getSubMatplanID(), food.getText().toString());
 
                     if (updateFood) {
-                        Toast.makeText(contexten, "Matrett på " + matplanToDisplay.getDay() + " ble oppdatert til " + food.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.i("MatplanListeAdapter", "Matrett på " + matplanToDisplay.getDay() + " ble oppdatert til " + food.getText().toString());
                     } else
-                        Toast.makeText(contexten,"Matrett på " + matplanToDisplay.getDay() + " ble IKKE oppdatert", Toast.LENGTH_SHORT).show();
+                        Log.e("MatplanListeAdapter", "Matrett på " + matplanToDisplay.getDay() + " ble IKKE oppdatert");
                 }
             });
         }

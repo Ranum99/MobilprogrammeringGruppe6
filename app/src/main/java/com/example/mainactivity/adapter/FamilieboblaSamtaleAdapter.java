@@ -17,7 +17,7 @@ import com.example.mainactivity.model.User;
 import java.util.List;
 
 public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<FamilieboblaSamtaleAdapter.FamilieboblaViewHolder>{
-
+    // Variabler
     private List<FamilieboblaSamtaleModel> MessageListe;
     private LayoutInflater inflater;
     private FamilieboblaSamtaleModel MessageToDisplay;
@@ -25,6 +25,7 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
     private SharedPreferences sharedPreferences;
     private int meID;
 
+    // Konstruktør
     public FamilieboblaSamtaleAdapter(Context context, List<FamilieboblaSamtaleModel> MessageListe) {
         this.inflater = LayoutInflater.from(context);
         this.MessageListe = MessageListe;
@@ -58,6 +59,7 @@ public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<Familiebobl
     }
 
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
+        // Variabler
         private TextView message;
         private CardView cardView;
 

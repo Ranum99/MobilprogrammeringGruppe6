@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,14 +102,14 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
                                     database = new Database(contexten);
                                     database.deleteRowFromTableById(Database.TABLE_WISHLIST , String.valueOf(modelToDisplay.getWishlistID()));
                                     removeItem(position);
-                                    System.out.println("Ønskelisten er slettet");
+                                    Log.i("OnskelisteAdapter", "Ønskelisten er slettet");
                                 }
                             });
                     builder.setNegativeButton("NEI! Var bare en prank",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    System.out.println("Ønskelisten ble IKKE slettet");
+                                    Log.i("OnskelisteAdapter", "Ønskelisten ble ikke slettet");
                                     dialog.cancel();
                                 }
                             });

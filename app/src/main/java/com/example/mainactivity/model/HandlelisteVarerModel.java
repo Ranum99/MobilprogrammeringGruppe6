@@ -22,15 +22,7 @@ public class HandlelisteVarerModel {
         return vare;
     }
 
-    public void setVare(String vare) {
-        this.vare = vare;
-    }
-
     public boolean isChecked() {
         return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
     }
 }

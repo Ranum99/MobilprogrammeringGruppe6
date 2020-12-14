@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,9 +122,10 @@ public class OnskelisteListeFragment extends Fragment {
             addToDatabase = database.addWishToWishlist(wishlistID, onskeToAdd.getText().toString(), meID);
         else
             Toast.makeText(getContext(),"Du må skrive inn et ønske først", Toast.LENGTH_SHORT).show();
+            Log.e("OnskelisteListe", "Brukeren skrev ikke inn et ønske");
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Added wish: " + onskeToAdd.getText().toString(), Toast.LENGTH_SHORT).show();
+            Log.i("OnskelisteListe", "Added wish: " + onskeToAdd.getText().toString());
             onskeToAdd.setText("");
             setWishesInWishlist();
             setUpRecyclerView();

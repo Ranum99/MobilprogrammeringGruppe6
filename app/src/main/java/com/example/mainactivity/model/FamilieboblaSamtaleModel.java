@@ -15,14 +15,6 @@ public class FamilieboblaSamtaleModel {
         return userFromId;
     }
 
-    public int getIden() {
-        return messageId;
-    }
-
-    public int getConversationId() {
-        return conversationId;
-    }
-
     public String getMessage() {
         return message;
     }

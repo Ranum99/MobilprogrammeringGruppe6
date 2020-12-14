@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,10 +64,10 @@ public class OnskelisteLeggTilFragment extends Fragment {
             addToDatabase = database.makeNewWishlist(meID, wishlistName.getText().toString());
         else
             Toast.makeText(getActivity(), "Du må sette et navn på ønskelisten", Toast.LENGTH_SHORT).show();
+            Log.e("OnskelisteLeggTil", "Brukeren satte ikke navn på ønskelisten");
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Made wishlist for: " + sharedPreferences.getString(User.NAME, null) + ", named: " + wishlistName.getText(), Toast.LENGTH_SHORT).show();
-            System.out.println("Made wishlist for: " + sharedPreferences.getString(User.NAME, null) + ", named: " + wishlistName.getText());
+            Log.i("OnskelisteLeggTil", "Made wishlist for: " + sharedPreferences.getString(User.NAME, null) + ", named: " + wishlistName.getText());
             navController.navigateUp();
         }
     }

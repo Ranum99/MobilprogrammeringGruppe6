@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -197,7 +199,7 @@ public class KalenderLeggTilFragment extends Fragment {
             addToDatabase = database.addActivityToCalandar(dateFrom, dateTo, timeFrom, timeTo, meID, txtActivity.getText().toString());
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Added activity: " + txtActivity.getText().toString() + " to calendar", Toast.LENGTH_SHORT).show();
+            Log.i("KalenderLeggTil", "Added activity: " + txtActivity.getText().toString() + " to calendar");
             navController.navigateUp();
         }
     }
@@ -209,10 +211,12 @@ public class KalenderLeggTilFragment extends Fragment {
     private boolean sjekkInput() {
         if (txtActivity.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Fyll inn aktivitet", Toast.LENGTH_SHORT).show();
+            Log.e("KalenderLeggTil", "Bruker fylte ikke inn en aktivitet");
             return false;
         }
         if (dateFrom == null) {
             Toast.makeText(getActivity(), "Fyll inn dato fra", Toast.LENGTH_SHORT).show();
+            Log.e("KalenderLeggTil", "Bruker fylte ikke inn dato fra");
             return false;
         }
         if (timeFrom == null) {
@@ -228,6 +232,7 @@ public class KalenderLeggTilFragment extends Fragment {
             }
             if (fullDateFrom.after(fullDateTo)) {
                 Toast.makeText(getActivity(), "Dato/tid fra må være tidligere en dato/tid til", Toast.LENGTH_SHORT).show();
+                Log.e("KalenderLeggTil", "Bruker fylte inn en fra dato/tid som er tidligere enn dato/tid til");
                 return false;
             }
         }

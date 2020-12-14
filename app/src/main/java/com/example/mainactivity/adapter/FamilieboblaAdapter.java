@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,19 +22,22 @@ import com.example.mainactivity.R;
 
 import java.util.List;
 
-public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapter.FamilieboblaViewHolder>{
+public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapter.FamilieboblaViewHolder> {
+    // Variabler
     private List<FamilieboblaModel> SamtaleListe;
     private LayoutInflater inflater;
     private FamilieboblaModel SamtaleToDisplay;
     private Context contexten;
     private Database database;
 
+    // Konstruktør
     public FamilieboblaAdapter(Context context, List<FamilieboblaModel> SamtaleListe) {
         this.inflater = LayoutInflater.from(context);
         this.SamtaleListe = SamtaleListe;
         this.contexten = context;
     }
 
+    // Sletter valgt samtale
     private void removeItem(int position) {
         SamtaleListe.remove(position);
         notifyItemRemoved(position);
@@ -63,6 +67,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
 
     public class FamilieboblaViewHolder extends RecyclerView.ViewHolder {
 
+        // Variabler
         private TextView navn, userName;
         private ConstraintLayout card;
         private ImageView delete;
@@ -98,14 +103,14 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                                     database = new Database(contexten);
                                     database.deleteRowFromTableById(Database.TABLE_CONVERSATION ,SamtaleToDisplay.getIden());
                                     removeItem(position);
-                                    System.out.println("Samtalen er slettet");
+                                    Log.i("FamilieboblaAdapter", "Samtalen er slettet");
                                 }
                             });
                     builder.setNegativeButton("NEI! Var bare en prank",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    System.out.println("Samtalen ble IKKE slettet");
+                                    Log.i("FamilieboblaAdapter", "Samtalen ble IKKE slettet");
                                     dialog.cancel();
                                 }
                             });

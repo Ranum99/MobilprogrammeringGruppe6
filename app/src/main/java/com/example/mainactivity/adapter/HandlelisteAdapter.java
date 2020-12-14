@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,6 +100,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
                                     // Sletter bursdagen
                                     database = new Database(context);
                                     database.deleteRowFromTableById(Database.TABLE_HANDLELISTE, modelToDisplay.getId());
+                                    Log.i("HandlelisteAdapter", "Bursdagen ble slettet");
                                     removeItem(position);
                                 }
                             });
@@ -107,6 +109,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Går ut av popup'en og tilbake til siden uten å gjøre noe
+                                    Log.i("HandlelisteAdapter", "Bursdagen ble ikke slettet");
                                     dialog.cancel();
                                 }
                             });

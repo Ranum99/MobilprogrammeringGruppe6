@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +95,7 @@ public class FamilieBliMedlemFragment extends Fragment {
                     startActivity(intent);
                 } else {
                     Toast.makeText(getActivity(), "Familie id eller passord er feil", Toast.LENGTH_SHORT).show();
+                    Log.e("FamilieBliMedlemFragmen", "Familie id eller passord er feil");
                 }
             }
         });
@@ -107,9 +110,7 @@ public class FamilieBliMedlemFragment extends Fragment {
             familyId = Integer.parseInt(bliMedlemAvFamilie.getString(0));
             familieEksisterer = true;
         }
-
-        System.out.println("Familie eksisterer: " + familieEksisterer);
-
+        Log.e("FamilieBliMedlemFragmen", "Familie eksisterer:" + familieEksisterer);
         return familieEksisterer;
     }
 }

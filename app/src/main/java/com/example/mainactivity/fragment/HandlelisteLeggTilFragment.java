@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +56,7 @@ public class HandlelisteLeggTilFragment extends Fragment {
             public void onClick(View v) {
                 if(tittel.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Du må sette en tittel på handlelisten", Toast.LENGTH_SHORT).show();
+                    Log.e("HandlelisteLeggTil", "Brukeren satte ikke en tittel på handlelisten");
                 }
                 else {
                     database.weekHandleliste(tittel.getText().toString(), meID);
@@ -63,6 +66,7 @@ public class HandlelisteLeggTilFragment extends Fragment {
 
                     mgr.hideSoftInputFromWindow(tittel.getWindowToken(), 0);
                     navController.navigateUp();
+                    Log.i("HandlelisteLeggTil", "Tittel til handleliste opprettet");
                 }
             }
         });

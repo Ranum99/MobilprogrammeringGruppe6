@@ -13,6 +13,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +52,6 @@ public class BursdagFragment extends Fragment{
     // ArrayList for å lagre dataen fra databasen
     private ArrayList<BirthdayModel> bursdager = new ArrayList<>();
 
-    private Integer splitAarc1, splitMaanedc1, splitDagc1, splitAarc2, splitMaanedc2, splitDagc2;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_bursdag, container, false);
@@ -83,10 +83,10 @@ public class BursdagFragment extends Fragment{
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("ID", sharedPreferences.getString(User.FAMILIE, null));
+                Log.i("BurdagFragment", "Sender bruker videre til nytt fragment");
                 navController.navigate(R.id.bursdagLeggTilFragment);
             }
         });
-
     }
 
     // Metode for å fylle ArrayListene med data fra databasen.

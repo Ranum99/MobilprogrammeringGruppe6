@@ -6,12 +6,12 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -132,14 +132,14 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                                         database = new Database(contexten);
                                         database.deleteRowFromTableById(Database.TABLE_CALENDAR_ACTIVITY , String.valueOf(kalenderSideModel.getActivityID()));
                                         removeItem(position);
-                                        System.out.println("Aktiviteten er slettet");
+                                        Log.i("KalenderSideAdapter", "Aktiviteten ble slettet");
                                     }
                                 });
                         builder.setNegativeButton("NEI! Var bare en prank",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int id) {
-                                        System.out.println("Aktiviteten ble IKKE slettet");
+                                        Log.i("KalenderSideAdapter", "Aktiviteten ble ikke slettet");
                                         dialog.cancel();
                                     }
                                 });
@@ -163,7 +163,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                 kortID.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        Toast.makeText(contexten, "Oida, denne har ikke du rettigheter til å ordne med", Toast.LENGTH_SHORT).show();
+                        Log.i("KalenderSideAdapter", "Oida, denne har ikke du rettigheter til å ordne med");
                         return true;
                     }
                 });
@@ -190,6 +190,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                                     bundle.putString("timeTo", kalenderSideModel.getTimeTo());
                                     bundle.putString("theActivity", kalenderSideModel.getTheActivity());
                                     bundle.putInt("activityID", kalenderSideModel.getActivityID());
+                                    Log.i("KalenderSideAdapter", "Sender deg videre til redigering av kalender aktivitet");
                                     Navigation.findNavController(kortID).navigate(R.id.action_kalenderFragment2_to_kalenderRedigerFragment, bundle);
                                 }
                             });
@@ -197,6 +198,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
+                                    Log.i("KalenderSideAdapter", "Du blir ikke sendt videre til redigering av kalender aktivitet");
                                     dialog.cancel();
                                 }
                             });

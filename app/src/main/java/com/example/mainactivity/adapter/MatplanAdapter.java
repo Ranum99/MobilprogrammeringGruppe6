@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +91,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                                     database = new Database(context);
                                     database.deleteRowFromTableById(Database.TABLE_MATPLAN, String.valueOf(matplanToDisplay.getMatplanID()));
                                     removeItem(position);
+                                    Log.i("MatplanAdapter", "Matplanen ble slettet");
                                 }
                             });
                     builder.setNegativeButton("NEI!",
@@ -97,6 +99,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Går ut av popup'en og tilbake til siden uten å gjøre noe
+                                    Log.i("MatplanAdapter", "Matplanen ble ikke slettet");
                                     dialog.cancel();
                                 }
                             });

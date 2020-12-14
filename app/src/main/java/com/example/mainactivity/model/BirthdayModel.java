@@ -44,15 +44,7 @@ public class BirthdayModel {
         return familieId;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
     public String getMadeByUserID() {
         return madeByUserID;
-    }
-
-    public void setFamilieId(String familieId) {
-        this.familieId = familieId;
     }
 }

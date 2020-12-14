@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +76,7 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
                     makeNewSamtale();
                 else
                     Toast.makeText(getActivity(), "Du må velge en person å starte samtale med", Toast.LENGTH_SHORT).show();
+                    Log.e("FamilieboblaNySamtale", "Bruker valgte ikke en person å starte samtale med");
             }
         });
     }
@@ -87,13 +90,13 @@ public class FamilieboblaNySamtaleFragment extends Fragment {
         if (!conversationName.getText().toString().isEmpty())
             addToDatabase = database.makeNewConversation(meID, selectedUser, conversationName.getText().toString());
         else
-            Toast.makeText(getActivity(), "Du må sette et navn til samtalen", Toast.LENGTH_SHORT).show();
+            Log.e("FamilieboblaNySamtale", "Bruker satte ikke ett navn til samtalen");
 
         if (addToDatabase >= 0) {
-            Toast.makeText(getContext(),"Made conversation with: " + selectedUser.getName() + ", named: " + conversationName.getText(), Toast.LENGTH_SHORT).show();
+            Log.i("FamilieboblaNySamtale", "Made conversation with: " + selectedUser.getName() + ", named: " + conversationName.getText());
             navController.navigateUp();
         }
-        System.out.println("New conversation with: " + selectedUser);
+        Log.i("FamilieboblaNySamtale", "New conversation with: " + selectedUser);
     }
 
     private void addUsersToDropdown() {

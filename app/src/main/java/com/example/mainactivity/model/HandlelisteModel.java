@@ -16,10 +16,6 @@ public class HandlelisteModel {
         return tittel;
     }
 
-    public void setTittel(String tittel) {
-        this.tittel = tittel;
-    }
-
     public String getId() {
         return id;
     }
@@ -30,10 +26,6 @@ public class HandlelisteModel {
 
     public Integer getFamilieID() {
         return familieID;
-    }
-
-    public void setFamilieID(Integer familieID) {
-        this.familieID = familieID;
     }
 
     public String getNavn() {

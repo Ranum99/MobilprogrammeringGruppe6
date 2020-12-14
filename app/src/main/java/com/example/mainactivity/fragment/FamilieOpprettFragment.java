@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,12 +99,13 @@ public class FamilieOpprettFragment extends Fragment {
                     editor.putInt("key", autoSave);
                     editor.apply();
 
-                    Toast.makeText(getActivity(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+                    Log.i("FamilieOpprettFragment", "Data successfully inserted");
 
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);
                 } else
                     Toast.makeText(getActivity(), "Passordene må være like", Toast.LENGTH_SHORT).show();
+                    Log.e("FamilieOpprettFragment", "Passordene er ikke like");
             }
         });
     }

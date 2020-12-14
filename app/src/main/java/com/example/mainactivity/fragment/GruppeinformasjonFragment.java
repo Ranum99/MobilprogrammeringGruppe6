@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,6 +102,7 @@ public class GruppeinformasjonFragment extends Fragment {
 
         if (selectedUser == null) {
             Toast.makeText(getContext(),"Du må velge en bruker å kaste ut", Toast.LENGTH_SHORT).show();
+            Log.e("Gruppeinformasjon", "Bruker valgte ikke en bruker å kaste ut");
             return;
         }
         if (check.getCount() > 0) {
@@ -107,12 +110,14 @@ public class GruppeinformasjonFragment extends Fragment {
             if (updateCheck) {
                 addUsersToDropdown(fillUsersInFamily());
                 addUsersToListView(fillUsersInFamily());
-                Toast.makeText(getContext(),"Kastet ut " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
+                Log.i("Gruppeinformasjon", "Kastet ut " + selectedUser.getName());
             } else {
                 Toast.makeText(getContext(),"Kunne ikke kaste ut " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
+                Log.e("Gruppeinformasjon", "Kunne ikke kaste ut " + selectedUser.getName());
             }
         } else
             Toast.makeText(getContext(),"Bare admin kan kaste ut andre brukere", Toast.LENGTH_SHORT).show();
+            Log.w("Gruppeinformasjon", "Bare admin kan kaste ut andre brukere");
     }
 
     private void changeFamilyName(int familyID, String newFamilyName, String myID) {
@@ -121,13 +126,15 @@ public class GruppeinformasjonFragment extends Fragment {
         if (check.getCount() > 0) {
             boolean kickCheck = database.updateFamilyName(familyID, newFamilyName);
             if (kickCheck) {
-                Toast.makeText(getContext(),"Familienavnet ble endret til " + newFamilyName, Toast.LENGTH_SHORT).show();
+                Log.i("Gruppeinformasjon", "Familienavnet ble endret til " + newFamilyName);
                 familieNavnInput.setText("");
                 MainActivity.setText(newFamilyName);
             } else
                 Toast.makeText(getContext(),"Kunne ikke endre familienavnet", Toast.LENGTH_SHORT).show();
+                Log.e("Gruppeinformasjon", "Kunne ikke endre familienavnet");
         } else
             Toast.makeText(getContext(),"Bare admin kan endre familienavnet", Toast.LENGTH_SHORT).show();
+            Log.w("Gruppeinformasjon", "Bare admin kan endre familienavnet");
     }
 
     private void addUsersToDropdown(ArrayList<User> usersInFamily) {
