@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 public class HandlelisteModel {
     private String tittel, id, navn;

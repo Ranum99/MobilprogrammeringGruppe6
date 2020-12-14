@@ -1,9 +1,11 @@
-package com.example.mainactivity;
+package com.example.mainactivity.adapter;
 
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+import com.example.mainactivity.BursdagFragment;
+import com.example.mainactivity.KalenderSideFragment;
 
 public class PageAdapter extends FragmentStateAdapter {
     public PageAdapter(Fragment fragment) {

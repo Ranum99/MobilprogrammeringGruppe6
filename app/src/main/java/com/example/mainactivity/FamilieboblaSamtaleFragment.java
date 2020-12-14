@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mainactivity.adapter.FamilieboblaSamtaleAdapter;
+import com.example.mainactivity.model.FamilieboblaSamtaleModel;
+
 import java.util.ArrayList;
 
 public class FamilieboblaSamtaleFragment extends Fragment {

@@ -13,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.mainactivity.adapter.MatplanListeAdapter;
+import com.example.mainactivity.model.MatplanListeModel;
+
 import java.util.ArrayList;
 
 public class MatplanListeFragment extends Fragment {

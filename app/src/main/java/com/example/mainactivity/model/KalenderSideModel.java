@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 public class KalenderSideModel {
     private String dateFrom, dateTo, timeFrom, timeTo, userName, theActivity;

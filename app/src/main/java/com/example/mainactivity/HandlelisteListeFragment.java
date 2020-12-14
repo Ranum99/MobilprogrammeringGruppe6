@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mainactivity.adapter.HandlelisteVareAdapter;
+import com.example.mainactivity.model.HandlelisteVarerModel;
+
 import java.util.ArrayList;
 
 public class HandlelisteListeFragment extends Fragment {

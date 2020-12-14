@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 public class OnskelisteModel {
     private int wishlistID, userToID;

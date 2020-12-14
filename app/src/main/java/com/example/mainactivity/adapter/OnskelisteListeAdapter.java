@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,6 +17,10 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.mainactivity.Database;
+import com.example.mainactivity.model.OnskelisteListeModel;
+import com.example.mainactivity.R;
+import com.example.mainactivity.User;
 import java.util.List;
 import java.util.Objects;
 

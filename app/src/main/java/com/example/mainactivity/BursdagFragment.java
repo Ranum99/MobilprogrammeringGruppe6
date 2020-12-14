@@ -17,6 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.mainactivity.adapter.BirthdayAdapter;
+import com.example.mainactivity.model.BirthdayModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

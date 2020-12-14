@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 public class FamilieboblaModel {
     private String samtaleID, userToName, samtaleName;

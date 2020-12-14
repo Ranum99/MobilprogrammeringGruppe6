@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mainactivity.adapter.OnskelisteListeAdapter;
+import com.example.mainactivity.model.OnskelisteListeModel;
 import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 

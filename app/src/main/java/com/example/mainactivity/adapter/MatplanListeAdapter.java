@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.mainactivity.Database;
+import com.example.mainactivity.model.MatplanListeModel;
+import com.example.mainactivity.R;
+import com.example.mainactivity.User;
 import java.util.List;
 
 public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapter.MatplanListeViewHolder>{

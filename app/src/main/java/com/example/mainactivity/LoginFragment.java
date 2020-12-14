@@ -87,7 +87,7 @@ public class LoginFragment extends Fragment {
                 String passordet = password.getText().toString();
 
                 if (emailen.length() != 0 && passordet.length() != 0) {
-                    if(isNetworkAvailable() == false) {
+                    if(!isNetworkAvailable()) {
                         Snackbar.make(view.findViewById(R.id.Login), "Du har ikke nett",
                                 Snackbar.LENGTH_SHORT)
                                 .show();
@@ -147,6 +147,4 @@ public class LoginFragment extends Fragment {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,6 +16,10 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.mainactivity.Database;
+import com.example.mainactivity.model.HandlelisteModel;
+import com.example.mainactivity.R;
+import com.example.mainactivity.User;
 import java.util.List;
 
 public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.HandlelisteViewHolder> {

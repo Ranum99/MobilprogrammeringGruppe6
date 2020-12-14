@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 public class FamilieboblaSamtaleModel {
     private int messageId, userFromId, conversationId;
