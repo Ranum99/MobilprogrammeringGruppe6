@@ -604,6 +604,19 @@ public class Database extends SQLiteOpenHelper {
         long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
         return result != -1;
     }
+    // OPPDATER FAMILIE I BURSDAG
+    public boolean updateBirthdayFAMILY(String id, String newFamily) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_BIRTHDAY_FAMILYID, newFamily);
+
+        Log.d(TAG, "Birthday updated: " + id + ", " + newFamily + ", " + " in " + TABLE_BIRTHDAY);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
+        return result != -1;
+    }
 
     //                MATPLAN
 

@@ -107,10 +107,12 @@ public class GruppeinformasjonFragment extends Fragment {
             return;
         }
         if (check.getCount() > 0) {
-            boolean updateCheck = database.updateUserFamily(selectedUser.getId(), 0);
+            boolean updateCheck = database.updateUserFamily(selectedUser.getId(), null);
             if (updateCheck) {
-                addUsersToDropdown(fillUsersInFamily());
-                addUsersToListView(fillUsersInFamily());
+                usersInFamily = fillUsersInFamily();
+                addUsersToDropdown(usersInFamily);
+                addUsersToListView(usersInFamily);
+                database.updateBirthdayFAMILY(String.valueOf(selectedUser.id), null);
                 Log.i("Gruppeinformasjon", "Kastet ut " + selectedUser.getName());
             } else {
                 Toast.makeText(getContext(),"Kunne ikke kaste ut " + selectedUser.getName(), Toast.LENGTH_SHORT).show();
@@ -140,29 +142,24 @@ public class GruppeinformasjonFragment extends Fragment {
     }
 
     private void addUsersToDropdown(ArrayList<User> usersInFamily) {
-        if (usersInFamily.size() > 0) {
+        ArrayAdapter<User> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, usersInFamily);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            ArrayAdapter<User> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, usersInFamily);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            medlemDropdown.setAdapter(adapter);
-        }
+        medlemDropdown.setAdapter(adapter);
     }
 
     private void addUsersToListView(ArrayList<User> usersInFamily) {
-        if (usersInFamily.size() > 0) {
-            ArrayList<User> arrayList = new ArrayList<>();
+        ArrayList<User> arrayList = new ArrayList<>();
 
-            User me = new User(Integer.parseInt(sharedPreferences.getString(User.ID, null)), sharedPreferences.getString(User.NAME, null));
+        User me = new User(Integer.parseInt(sharedPreferences.getString(User.ID, null)), sharedPreferences.getString(User.NAME, null));
 
-            // Setter meg selv som øverste på listen
-            arrayList.add(me);
-            arrayList.addAll(usersInFamily);
+        // Setter meg selv som øverste på listen
+        arrayList.add(me);
+        arrayList.addAll(usersInFamily);
 
-            ArrayAdapter<User> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter<User> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arrayList);
 
-            listeOverMedlemmer.setAdapter(arrayAdapter);
-        }
+        listeOverMedlemmer.setAdapter(arrayAdapter);
     }
 
     // Henter medlemmer av familie
@@ -171,11 +168,13 @@ public class GruppeinformasjonFragment extends Fragment {
         ArrayList<User> arrayList = new ArrayList<>();
 
         while(data.moveToNext()) {
-            if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null))
-                    && data.getString(6).equals(sharedPreferences.getString(User.FAMILIE, null))) {
-                int id = data.getInt(0);
-                String name = data.getString(1);
-                arrayList.add( new User(id,name));
+            if (data.getString(6) != null) {
+                if (!data.getString(0).equals(sharedPreferences.getString(User.ID, null))
+                        && data.getString(6).equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                    int id = data.getInt(0);
+                    String name = data.getString(1);
+                    arrayList.add( new User(id,name));
+                }
             }
         }
         return arrayList;
