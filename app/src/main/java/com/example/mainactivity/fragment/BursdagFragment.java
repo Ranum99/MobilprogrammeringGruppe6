@@ -13,13 +13,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.mainactivity.Database;
 import com.example.mainactivity.R;
 import com.example.mainactivity.adapter.BirthdayAdapter;
@@ -122,6 +120,20 @@ public class BursdagFragment extends Fragment{
 
     // Metode for å sette opp recyclerviewet med cardview for hver rad i databasen
     private void setUpRecyclerView() {
+
+
+        Comparator<BirthdayModel> Day = new Comparator<BirthdayModel>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public int compare(BirthdayModel c1, BirthdayModel c2) {
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M.uuuu");
+                LocalDate today = LocalDate.now();
+                LocalDate d1 = LocalDate.parse(c1.getDato(), format);
+                LocalDate d2 = LocalDate.parse(c2.getDato(), format);
+                return d1.getDayOfMonth() - d2.getDayOfMonth();
+            }
+        };
+        Collections.sort(bursdager, Day);
+
         Comparator<BirthdayModel> byMonth = new Comparator<BirthdayModel>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             public int compare(BirthdayModel c1, BirthdayModel c2) {
@@ -132,8 +144,6 @@ public class BursdagFragment extends Fragment{
             }
         };
         Collections.sort(bursdager, byMonth);
-
-
 
         bursdagRecyclerView.setAdapter(new BirthdayAdapter(getContext(), bursdager));
         bursdagRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
