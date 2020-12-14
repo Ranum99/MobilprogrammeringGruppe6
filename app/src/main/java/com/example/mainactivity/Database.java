@@ -9,16 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class Database extends SQLiteOpenHelper {
-
     private static final String TAG = "Database";
     SharedPreferences sharedPreferences;
 
     // Felles for alle tabeller
     public static final String COLUMN_ID = "id";
 
-    /*
-                    USER
-     */
+    //              USER
+
     // Tabell USER m/ kolonner
     public static final String TABLE_USER = "Users3";
     public static final String COLUMN_NAME = "name";
@@ -40,9 +38,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_FAMILY + " INTEGER " +
             ")";
 
-    /*
-                    FAMILY
-     */
+    //                FAMILY
+
     // Tabell FAMILY m/ kolonner
     public static final String TABLE_FAMILY = "family";
     public static final String COLUMN_FAMILY_NAME = "familyName";
@@ -58,9 +55,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_FAMILY_ADMIN_ID + " INTEGER " +
             ")";
 
-    /*
-                    CONVERSATION
-     */
+    //                CONVERSATION
+
     // Tabell CONVERSATION
     public static final String TABLE_CONVERSATION = "Conversation";
     public static final String COLUMN__USER_FROM = "userFrom";
@@ -76,9 +72,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__CONVERSATION_NAME + " TEXT " +
             ")";
 
-    /*
-                    MESSAGES
-     */
+    //                MESSAGES
+
     // Tabell MESSAGES
     public static final String TABLE_MESSAGES = "Messages";
     public static final String COLUMN__MESSAGE_PART_OF_CONVERSATIONID = "conversationID";
@@ -94,9 +89,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__MESSAGE_TEXT + " TEXT " +
             ")";
 
-    /*
-                    WISHLIST
-     */
+    //                WISHLIST
+
     // Tabell WISHLIST
     public static final String TABLE_WISHLIST = "Wishlist";
     public static final String COLUMN__USER_ID_WISHLIST = "userIDWithlist";
@@ -110,9 +104,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__NAME_WISHLIST + " TEXT " +
             ")";
 
-    /*
-                    WISH
-     */
+    //                WISH
+
     // Tabell WISH
     public static final String TABLE_WISH = "Wish";
     public static final String COLUMN__WISHLIST_ID = "wishlistID";
@@ -130,9 +123,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__WISH_USER_ID + " INTEGER " +
             ")";
 
-    /*
-                    BIRTHDAY
-     */
+    //                BIRTHDAY
+
     // Tabell BIRTHDAY m/ kolonner
     public static final String TABLE_BIRTHDAY = "Bursdag";
     public static final String COLUMN_NAME_BIRTHDAY = "Navn";
@@ -152,10 +144,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_BIRTHDAY_MADEBY_USERID + " TEXT " +
             ")";
 
+    //                HANDLELISTE
 
-    /*
-                    HANDLELISTE
-     */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE = "Handleliste";
     public static final String COLUMN_HANDLELISTE_TITTEL = "Tittel";
@@ -169,10 +159,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_HANDLELISTE_USERID + " INTEGER " +
             ")";
 
+    //                HANDLELISTE-LISTE
 
-    /*
-                    HANDLELISTE-LISTE
-     */
     // Tabell HANDLELISTE m/ kolonner
     public static final String TABLE_HANDLELISTE_LISTE = "HandlelisteListe";
     public static final String COLUMN_HANDLELISTELISTE_ID = "ListeID";
@@ -188,9 +176,8 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_HANDLELISTELISTE_CHECKED + " INTEGER DEFAULT 0 " +
             ")";
 
-    /*
-                    MATPLAN
-     */
+    //                MATPLAN
+
     // Tabell MATPLAN m/ kolonner
     public static final String TABLE_MATPLAN = "Matplan";
     public static final String COLUMN_MATPLAN_FROM_DATE = "FromDate";
@@ -208,8 +195,7 @@ public class Database extends SQLiteOpenHelper {
             ")";
 
 
-            // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
-
+    // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
     public static final String TABLE_OPPRETT_MATPLAN = "OpprettMatplan";
     public static final String COLUMN_STARTDAG = "Startdag";
     public static final String COLUMN_ANTALL_DAGER = "Antalldager";
@@ -221,9 +207,7 @@ public class Database extends SQLiteOpenHelper {
             COLUMN_ANTALL_DAGER + " TEXT " +
             ")";
 
-
-            // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
-
+    // MATPLAN - LEGGER INN ANTALL DAGER OG STARTDAG
     public static final String TABLE_OPPRETT_SUBMATPLAN = "OpprettSubMatplan";
     public static final String COLUMN__SUBMATPLAN_MATPLANID = "MatplanID";
     public static final String COLUMN__SUBMATPLAN_DAY = "Day";
@@ -241,10 +225,7 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__SUBMATPLAN_FAMILYID + " INTEGER " +
             ")";
 
-
-    /*
-                    KALENDER
-     */
+    //                KALENDER
 
     public static final String TABLE_CALENDAR_ACTIVITY = "KalenderActivity";
     public static final String COLUMN__CALENDAR_ACTIVITY_DATE_FROM = "DateFrom";
@@ -264,10 +245,6 @@ public class Database extends SQLiteOpenHelper {
             COLUMN__CALENDAR_ACTIVITY_USER_ID + " INTEGER, " +
             COLUMN__CALENDAR_ACTIVITY_ACTIVITY + " TEXT " +
             ")";
-
-
-
-
 
     public Database(Context context) {
         super(context, TAG, null, 1);
@@ -307,97 +284,13 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public Cursor getData() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_USER;
-        return db.rawQuery(query, null);
-    }
+    //              USER
 
     public Cursor getIdOfUserData(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_USER +
                 " WHERE " + COLUMN_EMAIL + " = ?";
         return db.rawQuery(query, new String[]{email});
-    }
-
-    public Cursor getData(String table) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + table;
-        return db.rawQuery(query, null);
-    }
-
-    public Cursor getData(String table, int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + table + " WHERE " + COLUMN_ID + " = " + id;
-        return db.rawQuery(query, null);
-    }
-
-    public Cursor getAllMessageFromConversation(int samtaleID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_MESSAGES + " WHERE " + COLUMN__MESSAGE_PART_OF_CONVERSATIONID + " = " + samtaleID;
-        return db.rawQuery(query, null);
-    }
-
-    public Cursor getAllWishesFromWishlist(int wishlistID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_WISH + " WHERE " + COLUMN__WISHLIST_ID + " = " + wishlistID;
-        return db.rawQuery(query, null);
-    }
-
-    public Cursor getAlleVarerFraHandleliste(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_HANDLELISTE_LISTE + " WHERE " + COLUMN_HANDLELISTELISTE_ID + " = " + id;
-        return db.rawQuery(query, null);
-    }
-
-
-    public boolean deleteRowFromTableById(String table, String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        long result = db.delete(table, COLUMN_ID + " = " + id, null);
-
-        return result != -1;
-    }
-
-    public boolean addWishlistToUser(int userId, String whislistName) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN__USER_ID_WISHLIST, userId);
-        contentValues.put(COLUMN__NAME_WISHLIST, whislistName);
-
-        long result = db.insert(TABLE_WISHLIST, null, contentValues);
-
-        return result != -1;
-    }
-
-    public boolean updateOneColumnFromTable(String table, String column, String newColumnValue, String whereClauseColumn, String whereArgsValue) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(column, newColumnValue);
-
-        long result = db.update(table, contentValues, whereClauseColumn + " = " + whereArgsValue, null);
-
-        return result != -1;
-    }
-
-    public boolean updateUserFamily(int userId, Integer familyId) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_FAMILY, familyId);
-
-        long result = db.update(TABLE_USER, contentValues, COLUMN_ID + " = " + userId, null);
-
-        return result != -1;
-    }
-
-    public boolean updateFamilyName(int familyId, String newFamilyName) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_FAMILY_NAME, newFamilyName);
-
-        long result = db.update(TABLE_FAMILY, contentValues, COLUMN_ID + " = " + familyId, null);
-
-        return result != -1;
     }
 
     public boolean addUserToDatabase(String name, String email, String birthday, String mobilnr, String password) {
@@ -416,31 +309,70 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean addFamilyToDatabase(String name, String password, int userId) {
+    public boolean updateUserInDatabase(String id, String newName, String newEmail, String newBirthday, String newMobilnr) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_FAMILY_NAME, name);
-        contentValues.put(COLUMN_FAMILY_PASSWORD, password);
-        contentValues.put(COLUMN_FAMILY_ADMIN_ID, userId);
+        contentValues.put(COLUMN_NAME, newName);
+        contentValues.put(COLUMN_EMAIL, newEmail);
+        contentValues.put(COLUMN_BIRTHDAY, newBirthday);
+        contentValues.put(COLUMN_MOBILNR, newMobilnr);
 
-        Log.d(TAG, "addData: Adding " + name + ", " + password + ", admin: " + userId + ", to " + TABLE_FAMILY);
+        Log.d(TAG, "addData: Updated " + newName + ", " + newEmail + ", " + newBirthday + ", " + newMobilnr + ", " + " in " + TABLE_USER);
 
-        long result = db.insert(TABLE_FAMILY, null, contentValues);
+        String whereClause = "id=?";
+        String[] whereArgs = {id};
+        //long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.update(TABLE_USER, contentValues, COLUMN_ID + " = " + id, null);
+        return result != -1;
+    }
+
+    //              GET DATA
+
+    public Cursor getData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_USER;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getData(String table) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + table;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getData(String table, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + table + " WHERE " + COLUMN_ID + " = " + id;
+        return db.rawQuery(query, null);
+    }
+
+    //              SLETTINGER
+
+    public boolean deleteRowFromTableById(String table, String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long result = db.delete(table, COLUMN_ID + " = " + id, null);
 
         return result != -1;
     }
 
-    public Cursor sjekkOmFamilieEksisterer(String familyID, String password) {
+    //              OPPDATERINGER
+
+    public boolean updateOneColumnFromTable(String table, String column, String newColumnValue, String whereClauseColumn, String whereArgsValue) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_FAMILY +
-                " WHERE " + COLUMN_ID + " = " + familyID +
-                " AND " + COLUMN_FAMILY_PASSWORD + " = " + password;
-        return db.rawQuery(query, null);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(column, newColumnValue);
+
+        long result = db.update(table, contentValues, whereClauseColumn + " = " + whereArgsValue, null);
+
+        return result != -1;
     }
 
-    public Cursor getFamilyIdByLastRow() {
+    //              FAMILIECHATTEN
+
+    public Cursor getAllMessageFromConversation(int samtaleID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_FAMILY  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
+        String query = "SELECT * FROM " + TABLE_MESSAGES + " WHERE " + COLUMN__MESSAGE_PART_OF_CONVERSATIONID + " = " + samtaleID;
         return db.rawQuery(query, null);
     }
 
@@ -480,163 +412,28 @@ public class Database extends SQLiteOpenHelper {
         return db.rawQuery(selectQuery,  null);
     }
 
-    public boolean updateUserInDatabase(String id, String newName, String newEmail, String newBirthday, String newMobilnr) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_NAME, newName);
-        contentValues.put(COLUMN_EMAIL, newEmail);
-        contentValues.put(COLUMN_BIRTHDAY, newBirthday);
-        contentValues.put(COLUMN_MOBILNR, newMobilnr);
-
-        Log.d(TAG, "addData: Updated " + newName + ", " + newEmail + ", " + newBirthday + ", " + newMobilnr + ", " + " in " + TABLE_USER);
-
-        String whereClause = "id=?";
-        String[] whereArgs = {id};
-        //long result = db.insert(TABLE_NAME, null, contentValues);
-        long result = db.update(TABLE_USER, contentValues, COLUMN_ID + " = " + id, null);
-        return result != -1;
-    }
-
     public boolean makeNewMessageChannelWith(User selectedUser) {
         System.out.println("BRUKER: " + selectedUser);
         return true;
     }
 
+    //              ØNSKELISTE
 
-    public Cursor checkIfUserIsAdminOfFamily(String familyID, String userID) {
+    public Cursor getAllWishesFromWishlist(int wishlistID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_FAMILY +
-                " WHERE " + COLUMN_ID + " = " + familyID +
-                " AND " + COLUMN_FAMILY_ADMIN_ID + " = " + userID;
+        String query = "SELECT * FROM " + TABLE_WISH + " WHERE " + COLUMN__WISHLIST_ID + " = " + wishlistID;
         return db.rawQuery(query, null);
     }
 
-
-
-    /*
-                BURSDAGER
-     */
-    // LEGG TIL BURSDAG
-    public boolean addUserToDatabaseBIRTHDAY(String name, String date, String familyId, String meID, String madeByUserID) {
+    public boolean addWishlistToUser(int userId, String whislistName) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_NAME_BIRTHDAY, name);
-        contentValues.put(COLUMN_BIRTHDAY_DATE, date);
-        contentValues.put(COLUMN_BIRTHDAY_FAMILYID, familyId);
-        contentValues.put(COLUMN_BIRTHDAY_USERID, meID);
-        contentValues.put(COLUMN_BIRTHDAY_MADEBY_USERID, madeByUserID);
+        contentValues.put(COLUMN__USER_ID_WISHLIST, userId);
+        contentValues.put(COLUMN__NAME_WISHLIST, whislistName);
 
-        Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + familyId + ", " + " to " + TABLE_BIRTHDAY);
-
-        long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
-        return result != -1;
-    }
-    // OPPDATER BURSDAG
-    public boolean updateBirthday(String id, String newName, String newBirthday) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_NAME_BIRTHDAY, newName);
-        contentValues.put(COLUMN_BIRTHDAY_DATE, newBirthday);
-
-
-        Log.d(TAG, "Birthday updated: " + newName + ", " + newBirthday + ", " + " in " + TABLE_BIRTHDAY);
-
-        String whereClause = "id=?";
-        String whereArgs[] = {id};
-        long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
-        return result != -1;
-    }
-
-
-    /*
-                    MATPLANER
-     */
-
-    // LEGGER INN MIDLERTIDIG DATA FOR REGISTRERING AV MATPLAN
-    public boolean addTempDataMatplan(String id, String antallDager, String startDag) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_ANTALL_DAGER, antallDager);
-        contentValues.put(COLUMN_STARTDAG, startDag);
-
-        Log.d(TAG, "TempDataMatPlan updated: " + antallDager + ", " + startDag + ", " + " in " + TABLE_OPPRETT_MATPLAN);
-
-        String whereClause = "id=?";
-        String whereArgs[] = {id};
-        long result = db.update(TABLE_OPPRETT_MATPLAN, contentValues, "id=?", whereArgs);
-        return result != -1;
-    }
-
-    // LEGGER UKENE INN I MATPLAN
-    public boolean addWeekToMatplan(String fromDate, String toDate, int familyID, int week) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_MATPLAN_FROM_DATE, fromDate);
-        contentValues.put(COLUMN_MATPLAN_TO_DATE, toDate);
-        contentValues.put(COLUMN_MATPLAN_FAMILY_ID, familyID);
-        contentValues.put(COLUMN_MATPLAN_UKE, week);
-
-        Log.d(TAG, "addData: Adding " + week + ", " + fromDate + " to " + toDate + " in " + TABLE_MATPLAN + " for family " + familyID);
-
-        long result = db.insert(TABLE_MATPLAN, null, contentValues);
-        return result != -1;
-    }
-
-
-
-
-    public boolean updateVareIsCheckedHandleliste(int listeID, int isChecked) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTELISTE_CHECKED, isChecked);
-
-        long result = db.update(TABLE_HANDLELISTE_LISTE, contentValues, COLUMN_ID + " = " + listeID, null);
+        long result = db.insert(TABLE_WISHLIST, null, contentValues);
 
         return result != -1;
-    }
-
-
-
-    // OPPDATERER UKENE I DATABASEN
-    public boolean changeWeekMatplan (String id, String nyUke) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_MATPLAN_UKE, nyUke);
-
-
-        Log.d(TAG, "Matplan updated: " + nyUke + ", " + " in " + TABLE_MATPLAN);
-
-        String whereClause = "id=?";
-        String whereArgs[] = {id};
-        //long result = db.insert(TABLE_NAME, null, contentValues);
-        long result = db.update(TABLE_MATPLAN, contentValues, "id=?", whereArgs);
-        return result != -1;
-
-    }
-
-    /*
-                    HANDLELISTE
-     */
-    public boolean weekHandleliste(String tittel, int userID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTE_TITTEL, tittel);
-        contentValues.put(COLUMN_HANDLELISTE_USERID, userID);
-
-        Log.d(TAG, "Handleliste updated: " + tittel +  " in " + TABLE_HANDLELISTE);
-
-        long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
-        return result != -1;
-    }
-    public long addvarerHandleliste(String vare, String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_HANDLELISTELISTE_VARE, vare);
-        contentValues.put(COLUMN_HANDLELISTELISTE_ID, id);
-
-        Log.d(TAG, "Handleliste updated: " + vare + " in " + TABLE_HANDLELISTE_LISTE);
-
-        return  db.insert(TABLE_HANDLELISTE_LISTE, null, contentValues);
     }
 
     public long makeNewWishlist(int meID, String wishlistName) {
@@ -676,36 +473,182 @@ public class Database extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    //              HANDLELISTE
 
-    public boolean editActivityInCalandar(int activityID, String dateFrom, String dateTo, String timeFrom, String timeTo, String theActivity) {
+    public Cursor getAlleVarerFraHandleliste(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_HANDLELISTE_LISTE + " WHERE " + COLUMN_HANDLELISTELISTE_ID + " = " + id;
+        return db.rawQuery(query, null);
+    }
+
+    public boolean updateVareIsCheckedHandleliste(int listeID, int isChecked) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HANDLELISTELISTE_CHECKED, isChecked);
 
-        contentValues.put(COLUMN__CALENDAR_ACTIVITY_DATE_FROM, dateFrom);
-        contentValues.put(COLUMN__CALENDAR_ACTIVITY_DATE_TO, dateTo);
-        contentValues.put(COLUMN__CALENDAR_ACTIVITY_TIME_FROM, timeFrom);
-        contentValues.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
-        contentValues.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
-
-        long result = db.update(TABLE_CALENDAR_ACTIVITY, contentValues, COLUMN_ID + " = " + activityID, null);
+        long result = db.update(TABLE_HANDLELISTE_LISTE, contentValues, COLUMN_ID + " = " + listeID, null);
 
         return result != -1;
     }
 
-    public long addActivityToCalandar(String dateFrom, String dateTo, String timeFrom, String timeTo, int meID, String theActivity) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        ContentValues values = new ContentValues();
+    public boolean weekHandleliste(String tittel, int userID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HANDLELISTE_TITTEL, tittel);
+        contentValues.put(COLUMN_HANDLELISTE_USERID, userID);
 
-        values.put(COLUMN__CALENDAR_ACTIVITY_DATE_FROM, dateFrom);
-        values.put(COLUMN__CALENDAR_ACTIVITY_DATE_TO, dateTo);
-        values.put(COLUMN__CALENDAR_ACTIVITY_TIME_FROM, timeFrom);
-        values.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
-        values.put(COLUMN__CALENDAR_ACTIVITY_USER_ID, meID);
-        values.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
+        Log.d(TAG, "Handleliste updated: " + tittel +  " in " + TABLE_HANDLELISTE);
 
-        System.out.println("New activity in calendar (Database): " + theActivity + " for user: " + meID);
+        long result = db.insert(TABLE_HANDLELISTE, null, contentValues);
+        return result != -1;
+    }
+    public long addvarerHandleliste(String vare, String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HANDLELISTELISTE_VARE, vare);
+        contentValues.put(COLUMN_HANDLELISTELISTE_ID, id);
 
-        return db.insert(TABLE_CALENDAR_ACTIVITY, null, values);
+        Log.d(TAG, "Handleliste updated: " + vare + " in " + TABLE_HANDLELISTE_LISTE);
+
+        return  db.insert(TABLE_HANDLELISTE_LISTE, null, contentValues);
+    }
+
+    //              FAMILIE
+
+    public boolean updateUserFamily(int userId, Integer familyId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_FAMILY, familyId);
+
+        long result = db.update(TABLE_USER, contentValues, COLUMN_ID + " = " + userId, null);
+
+        return result != -1;
+    }
+
+    public boolean updateFamilyName(int familyId, String newFamilyName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_FAMILY_NAME, newFamilyName);
+
+        long result = db.update(TABLE_FAMILY, contentValues, COLUMN_ID + " = " + familyId, null);
+
+        return result != -1;
+    }
+
+    public boolean addFamilyToDatabase(String name, String password, int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_FAMILY_NAME, name);
+        contentValues.put(COLUMN_FAMILY_PASSWORD, password);
+        contentValues.put(COLUMN_FAMILY_ADMIN_ID, userId);
+
+        Log.d(TAG, "addData: Adding " + name + ", " + password + ", admin: " + userId + ", to " + TABLE_FAMILY);
+
+        long result = db.insert(TABLE_FAMILY, null, contentValues);
+
+        return result != -1;
+    }
+
+    public Cursor sjekkOmFamilieEksisterer(String familyID, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY +
+                " WHERE " + COLUMN_ID + " = " + familyID +
+                " AND " + COLUMN_FAMILY_PASSWORD + " = " + password;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getFamilyIdByLastRow() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY  + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor checkIfUserIsAdminOfFamily(String familyID, String userID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAMILY +
+                " WHERE " + COLUMN_ID + " = " + familyID +
+                " AND " + COLUMN_FAMILY_ADMIN_ID + " = " + userID;
+        return db.rawQuery(query, null);
+    }
+
+    //              BURSDAG
+
+    // LEGG TIL BURSDAG
+    public boolean addUserToDatabaseBIRTHDAY(String name, String date, String familyId, String meID, String madeByUserID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME_BIRTHDAY, name);
+        contentValues.put(COLUMN_BIRTHDAY_DATE, date);
+        contentValues.put(COLUMN_BIRTHDAY_FAMILYID, familyId);
+        contentValues.put(COLUMN_BIRTHDAY_USERID, meID);
+        contentValues.put(COLUMN_BIRTHDAY_MADEBY_USERID, madeByUserID);
+
+        Log.d(TAG, "addData: Adding " + name + ", " + date + ", " + familyId + ", " + " to " + TABLE_BIRTHDAY);
+
+        long result = db.insert(TABLE_BIRTHDAY, null, contentValues);
+        return result != -1;
+    }
+    // OPPDATER BURSDAG
+    public boolean updateBirthday(String id, String newName, String newBirthday) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME_BIRTHDAY, newName);
+        contentValues.put(COLUMN_BIRTHDAY_DATE, newBirthday);
+
+        Log.d(TAG, "Birthday updated: " + newName + ", " + newBirthday + ", " + " in " + TABLE_BIRTHDAY);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        long result = db.update(TABLE_BIRTHDAY, contentValues, "id=?", whereArgs);
+        return result != -1;
+    }
+
+    //                MATPLAN
+
+    // LEGGER INN MIDLERTIDIG DATA FOR REGISTRERING AV MATPLAN
+    public boolean addTempDataMatplan(String id, String antallDager, String startDag) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_ANTALL_DAGER, antallDager);
+        contentValues.put(COLUMN_STARTDAG, startDag);
+
+        Log.d(TAG, "TempDataMatPlan updated: " + antallDager + ", " + startDag + ", " + " in " + TABLE_OPPRETT_MATPLAN);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        long result = db.update(TABLE_OPPRETT_MATPLAN, contentValues, "id=?", whereArgs);
+        return result != -1;
+    }
+
+    // LEGGER UKENE INN I MATPLAN
+    public boolean addWeekToMatplan(String fromDate, String toDate, int familyID, int week) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_MATPLAN_FROM_DATE, fromDate);
+        contentValues.put(COLUMN_MATPLAN_TO_DATE, toDate);
+        contentValues.put(COLUMN_MATPLAN_FAMILY_ID, familyID);
+        contentValues.put(COLUMN_MATPLAN_UKE, week);
+
+        Log.d(TAG, "addData: Adding " + week + ", " + fromDate + " to " + toDate + " in " + TABLE_MATPLAN + " for family " + familyID);
+
+        long result = db.insert(TABLE_MATPLAN, null, contentValues);
+        return result != -1;
+    }
+
+    // OPPDATERER UKENE I DATABASEN
+    public boolean changeWeekMatplan (String id, String nyUke) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_MATPLAN_UKE, nyUke);
+
+
+        Log.d(TAG, "Matplan updated: " + nyUke + ", " + " in " + TABLE_MATPLAN);
+
+        String whereClause = "id=?";
+        String whereArgs[] = {id};
+        //long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.update(TABLE_MATPLAN, contentValues, "id=?", whereArgs);
+        return result != -1;
     }
 
     public Cursor getMatplanIdByLastRow() {
@@ -743,5 +686,38 @@ public class Database extends SQLiteOpenHelper {
         long result = db.update(TABLE_OPPRETT_SUBMATPLAN, contentValues, COLUMN_ID + " = " + subMatplanID, null);
 
         return result != -1;
+    }
+
+    //              KALENDER
+
+    public boolean editActivityInCalandar(int activityID, String dateFrom, String dateTo, String timeFrom, String timeTo, String theActivity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_DATE_FROM, dateFrom);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_DATE_TO, dateTo);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_TIME_FROM, timeFrom);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
+        contentValues.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
+
+        long result = db.update(TABLE_CALENDAR_ACTIVITY, contentValues, COLUMN_ID + " = " + activityID, null);
+
+        return result != -1;
+    }
+
+    public long addActivityToCalandar(String dateFrom, String dateTo, String timeFrom, String timeTo, int meID, String theActivity) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN__CALENDAR_ACTIVITY_DATE_FROM, dateFrom);
+        values.put(COLUMN__CALENDAR_ACTIVITY_DATE_TO, dateTo);
+        values.put(COLUMN__CALENDAR_ACTIVITY_TIME_FROM, timeFrom);
+        values.put(COLUMN__CALENDAR_ACTIVITY_TIME_TO, timeTo);
+        values.put(COLUMN__CALENDAR_ACTIVITY_USER_ID, meID);
+        values.put(COLUMN__CALENDAR_ACTIVITY_ACTIVITY, theActivity);
+
+        System.out.println("New activity in calendar (Database): " + theActivity + " for user: " + meID);
+
+        return db.insert(TABLE_CALENDAR_ACTIVITY, null, values);
     }
 }
