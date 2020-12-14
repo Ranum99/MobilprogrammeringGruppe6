@@ -32,7 +32,8 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/ic_launcher_background" />
+                tools:srcCompat="@drawable/ic_launcher_background"
+                app:tint="@color/tint" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -43,6 +44,7 @@
                 android:autofillHints="@string/endreProfilNavn"
                 android:hint="@string/fullt_navn"
                 android:ems="10"
+                android:background="@color/backgroundListItem"
                 android:imeOptions="actionDone"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"

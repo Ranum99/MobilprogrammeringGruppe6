@@ -21,6 +21,7 @@
     <color name="background">#121212</color>
     <color name="surface">#282828</color>
     <color name="primary">#C38FFF</color>
+    <color name="button">#C38FFF</color>
     <color name="secondary">#03DAC6</color>
     <color name="onBackground">#FFFFFF</color>
     <color name="onSurface">#404040</color>

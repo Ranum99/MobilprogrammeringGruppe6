@@ -28,7 +28,6 @@
         android:layout_marginTop="8dp"
         android:text="@string/endreProfil"
         android:elevation="1dp"
-        android:background="@color/button"
         app:layout_constraintEnd_toEndOf="@+id/profilbilde"
         app:layout_constraintStart_toStartOf="@+id/profilbilde"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -82,7 +81,6 @@
         android:layout_marginTop="8dp"
         android:text="@string/logg_ut"
         android:elevation="1dp"
-        android:background="@color/button"
         app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
         app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
         app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
@@ -92,9 +90,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@color/backgroundListItem"
-        android:padding="10dp"
         android:elevation="1dp"
+        android:padding="10dp"
+        android:background="@color/backgroundListItem"
         android:text="@string/textView"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/ProfilFodselsdato"
