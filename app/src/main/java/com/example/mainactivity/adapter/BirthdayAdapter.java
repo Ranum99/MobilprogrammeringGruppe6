@@ -133,7 +133,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             View.OnClickListener deleteBursdag = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.MyDialogStyle);
                     builder.setTitle("Slett bursdag")
                             .setMessage("Er du sikker på at du vil slette denne bursdagen?");
                     builder.setPositiveButton("Ja",

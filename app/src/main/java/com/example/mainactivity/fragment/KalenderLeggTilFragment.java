@@ -79,7 +79,7 @@ public class KalenderLeggTilFragment extends Fragment {
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
+                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -108,7 +108,7 @@ public class KalenderLeggTilFragment extends Fragment {
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
+                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -163,7 +163,7 @@ public class KalenderLeggTilFragment extends Fragment {
                 mHour = c.get(Calendar.HOUR_OF_DAY);
                 mMinute = c.get(Calendar.MINUTE);
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

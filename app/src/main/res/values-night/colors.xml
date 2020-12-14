@@ -16,7 +16,7 @@
     <color name="Grey">#888888</color>
 
     <color name="tint">#FFFFFF</color>
-
+    <color name="black">#000000</color>
     <color name="background">#121212</color>
     <color name="surface">#282828</color>
     <color name="primary">#C38FFF</color>

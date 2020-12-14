@@ -23,6 +23,7 @@
     <color name="onBackground">#000000</color>
     <color name="onSurface">#FFFFFF</color>
     <color name="onPrimary">#121212</color>
+    <color name="black">#000000</color>
 
     <!-- Datepicker -->
     <color name="headerBackground">#11999e</color>

@@ -90,7 +90,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
             View.OnClickListener deleteHandleliste = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.MyDialogStyle);
                     builder.setTitle("Slett handleliste")
                             .setMessage("Er du sikker på at du vil slette denne handlelisten?");
                     builder.setPositiveButton("Ja",
@@ -105,7 +105,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
                                     removeItem(position);
                                 }
                             });
-                    builder.setNegativeButton("NEI!",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {

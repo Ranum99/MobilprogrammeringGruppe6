@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/onSurface"
     android:orientation="vertical"
     tools:context=".fragment.HandlelisteLeggTilFragment">
 
@@ -31,6 +31,7 @@
         app:boxCornerRadiusTopStart="10dp"
         android:layout_marginBottom="32dp"
         android:hint="@string/tittel"
+        android:textColor="@color/textColorPrimary"
         android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/lagHandleliste"
         app:layout_constraintEnd_toEndOf="parent"

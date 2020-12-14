@@ -81,7 +81,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
             View.OnClickListener deleteMatplan = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.MyDialogStyle);
                     builder.setTitle("Slett matplan")
                             .setMessage("Er du sikker på at du vil slette denne matplanen?");
                     builder.setPositiveButton("Ja",
@@ -96,7 +96,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
                                     Log.i("MatplanAdapter", "Matplanen ble slettet");
                                 }
                             });
-                    builder.setNegativeButton("NEI!",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
