@@ -68,11 +68,13 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
             uke = itemView.findViewById(R.id.CardviewMatplan);
         }
 
+        // Setter overskrift
         public void setMatplan(MatplanModel matplanToDisplay, int position) {
             uke = itemView.findViewById(R.id.CardviewMatplan);
             uke.setText("Matplan uke " + matplanToDisplay.getWeek());
         }
 
+        // Gjør at en bruker kan slette et element
         public void setDelete(final MatplanModel matplanToDisplay, final int position) {
             delete = itemView.findViewById(R.id.deletematplan);
             // pop up som spør om brukeren vil slette oppføringer
@@ -117,6 +119,7 @@ public class MatplanAdapter extends RecyclerView.Adapter<MatplanAdapter.MatplanV
             notifyItemRangeChanged(position, Matplanlist.size());
         }
 
+        // Dersom bruker trykker på matplan, vil han bli sendt videre med en bundle
         public void setMatplanen(final MatplanModel matplanToDisplay, int position) {
             card = itemView.findViewById(R.id.Matplancardview);
             View.OnClickListener edit = new View.OnClickListener() {

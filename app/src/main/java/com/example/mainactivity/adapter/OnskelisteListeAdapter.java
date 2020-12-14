@@ -83,6 +83,7 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
             super(itemView);
         }
 
+
         public void setWish(final OnskelisteListeModel wishesToDisplay) {
             wish = itemView.findViewById(R.id.Onskelistenavn);
 
@@ -91,6 +92,7 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
             wish.setText(text);
         }
 
+        // Gjør at en bruker kan slette et ønske
         public void setDelete(final OnskelisteListeModel wishesToDisplay, final int position) {
             delete = itemView.findViewById(R.id.OnskelisteDelete);
             View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -126,10 +128,10 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
             delete.setOnClickListener(onClickListener);
         }
 
+        // Setter checkbox til omvendt av hva den er
         public void setCheckBox(final OnskelisteListeModel wishesToDisplay) {
             checkBox = itemView.findViewById(R.id.checkBox);
-            if (wishesToDisplay.getCheckBox())
-                checkBox.setChecked(true);
+            checkBox.setChecked(!checkBox.isChecked());
 
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -139,6 +141,7 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
             });
         }
 
+        // Opdaterer om ønske i databasen
         private void updateCheckBox(OnskelisteListeModel wishesToDisplay) {
             int isChecked;
             if (wishesToDisplay.getCheckBox())
@@ -154,6 +157,7 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
                 Log.e("OnskelisteListeAdapter", "Something went wrong");
         }
 
+        // Gjemmer elementer er en bruker som ikke eier ønskelisten ikke skal se
         public void hideElements(OnskelisteListeModel wishesToDisplay) {
             checkBox = itemView.findViewById(R.id.checkBox);
             delete = itemView.findViewById(R.id.OnskelisteDelete);
