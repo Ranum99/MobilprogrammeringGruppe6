@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/onSurface"
     tools:context=".fragment.ProfilFragment"
     android:orientation="vertical">
 
@@ -28,6 +28,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/endreProfil"
         android:elevation="1dp"
+        android:background="@color/button"
         app:layout_constraintEnd_toEndOf="@+id/profilbilde"
         app:layout_constraintStart_toStartOf="@+id/profilbilde"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -80,19 +81,20 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/textColorPrimary"
         android:text="@string/logg_ut"
         app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
         app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
-        app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil"  />
+        app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:elevation="1dp"
-        android:padding="10dp"
         android:background="@color/backgroundListItem"
+        android:padding="10dp"
+        android:elevation="1dp"
         android:text="@string/textView"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/ProfilFodselsdato"

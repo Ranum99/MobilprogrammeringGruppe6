@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
     android:layout_height="match_parent"
     tools:context=".fragment.ProfilRedigerFragment"
     android:orientation="horizontal">
@@ -11,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,24 +25,25 @@
 
             <ImageView
                 android:id="@+id/profilbildeRediger"
-                android:layout_width="680dp"
-                android:layout_height="125dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:contentDescription="@string/bildeinfo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/ic_launcher_background" />
+                tools:srcCompat="@drawable/ic_launcher_background"
+                app:tint="@color/tint" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="500dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:autofillHints="@string/endreProfilNavn"
-                android:hint="@string/endreProfilNavn"
+                android:hint="@string/fullt_navn"
                 android:ems="10"
                 android:imeOptions="actionDone"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -48,13 +51,12 @@
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profilbildeRediger">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/endreProfilNavn"
-                    android:layout_width="500dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:inputType="textPersonName"
@@ -64,24 +66,24 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="500dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
-                android:hint="@string/mobilnummerLogin"
                 android:imeOptions="actionDone"
-                android:ems="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                android:ems="10"
+                android:layout_marginTop="16dp"
+                android:autofillHints=".AUTOFILL_HINT_PHONE_NUMBER"
+                android:hint="@string/mobilnummer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/profilMobilnr"
-                    android:layout_width="500dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:inputType="phone"
@@ -90,54 +92,56 @@
 
             <DatePicker
                 android:id="@+id/endreProfilBursdag"
-                android:layout_width="500dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-                app:theme="@style/datepicker" />
-
-            <Button
-                android:id="@+id/EndreProfilRedigerBtn"
-                android:layout_width="500dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/saveChanges"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/endreProfilBursdag"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/endreProfilBursdag"
-                app:layout_constraintTop_toBottomOf="@+id/endreProfilBursdag" />
+                app:theme="@style/datepicker"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout3"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="500dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/email"
-                android:hint="@string/endreProfilEmail"
-                android:ems="10"
                 android:imeOptions="actionDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
+                android:ems="10"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                android:layout_marginTop="16dp"
+                android:autofillHints="@string/email"
+                android:hint="@string/endreProfilEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/endreProfilBursdag">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/endreProfilEmail"
-                    android:layout_width="500dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:inputType="textEmailAddress"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/EndreProfilRedigerBtn"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/saveChanges"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

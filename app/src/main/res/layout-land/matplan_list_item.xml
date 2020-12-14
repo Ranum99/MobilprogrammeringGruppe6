@@ -4,13 +4,15 @@
     android:id="@+id/Matplancardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
+    android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:background="@color/backgroundListItem" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundListItem" >
 
         <TextView
             android:id="@+id/CardviewMatplan"
@@ -21,6 +23,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/textView"
+            android:textColor="@color/headlineCardView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +39,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_delete" />
+            app:srcCompat="@drawable/ic_action_delete"
+            app:tint="@color/tint" />
 
         <TextView
             android:id="@+id/datoMatplan"
@@ -45,6 +49,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:text="@string/datoer"
+            android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/CardviewMatplan"
             app:layout_constraintTop_toBottomOf="@+id/CardviewMatplan" />

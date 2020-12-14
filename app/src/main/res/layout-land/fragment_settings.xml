@@ -3,16 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/onSurface"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.SettingsFragment"
     android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/fargeBryter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/endre_fargetema"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/darkmodeSwitch"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:text="@string/Darkmode"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
