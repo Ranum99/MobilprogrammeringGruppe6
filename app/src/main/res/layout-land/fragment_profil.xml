@@ -4,87 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".fragment.ProfilFragment">
+    android:background="@color/onSurface"
+    tools:context=".fragment.ProfilFragment"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/profilbilde"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/bildeinfo"
-        app:layout_constraintEnd_toStartOf="@+id/ProfilMobilNummer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/ic_launcher_background"
+        app:tint="@color/tint" />
 
     <Button
         android:id="@+id/btnEndreProfil"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="@string/endreProfil"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        android:elevation="1dp"
+        android:background="@color/button"
+        app:layout_constraintEnd_toEndOf="@+id/profilbilde"
         app:layout_constraintStart_toStartOf="@+id/profilbilde"
-        app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/ProfilBrukerId"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/backgroundListItem"
+        android:padding="10dp"
+        android:elevation="1dp"
         android:text="@string/bruker_id"
-        app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/navn"
+        app:layout_constraintStart_toStartOf="@+id/navn"
         app:layout_constraintTop_toBottomOf="@+id/navn" />
 
     <TextView
         android:id="@+id/ProfilMobilNummer"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:background="@color/backgroundListItem"
+        android:padding="10dp"
+        android:elevation="1dp"
         android:text="@string/mobilnummer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profilbilde"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilBrukerId"
+        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
         app:layout_constraintTop_toBottomOf="@+id/ProfilBrukerId" />
 
     <TextView
         android:id="@+id/ProfilFodselsdato"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/backgroundListItem"
+        android:padding="10dp"
+        android:elevation="1dp"
         android:text="@string/foedselsdato"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilMobilNummer"
         app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
         app:layout_constraintTop_toBottomOf="@+id/ProfilMobilNummer" />
 
     <Button
-        android:id="@+id/LoggutBtn"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/LoggutBtn"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="8dp"
+        android:textColor="@color/textColorPrimary"
         android:text="@string/logg_ut"
-        app:layout_constraintBottom_toBottomOf="@+id/btnEndreProfil"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toTopOf="@+id/btnEndreProfil" />
+        app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
+        app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
+        app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
 
     <TextView
         android:id="@+id/email"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/backgroundListItem"
+        android:padding="10dp"
+        android:elevation="1dp"
         android:text="@string/textView"
-        app:layout_constraintBottom_toBottomOf="@+id/profilbilde"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilFodselsdato"
         app:layout_constraintStart_toStartOf="@+id/ProfilFodselsdato"
         app:layout_constraintTop_toBottomOf="@+id/ProfilFodselsdato" />
 
     <TextView
         android:id="@+id/navn"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:elevation="1dp"
+        android:background="@color/backgroundListItem"
+        android:padding="10dp"
         android:text="@string/textView"
-        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/profilbilde"
+        app:layout_constraintStart_toStartOf="@+id/profilbilde"
+        app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

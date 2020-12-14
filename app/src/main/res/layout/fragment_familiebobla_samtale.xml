@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/onSurface"
     tools:context=".fragment.FamilieboblaSamtaleFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -22,6 +22,7 @@
         android:layout_marginTop="4dp"
         android:text="@string/textview"
         android:textSize="20sp"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

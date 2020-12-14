@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".fragment.OnskelisteListeFragment"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <TextView
         android:id="@+id/OnskelisteBruker"
@@ -46,17 +47,17 @@
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        android:hint="@string/Awish"
         android:ems="10"
+        android:hint="@string/Awish"
         android:autofillHints="@string/Awish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leggTil"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline26" >
+        app:layout_constraintTop_toTopOf="@+id/guideline26">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/onskeToAdd"
-            android:layout_width="500dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="text"
