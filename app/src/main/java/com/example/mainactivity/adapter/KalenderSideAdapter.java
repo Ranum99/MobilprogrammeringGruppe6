@@ -171,6 +171,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
             }
         }
 
+        // Ggør at en bruker kan slette en aktivitet
         private void setClickOnSamtale(final KalenderSideModel kalenderSideModel) {
             kortID = itemView.findViewById(R.id.cardHandleliste);
             kortID.setOnLongClickListener(new View.OnLongClickListener() {

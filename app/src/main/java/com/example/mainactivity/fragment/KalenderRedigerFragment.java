@@ -71,8 +71,8 @@ public class KalenderRedigerFragment extends Fragment {
         fullDateFrom = new Date();
         fullDateTo = new Date();
 
+        // Henter fra budle dersom den ikke er null
         setActivity(getArguments().getString("theActivity"));
-
         setDateFrom(getArguments().getString("dateFrom"));
 
         if (getArguments().getString("dateTo") != null) {
@@ -89,6 +89,7 @@ public class KalenderRedigerFragment extends Fragment {
 
         setActivityID(getArguments().getInt("activityID"));
 
+        // Her henter man er DatePicker, og gjør at bruker kan velge en dato
         txtDateFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,6 +223,7 @@ public class KalenderRedigerFragment extends Fragment {
         });
     }
 
+    // Endrer i databasen
     private void changeActivityToCalendar() {
         boolean changeInDatabase = false;
 
@@ -232,15 +234,6 @@ public class KalenderRedigerFragment extends Fragment {
             Log.i("KalenderRediger", "Changed activity: " + txtActivity.getText().toString() + " in calendar");
             navController.navigateUp();
         }
-
-        System.out.println(txtActivity.getText().toString());
-        System.out.println(dateFrom);
-        System.out.println(dateTo);
-        System.out.println(timeFrom);
-        System.out.println(timeTo);
-        System.out.println(activityID);
-        System.out.println(fullDateFrom);
-        System.out.println(fullDateTo);
     }
 
     // Sjekker at:

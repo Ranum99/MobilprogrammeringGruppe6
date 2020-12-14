@@ -51,6 +51,7 @@ public class HandlelisteLeggTilFragment extends Fragment {
         tittel = view.findViewById(R.id.handlelisteTittel);
         opprett = view.findViewById(R.id.lagHandleliste);
 
+        // Lager handleliste dersom man har skrevet inn en tittel
         opprett.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -39,6 +39,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
         this.meID = meID;
     }
 
+    // Sletter fra RecyclerView
     private void removeItem(int position) {
         Onskelister.remove(position);
         notifyItemRemoved(position);
@@ -78,6 +79,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
             super(itemView);
         }
 
+        // Setter data i card
         public void setOnskeliste(OnskelisteModel modelToDisplay) {
             tittel = itemView.findViewById(R.id.handlelistenummer);
             navn = itemView.findViewById(R.id.bruker);
@@ -85,6 +87,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
             navn.setText("Opprettet av: " + modelToDisplay.getUserToName());
         }
 
+        // Gjør at en bruker kan slette et element
         public void setDeleteOnOnskeliste(final OnskelisteModel modelToDisplay, final int position) {
             delete = itemView.findViewById(R.id.handlelisteDelete);
             View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -121,6 +124,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
             delete.setOnClickListener(onClickListener);
         }
 
+        // Går videre til neste side med en bundle
         public void setClickOnOnskeliste(final OnskelisteModel modelToDisplay) {
             card = itemView.findViewById(R.id.cardHandleliste);
             card.setOnClickListener(new View.OnClickListener() {

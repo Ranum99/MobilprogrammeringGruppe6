@@ -72,14 +72,15 @@ public class HandlelisteListeFragment extends Fragment {
 
         setInfo();
         setUpRecyclerView();
-
     }
 
+    // Setter info i recyclerView
     private void setUpRecyclerView() {
         vareliste.setAdapter(new HandlelisteVareAdapter(getContext(), varer));
         vareliste.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    // Henter varer til handlelisten
     private void setInfo() {
         Cursor data = database.getAlleVarerFraHandleliste(Integer.valueOf(id));
 
@@ -95,6 +96,8 @@ public class HandlelisteListeFragment extends Fragment {
         }
         this.varer = allevarer;
     }
+
+    // Legger til en vare i handlelisten
     private void addVare() {
         long addToDatabase = -1;
 

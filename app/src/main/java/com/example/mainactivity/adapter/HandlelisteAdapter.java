@@ -83,6 +83,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
             bruker.setText("Opprettet av: " + modelToDisplay.getNavn());
         }
 
+        // Gjør at en bruker kan slette handlelisten
         public void setDelete(final HandlelisteModel modelToDisplay, final int position) {
             delete = itemView.findViewById(R.id.handlelisteDelete);
             // pop up som spør om brukeren vil slette oppføringer
@@ -127,6 +128,7 @@ public class HandlelisteAdapter extends RecyclerView.Adapter<HandlelisteAdapter.
             notifyItemRangeChanged(position, Handlelister.size());
         }
 
+        // Dersom trykker på CardView, bli han sendt videre handlelisten med en bundle
         public void setEdit(final HandlelisteModel modelToDisplay, int position) {
             card = itemView.findViewById(R.id.cardHandleliste);
             View.OnClickListener edit = new View.OnClickListener() {

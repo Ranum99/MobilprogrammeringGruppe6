@@ -44,7 +44,6 @@ public class MatplanLeggTilFragment extends Fragment {
     private Date fromDate, toDate;
     private String dateFromString, dateToString;
     private int mYear, mMonth, mDay, familyID, matplanID;
-    private String[] dagerIUka = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +70,7 @@ public class MatplanLeggTilFragment extends Fragment {
         fromDate = new Date();
         toDate = new Date();
 
+        // Her henter man er DatePicker, og gjør at bruker kan velge en dato
         fraDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +105,7 @@ public class MatplanLeggTilFragment extends Fragment {
             }
         });
 
+        // Her henter man er DatePicker, og gjør at bruker kan velge en dato
         tilDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +155,7 @@ public class MatplanLeggTilFragment extends Fragment {
                     return;
                 }
 
+                // Gjør om for å få noen ferdige metoder
                 Calendar calFrom = Calendar.getInstance();
                 Calendar calTo = Calendar.getInstance();
                 calFrom.setTime(fromDate);
@@ -162,6 +164,7 @@ public class MatplanLeggTilFragment extends Fragment {
                 int week = calFrom.get(Calendar.WEEK_OF_YEAR);
                 int daysBetween = (int) ((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24));
 
+                // Går fint så lenge det er maks 6 dager mellom f.eks. mandag - mandag
                 if (daysBetween > 7) {
                     Toast.makeText(getActivity(), "Det må maks være syv dager mellom til og fra dato", Toast.LENGTH_SHORT).show();
                     Log.e("MatplanLeggTil", "Det er over syv dager mellom til og fra dato");
@@ -172,6 +175,7 @@ public class MatplanLeggTilFragment extends Fragment {
                 if (sjekkOfMatplanFinnesFraFor(week))
                     addToDatabase = database.addWeekToMatplan(dateFromString, dateToString, familyID, week);
 
+                // Henter id til matplan
                 Cursor matplanIdQuery = database.getMatplanIdByLastRow();
                 matplanID = 1;
                 while(matplanIdQuery.moveToNext()) {
@@ -188,6 +192,7 @@ public class MatplanLeggTilFragment extends Fragment {
                 }
             }
 
+            // Legger til dager (mandag, tirsdag, ...) i databasen
             private void addDaysToMatplan(int matplanID, int daysBetween) {
                 Date dateFromTemp = fromDate;
                 Date date = fromDate;
@@ -211,6 +216,7 @@ public class MatplanLeggTilFragment extends Fragment {
                 fromDate = dateFromTemp;
             }
 
+            // sjekker om det finnes en matplan med samme start dato, og til dato
             private boolean sjekkOfMatplanFinnesFraFor(int week) {
                 Cursor insertData = database.getData(Database.TABLE_MATPLAN);
 

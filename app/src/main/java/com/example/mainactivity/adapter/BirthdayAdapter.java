@@ -112,6 +112,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.Birthd
             String datoinput = birthdayToDisplay.getDato();
             String[] parts = datoinput.split(context.getString(R.string.splitValue));
 
+            // Setter dato
             splitAar = Integer.parseInt(parts[2]);
             splitMaaned = Integer.parseInt(parts[1]);
             splitDag = Integer.parseInt(parts[0]);

@@ -72,6 +72,7 @@ public class LoginFragment extends Fragment {
 
         password = view.findViewById(R.id.PasswordLogin);
         email = view.findViewById(R.id.EmailLogin);
+        // Gjør at alle bokstaver en bruker skriver blir til små bokstaver
         email.setFilters(new InputFilter[] {
                 new InputFilter.AllCaps() {
                     @Override
@@ -89,6 +90,7 @@ public class LoginFragment extends Fragment {
                 String passordet = password.getText().toString();
 
                 if (emailen.length() != 0 && passordet.length() != 0) {
+                    // Får ikke logget inn dersom man ikke har nett
                     if(!isNetworkAvailable()) {
                         Snackbar.make(view.findViewById(R.id.Login), "Du har ikke nett",
                                 Snackbar.LENGTH_SHORT)

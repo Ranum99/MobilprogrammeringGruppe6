@@ -64,6 +64,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
         private CardView VareBoks = itemView.findViewById(R.id.VareBoks);
         private CheckBox checkBox = itemView.findViewById(R.id.handlelisteCheckBox);
 
+        // Sette navn på vare og om den er checked dersom den er det
         public void setVare(HandlelisteVarerModel modelToDisplay) {
             vare.setText(modelToDisplay.getVare());
 
@@ -71,6 +72,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
                 checkBox.setChecked(true);
         }
 
+        // Gjør at en bruker kan slette en vare dersom han trykker lenge
         public void setDelete(final HandlelisteVarerModel modelToDisplay, final int position) {
             VareBoks.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -108,25 +110,26 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
             });
 
         }
+
+        // Setter varen til kjøpt/ikke kjøpt dersom han trykker på checkbox/card
         public void setBought(final HandlelisteVarerModel modelToDisplay, int position) {
             VareBoks.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (checkBox.isChecked())
-                        checkBox.setChecked(false);
-                    else
-                        checkBox.setChecked(true);
+                    checkBox.setChecked(!checkBox.isChecked());
                     setAsBought(modelToDisplay);
                 }
             });
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    checkBox.setChecked(!checkBox.isChecked());
                     setAsBought(modelToDisplay);
                 }
             });
         }
 
+        // Oppdaterer at varen er kjøpt eller ikke i databasen
         public void setAsBought(final HandlelisteVarerModel modelToDisplay) {
             int isChecked;
             if (checkBox.isChecked()) {
@@ -138,6 +141,7 @@ public class HandlelisteVareAdapter extends RecyclerView.Adapter<HandlelisteVare
             database.updateVareIsCheckedHandleliste(Integer.parseInt(modelToDisplay.getId()), isChecked);
         }
 
+        // sletter en vare fra recyclerView
         private void removeItem(int position) {
             varelisteListe.remove(position);
             notifyItemRemoved(position);

@@ -70,16 +70,21 @@ public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapte
             super(itemView);
         }
 
+        // Setter hvilken dag i matplanen det er
         public void setMatplan(final MatplanListeModel MatplanToDisplay) {
             day = itemView.findViewById(R.id.dayOfWeek);
             day.setText(MatplanToDisplay.getDay());
         }
 
+        // Setter hva mat er for dagen, dersom det ikke er null
         public void setFood(MatplanListeModel matplanToDisplay) {
             food = itemView.findViewById(R.id.foodInMatplan);
             food.setText(matplanToDisplay.getFood());
         }
 
+        // Dersom en bruker går bort i fra en editText sjekker den om man har endret noe.
+            // Dersom man har endret noe, oppdateres databasen
+            // Dersom man ikke har endret noe, skjer det ingen ting
         public void setFocusChange(final MatplanListeModel matplanToDisplay) {
             food = itemView.findViewById(R.id.foodInMatplan);
 
