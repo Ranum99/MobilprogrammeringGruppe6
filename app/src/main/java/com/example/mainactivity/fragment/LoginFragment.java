@@ -106,6 +106,11 @@ public class LoginFragment extends Fragment {
                             if (sharedPreferences.getString(User.FAMILIE, null) == null)
                                 Navigation.findNavController(login).navigate(R.id.action_loginFragment_to_familieFragment);
                             else {
+                                // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                autoSave = 1;
+                                editor.putInt("key", autoSave);
+                                editor.apply();
                                 Intent intent = new Intent(getContext(), MainActivity.class);
                                 startActivity(intent);
                             }
@@ -136,9 +141,7 @@ public class LoginFragment extends Fragment {
                 editor.putString(User.MOBILNR, data.getString(4));
                 editor.putString(User.FAMILIE, data.getString(6));
 
-                // Once the user clicks login, it will add 1 to sharedPreference which will allow autologin in OnViewCreated
-                autoSave = 1;
-                editor.putInt("key", autoSave);
+
                 editor.apply();
 
                 return true;
