@@ -165,7 +165,7 @@ public class KalenderRedigerFragment extends Fragment {
                     mMinute = fullDateFrom.getMinutes();
                 }
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -197,7 +197,7 @@ public class KalenderRedigerFragment extends Fragment {
                     mMinute = fullDateTo.getMinutes();
                 }
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

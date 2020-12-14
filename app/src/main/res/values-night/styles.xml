@@ -59,5 +59,6 @@
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:weekNumberColor">@color/textColorPrimary</item>
+        <item name="android:textColorPrimary">@color/daysOfTheMonth</item>
     </style>
 </resources>
