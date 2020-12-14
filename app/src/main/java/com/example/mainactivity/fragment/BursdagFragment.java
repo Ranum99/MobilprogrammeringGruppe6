@@ -109,9 +109,11 @@ public class BursdagFragment extends Fragment{
             if (data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_MADEBY_USERID)) != null)
                 madeByUserID = data.getString(data.getColumnIndex(Database.COLUMN_BIRTHDAY_MADEBY_USERID));
 
-            if (familieId.equals(sharedPreferences.getString(User.FAMILIE, null))) {
-                BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId, userID, madeByUserID);
-                alleBursdager.add(bursdag);
+            if (familieId != null) {
+                if (familieId.equals(sharedPreferences.getString(User.FAMILIE, null))) {
+                    BirthdayModel bursdag = new BirthdayModel(navnet, datoen, id, familieId, userID, madeByUserID);
+                    alleBursdager.add(bursdag);
+                }
             }
         }
         this.bursdager = alleBursdager;
