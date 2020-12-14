@@ -81,6 +81,7 @@ public class KalenderSideFragment extends Fragment {
         nyAktivitet.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_kalenderFragment2_to_kalenderLeggTilFragment));
     }
 
+    // Sorterer kalender og oppdaterer recyclerView
     private void setUpRecyclerView() {
         RecyclerView kalenderRecyclerView = getView().findViewById(R.id.activityOnDay);
 

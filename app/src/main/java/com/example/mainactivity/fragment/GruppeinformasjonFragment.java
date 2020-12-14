@@ -97,6 +97,7 @@ public class GruppeinformasjonFragment extends Fragment {
         });
     }
 
+    // Bare en admin kan kicke en annen bruker
     private void kickUserFromFamily(String familyID, String myID) {
         Cursor check = database.checkIfUserIsAdminOfFamily(familyID, myID);
 
@@ -120,6 +121,7 @@ public class GruppeinformasjonFragment extends Fragment {
             Log.w("Gruppeinformasjon", "Bare admin kan kaste ut andre brukere");
     }
 
+    //Bare en admin kan bytte familienavn
     private void changeFamilyName(int familyID, String newFamilyName, String myID) {
         Cursor check = database.checkIfUserIsAdminOfFamily(String.valueOf(familyID), myID);
 
@@ -163,6 +165,7 @@ public class GruppeinformasjonFragment extends Fragment {
         }
     }
 
+    // Henter medlemmer av familie
     private ArrayList<User> fillUsersInFamily() {
         Cursor data = database.getData();
         ArrayList<User> arrayList = new ArrayList<>();

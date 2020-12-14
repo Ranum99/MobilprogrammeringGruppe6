@@ -95,13 +95,6 @@ public class SignupFragment extends Fragment {
                             idTilBruker = data.getString(data.getColumnIndex(Database.COLUMN_ID));
                         }
 
-                        System.out.println("ID: " + idTilBruker);
-                        System.out.println("NAME: " + name);
-                        System.out.println("EMAIL: " + email);
-                        System.out.println("BIRTHDAY: " + birthday);
-                        System.out.println("MOBILNR: " + mobilnr);
-                        System.out.println("PASSWORD: " + password);
-
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(User.ID, idTilBruker);
                         editor.putString(User.NAME, name);
@@ -168,6 +161,11 @@ public class SignupFragment extends Fragment {
         if (!password.equals(passwordConfirm)) {
             Toast.makeText(getActivity(), "Passordene er ikke like", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren skrev to ulike passord");
+            return false;
+        }
+        if (passwordConfirm.length() < 8) {
+            Toast.makeText(getActivity(), "Passordet er for kort", Toast.LENGTH_SHORT).show();
+            Log.e("SignupFragment", "Brukeren skrev for kort passord");
             return false;
         }
         return true;
