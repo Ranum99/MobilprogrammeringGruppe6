@@ -4,6 +4,7 @@
     android:id="@+id/cardHandleliste"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/backgroundColor"
     android:layout_margin="2dp"
     app:cardCornerRadius="10dp"
     android:orientation="vertical">

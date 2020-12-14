@@ -176,7 +176,5 @@ public class MainActivity extends AppCompatActivity {
                             .build(), connectivityCallback);
             monitoringConnectivity = true;
         }
-
     }
-
 }

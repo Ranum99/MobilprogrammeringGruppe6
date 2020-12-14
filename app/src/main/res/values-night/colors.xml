@@ -9,7 +9,7 @@
     <color name="Grey">#888888</color>
     <color name="ic_launcher_background">#FFFFFF</color>
 
-    <!-- For Normal/Light Mode -->
-    <color name="backgroundColor">#FCFCFC</color>
-    <color name="textColor">#000000</color>
+    <!-- For Night/Dark mode -->
+    <color name="backgroundColor">#212121</color>
+    <color name="textColor">#FFFFFF</color>
 </resources>
