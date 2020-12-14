@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.mainactivity.model.FamilieboblaSamtaleModel;
 import com.example.mainactivity.R;
-import com.example.mainactivity.User;
+import com.example.mainactivity.model.User;
 import java.util.List;
 
 public class FamilieboblaSamtaleAdapter extends RecyclerView.Adapter<FamilieboblaSamtaleAdapter.FamilieboblaViewHolder>{

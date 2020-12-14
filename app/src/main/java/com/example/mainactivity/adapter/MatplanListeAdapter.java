@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mainactivity.Database;
 import com.example.mainactivity.model.MatplanListeModel;
 import com.example.mainactivity.R;
-import com.example.mainactivity.User;
+import com.example.mainactivity.model.User;
 import java.util.List;
 
 public class MatplanListeAdapter extends RecyclerView.Adapter<MatplanListeAdapter.MatplanListeViewHolder>{

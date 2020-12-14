@@ -4,8 +4,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import com.example.mainactivity.BursdagFragment;
-import com.example.mainactivity.KalenderSideFragment;
+import com.example.mainactivity.fragment.BursdagFragment;
+import com.example.mainactivity.fragment.KalenderSideFragment;
 
 public class PageAdapter extends FragmentStateAdapter {
     public PageAdapter(Fragment fragment) {

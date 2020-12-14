@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mainactivity.Database;
 import com.example.mainactivity.model.KalenderSideModel;
 import com.example.mainactivity.R;
-import com.example.mainactivity.User;
+import com.example.mainactivity.model.User;
 import java.util.List;
 
 public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapter.KalenderViewHolder>{

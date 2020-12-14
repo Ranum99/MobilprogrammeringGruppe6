@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mainactivity.Database;
 import com.example.mainactivity.model.OnskelisteModel;
 import com.example.mainactivity.R;
-import com.example.mainactivity.User;
+import com.example.mainactivity.model.User;
 import java.util.List;
 
 public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.OnskelisteViewHolder> {

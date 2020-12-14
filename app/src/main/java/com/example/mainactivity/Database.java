@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.mainactivity.model.User;
+
 public class Database extends SQLiteOpenHelper {
     private static final String TAG = "Database";
     SharedPreferences sharedPreferences;
