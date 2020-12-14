@@ -9,11 +9,11 @@
     tools:context=".fragment.SettingsFragment"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/fargeBryter"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/darkmodeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/endre_fargetema"
+        android:text="@string/Darkmode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
