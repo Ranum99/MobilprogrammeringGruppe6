@@ -6,7 +6,7 @@
     <string name="legg_til_aktivitet2">Legg til aktivitet</string>
     <string name="action_settings">Settings</string>
     <string name="gruppeinformasjon">Gruppeinformasjon</string>
-    <string name="kastUtMedlem">Kast ut medlem:</string>
+    <string name="kastUtMedlem">Kast ut medlem</string>
     <string name="send">Send</string>
     <string name="err_msg_email">Emailen er ikke gyldig</string>
     <string name="err_msg_navn">Navnet er ikke gyldig</string>
@@ -112,7 +112,7 @@
     <string name="endre_familienavn">Endre familienavn</string>
     <string name="familienavn">Familie navn</string>
     <string name="endre_familienavnTextView">Endre familienavn:</string>
-    <string name="medlemmer">Medlemmer:</string>
+    <string name="medlemmer">Medlemmer</string>
     <string name="opprett_en_handleliste">Opprett en handleliste!</string>
     <string name="opprett_handleliste">Opprett handleliste</string>
     <string name="tittel">Tittel</string>

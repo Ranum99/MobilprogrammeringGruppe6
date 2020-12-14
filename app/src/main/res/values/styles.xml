@@ -20,4 +20,10 @@
         <item name="android:weekNumberColor">@color/textColorPrimary</item>
     </style>
 
+    <!-- Spinner -->
+    <style name="spinner">
+        <item name="borderWidth">1dp</item>
+        <item name="color">@color/colorPrimary</item>
+    </style>
+
 </resources>
