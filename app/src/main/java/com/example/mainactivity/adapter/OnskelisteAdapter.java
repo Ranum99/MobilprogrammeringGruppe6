@@ -93,10 +93,10 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(contexten, R.style.MyDialogStyle);
                     builder.setTitle("Slett ønskelisten")
                             .setMessage("Er du sikker på at du vil slette denne ønskelisten?");
-                    builder.setPositiveButton("Jepp, bare å slette",
+                    builder.setPositiveButton("Ja",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                                 @Override
@@ -108,7 +108,7 @@ public class OnskelisteAdapter extends RecyclerView.Adapter<OnskelisteAdapter.On
                                     Log.i("OnskelisteAdapter", "Ønskelisten er slettet");
                                 }
                             });
-                    builder.setNegativeButton("NEI! Var bare en prank",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
