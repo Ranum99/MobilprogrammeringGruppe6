@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Datepicker -->
-    <style name="my_dialog_theme" parent="ThemeOverlay.AppCompat.Dialog">
+    <style name="my_dialog_theme" parent="ThemeOverlay.MaterialComponents.Dialog">
         <item name="colorAccent">@color/headerBackground</item>                    <!--header background-->
         <item name="android:windowBackground">@color/calenderBackground</item>     <!--calendar background-->
         <item name="android:colorControlActivated">@color/selectedDay</item>       <!--selected day-->
@@ -12,7 +12,7 @@
         <item name="android:buttonBarNegativeButtonStyle">@style/DatePickerButtonStyle</item><!--days of the week-->
     </style>
 
-    <style name="MyDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="MyDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="android:background">@color/backgroundColorAlert</item>
         <item name="android:textColor">@color/textColorAlert</item>
         <item name="android:colorAccent">@color/buttonColorAlert</item>
@@ -21,7 +21,7 @@
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
     </style>
 
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorAccent">@color/TimePickerAccent</item>
         <item name="colorControlNormal">@color/TimePickerColorControl</item>
         <item name="android:background">@color/backgroundColorTimePicker</item>
