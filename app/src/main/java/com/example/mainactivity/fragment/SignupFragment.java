@@ -27,6 +27,9 @@ import com.example.mainactivity.R;
 import com.example.mainactivity.model.User;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.lang.reflect.Method;
+import java.security.Policy;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,6 +46,8 @@ public class SignupFragment extends Fragment {
     private DatePicker aBirthday;
     private Button registrerBruker;
     private ImageView logo;
+
+    private EditText[] editTexts;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -67,6 +72,8 @@ public class SignupFragment extends Fragment {
         logo = view.findViewById(R.id.SignupLogo);
         logo.setImageResource(R.drawable.logo);
         aBirthday.setMaxDate(System.currentTimeMillis());
+
+        editTexts = new EditText[]{aName, aMobilnr, anEmail, aPassword, aPassword, aPasswordConfirm};
 
         registrerBruker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,48 +157,93 @@ public class SignupFragment extends Fragment {
         Matcher matcher = mailRegEx.matcher(email);
 
         // Alle felter er fylt ut
-        if (name.length() == 0 || email.length() == 0 || password.length() == 0 || passwordConfirm.length() == 0 || birthday.length() == 0 || mobilnr.length() == 0) {
-            Toast.makeText(getActivity(), "Fyll ut feltene", Toast.LENGTH_SHORT).show();
-            Log.e("SignupFragment", "Brukeren fylte ikke ut feltene");
-            return false;
+        ArrayList<TextInputLayout> editTexts = new ArrayList<>();
+
+        // Henter alle textInput som ikker er fylt inn
+        for (int i = 0; i < this.editTexts.length; i++) {
+            TextInputLayout textInputLayout = (TextInputLayout) this.editTexts[i].getParent().getParent();
+            if (this.editTexts[i].getText().toString().isEmpty()) {
+                editTexts.add(textInputLayout);
+            } else {
+                textInputLayout.setErrorEnabled(false);
+            }
+        }
+        // Sender en feilmelding til alle inputfelter som ikke er fylt inn
+        for (int i = 0; i < editTexts.size(); i++) {
+            setErrorOnEditText(editTexts.get(i), "Fyll ut feltet");
         }
         // sjekker mail oppmot regex
+        TextInputLayout textInputLayoutEmail = (TextInputLayout) anEmail.getParent().getParent();
         if (!matcher.find()) {
-            Toast.makeText(getActivity(), "Du må fylle inn en riktig mail", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren fylte ikke inn riktig email");
+            setErrorOnEditText(textInputLayoutEmail, "Du må fylle inn en riktig mail");
             return false;
+        } else {
+            textInputLayoutEmail.setErrorEnabled(false);
         }
+
         // passord og passordConfirm er like
+        TextInputLayout textInputLayoutPassword = (TextInputLayout) aPassword.getParent().getParent();
+        TextInputLayout textInputLayoutPasswordConfirm = (TextInputLayout) aPasswordConfirm.getParent().getParent();
         if (!password.equals(passwordConfirm)) {
-            Toast.makeText(getActivity(), "Passordene er ikke like", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren skrev to ulike passord");
+            setErrorOnEditText(textInputLayoutPassword, "Passordene er ikke like");
+            setErrorOnEditText(textInputLayoutPasswordConfirm, "Passordene er ikke like");
             return false;
+        } else {
+            textInputLayoutPassword.setErrorEnabled(false);
+            textInputLayoutPasswordConfirm.setErrorEnabled(false);
         }
+
         // passord er minst 8 tegn langt
         if (!stringAgainstRegex(".{8,}", passwordConfirm)) {
-            Toast.makeText(getActivity(), "Passordet må minst være 8 tegn", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren skrev for kort passord");
+            setErrorOnEditText(textInputLayoutPassword, "Må minst være minst 8 tegn");
+            setErrorOnEditText(textInputLayoutPasswordConfirm, "Må minst være minst 8 tegn");
             return false;
+        } else {
+            textInputLayoutPassword.setErrorEnabled(false);
+            textInputLayoutPasswordConfirm.setErrorEnabled(false);
         }
+
         // passord inneholder minst 1 bokstav (liten/stor)
         if (!stringAgainstRegex("(?=.*[a-å])", passwordConfirm) || !stringAgainstRegex("(?=.*[A-Å])", passwordConfirm)) {
-            Toast.makeText(getActivity(), "Passordet må inneholde minst en bokstav", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren skrev ikke bokstav i passord");
+            setErrorOnEditText(textInputLayoutPassword, "Må inneholde minst en bokstav");
+            setErrorOnEditText(textInputLayoutPasswordConfirm, "Må inneholde minst en bokstav");
             return false;
+        } else {
+            textInputLayoutPassword.setErrorEnabled(false);
+            textInputLayoutPasswordConfirm.setErrorEnabled(false);
         }
+
         // passord kan ikke inneholde whitespace
         if (!stringAgainstRegex("(?=\\S+$)", passwordConfirm)) {
-            Toast.makeText(getActivity(), "Passordet kan ikke inneholde mellomrom", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren skrev mellomrom i passord");
+            setErrorOnEditText(textInputLayoutPassword, "Kan ikke inneholde mellomrom");
+            setErrorOnEditText(textInputLayoutPasswordConfirm, "Kan ikke inneholde mellomrom");
             return false;
+        } else {
+            textInputLayoutPassword.setErrorEnabled(false);
+            textInputLayoutPasswordConfirm.setErrorEnabled(false);
         }
+
         // passord inneholder minst 1 tall
         if (!stringAgainstRegex("(?=.*[0-9])", passwordConfirm)) {
-            Toast.makeText(getActivity(), "Passordet må inneholde minst ett tall", Toast.LENGTH_SHORT).show();
             Log.e("SignupFragment", "Brukeren skrev ikke tall i passord");
+            setErrorOnEditText(textInputLayoutPassword, "Må inneholde minst ett tall");
+            setErrorOnEditText(textInputLayoutPasswordConfirm, "Må inneholde minst ett tall");
             return false;
+        } else {
+            textInputLayoutPassword.setErrorEnabled(false);
+            textInputLayoutPasswordConfirm.setErrorEnabled(false);
         }
+
         return true;
+    }
+
+    private void setErrorOnEditText(TextInputLayout editText, String errorMessage) {
+        editText.setError(errorMessage);
     }
 
     private boolean stringAgainstRegex(String regex, String string) {
