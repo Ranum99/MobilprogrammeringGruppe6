@@ -94,7 +94,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                     AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
                     builder.setTitle("Slett samtale")
                             .setMessage("Er du sikker på at du vil slette denne samtalen med " + SamtaleToDisplay.getUserToName() + "?");
-                    builder.setPositiveButton("Jepp, bare å slette",
+                    builder.setPositiveButton("Ja",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                                 @Override
@@ -106,7 +106,7 @@ public class FamilieboblaAdapter extends RecyclerView.Adapter<FamilieboblaAdapte
                                     Log.i("FamilieboblaAdapter", "Samtalen er slettet");
                                 }
                             });
-                    builder.setNegativeButton("NEI! Var bare en prank",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {

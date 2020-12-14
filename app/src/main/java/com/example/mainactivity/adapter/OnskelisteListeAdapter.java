@@ -99,9 +99,9 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
-                    builder.setTitle("Slett ønskelisten")
-                            .setMessage("Er du sikker på at du vil slette denne ønskelisten?");
-                    builder.setPositiveButton("Jepp, bare å slette",
+                    builder.setTitle("Slett ønske")
+                            .setMessage("Er du sikker på at du vil slette dette ønsket??");
+                    builder.setPositiveButton("Ja",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                                 @Override
@@ -110,14 +110,14 @@ public class OnskelisteListeAdapter extends RecyclerView.Adapter<OnskelisteListe
                                     database = new Database(contexten);
                                     database.deleteRowFromTableById(Database.TABLE_WISH , String.valueOf(wishesToDisplay.getWishID()));
                                     removeItem(position);
-                                    Log.i("OnskelisteListeAdapter", "Ønskelisten er slettet");
+                                    Log.i("OnskelisteListeAdapter", "Ønske er slettet");
                                 }
                             });
-                    builder.setNegativeButton("NEI! Var bare en prank",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    Log.i("OnskelisteListeAdapter", "Ønskelisten ble ikke slettet");
+                                    Log.i("OnskelisteListeAdapter", "Ønske ble ikke slettet");
                                     dialog.cancel();
                                 }
                             });
