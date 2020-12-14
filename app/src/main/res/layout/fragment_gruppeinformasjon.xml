@@ -8,19 +8,68 @@
     tools:context=".fragment.GruppeinformasjonFragment">
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/listeOverMedlemmer"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:scrollbarStyle="insideInset"
+                app:layout_constraintStart_toStartOf="@+id/MedlemmerHeadline"
+                app:layout_constraintTop_toBottomOf="@+id/MedlemmerHeadline" />
+
+            <TextView
+                android:id="@+id/MedlemmerHeadline"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/medlemmer"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/KastUtMedlem"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/kastUtMedlem"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listeOverMedlemmer" />
+
+            <Spinner
+                android:id="@+id/kastUtMedlemDropdown"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/KastUtMedlem"
+                app:layout_constraintTop_toBottomOf="@+id/KastUtMedlem" />
+
+            <Button
+                android:id="@+id/KastUtMedlemBtn"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/kastUtMedlem"
+                app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
+                app:layout_constraintTop_toBottomOf="@+id/kastUtMedlemDropdown" />
 
             <Button
                 android:id="@+id/EndreFamilieNavnBtn"
@@ -36,7 +85,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:autofillHints="@string/endre_familienavn"
                 android:ems="10"
                 android:gravity="center"
@@ -46,9 +95,8 @@
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/listeOverMedlemmer"
-                app:layout_constraintStart_toStartOf="@+id/listeOverMedlemmer"
-                app:layout_constraintTop_toBottomOf="@+id/listeOverMedlemmer">
+                app:layout_constraintStart_toStartOf="@+id/KastUtMedlemBtn"
+                app:layout_constraintTop_toBottomOf="@+id/KastUtMedlemBtn">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EndreFamilieNavnInput"
@@ -59,54 +107,6 @@
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ListView
-                android:id="@+id/listeOverMedlemmer"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
-                android:scrollbarStyle="insideInset"
-                app:layout_constraintStart_toStartOf="@+id/MedlemmerHeadline"
-                app:layout_constraintTop_toBottomOf="@+id/MedlemmerHeadline" />
-
-            <TextView
-                android:id="@+id/MedlemmerHeadline"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/medlemmer"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/KastUtMedlemBtn"
-                app:layout_constraintTop_toBottomOf="@+id/KastUtMedlemBtn" />
-
-            <TextView
-                android:id="@+id/KastUtMedlem"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/kastUtMedlem"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/kastUtMedlemDropdown"
-                android:layout_width="250dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/KastUtMedlem" />
-
-            <Button
-                android:id="@+id/KastUtMedlemBtn"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/kastUtMedlem"
-                app:layout_constraintStart_toStartOf="@+id/kastUtMedlemDropdown"
-                app:layout_constraintTop_toBottomOf="@+id/kastUtMedlemDropdown" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
