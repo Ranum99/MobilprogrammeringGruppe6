@@ -6,13 +6,13 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="3dp">
+    app:cardElevation="3dp"
+    android:background="@color/backgroundListItem"  >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardBursdag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundListItem">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/CardviewFullName"

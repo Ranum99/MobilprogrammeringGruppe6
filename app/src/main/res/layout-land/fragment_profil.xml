@@ -11,15 +11,13 @@
         android:id="@+id/profilbilde"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/bildeinfo"
-        app:srcCompat="@drawable/ic_launcher_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <Button
         android:id="@+id/btnEndreProfil"
@@ -39,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/bruker_id"
-        app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
+        app:layout_constraintEnd_toEndOf="@+id/navn"
+        app:layout_constraintStart_toStartOf="@+id/navn"
         app:layout_constraintTop_toBottomOf="@+id/navn" />
 
     <TextView
@@ -48,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/mobilnummer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilBrukerId"
+        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
         app:layout_constraintTop_toBottomOf="@+id/ProfilBrukerId" />
 
     <TextView
@@ -58,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/foedselsdato"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilMobilNummer"
         app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
         app:layout_constraintTop_toBottomOf="@+id/ProfilMobilNummer" />
 
@@ -79,6 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/profilbilde"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilFodselsdato"
         app:layout_constraintStart_toStartOf="@+id/ProfilFodselsdato"
         app:layout_constraintTop_toBottomOf="@+id/ProfilFodselsdato" />
 
@@ -86,7 +88,9 @@
         android:id="@+id/navn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/textView"
-        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profilbilde"
         app:layout_constraintTop_toTopOf="@+id/profilbilde" />
 </androidx.constraintlayout.widget.ConstraintLayout>

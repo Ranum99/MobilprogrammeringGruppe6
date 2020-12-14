@@ -97,7 +97,7 @@ public class KalenderRedigerFragment extends Fragment {
                 mMonth = fullDateFrom.getMonth();
                 mDay = fullDateFrom.getDate();
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -132,7 +132,7 @@ public class KalenderRedigerFragment extends Fragment {
                     mDay = fullDateTo.getDate();
                 }
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.my_dialog_theme,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -165,7 +165,7 @@ public class KalenderRedigerFragment extends Fragment {
                     mMinute = fullDateFrom.getMinutes();
                 }
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -197,7 +197,7 @@ public class KalenderRedigerFragment extends Fragment {
                     mMinute = fullDateTo.getMinutes();
                 }
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
