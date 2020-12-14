@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/onSurface"
     android:orientation="horizontal"
     tools:context=".fragment.FamilieOpprettFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:autofillHints="@string/passord"
         android:hint="@string/passord"
         android:ems="10"
+        android:textColor="@color/textColorPrimary"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -27,7 +29,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/OpprettFamilieOpprettPassord"
-            android:layout_width="500dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:singleLine="true" />
@@ -41,8 +43,9 @@
         android:layout_marginTop="8dp"
         android:autofillHints="@string/repeatPassword"
         android:hint="@string/repeatPassword"
-        android:ems="10"
         android:imeOptions="actionDone"
+        android:ems="10"
+        android:textColor="@color/textColorPrimary"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -54,7 +57,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/OpprettFamilieGjentaPassord"
-            android:layout_width="500dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
@@ -63,28 +66,40 @@
 
     <Button
         android:id="@+id/OpprettFamilieBtn"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:text="@string/createNewFamilyBtn"
         app:layout_constraintBottom_toTopOf="@+id/OpprettFamilieAvbryt"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
+    <Button
+        android:id="@+id/OpprettFamilieAvbryt"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/avbryt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintStart_toStartOf="@+id/OpprettFamilieBtn"
+        app:layout_constraintTop_toBottomOf="@+id/OpprettFamilieBtn" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:autofillHints="@string/familyName"
-        android:ems="10"
         android:hint="@string/familyName"
+        android:ems="10"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +108,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/OpprettFamilieOpprettNavn"
-            android:layout_width="500dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:singleLine="true" />

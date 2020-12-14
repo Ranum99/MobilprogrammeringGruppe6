@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/onSurface"
+    android:orientation="horizontal"
     tools:context=".fragment.FamilieboblaSamtaleFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -11,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="55dp" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <TextView
         android:id="@+id/Samtalenavn"
@@ -21,6 +23,7 @@
         android:layout_marginTop="4dp"
         android:text="@string/textview"
         android:textSize="20sp"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <Button
         android:id="@+id/familieboblaSamtale_sendMessageBtn"
@@ -55,8 +58,9 @@
         android:autofillHints="@string/message"
         android:gravity="center"
         android:hint="@string/message"
-        android:ems="10"
         android:imeOptions="actionDone"
+        android:ems="10"
+        android:textColor="@color/textColorPrimary"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -68,11 +72,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/familieboblaSamtale_messageToSend"
-            android:layout_width="500dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="textLongMessage"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:inputType="textLongMessage"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView

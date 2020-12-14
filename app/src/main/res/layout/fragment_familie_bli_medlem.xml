@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    android:orientation="vertical"
+    android:background="@color/onSurface"
+    android:orientation="horizontal"
     tools:context=".fragment.FamilieBliMedlemFragment">
 
     <com.google.android.material.textfield.TextInputLayout
