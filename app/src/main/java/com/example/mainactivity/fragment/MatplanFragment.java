@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,8 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.mainactivity.Database;
+import com.example.mainactivity.R;
 import com.example.mainactivity.adapter.MatplanAdapter;
 import com.example.mainactivity.model.MatplanModel;
+import com.example.mainactivity.model.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -21,6 +21,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mainactivity.Database;
+import com.example.mainactivity.LoginActivity;
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class ProfilFragment extends Fragment {

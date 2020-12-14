@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
 
 public class FamilieFragment extends Fragment {
 

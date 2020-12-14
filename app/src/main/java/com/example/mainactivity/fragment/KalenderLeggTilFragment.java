@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -19,29 +19,33 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.mainactivity.Database;
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class KalenderRedigerFragment extends Fragment {
-    public KalenderRedigerFragment() {
+public class KalenderLeggTilFragment extends Fragment {
+    public KalenderLeggTilFragment() {
     }
 
     Database database;
     SharedPreferences sharedPreferences;
 
-    private Button btnChangeActivity;
+    private Button btnAddActivity;
     private TextView txtDateFrom, txtDateTo, txtTimeFrom, txtTimeTo;
     private EditText txtActivity;
     private NavController navController;
-
     private Date fullDateFrom, fullDateTo;
     private String dateFrom, dateTo, timeFrom, timeTo;
-    private int mYear, mMonth, mDay, mHour, mMinute, activityID;
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_kalender_endre, container, false);
+        return inflater.inflate(R.layout.fragment_kalender_legg_til, container, false);
     }
 
     @Override
@@ -54,40 +58,24 @@ public class KalenderRedigerFragment extends Fragment {
         database = new Database(getActivity());
         sharedPreferences = this.requireActivity().getSharedPreferences(User.SESSION, Context.MODE_PRIVATE);
 
-        btnChangeActivity = view.findViewById(R.id.btnChangeActivity);
+        btnAddActivity = view.findViewById(R.id.btnAddActivity);
         txtDateFrom = view.findViewById(R.id.txtDateFrom);
         txtDateTo = view.findViewById(R.id.txtDateTo);
         txtTimeFrom = view.findViewById(R.id.txtTimeFrom);
         txtTimeTo = view.findViewById(R.id.txtTimeTo);
         txtActivity = view.findViewById(R.id.txtActivity);
-
         fullDateFrom = new Date();
         fullDateTo = new Date();
 
-        setActivity(getArguments().getString("theActivity"));
-
-        setDateFrom(getArguments().getString("dateFrom"));
-
-        if (getArguments().getString("dateTo") != null) {
-            setDateTo(getArguments().getString("dateTo"));
-        }
-
-        if (getArguments().getString("timeFrom") != null) {
-            setTimeFrom(getArguments().getString("timeFrom"));
-        }
-
-        if (getArguments().getString("timeTo") != null) {
-            setTimeTo(getArguments().getString("timeTo"));
-        }
-
-        setActivityID(getArguments().getInt("activityID"));
-
+        // Setter listener på textfelter
+        // Her henter man er DatePicker, og gjør at bruker kan velge en dato
         txtDateFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mYear = fullDateFrom.getYear() + 1900;
-                mMonth = fullDateFrom.getMonth();
-                mDay = fullDateFrom.getDate();
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
@@ -113,16 +101,10 @@ public class KalenderRedigerFragment extends Fragment {
         txtDateTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dateTo == null) {
-                    final Calendar c = Calendar.getInstance();
-                    mYear = c.get(Calendar.YEAR);
-                    mMonth = c.get(Calendar.MONTH);
-                    mDay = c.get(Calendar.DAY_OF_MONTH);
-                } else {
-                    mYear = fullDateTo.getYear() + 1900;
-                    mMonth = fullDateTo.getMonth();
-                    mDay = fullDateTo.getDate();
-                }
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
@@ -148,14 +130,9 @@ public class KalenderRedigerFragment extends Fragment {
         txtTimeFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (timeFrom == null) {
-                    final Calendar c = Calendar.getInstance();
-                    mHour = c.get(Calendar.HOUR_OF_DAY);
-                    mMinute = c.get(Calendar.MINUTE);
-                } else {
-                    mHour = fullDateFrom.getHours();
-                    mMinute = fullDateFrom.getMinutes();
-                }
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
                         new TimePickerDialog.OnTimeSetListener() {
@@ -180,14 +157,9 @@ public class KalenderRedigerFragment extends Fragment {
         txtTimeTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (timeTo == null) {
-                    final Calendar c = Calendar.getInstance();
-                    mHour = c.get(Calendar.HOUR_OF_DAY);
-                    mMinute = c.get(Calendar.MINUTE);
-                } else {
-                    mHour = fullDateTo.getHours();
-                    mMinute = fullDateTo.getMinutes();
-                }
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
                         new TimePickerDialog.OnTimeSetListener() {
@@ -207,39 +179,33 @@ public class KalenderRedigerFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-        btnChangeActivity.setOnClickListener(new View.OnClickListener() {
+        btnAddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeActivityToCalendar();
+                addActivityToCalendar();
             }
         });
     }
 
-    private void changeActivityToCalendar() {
-        boolean changeInDatabase = false;
+    // Legger aktiviteten til i databasen dersom sjekk går gjennom
+    private void addActivityToCalendar() {
+        int meID = Integer.parseInt(sharedPreferences.getString(User.ID, null));
+
+        long addToDatabase = -1;
 
         if (sjekkInput())
-            changeInDatabase = database.editActivityInCalandar(activityID, dateFrom, dateTo, timeFrom, timeTo, txtActivity.getText().toString());
+            addToDatabase = database.addActivityToCalandar(dateFrom, dateTo, timeFrom, timeTo, meID, txtActivity.getText().toString());
 
-        if (changeInDatabase) {
-            Toast.makeText(getContext(),"Changed activity: " + txtActivity.getText().toString() + " in calendar", Toast.LENGTH_SHORT).show();
+        if (addToDatabase >= 0) {
+            Toast.makeText(getContext(),"Added activity: " + txtActivity.getText().toString() + " to calendar", Toast.LENGTH_SHORT).show();
             navController.navigateUp();
         }
-
-        System.out.println(txtActivity.getText().toString());
-        System.out.println(dateFrom);
-        System.out.println(dateTo);
-        System.out.println(timeFrom);
-        System.out.println(timeTo);
-        System.out.println(activityID);
-        System.out.println(fullDateFrom);
-        System.out.println(fullDateTo);
     }
 
     // Sjekker at:
-    // Man har fylt inn en aktivitet
-    // Man har fylt ut en dato fra (dato til, tid fra og tid til kan stå tomme dersom brukeren vil det)
-    // Til slutt sjekker den om tid fra (dato og tid) er før tid til
+        // Man har fylt inn en aktivitet
+        // Man har fylt ut en dato fra (dato til, tid fra og tid til kan stå tomme dersom brukeren vil det)
+        // Til slutt sjekker den om tid fra (dato og tid) er før tid til
     private boolean sjekkInput() {
         if (txtActivity.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Fyll inn aktivitet", Toast.LENGTH_SHORT).show();
@@ -254,7 +220,6 @@ public class KalenderRedigerFragment extends Fragment {
             fullDateFrom.setMinutes(0);
             fullDateFrom.setSeconds(0);
         }
-
         if (dateTo != null || timeTo != null) {
             if (dateTo == null) {
                 fullDateTo.setYear(fullDateFrom.getYear());
@@ -267,59 +232,5 @@ public class KalenderRedigerFragment extends Fragment {
             }
         }
         return true;
-    }
-
-    public void setActivity(String txtActivity) {
-        this.txtActivity.setText(txtActivity);
-    }
-
-    public void setDateFrom(String dateFrom) {
-        this.dateFrom = dateFrom;
-        this.txtDateFrom.setText(dateFrom);
-        setFullDateFrom(dateFrom);
-    }
-
-    public void setDateTo(String dateTo) {
-        this.dateTo = dateTo;
-        this.txtDateTo.setText(dateTo);
-        setFullDateTo(dateTo);
-    }
-
-    public void setTimeFrom(String timeFrom) {
-        this.timeFrom = timeFrom;
-        this.txtTimeFrom.setText(timeFrom);
-
-        String[] timeSplitted = timeFrom.split(":");
-        fullDateFrom.setHours(Integer.parseInt(timeSplitted[0]));
-        fullDateFrom.setMinutes(Integer.parseInt(timeSplitted[1]));
-    }
-
-    public void setTimeTo(String timeTo) {
-        this.timeTo = timeTo;
-        this.txtTimeTo.setText(timeTo);
-
-        System.out.println(timeTo);
-
-        String[] timeSplitted = timeTo.split(":");
-        fullDateTo.setHours(Integer.parseInt(timeSplitted[0]));
-        fullDateTo.setMinutes(Integer.parseInt(timeSplitted[1]));
-    }
-
-    public void setActivityID(int activityID) {
-        this.activityID = activityID;
-    }
-
-    public void setFullDateFrom(String dateFrom) {
-        String[] fullDateSplitted = dateFrom.split("\\.");
-        fullDateFrom.setDate(Integer.parseInt(fullDateSplitted[0]));
-        fullDateFrom.setMonth(Integer.parseInt(fullDateSplitted[1]) - 1);
-        fullDateFrom.setYear(Integer.parseInt(fullDateSplitted[2]) - 1900);
-    }
-
-    public void setFullDateTo(String dateTo) {
-        String[] fullDateSplitted = dateTo.split("\\.");
-        fullDateTo.setDate(Integer.parseInt(fullDateSplitted[0]));
-        fullDateTo.setMonth(Integer.parseInt(fullDateSplitted[1]) - 1);
-        fullDateTo.setYear(Integer.parseInt(fullDateSplitted[2]) - 1900);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -18,6 +18,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
+
+import com.example.mainactivity.Database;
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

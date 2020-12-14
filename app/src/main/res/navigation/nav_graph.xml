@@ -7,7 +7,7 @@
     app:startDestination="@id/kalenderFragment">
     <fragment
         android:id="@+id/handlelisteFragment"
-        android:name="com.example.mainactivity.HandlelisteFragment"
+        android:name="com.example.mainactivity.fragment.HandlelisteFragment"
         android:label="@string/Handleliste"
         tools:layout="@layout/fragment_handleliste" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/handlelisteLeggTilFragment"
-        android:name="com.example.mainactivity.HandlelisteLeggTilFragment"
+        android:name="com.example.mainactivity.fragment.HandlelisteLeggTilFragment"
         android:label="@string/opprett_handleliste"
         tools:layout="@layout/fragment_handleliste_legg_til" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/bursdagFragment"
-        android:name="com.example.mainactivity.BursdagFragment"
+        android:name="com.example.mainactivity.fragment.BursdagFragment"
         android:label="Bursdager"
         tools:layout="@layout/fragment_bursdag" >
         <action
@@ -40,17 +40,17 @@
     </fragment>
     <fragment
         android:id="@+id/bursdagLeggTilFragment"
-        android:name="com.example.mainactivity.BursdagLeggTilFragment"
+        android:name="com.example.mainactivity.fragment.BursdagLeggTilFragment"
         android:label="Legg til bursdag"
         tools:layout="@layout/fragment_bursdag_legg_til" />
     <fragment
         android:id="@+id/bursdagRedigerFragment"
-        android:name="com.example.mainactivity.BursdagRedigerFragment"
+        android:name="com.example.mainactivity.fragment.BursdagRedigerFragment"
         android:label="Rediger bursdag"
         tools:layout="@layout/fragment_bursdag_rediger" />
     <fragment
         android:id="@+id/familieboblaFragment"
-        android:name="com.example.mainactivity.FamilieboblaFragment"
+        android:name="com.example.mainactivity.fragment.FamilieboblaFragment"
         android:label="FamilieBobla"
         tools:layout="@layout/fragment_familiebobla" >
         <action
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/familieboblaNySamtaleFragment"
-        android:name="com.example.mainactivity.FamilieboblaNySamtaleFragment"
+        android:name="com.example.mainactivity.fragment.FamilieboblaNySamtaleFragment"
         android:label="Opprett samtale"
         tools:layout="@layout/fragment_familiebobla_ny_samtale" >
         <action
@@ -71,17 +71,17 @@
     </fragment>
     <fragment
         android:id="@+id/familieboblaSamtaleFragment"
-        android:name="com.example.mainactivity.FamilieboblaSamtaleFragment"
+        android:name="com.example.mainactivity.fragment.FamilieboblaSamtaleFragment"
         android:label="FamilieBobla"
         tools:layout="@layout/fragment_familiebobla_samtale" />
     <fragment
         android:id="@+id/gruppeinformasjonFragment"
-        android:name="com.example.mainactivity.GruppeinformasjonFragment"
+        android:name="com.example.mainactivity.fragment.GruppeinformasjonFragment"
         android:label="Gruppeinformasjon"
         tools:layout="@layout/fragment_gruppeinformasjon" />
     <fragment
         android:id="@+id/kalenderFragment"
-        android:name="com.example.mainactivity.KalenderFragment"
+        android:name="com.example.mainactivity.fragment.KalenderFragment"
         android:label="Kalender"
         tools:layout="@layout/fragment_kalender" >
         <action
@@ -93,17 +93,17 @@
     </fragment>
     <fragment
         android:id="@+id/kalenderRedigerFragment"
-        android:name="com.example.mainactivity.KalenderRedigerFragment"
+        android:name="com.example.mainactivity.fragment.KalenderRedigerFragment"
         android:label="Kalender"
         tools:layout="@layout/fragment_kalender_endre" />
     <fragment
         android:id="@+id/kalenderLeggTilFragment"
-        android:name="com.example.mainactivity.KalenderLeggTilFragment"
+        android:name="com.example.mainactivity.fragment.KalenderLeggTilFragment"
         android:label="Kalender"
         tools:layout="@layout/fragment_kalender_legg_til" />
     <fragment
         android:id="@+id/matplanFragment"
-        android:name="com.example.mainactivity.MatplanFragment"
+        android:name="com.example.mainactivity.fragment.MatplanFragment"
         android:label="Matplan"
         tools:layout="@layout/fragment_matplan" >
         <action
@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/matplanLeggTilFragment"
-        android:name="com.example.mainactivity.MatplanLeggTilFragment"
+        android:name="com.example.mainactivity.fragment.MatplanLeggTilFragment"
         android:label="Matplan"
         tools:layout="@layout/fragment_matplan_legg_til" >
         <action
@@ -124,12 +124,12 @@
     </fragment>
     <fragment
         android:id="@+id/matplanListeFragment"
-        android:name="com.example.mainactivity.MatplanListeFragment"
+        android:name="com.example.mainactivity.fragment.MatplanListeFragment"
         android:label="Matplan"
         tools:layout="@layout/fragment_matplan_liste" />
     <fragment
         android:id="@+id/onskelisteLeggTilFragment"
-        android:name="com.example.mainactivity.OnskelisteLeggTilFragment"
+        android:name="com.example.mainactivity.fragment.OnskelisteLeggTilFragment"
         android:label="Opprett ønskeliste"
         tools:layout="@layout/fragment_onskeliste_legg_til">
         <action
@@ -138,7 +138,7 @@
     </fragment>
     <fragment
         android:id="@+id/onskelisteFragment"
-        android:name="com.example.mainactivity.OnskelisteFragment"
+        android:name="com.example.mainactivity.fragment.OnskelisteFragment"
         android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste" >
         <action
@@ -150,7 +150,7 @@
     </fragment>
     <fragment
         android:id="@+id/profilFragment"
-        android:name="com.example.mainactivity.ProfilFragment"
+        android:name="com.example.mainactivity.fragment.ProfilFragment"
         android:label="Profil"
         tools:layout="@layout/fragment_profil">
         <action
@@ -159,22 +159,22 @@
     </fragment>
     <fragment
         android:id="@+id/profilRedigerFragment"
-        android:name="com.example.mainactivity.ProfilRedigerFragment"
+        android:name="com.example.mainactivity.fragment.ProfilRedigerFragment"
         android:label="Rediger profil"
         tools:layout="@layout/fragment_profil_rediger" />
     <fragment
         android:id="@+id/onskelisteListeFragment"
-        android:name="com.example.mainactivity.OnskelisteListeFragment"
+        android:name="com.example.mainactivity.fragment.OnskelisteListeFragment"
         android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste_liste" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.mainactivity.SettingsFragment"
+        android:name="com.example.mainactivity.fragment.SettingsFragment"
         android:label="Innstillinger"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/handlelisteListeFragment"
-        android:name="com.example.mainactivity.HandlelisteListeFragment"
+        android:name="com.example.mainactivity.fragment.HandlelisteListeFragment"
         android:label="Handlelisten"
         tools:layout="@layout/fragment_handleliste_liste" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.model;
 
 public class User {
     public int id, mobilnr;

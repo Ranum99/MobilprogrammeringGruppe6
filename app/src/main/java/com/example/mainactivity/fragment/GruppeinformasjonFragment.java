@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,6 +17,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.mainactivity.Database;
+import com.example.mainactivity.MainActivity;
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
+
 import java.util.ArrayList;
 
 public class GruppeinformasjonFragment extends Fragment {

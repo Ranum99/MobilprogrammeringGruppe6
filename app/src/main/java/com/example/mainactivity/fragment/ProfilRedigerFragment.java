@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,6 +17,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.example.mainactivity.Database;
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
+
 import java.util.Objects;
 
 public class ProfilRedigerFragment extends Fragment {

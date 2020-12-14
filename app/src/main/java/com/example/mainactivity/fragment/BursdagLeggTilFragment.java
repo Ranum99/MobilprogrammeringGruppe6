@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +18,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.mainactivity.Database;
+import com.example.mainactivity.R;
+import com.example.mainactivity.model.User;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class BursdagLeggTilFragment extends Fragment {

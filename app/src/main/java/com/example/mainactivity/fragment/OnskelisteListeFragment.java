@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,8 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mainactivity.Database;
+import com.example.mainactivity.R;
 import com.example.mainactivity.adapter.OnskelisteListeAdapter;
 import com.example.mainactivity.model.OnskelisteListeModel;
+import com.example.mainactivity.model.User;
 import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 
