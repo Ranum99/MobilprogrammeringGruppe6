@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import com.example.mainactivity.Database;
 import com.example.mainactivity.R;
 import com.example.mainactivity.model.User;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
