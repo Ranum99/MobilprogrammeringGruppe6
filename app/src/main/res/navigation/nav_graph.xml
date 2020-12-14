@@ -94,12 +94,12 @@
     <fragment
         android:id="@+id/kalenderRedigerFragment"
         android:name="com.example.mainactivity.fragment.KalenderRedigerFragment"
-        android:label="Kalender"
+        android:label="Rediger aktivitet"
         tools:layout="@layout/fragment_kalender_endre" />
     <fragment
         android:id="@+id/kalenderLeggTilFragment"
         android:name="com.example.mainactivity.fragment.KalenderLeggTilFragment"
-        android:label="Kalender"
+        android:label="Legg til aktivitet"
         tools:layout="@layout/fragment_kalender_legg_til" />
     <fragment
         android:id="@+id/matplanFragment"
@@ -116,16 +116,12 @@
     <fragment
         android:id="@+id/matplanLeggTilFragment"
         android:name="com.example.mainactivity.fragment.MatplanLeggTilFragment"
-        android:label="Matplan"
-        tools:layout="@layout/fragment_matplan_legg_til" >
-        <action
-            android:id="@+id/action_matplanLeggTilFragment_to_matplanListeFragment"
-            app:destination="@id/matplanListeFragment" />
-    </fragment>
+        android:label="Legg til matplan"
+        tools:layout="@layout/fragment_matplan_legg_til"/>
     <fragment
         android:id="@+id/matplanListeFragment"
         android:name="com.example.mainactivity.fragment.MatplanListeFragment"
-        android:label="Matplan"
+        android:label="Rediger matplan"
         tools:layout="@layout/fragment_matplan_liste" />
     <fragment
         android:id="@+id/onskelisteLeggTilFragment"
@@ -165,7 +161,6 @@
     <fragment
         android:id="@+id/onskelisteListeFragment"
         android:name="com.example.mainactivity.fragment.OnskelisteListeFragment"
-        android:label="Ønskeliste"
         tools:layout="@layout/fragment_onskeliste_liste" />
     <fragment
         android:id="@+id/settingsFragment"
@@ -175,6 +170,6 @@
     <fragment
         android:id="@+id/handlelisteListeFragment"
         android:name="com.example.mainactivity.fragment.HandlelisteListeFragment"
-        android:label="Handlelisten"
+        android:label="@string/Handleliste"
         tools:layout="@layout/fragment_handleliste_liste" />
 </navigation>

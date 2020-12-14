@@ -3,7 +3,7 @@
 <resources>
     <!-- For Normal/Light Mode -->
     <color name="colorPrimary">#11999e</color>
-    <color name="colorPrimaryDark">#03A9F4</color>
+    <color name="colorPrimaryDark">#118D91</color>
     <color name="colorAccent">#03A9F4</color>
     <color name="textColorPrimary">#000000</color>
     <color name="backgroundColor">#FCFCFC</color>

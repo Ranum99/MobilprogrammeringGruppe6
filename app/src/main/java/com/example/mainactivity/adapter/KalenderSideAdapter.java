@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -76,7 +77,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
     public class KalenderViewHolder extends RecyclerView.ViewHolder {
         private TextView aktivitet, userName, datoOgTid;
         private ImageView delete;
-        private ConstraintLayout kortID;
+        private CardView kortID;
 
         public KalenderViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -159,7 +160,7 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                 delete = itemView.findViewById(R.id.slettAktivitet);
                 delete.setVisibility(View.INVISIBLE);
 
-                kortID = itemView.findViewById(R.id.kortID);
+                kortID = itemView.findViewById(R.id.cardHandleliste);
                 kortID.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
@@ -171,14 +172,14 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
         }
 
         private void setClickOnSamtale(final KalenderSideModel kalenderSideModel) {
-            kortID = itemView.findViewById(R.id.kortID);
+            kortID = itemView.findViewById(R.id.cardHandleliste);
             kortID.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(contexten);
                     builder.setTitle("Endre aktivitet")
                             .setMessage("Vil du endre aktiviteten: " + kalenderSideModel.getTheActivity() + "?");
-                    builder.setPositiveButton("Mhm",
+                    builder.setPositiveButton("Ja",
                             new DialogInterface.OnClickListener() {
                                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                                 @Override
@@ -191,10 +192,10 @@ public class KalenderSideAdapter extends RecyclerView.Adapter<KalenderSideAdapte
                                     bundle.putString("theActivity", kalenderSideModel.getTheActivity());
                                     bundle.putInt("activityID", kalenderSideModel.getActivityID());
                                     Log.i("KalenderSideAdapter", "Sender deg videre til redigering av kalender aktivitet");
-                                    Navigation.findNavController(kortID).navigate(R.id.action_kalenderFragment2_to_kalenderRedigerFragment, bundle);
+                                    Navigation.findNavController(kortID).navigate(R.id.kalenderRedigerFragment, bundle);
                                 }
                             });
-                    builder.setNegativeButton("Nope",
+                    builder.setNegativeButton("Nei",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
