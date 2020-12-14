@@ -15,12 +15,13 @@
 
     <color name="Grey">#888888</color>
     <color name="ic_launcher_background">#FFFFFF</color>
-
+    <color name="tint">#888888</color>
     <color name="background">#FCFCFC</color>
     <color name="surface">#FCFCFC</color>
     <color name="primary">#03A9F4</color>
+    <color name="button">#11999e</color>
     <color name="secondary">#03A9F4</color>
     <color name="onBackground">#000000</color>
-    <color name="onSurface">#03A9F4</color>
+    <color name="onSurface">#FFFFFF</color>
     <color name="onPrimary">#121212</color>
 </resources>

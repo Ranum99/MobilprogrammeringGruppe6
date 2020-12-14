@@ -11,16 +11,19 @@
     <color name="backgroundListItem">#282828</color>
     <color name="calenderBackgroundColor">#282828</color>
     <color name="headlineCardView">#808080</color>
-    <color name="tintDeleteButton">#FFFFFF</color>
+    <!-- <color name="tintDeleteButton">#FFFFFF</color> -->
 
     <color name="ic_launcher_background">#FFFFFF</color>
     <color name="Grey">#888888</color>
 
+    <color name="tint">#FFFFFF</color>
+
     <color name="background">#121212</color>
     <color name="surface">#282828</color>
     <color name="primary">#C38FFF</color>
+    <color name="button">#C38FFF</color>
     <color name="secondary">#03DAC6</color>
     <color name="onBackground">#FFFFFF</color>
-    <color name="onSurface">#808080</color>
+    <color name="onSurface">#404040</color>
     <color name="onPrimary">#121212</color>
 </resources>

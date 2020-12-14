@@ -4,8 +4,7 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
-    android:background="@color/backgroundColor"
+    android:layout_margin="8dp"
     android:alwaysDrawnWithCache="true"
     app:cardCornerRadius="10dp"
     android:orientation="vertical">
@@ -13,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/OnskelisteCardID"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundListItem">
 
         <TextView
             android:id="@+id/Onskelistenavn"
@@ -24,6 +24,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:textColor="@color/headlineCardView"
             android:text="@string/textView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/checkBox"
@@ -41,7 +42,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_delete" />
+            app:srcCompat="@drawable/ic_action_delete"
+            app:tint="@color/tint"/>
 
         <CheckBox
             android:id="@+id/checkBox"
