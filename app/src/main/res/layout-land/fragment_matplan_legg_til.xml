@@ -4,64 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/onSurface"
     tools:context=".fragment.MatplanLeggTilFragment"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/opprettMatplan"
-        android:layout_width="500dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/opprett"
-        app:layout_constraintEnd_toEndOf="@+id/matplanStartDag"
-        app:layout_constraintStart_toStartOf="@+id/matplanStartDag"
-        app:layout_constraintTop_toBottomOf="@+id/matplanStartDag" />
-
-    <TextView
-        android:id="@+id/textView16"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/antallDagerMatplan"
-        app:layout_constraintBottom_toTopOf="@+id/matplanDager"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Spinner
-        android:id="@+id/matplanDager"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/matplanStartDag"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:autofillHints="@string/dato_fra"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="@string/dato_fra"
+                android:imeOptions="actionDone"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView17"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/startdagMatplan"
-        app:layout_constraintBottom_toTopOf="@+id/matplanStartDag"
-        app:layout_constraintEnd_toEndOf="@+id/matplanDager"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/matplanDager"
-        app:layout_constraintTop_toBottomOf="@+id/matplanDager" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDateFromMatplan"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout4"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints="@string/dato_til"
+                android:focusable="false"
+                android:hint="@string/dato_til"
+                android:ems="10"
+                android:imeOptions="actionDone"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDateToMatplan"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/opprettMatplan"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/opprett"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
