@@ -4,31 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ProfilFragment"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:context=".fragment.ProfilFragment">
 
     <ImageView
         android:id="@+id/profilbilde"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/bildeinfo"
+        app:layout_constraintEnd_toStartOf="@+id/ProfilMobilNummer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <Button
         android:id="@+id/btnEndreProfil"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         android:text="@string/endreProfil"
-        app:layout_constraintEnd_toStartOf="@+id/LoggutBtn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/profilbilde"
         app:layout_constraintTop_toBottomOf="@+id/profilbilde" />
 
     <TextView
@@ -37,8 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/bruker_id"
-        app:layout_constraintEnd_toEndOf="@+id/navn"
-        app:layout_constraintStart_toStartOf="@+id/navn"
+        app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
         app:layout_constraintTop_toBottomOf="@+id/navn" />
 
     <TextView
@@ -47,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/mobilnummer"
-        app:layout_constraintEnd_toEndOf="@+id/ProfilBrukerId"
-        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profilbilde"
         app:layout_constraintTop_toBottomOf="@+id/ProfilBrukerId" />
 
     <TextView
@@ -57,20 +53,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/foedselsdato"
-        app:layout_constraintEnd_toEndOf="@+id/ProfilMobilNummer"
         app:layout_constraintStart_toStartOf="@+id/ProfilMobilNummer"
         app:layout_constraintTop_toBottomOf="@+id/ProfilMobilNummer" />
 
     <Button
-        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:id="@+id/LoggutBtn"
-        android:layout_width="300dp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginTop="8dp"
         android:text="@string/logg_ut"
-
         app:layout_constraintBottom_toBottomOf="@+id/btnEndreProfil"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toTopOf="@+id/btnEndreProfil" />
 
     <TextView
@@ -80,7 +75,6 @@
         android:layout_marginTop="15dp"
         android:text="@string/textView"
         app:layout_constraintBottom_toBottomOf="@+id/profilbilde"
-        app:layout_constraintEnd_toEndOf="@+id/ProfilFodselsdato"
         app:layout_constraintStart_toStartOf="@+id/ProfilFodselsdato"
         app:layout_constraintTop_toBottomOf="@+id/ProfilFodselsdato" />
 
@@ -88,9 +82,9 @@
         android:id="@+id/navn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="@string/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profilbilde"
-        app:layout_constraintTop_toTopOf="@+id/profilbilde" />
+        app:layout_constraintStart_toStartOf="@+id/ProfilBrukerId"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

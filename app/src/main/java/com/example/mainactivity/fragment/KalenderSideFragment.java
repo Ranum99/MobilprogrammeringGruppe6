@@ -118,11 +118,13 @@ public class KalenderSideFragment extends Fragment {
             String[] dateFromSplitted = dato.split("\\.");
             Date fullDateFrom = new Date(Integer.parseInt(dateFromSplitted[2]) - 1900, Integer.parseInt(dateFromSplitted[1]) - 1, Integer.parseInt(dateFromSplitted[0]));
 
-            if (familieID.equals(sharedPreferences.getString(User.FAMILIE, null))){
-                if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth()) {
-                    String bursdagFor = name + " har bursdag i dag!";
-                    KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, "00:01", null, null, bursdagFor, 0, 0, true);
-                    aktiviteter.add(kalenderSideModel);
+            if (familieID != null) {
+                if (familieID.equals(sharedPreferences.getString(User.FAMILIE, null))){
+                    if (fullDateFrom.getDate() == fullDateSelected.getDate() && fullDateFrom.getMonth() == fullDateSelected.getMonth()) {
+                        String bursdagFor = name + " har bursdag i dag!";
+                        KalenderSideModel kalenderSideModel = new KalenderSideModel(dato, null, "00:01", null, null, bursdagFor, 0, 0, true);
+                        aktiviteter.add(kalenderSideModel);
+                    }
                 }
             }
         }
