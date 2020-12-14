@@ -14,4 +14,9 @@
     <style name="datepicker">
         <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:weekNumberColor">@color/textColorPrimary</item>
+    </style>
 </resources>

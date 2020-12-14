@@ -76,13 +76,12 @@
         app:layout_constraintTop_toBottomOf="@+id/ProfilMobilNummer" />
 
     <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:id="@+id/LoggutBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/logg_ut"
-        android:elevation="1dp"
-        android:background="@color/button"
         app:layout_constraintEnd_toEndOf="@+id/btnEndreProfil"
         app:layout_constraintStart_toStartOf="@+id/btnEndreProfil"
         app:layout_constraintTop_toBottomOf="@+id/btnEndreProfil" />
