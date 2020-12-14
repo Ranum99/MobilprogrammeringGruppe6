@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/onSurface"
+    android:orientation="horizontal"
     tools:context=".fragment.BursdagLeggTilFragment">
 
     <ScrollView
@@ -17,8 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -28,6 +29,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="28dp"
+                android:textColor="@color/textColorPrimary"
                 android:autofillHints="@string/fullt_navn"
                 android:hint="@string/fullt_navn"
                 android:ems="10"
@@ -80,5 +82,4 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
