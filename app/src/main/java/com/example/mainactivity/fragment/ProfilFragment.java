@@ -105,9 +105,9 @@ public class ProfilFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Nei, ikke gå!!!").
+                builder.setTitle("Bekreftelse").
                         setMessage("Er du sikker på at du vil logge ut?");
-                builder.setPositiveButton("Ja, jeg vil ut herifra!",
+                builder.setPositiveButton("Ja, logg meg ut",
                         new DialogInterface.OnClickListener() {
                             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                             @Override
@@ -122,7 +122,7 @@ public class ProfilFragment extends Fragment {
                                 startActivity(intent);
                             }
                         });
-                builder.setNegativeButton("Nei, ta meg tilbake!",
+                builder.setNegativeButton("Nei, ta meg tilbake",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
